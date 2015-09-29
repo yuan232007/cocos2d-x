@@ -2147,16 +2147,6 @@ renderer
 },
 
 /**
- * @method stepPhysicsAndNavigation
- * @param {float} arg0
- */
-stepPhysicsAndNavigation : function (
-float 
-)
-{
-},
-
-/**
  * @method onProjectionChanged
  * @param {cc.EventCustom} arg0
  */
@@ -3288,6 +3278,1680 @@ getInstance : function (
 )
 {
     return cc.AsyncTaskPool;
+},
+
+};
+
+/**
+ * @class Configuration
+ */
+cc.Configuration = {
+
+/**
+ * @method checkForGLExtension
+ * @param {String} arg0
+ * @return {bool}
+ */
+checkForGLExtension : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method init
+ * @return {bool}
+ */
+init : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method supportsS3TC
+ * @return {bool}
+ */
+supportsS3TC : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method supportsPVRTC
+ * @return {bool}
+ */
+supportsPVRTC : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method supportsShareableVAO
+ * @return {bool}
+ */
+supportsShareableVAO : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method getInfo
+ * @return {String}
+ */
+getInfo : function (
+)
+{
+    return ;
+},
+
+/**
+ * @method getMaxSupportSpotLightInShader
+ * @return {int}
+ */
+getMaxSupportSpotLightInShader : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getMaxTextureUnits
+ * @return {int}
+ */
+getMaxTextureUnits : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method supportsNPOT
+ * @return {bool}
+ */
+supportsNPOT : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method getMaxModelviewStackDepth
+ * @return {int}
+ */
+getMaxModelviewStackDepth : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method supportsDiscardFramebuffer
+ * @return {bool}
+ */
+supportsDiscardFramebuffer : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method supportsATITC
+ * @return {bool}
+ */
+supportsATITC : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method setValue
+ * @param {String} arg0
+ * @param {cc.Value} arg1
+ */
+setValue : function (
+str, 
+value 
+)
+{
+},
+
+/**
+ * @method gatherGPUInfo
+ */
+gatherGPUInfo : function (
+)
+{
+},
+
+/**
+ * @method supportsETC
+ * @return {bool}
+ */
+supportsETC : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method getMaxSupportDirLightInShader
+ * @return {int}
+ */
+getMaxSupportDirLightInShader : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getMaxSupportPointLightInShader
+ * @return {int}
+ */
+getMaxSupportPointLightInShader : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method loadConfigFile
+ * @param {String} arg0
+ */
+loadConfigFile : function (
+str 
+)
+{
+},
+
+/**
+ * @method getValue
+ * @param {String} arg0
+ * @param {cc.Value} arg1
+ * @return {cc.Value}
+ */
+getValue : function (
+str, 
+value 
+)
+{
+    return cc.Value;
+},
+
+/**
+ * @method getMaxTextureSize
+ * @return {int}
+ */
+getMaxTextureSize : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method supportsBGRA8888
+ * @return {bool}
+ */
+supportsBGRA8888 : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method destroyInstance
+ */
+destroyInstance : function (
+)
+{
+},
+
+/**
+ * @method getInstance
+ * @return {cc.Configuration}
+ */
+getInstance : function (
+)
+{
+    return cc.Configuration;
+},
+
+};
+
+/**
+ * @class Properties
+ */
+cc.Properties = {
+
+/**
+ * @method getVariable
+ * @param {char} arg0
+ * @param {char} arg1
+ * @return {char}
+ */
+getVariable : function (
+char, 
+char 
+)
+{
+    return 0;
+},
+
+/**
+ * @method getString
+ * @return {char}
+ */
+getString : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getLong
+ * @return {long}
+ */
+getLong : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getNamespace
+* @param {char} char
+* @param {bool} bool
+* @param {bool} bool
+* @return {char|cc.Properties}
+*/
+getNamespace : function(
+char,
+bool,
+bool 
+)
+{
+    return cc.Properties;
+},
+
+/**
+ * @method getPath
+ * @param {char} arg0
+ * @param {String} arg1
+ * @return {bool}
+ */
+getPath : function (
+char, 
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method getMat4
+ * @param {char} arg0
+ * @param {mat4_object} arg1
+ * @return {bool}
+ */
+getMat4 : function (
+char, 
+mat4 
+)
+{
+    return false;
+},
+
+/**
+ * @method exists
+ * @param {char} arg0
+ * @return {bool}
+ */
+exists : function (
+char 
+)
+{
+    return false;
+},
+
+/**
+ * @method setString
+ * @param {char} arg0
+ * @param {char} arg1
+ * @return {bool}
+ */
+setString : function (
+char, 
+char 
+)
+{
+    return false;
+},
+
+/**
+ * @method getId
+ * @return {char}
+ */
+getId : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method rewind
+ */
+rewind : function (
+)
+{
+},
+
+/**
+ * @method setVariable
+ * @param {char} arg0
+ * @param {char} arg1
+ */
+setVariable : function (
+char, 
+char 
+)
+{
+},
+
+/**
+ * @method getBool
+ * @return {bool}
+ */
+getBool : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method getColor
+* @param {char|char} char
+* @param {vec4_object|vec3_object} vec4
+* @return {bool|bool}
+*/
+getColor : function(
+char,
+vec3 
+)
+{
+    return false;
+},
+
+/**
+ * @method getType
+ * @return {cc.Properties::Type}
+ */
+getType : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getNextNamespace
+ * @return {cc.Properties}
+ */
+getNextNamespace : function (
+)
+{
+    return cc.Properties;
+},
+
+/**
+ * @method getInt
+ * @return {int}
+ */
+getInt : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getVec3
+ * @param {char} arg0
+ * @param {vec3_object} arg1
+ * @return {bool}
+ */
+getVec3 : function (
+char, 
+vec3 
+)
+{
+    return false;
+},
+
+/**
+ * @method getVec2
+ * @param {char} arg0
+ * @param {vec2_object} arg1
+ * @return {bool}
+ */
+getVec2 : function (
+char, 
+vec2 
+)
+{
+    return false;
+},
+
+/**
+ * @method getVec4
+ * @param {char} arg0
+ * @param {vec4_object} arg1
+ * @return {bool}
+ */
+getVec4 : function (
+char, 
+vec4 
+)
+{
+    return false;
+},
+
+/**
+ * @method getNextProperty
+ * @return {char}
+ */
+getNextProperty : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getFloat
+ * @return {float}
+ */
+getFloat : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getQuaternionFromAxisAngle
+ * @param {char} arg0
+ * @param {cc.Quaternion} arg1
+ * @return {bool}
+ */
+getQuaternionFromAxisAngle : function (
+char, 
+quaternion 
+)
+{
+    return false;
+},
+
+/**
+ * @method parseColor
+* @param {char|char} char
+* @param {vec4_object|vec3_object} vec4
+* @return {bool|bool}
+*/
+parseColor : function(
+char,
+vec3 
+)
+{
+    return false;
+},
+
+/**
+ * @method parseVec3
+ * @param {char} arg0
+ * @param {vec3_object} arg1
+ * @return {bool}
+ */
+parseVec3 : function (
+char, 
+vec3 
+)
+{
+    return false;
+},
+
+/**
+ * @method parseAxisAngle
+ * @param {char} arg0
+ * @param {cc.Quaternion} arg1
+ * @return {bool}
+ */
+parseAxisAngle : function (
+char, 
+quaternion 
+)
+{
+    return false;
+},
+
+/**
+ * @method parseVec2
+ * @param {char} arg0
+ * @param {vec2_object} arg1
+ * @return {bool}
+ */
+parseVec2 : function (
+char, 
+vec2 
+)
+{
+    return false;
+},
+
+/**
+ * @method createNonRefCounted
+ * @param {String} arg0
+ * @return {cc.Properties}
+ */
+createNonRefCounted : function (
+str 
+)
+{
+    return cc.Properties;
+},
+
+/**
+ * @method parseVec4
+ * @param {char} arg0
+ * @param {vec4_object} arg1
+ * @return {bool}
+ */
+parseVec4 : function (
+char, 
+vec4 
+)
+{
+    return false;
+},
+
+};
+
+/**
+ * @class FileUtils
+ */
+cc.FileUtils = {
+
+/**
+ * @method fullPathForFilename
+ * @param {String} arg0
+ * @return {String}
+ */
+fullPathForFilename : function (
+str 
+)
+{
+    return ;
+},
+
+/**
+ * @method getStringFromFile
+ * @param {String} arg0
+ * @return {String}
+ */
+getStringFromFile : function (
+str 
+)
+{
+    return ;
+},
+
+/**
+ * @method removeFile
+ * @param {String} arg0
+ * @return {bool}
+ */
+removeFile : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method isAbsolutePath
+ * @param {String} arg0
+ * @return {bool}
+ */
+isAbsolutePath : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method renameFile
+* @param {String|String} str
+* @param {String|String} str
+* @param {String} str
+* @return {bool|bool}
+*/
+renameFile : function(
+str,
+str,
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method loadFilenameLookupDictionaryFromFile
+ * @param {String} arg0
+ */
+loadFilenameLookupDictionaryFromFile : function (
+str 
+)
+{
+},
+
+/**
+ * @method isPopupNotify
+ * @return {bool}
+ */
+isPopupNotify : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method getValueVectorFromFile
+ * @param {String} arg0
+ * @return {Array}
+ */
+getValueVectorFromFile : function (
+str 
+)
+{
+    return new Array();
+},
+
+/**
+ * @method getSearchPaths
+ * @return {Array}
+ */
+getSearchPaths : function (
+)
+{
+    return new Array();
+},
+
+/**
+ * @method writeToFile
+ * @param {map_object} arg0
+ * @param {String} arg1
+ * @return {bool}
+ */
+writeToFile : function (
+map, 
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method getValueMapFromFile
+ * @param {String} arg0
+ * @return {map_object}
+ */
+getValueMapFromFile : function (
+str 
+)
+{
+    return map_object;
+},
+
+/**
+ * @method getFileSize
+ * @param {String} arg0
+ * @return {long}
+ */
+getFileSize : function (
+str 
+)
+{
+    return 0;
+},
+
+/**
+ * @method getValueMapFromData
+ * @param {char} arg0
+ * @param {int} arg1
+ * @return {map_object}
+ */
+getValueMapFromData : function (
+char, 
+int 
+)
+{
+    return map_object;
+},
+
+/**
+ * @method removeDirectory
+ * @param {String} arg0
+ * @return {bool}
+ */
+removeDirectory : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method setSearchPaths
+ * @param {Array} arg0
+ */
+setSearchPaths : function (
+array 
+)
+{
+},
+
+/**
+ * @method writeStringToFile
+ * @param {String} arg0
+ * @param {String} arg1
+ * @return {bool}
+ */
+writeStringToFile : function (
+str, 
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method setSearchResolutionsOrder
+ * @param {Array} arg0
+ */
+setSearchResolutionsOrder : function (
+array 
+)
+{
+},
+
+/**
+ * @method addSearchResolutionsOrder
+ * @param {String} arg0
+ * @param {bool} arg1
+ */
+addSearchResolutionsOrder : function (
+str, 
+bool 
+)
+{
+},
+
+/**
+ * @method addSearchPath
+ * @param {String} arg0
+ * @param {bool} arg1
+ */
+addSearchPath : function (
+str, 
+bool 
+)
+{
+},
+
+/**
+ * @method writeValueVectorToFile
+ * @param {Array} arg0
+ * @param {String} arg1
+ * @return {bool}
+ */
+writeValueVectorToFile : function (
+array, 
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method isFileExist
+ * @param {String} arg0
+ * @return {bool}
+ */
+isFileExist : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method purgeCachedEntries
+ */
+purgeCachedEntries : function (
+)
+{
+},
+
+/**
+ * @method fullPathFromRelativeFile
+ * @param {String} arg0
+ * @param {String} arg1
+ * @return {String}
+ */
+fullPathFromRelativeFile : function (
+str, 
+str 
+)
+{
+    return ;
+},
+
+/**
+ * @method getSuitableFOpen
+ * @param {String} arg0
+ * @return {String}
+ */
+getSuitableFOpen : function (
+str 
+)
+{
+    return ;
+},
+
+/**
+ * @method writeValueMapToFile
+ * @param {map_object} arg0
+ * @param {String} arg1
+ * @return {bool}
+ */
+writeValueMapToFile : function (
+map, 
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method getFileExtension
+ * @param {String} arg0
+ * @return {String}
+ */
+getFileExtension : function (
+str 
+)
+{
+    return ;
+},
+
+/**
+ * @method setWritablePath
+ * @param {String} arg0
+ */
+setWritablePath : function (
+str 
+)
+{
+},
+
+/**
+ * @method setPopupNotify
+ * @param {bool} arg0
+ */
+setPopupNotify : function (
+bool 
+)
+{
+},
+
+/**
+ * @method isDirectoryExist
+ * @param {String} arg0
+ * @return {bool}
+ */
+isDirectoryExist : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method setDefaultResourceRootPath
+ * @param {String} arg0
+ */
+setDefaultResourceRootPath : function (
+str 
+)
+{
+},
+
+/**
+ * @method getSearchResolutionsOrder
+ * @return {Array}
+ */
+getSearchResolutionsOrder : function (
+)
+{
+    return new Array();
+},
+
+/**
+ * @method createDirectory
+ * @param {String} arg0
+ * @return {bool}
+ */
+createDirectory : function (
+str 
+)
+{
+    return false;
+},
+
+/**
+ * @method getWritablePath
+ * @return {String}
+ */
+getWritablePath : function (
+)
+{
+    return ;
+},
+
+/**
+ * @method setDelegate
+ * @param {cc.FileUtils} arg0
+ */
+setDelegate : function (
+fileutils 
+)
+{
+},
+
+/**
+ * @method getInstance
+ * @return {cc.FileUtils}
+ */
+getInstance : function (
+)
+{
+    return cc.FileUtils;
+},
+
+};
+
+/**
+ * @class EventAcceleration
+ */
+cc.EventAcceleration = {
+
+/**
+ * @method EventAcceleration
+ * @constructor
+ * @param {cc.Acceleration} arg0
+ */
+EventAcceleration : function (
+acceleration 
+)
+{
+},
+
+};
+
+/**
+ * @class EventCustom
+ */
+cc.EventCustom = {
+
+/**
+ * @method getEventName
+ * @return {String}
+ */
+getEventName : function (
+)
+{
+    return ;
+},
+
+/**
+ * @method EventCustom
+ * @constructor
+ * @param {String} arg0
+ */
+EventCustom : function (
+str 
+)
+{
+},
+
+};
+
+/**
+ * @class EventListener
+ */
+cc.EventListener = {
+
+/**
+ * @method setEnabled
+ * @param {bool} arg0
+ */
+setEnabled : function (
+bool 
+)
+{
+},
+
+/**
+ * @method isEnabled
+ * @return {bool}
+ */
+isEnabled : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method clone
+ * @return {cc.EventListener}
+ */
+clone : function (
+)
+{
+    return cc.EventListener;
+},
+
+/**
+ * @method checkAvailable
+ * @return {bool}
+ */
+checkAvailable : function (
+)
+{
+    return false;
+},
+
+};
+
+/**
+ * @class EventDispatcher
+ */
+cc.EventDispatcher = {
+
+/**
+ * @method setEnabled
+ * @param {bool} arg0
+ */
+setEnabled : function (
+bool 
+)
+{
+},
+
+/**
+ * @method removeAllEventListeners
+ */
+removeAllEventListeners : function (
+)
+{
+},
+
+/**
+ * @method addEventListenerWithSceneGraphPriority
+ * @param {cc.EventListener} arg0
+ * @param {cc.Node} arg1
+ */
+addEventListenerWithSceneGraphPriority : function (
+eventlistener, 
+node 
+)
+{
+},
+
+/**
+ * @method addCustomEventListener
+ * @param {String} arg0
+ * @param {function} arg1
+ * @return {cc.EventListenerCustom}
+ */
+addCustomEventListener : function (
+str, 
+func 
+)
+{
+    return cc.EventListenerCustom;
+},
+
+/**
+ * @method addEventListenerWithFixedPriority
+ * @param {cc.EventListener} arg0
+ * @param {int} arg1
+ */
+addEventListenerWithFixedPriority : function (
+eventlistener, 
+int 
+)
+{
+},
+
+/**
+ * @method removeEventListenersForTarget
+* @param {cc.Node|cc.EventListener::Type} node
+* @param {bool} bool
+*/
+removeEventListenersForTarget : function(
+node,
+bool 
+)
+{
+},
+
+/**
+ * @method resumeEventListenersForTarget
+ * @param {cc.Node} arg0
+ * @param {bool} arg1
+ */
+resumeEventListenersForTarget : function (
+node, 
+bool 
+)
+{
+},
+
+/**
+ * @method setPriority
+ * @param {cc.EventListener} arg0
+ * @param {int} arg1
+ */
+setPriority : function (
+eventlistener, 
+int 
+)
+{
+},
+
+/**
+ * @method dispatchEvent
+ * @param {cc.Event} arg0
+ */
+dispatchEvent : function (
+event 
+)
+{
+},
+
+/**
+ * @method pauseEventListenersForTarget
+ * @param {cc.Node} arg0
+ * @param {bool} arg1
+ */
+pauseEventListenersForTarget : function (
+node, 
+bool 
+)
+{
+},
+
+/**
+ * @method removeCustomEventListeners
+ * @param {String} arg0
+ */
+removeCustomEventListeners : function (
+str 
+)
+{
+},
+
+/**
+ * @method removeEventListener
+ * @param {cc.EventListener} arg0
+ */
+removeEventListener : function (
+eventlistener 
+)
+{
+},
+
+/**
+ * @method isEnabled
+ * @return {bool}
+ */
+isEnabled : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method EventDispatcher
+ * @constructor
+ */
+EventDispatcher : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventFocus
+ */
+cc.EventFocus = {
+
+/**
+ * @method EventFocus
+ * @constructor
+ * @param {ccui.Widget} arg0
+ * @param {ccui.Widget} arg1
+ */
+EventFocus : function (
+widget, 
+widget 
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerAcceleration
+ */
+cc.EventListenerAcceleration = {
+
+/**
+ * @method init
+ * @param {function} arg0
+ * @return {bool}
+ */
+init : function (
+func 
+)
+{
+    return false;
+},
+
+/**
+ * @method create
+ * @param {function} arg0
+ * @return {cc.EventListenerAcceleration}
+ */
+create : function (
+func 
+)
+{
+    return cc.EventListenerAcceleration;
+},
+
+/**
+ * @method EventListenerAcceleration
+ * @constructor
+ */
+EventListenerAcceleration : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerCustom
+ */
+cc.EventListenerCustom = {
+
+/**
+ * @method create
+ * @param {String} arg0
+ * @param {function} arg1
+ * @return {cc.EventListenerCustom}
+ */
+create : function (
+str, 
+func 
+)
+{
+    return cc.EventListenerCustom;
+},
+
+/**
+ * @method EventListenerCustom
+ * @constructor
+ */
+EventListenerCustom : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerFocus
+ */
+cc.EventListenerFocus = {
+
+/**
+ * @method init
+ * @return {bool}
+ */
+init : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method EventListenerFocus
+ * @constructor
+ */
+EventListenerFocus : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerKeyboard
+ */
+cc.EventListenerKeyboard = {
+
+/**
+ * @method init
+ * @return {bool}
+ */
+init : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method EventListenerKeyboard
+ * @constructor
+ */
+EventListenerKeyboard : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventMouse
+ */
+cc.EventMouse = {
+
+/**
+ * @method getMouseButton
+ * @return {int}
+ */
+getMouseButton : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getLocation
+ * @return {vec2_object}
+ */
+getLocation : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method setMouseButton
+ * @param {int} arg0
+ */
+setMouseButton : function (
+int 
+)
+{
+},
+
+/**
+ * @method setScrollData
+ * @param {float} arg0
+ * @param {float} arg1
+ */
+setScrollData : function (
+float, 
+float 
+)
+{
+},
+
+/**
+ * @method getPreviousLocationInView
+ * @return {vec2_object}
+ */
+getPreviousLocationInView : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method getDelta
+ * @return {vec2_object}
+ */
+getDelta : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method getStartLocation
+ * @return {vec2_object}
+ */
+getStartLocation : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method getCursorY
+ * @return {float}
+ */
+getCursorY : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getCursorX
+ * @return {float}
+ */
+getCursorX : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getLocationInView
+ * @return {vec2_object}
+ */
+getLocationInView : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method getScrollY
+ * @return {float}
+ */
+getScrollY : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method setCursorPosition
+ * @param {float} arg0
+ * @param {float} arg1
+ */
+setCursorPosition : function (
+float, 
+float 
+)
+{
+},
+
+/**
+ * @method getScrollX
+ * @return {float}
+ */
+getScrollX : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getPreviousLocation
+ * @return {vec2_object}
+ */
+getPreviousLocation : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method getStartLocationInView
+ * @return {vec2_object}
+ */
+getStartLocationInView : function (
+)
+{
+    return cc.Vec2;
+},
+
+/**
+ * @method EventMouse
+ * @constructor
+ * @param {cc.EventMouse::MouseEventType} arg0
+ */
+EventMouse : function (
+mouseeventtype 
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerMouse
+ */
+cc.EventListenerMouse = {
+
+/**
+ * @method init
+ * @return {bool}
+ */
+init : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method EventListenerMouse
+ * @constructor
+ */
+EventListenerMouse : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerTouchOneByOne
+ */
+cc.EventListenerTouchOneByOne = {
+
+/**
+ * @method isSwallowTouches
+ * @return {bool}
+ */
+isSwallowTouches : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method setSwallowTouches
+ * @param {bool} arg0
+ */
+setSwallowTouches : function (
+bool 
+)
+{
+},
+
+/**
+ * @method init
+ * @return {bool}
+ */
+init : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method EventListenerTouchOneByOne
+ * @constructor
+ */
+EventListenerTouchOneByOne : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventListenerTouchAllAtOnce
+ */
+cc.EventListenerTouchAllAtOnce = {
+
+/**
+ * @method init
+ * @return {bool}
+ */
+init : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method EventListenerTouchAllAtOnce
+ * @constructor
+ */
+EventListenerTouchAllAtOnce : function (
+)
+{
 },
 
 };

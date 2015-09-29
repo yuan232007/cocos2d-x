@@ -28,7 +28,7 @@ THE SOFTWARE.
 #define _CCCAMERA_H__
 
 #include "2d/CCNode.h"
-#include "3d/CCFrustum.h"
+//#include "3d/CCFrustum.h"
 #include "renderer/CCQuadCommand.h"
 #include "renderer/CCCustomCommand.h"
 #include "renderer/CCFrameBuffer.h"
@@ -188,10 +188,10 @@ public:
      */
     void unprojectGL(const Size& size, const Vec3* src, Vec3* dst) const;
 
-    /**
-     * Is this aabb visible in frustum
-     */
-    bool isVisibleInFrustum(const AABB* aabb) const;
+//    /**
+//     * Is this aabb visible in frustum
+//     */
+//    bool isVisibleInFrustum(const AABB* aabb) const;
     
     /**
      * Get object depth towards camera
@@ -307,8 +307,8 @@ protected:
     mutable bool  _viewProjectionDirty;
     bool _viewProjectionUpdated; //Whether or not the viewprojection matrix was updated since the last frame.
     unsigned short _cameraFlag; // camera flag
-    mutable Frustum _frustum;   // camera frustum
-    mutable bool _frustumDirty;
+//    mutable Frustum _frustum;   // camera frustum
+//    mutable bool _frustumDirty;
     int8_t  _depth;                 //camera depth, the depth of camera with CameraFlag::DEFAULT flag is 0 by default, a camera with larger depth is drawn on top of camera with smaller depth
     static Camera* _visitingCamera;
     

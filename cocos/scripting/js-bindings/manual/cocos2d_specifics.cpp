@@ -27,7 +27,7 @@
 #include "js_bindings_config.h"
 #include "jsb_cocos2dx_auto.hpp"
 #include "jsb_event_dispatcher_manual.h"
-#include "navmesh/CCNavMesh.h"
+//#include "navmesh/CCNavMesh.h"
 #include "component/CCComponentJS.h"
 using namespace cocos2d;
 
@@ -3706,77 +3706,77 @@ bool js_cocos2dx_ccpNormalize(JSContext *cx, uint32_t argc, jsval *vp)
     return false;
 }
 
-bool js_cocos2dx_ccobbGetCorners(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    if(argc == 1)
-    {
-        cocos2d::OBB obb;
-        bool ok = jsval_to_obb(cx, args.get(0), &obb);
-        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
+//bool js_cocos2dx_ccobbGetCorners(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    if(argc == 1)
+//    {
+//        cocos2d::OBB obb;
+//        bool ok = jsval_to_obb(cx, args.get(0), &obb);
+//        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
+//
+//        cocos2d::Vec3 verts[8];
+//        obb.getCorners(verts);
+//
+//        JS::RootedObject array(cx, JS_NewArrayObject(cx, 8));
+//        for(int i = 0; i < 8; ++i)
+//        {
+//            JS::RootedValue vec(cx, vector3_to_jsval(cx, verts[i]));
+//            ok &= JS_SetElement(cx, array, i, vec);
+//            if(!ok)
+//                break;
+//        }
+//
+//        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
+//        args.rval().set(OBJECT_TO_JSVAL(array));
+//        return true;
+//    }
+//
+//    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+//    return false;
+//}
 
-        cocos2d::Vec3 verts[8];
-        obb.getCorners(verts);
+//bool js_cocos2dx_ccobbIntersects(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    if(argc == 2)
+//    {
+//        cocos2d::OBB obb1, obb2;
+//        bool ok = jsval_to_obb(cx, args.get(0), &obb1);
+//        ok &= jsval_to_obb(cx, args.get(1), &obb2);
+//        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
+//
+//        bool ret = obb1.intersects(obb2);
+//
+//        args.rval().set(BOOLEAN_TO_JSVAL(ret));
+//        return true;
+//    }
+//
+//    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+//    return false;
+//}
 
-        JS::RootedObject array(cx, JS_NewArrayObject(cx, 8));
-        for(int i = 0; i < 8; ++i)
-        {
-            JS::RootedValue vec(cx, vector3_to_jsval(cx, verts[i]));
-            ok &= JS_SetElement(cx, array, i, vec);
-            if(!ok)
-                break;
-        }
-
-        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
-        args.rval().set(OBJECT_TO_JSVAL(array));
-        return true;
-    }
-
-    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-
-bool js_cocos2dx_ccobbIntersects(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    if(argc == 2)
-    {
-        cocos2d::OBB obb1, obb2;
-        bool ok = jsval_to_obb(cx, args.get(0), &obb1);
-        ok &= jsval_to_obb(cx, args.get(1), &obb2);
-        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
-
-        bool ret = obb1.intersects(obb2);
-
-        args.rval().set(BOOLEAN_TO_JSVAL(ret));
-        return true;
-    }
-
-    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
-
-bool js_cocos2dx_ccrayIntersectsObb(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    if(argc == 2)
-    {
-        cocos2d::Ray ray;
-        cocos2d::OBB obb;
-
-        bool ok = jsval_to_ray(cx, args.get(0), &ray);
-        ok &= jsval_to_obb(cx, args.get(1), &obb);
-        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
-
-        bool ret = ray.intersects(obb);
-
-        args.rval().set(BOOLEAN_TO_JSVAL(ret));
-        return true;
-    }
-
-    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
+//bool js_cocos2dx_ccrayIntersectsObb(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    if(argc == 2)
+//    {
+//        cocos2d::Ray ray;
+//        cocos2d::OBB obb;
+//
+//        bool ok = jsval_to_ray(cx, args.get(0), &ray);
+//        ok &= jsval_to_obb(cx, args.get(1), &obb);
+//        JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
+//
+//        bool ret = ray.intersects(obb);
+//
+//        args.rval().set(BOOLEAN_TO_JSVAL(ret));
+//        return true;
+//    }
+//
+//    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+//    return false;
+//}
 
 bool js_cocos2dx_ccmat4CreateTranslation(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -5325,38 +5325,38 @@ bool js_cocos2dx_Camera_unproject(JSContext *cx, uint32_t argc, jsval *vp)
     return false;
 }
 
-bool js_cocos2dx_Camera_isVisibleInFrustum(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    cocos2d::Camera* cobj = (cocos2d::Camera *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Camera_isVisibleInFrustum : Invalid Native Object");
-    if (argc == 1) {
-         cocos2d::Vec3  min;
-        JS::RootedValue jsmin(cx);
-        ok &= JS_GetProperty(cx, JS::RootedObject(cx, args.get(0).toObjectOrNull()), "min", &jsmin);
-        ok &= jsval_to_vector3(cx, jsmin, &min);
-
-        cocos2d::Vec3 max;
-        JS::RootedValue jsmax(cx);
-        ok &= JS_GetProperty(cx, JS::RootedObject(cx, args.get(0).toObjectOrNull()), "max", &jsmax);
-        ok &= jsval_to_vector3(cx, jsmax, &max);
-
-        cocos2d::AABB aabb(min, max);
-
-        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Camera_isVisibleInFrustum : Error processing arguments");
-        bool ret = cobj->isVisibleInFrustum(&aabb);
-        jsval jsret = JSVAL_NULL;
-        jsret = BOOLEAN_TO_JSVAL(ret);
-        args.rval().set(jsret);
-        return true;
-    }
-
-    JS_ReportError(cx, "js_cocos2dx_Camera_isVisibleInFrustum : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
+//bool js_cocos2dx_Camera_isVisibleInFrustum(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    bool ok = true;
+//    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//    cocos2d::Camera* cobj = (cocos2d::Camera *)(proxy ? proxy->ptr : NULL);
+//    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Camera_isVisibleInFrustum : Invalid Native Object");
+//    if (argc == 1) {
+//         cocos2d::Vec3  min;
+//        JS::RootedValue jsmin(cx);
+//        ok &= JS_GetProperty(cx, JS::RootedObject(cx, args.get(0).toObjectOrNull()), "min", &jsmin);
+//        ok &= jsval_to_vector3(cx, jsmin, &min);
+//
+//        cocos2d::Vec3 max;
+//        JS::RootedValue jsmax(cx);
+//        ok &= JS_GetProperty(cx, JS::RootedObject(cx, args.get(0).toObjectOrNull()), "max", &jsmax);
+//        ok &= jsval_to_vector3(cx, jsmax, &max);
+//
+//        cocos2d::AABB aabb(min, max);
+//
+//        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Camera_isVisibleInFrustum : Error processing arguments");
+//        bool ret = cobj->isVisibleInFrustum(&aabb);
+//        jsval jsret = JSVAL_NULL;
+//        jsret = BOOLEAN_TO_JSVAL(ret);
+//        args.rval().set(jsret);
+//        return true;
+//    }
+//
+//    JS_ReportError(cx, "js_cocos2dx_Camera_isVisibleInFrustum : wrong number of arguments: %d, was expecting %d", argc, 1);
+//    return false;
+//}
 
 bool js_cocos2dx_Node_setAdditionalTransform(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -5571,172 +5571,172 @@ void get_or_create_js_obj(JSContext* cx, JS::HandleObject obj, const std::string
     }
 }
 
-#if CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
-
-#include "physics3d/CCPhysics3D.h"
-
-bool js_cocos2dx_Scene_setPhysics3DDebugCamera(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Scene_setPhysics3DDebugCamera : Invalid Native Object");
-    if (argc == 1)
-    {
-        cocos2d::Camera* arg0;
-        do
-        {
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JSObject *tmpObj = args.get(0).toObjectOrNull();
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (cocos2d::Camera*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_setPhysics3DDebugCamera : Error processing arguments");
-        cobj->setPhysics3DDebugCamera(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-    
-    JS_ReportError(cx, "js_cocos2dx_Scene_setPhysics3DDebugCamera : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_cocos2dx_Scene_initWithPhysics(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Scene_initWithPhysics : Invalid Native Object");
-    if (argc == 0)
-    {
-        bool ret = cobj->initWithPhysics();
-        jsval jsret = JSVAL_NULL;
-        jsret = BOOLEAN_TO_JSVAL(ret);
-        args.rval().set(jsret);
-        return true;
-    }
-    
-    JS_ReportError(cx, "js_cocos2dx_Scene_initWithPhysics : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
-bool js_cocos2dx_Scene_getPhysics3DWorld(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Scene_getPhysics3DWorld : Invalid Native Object");
-    if (argc == 0)
-    {
-        cocos2d::Physics3DWorld* ret = cobj->getPhysics3DWorld();
-        jsval jsret = JSVAL_NULL;
-        do
-        {
-            if (ret)
-            {
-                js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::Physics3DWorld>(cx, (cocos2d::Physics3DWorld*)ret);
-                jsret = OBJECT_TO_JSVAL(jsProxy->obj);
-            } else
-            {
-                jsret = JSVAL_NULL;
-            }
-        } while (0);
-        args.rval().set(jsret);
-        return true;
-    }
-    
-    JS_ReportError(cx, "js_cocos2dx_Scene_getPhysics3DWorld : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
-#endif //CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
-#if CC_USE_NAVMESH
-bool js_cocos2dx_Scene_setNavMeshDebugCamera(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-	bool ok = true;
-	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2(cobj, cx, false, "js_cocos2dx_Scene_setNavMeshDebugCamera : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Camera* arg0;
-		do {
-			if (args.get(0).isNull()) { arg0 = nullptr; break; }
-			if (!args.get(0).isObject()) { ok = false; break; }
-			js_proxy_t *jsProxy;
-			JSObject *tmpObj = args.get(0).toObjectOrNull();
-			jsProxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::Camera*)(jsProxy ? jsProxy->ptr : NULL);
-			JSB_PRECONDITION2(arg0, cx, false, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_setNavMeshDebugCamera : Error processing arguments");
-		cobj->setNavMeshDebugCamera(arg0);
-		args.rval().setUndefined();
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Scene_setNavMeshDebugCamera : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return false;
-}
-bool js_cocos2dx_Scene_setNavMesh(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-	bool ok = true;
-	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2(cobj, cx, false, "js_cocos2dx_Scene_setNavMesh : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::NavMesh* arg0;
-		do {
-			if (args.get(0).isNull()) { arg0 = nullptr; break; }
-			if (!args.get(0).isObject()) { ok = false; break; }
-			js_proxy_t *jsProxy;
-			JSObject *tmpObj = args.get(0).toObjectOrNull();
-			jsProxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::NavMesh*)(jsProxy ? jsProxy->ptr : NULL);
-			JSB_PRECONDITION2(arg0, cx, false, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_setNavMesh : Error processing arguments");
-		cobj->setNavMesh(arg0);
-		args.rval().setUndefined();
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Scene_setNavMesh : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return false;
-}
-bool js_cocos2dx_Scene_getNavMesh(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2(cobj, cx, false, "js_cocos2dx_Scene_getNavMesh : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::NavMesh* ret = cobj->getNavMesh();
-		jsval jsret = JSVAL_NULL;
-		do {
-			if (ret) {
-				js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::NavMesh>(cx, (cocos2d::NavMesh*)ret);
-				jsret = OBJECT_TO_JSVAL(jsProxy->obj);
-			}
-			else {
-				jsret = JSVAL_NULL;
-			}
-		} while (0);
-		args.rval().set(jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Scene_getNavMesh : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return false;
-}
-#endif //CC_USE_NAVMESH
+//#if CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
+//
+//#include "physics3d/CCPhysics3D.h"
+//
+//bool js_cocos2dx_Scene_setPhysics3DDebugCamera(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    bool ok = true;
+//    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//    cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+//    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Scene_setPhysics3DDebugCamera : Invalid Native Object");
+//    if (argc == 1)
+//    {
+//        cocos2d::Camera* arg0;
+//        do
+//        {
+//            if (!args.get(0).isObject()) { ok = false; break; }
+//            js_proxy_t *jsProxy;
+//            JSObject *tmpObj = args.get(0).toObjectOrNull();
+//            jsProxy = jsb_get_js_proxy(tmpObj);
+//            arg0 = (cocos2d::Camera*)(jsProxy ? jsProxy->ptr : NULL);
+//            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+//        } while (0);
+//        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_setPhysics3DDebugCamera : Error processing arguments");
+//        cobj->setPhysics3DDebugCamera(arg0);
+//        args.rval().setUndefined();
+//        return true;
+//    }
+//    
+//    JS_ReportError(cx, "js_cocos2dx_Scene_setPhysics3DDebugCamera : wrong number of arguments: %d, was expecting %d", argc, 1);
+//    return false;
+//}
+//bool js_cocos2dx_Scene_initWithPhysics(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//    cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+//    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Scene_initWithPhysics : Invalid Native Object");
+//    if (argc == 0)
+//    {
+//        bool ret = cobj->initWithPhysics();
+//        jsval jsret = JSVAL_NULL;
+//        jsret = BOOLEAN_TO_JSVAL(ret);
+//        args.rval().set(jsret);
+//        return true;
+//    }
+//    
+//    JS_ReportError(cx, "js_cocos2dx_Scene_initWithPhysics : wrong number of arguments: %d, was expecting %d", argc, 0);
+//    return false;
+//}
+//bool js_cocos2dx_Scene_getPhysics3DWorld(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//    cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+//    JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Scene_getPhysics3DWorld : Invalid Native Object");
+//    if (argc == 0)
+//    {
+//        cocos2d::Physics3DWorld* ret = cobj->getPhysics3DWorld();
+//        jsval jsret = JSVAL_NULL;
+//        do
+//        {
+//            if (ret)
+//            {
+//                js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::Physics3DWorld>(cx, (cocos2d::Physics3DWorld*)ret);
+//                jsret = OBJECT_TO_JSVAL(jsProxy->obj);
+//            } else
+//            {
+//                jsret = JSVAL_NULL;
+//            }
+//        } while (0);
+//        args.rval().set(jsret);
+//        return true;
+//    }
+//    
+//    JS_ReportError(cx, "js_cocos2dx_Scene_getPhysics3DWorld : wrong number of arguments: %d, was expecting %d", argc, 0);
+//    return false;
+//}
+//#endif //CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
+//#if CC_USE_NAVMESH
+//bool js_cocos2dx_Scene_setNavMeshDebugCamera(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//	bool ok = true;
+//	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+//	JSB_PRECONDITION2(cobj, cx, false, "js_cocos2dx_Scene_setNavMeshDebugCamera : Invalid Native Object");
+//	if (argc == 1) {
+//		cocos2d::Camera* arg0;
+//		do {
+//			if (args.get(0).isNull()) { arg0 = nullptr; break; }
+//			if (!args.get(0).isObject()) { ok = false; break; }
+//			js_proxy_t *jsProxy;
+//			JSObject *tmpObj = args.get(0).toObjectOrNull();
+//			jsProxy = jsb_get_js_proxy(tmpObj);
+//			arg0 = (cocos2d::Camera*)(jsProxy ? jsProxy->ptr : NULL);
+//			JSB_PRECONDITION2(arg0, cx, false, "Invalid Native Object");
+//		} while (0);
+//		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_setNavMeshDebugCamera : Error processing arguments");
+//		cobj->setNavMeshDebugCamera(arg0);
+//		args.rval().setUndefined();
+//		return true;
+//	}
+//
+//	JS_ReportError(cx, "js_cocos2dx_Scene_setNavMeshDebugCamera : wrong number of arguments: %d, was expecting %d", argc, 1);
+//	return false;
+//}
+//bool js_cocos2dx_Scene_setNavMesh(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//	bool ok = true;
+//	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+//	JSB_PRECONDITION2(cobj, cx, false, "js_cocos2dx_Scene_setNavMesh : Invalid Native Object");
+//	if (argc == 1) {
+//		cocos2d::NavMesh* arg0;
+//		do {
+//			if (args.get(0).isNull()) { arg0 = nullptr; break; }
+//			if (!args.get(0).isObject()) { ok = false; break; }
+//			js_proxy_t *jsProxy;
+//			JSObject *tmpObj = args.get(0).toObjectOrNull();
+//			jsProxy = jsb_get_js_proxy(tmpObj);
+//			arg0 = (cocos2d::NavMesh*)(jsProxy ? jsProxy->ptr : NULL);
+//			JSB_PRECONDITION2(arg0, cx, false, "Invalid Native Object");
+//		} while (0);
+//		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_setNavMesh : Error processing arguments");
+//		cobj->setNavMesh(arg0);
+//		args.rval().setUndefined();
+//		return true;
+//	}
+//
+//	JS_ReportError(cx, "js_cocos2dx_Scene_setNavMesh : wrong number of arguments: %d, was expecting %d", argc, 1);
+//	return false;
+//}
+//bool js_cocos2dx_Scene_getNavMesh(JSContext *cx, uint32_t argc, jsval *vp)
+//{
+//	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+//	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+//	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+//	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+//	JSB_PRECONDITION2(cobj, cx, false, "js_cocos2dx_Scene_getNavMesh : Invalid Native Object");
+//	if (argc == 0) {
+//		cocos2d::NavMesh* ret = cobj->getNavMesh();
+//		jsval jsret = JSVAL_NULL;
+//		do {
+//			if (ret) {
+//				js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::NavMesh>(cx, (cocos2d::NavMesh*)ret);
+//				jsret = OBJECT_TO_JSVAL(jsProxy->obj);
+//			}
+//			else {
+//				jsret = JSVAL_NULL;
+//			}
+//		} while (0);
+//		args.rval().set(jsret);
+//		return true;
+//	}
+//
+//	JS_ReportError(cx, "js_cocos2dx_Scene_getNavMesh : wrong number of arguments: %d, was expecting %d", argc, 0);
+//	return false;
+//}
+//#endif //CC_USE_NAVMESH
 
 JSClass  *jsb_cocos2d_PolygonInfo_class;
 JSObject *jsb_cocos2d_PolygonInfo_prototype;
@@ -6436,7 +6436,7 @@ void register_cocos2dx_js_core(JSContext* cx, JS::HandleObject global)
 
     tmpObj.set(jsb_cocos2d_Camera_prototype);
     JS_DefineFunction(cx, tmpObj, "unproject", js_cocos2dx_Camera_unproject, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-    JS_DefineFunction(cx, tmpObj, "isVisibleInFrustum", js_cocos2dx_Camera_isVisibleInFrustum, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//    JS_DefineFunction(cx, tmpObj, "isVisibleInFrustum", js_cocos2dx_Camera_isVisibleInFrustum, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
     
     tmpObj.set(jsb_cocos2d_ClippingNode_prototype);
     JS_DefineFunction(cx, tmpObj, "init", js_cocos2dx_ClippingNode_init, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
@@ -6469,9 +6469,9 @@ void register_cocos2dx_js_core(JSContext* cx, JS::HandleObject global)
     JS_DefineFunction(cx, ccObj, "unregisterTouchDelegate", js_cocos2dx_JSTouchDelegate_unregisterTouchDelegate, 1, JSPROP_READONLY | JSPROP_PERMANENT);
 
     get_or_create_js_obj(cx, ccObj, "math", &tmpObj);
-    JS_DefineFunction(cx, tmpObj, "obbGetCorners", js_cocos2dx_ccobbGetCorners, 1, JSPROP_READONLY | JSPROP_PERMANENT);
-    JS_DefineFunction(cx, tmpObj, "obbIntersectsObb", js_cocos2dx_ccobbIntersects, 1, JSPROP_READONLY | JSPROP_PERMANENT);
-    JS_DefineFunction(cx, tmpObj, "rayIntersectsObb", js_cocos2dx_ccrayIntersectsObb, 1, JSPROP_READONLY | JSPROP_PERMANENT);
+//    JS_DefineFunction(cx, tmpObj, "obbGetCorners", js_cocos2dx_ccobbGetCorners, 1, JSPROP_READONLY | JSPROP_PERMANENT);
+//    JS_DefineFunction(cx, tmpObj, "obbIntersectsObb", js_cocos2dx_ccobbIntersects, 1, JSPROP_READONLY | JSPROP_PERMANENT);
+//    JS_DefineFunction(cx, tmpObj, "rayIntersectsObb", js_cocos2dx_ccrayIntersectsObb, 1, JSPROP_READONLY | JSPROP_PERMANENT);
     JS_DefineFunction(cx, tmpObj, "mat4CreateTranslation", js_cocos2dx_ccmat4CreateTranslation, 1, JSPROP_READONLY | JSPROP_PERMANENT);
     JS_DefineFunction(cx, tmpObj, "mat4CreateRotation", js_cocos2dx_ccmat4CreateRotation, 1, JSPROP_READONLY | JSPROP_PERMANENT);
     JS_DefineFunction(cx, tmpObj, "mat4Multiply", js_cocos2dx_ccmat4Multiply, 2, JSPROP_READONLY | JSPROP_PERMANENT);
@@ -6488,17 +6488,17 @@ void register_cocos2dx_js_core(JSContext* cx, JS::HandleObject global)
     
     JS_DefineFunction(cx, global, "garbageCollect", js_forceGC, 1, JSPROP_READONLY | JSPROP_PERMANENT);
     
-#if CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
-    tmpObj.set(jsb_cocos2d_Scene_prototype);
-    JS_DefineFunction(cx, tmpObj, "setPhysics3DDebugCamera", js_cocos2dx_Scene_setPhysics3DDebugCamera, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-    JS_DefineFunction(cx, tmpObj, "initWithPhysics", js_cocos2dx_Scene_initWithPhysics, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-    JS_DefineFunction(cx, tmpObj, "getPhysics3DWorld", js_cocos2dx_Scene_getPhysics3DWorld, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-#endif //CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
+//#if CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
+//    tmpObj.set(jsb_cocos2d_Scene_prototype);
+//    JS_DefineFunction(cx, tmpObj, "setPhysics3DDebugCamera", js_cocos2dx_Scene_setPhysics3DDebugCamera, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//    JS_DefineFunction(cx, tmpObj, "initWithPhysics", js_cocos2dx_Scene_initWithPhysics, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//    JS_DefineFunction(cx, tmpObj, "getPhysics3DWorld", js_cocos2dx_Scene_getPhysics3DWorld, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//#endif //CC_ENABLE_BULLET_INTEGRATION && CC_USE_3D_PHYSICS
 
-#if CC_USE_NAVMESH
-	tmpObj.set(jsb_cocos2d_Scene_prototype);
-	JS_DefineFunction(cx, tmpObj, "getNavMesh", js_cocos2dx_Scene_getNavMesh, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-	JS_DefineFunction(cx, tmpObj, "setNavMeshDebugCamera", js_cocos2dx_Scene_setNavMeshDebugCamera, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-	JS_DefineFunction(cx, tmpObj, "setNavMesh", js_cocos2dx_Scene_setNavMesh, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
-#endif //CC_USE_NAVMESH
+//#if CC_USE_NAVMESH
+//	tmpObj.set(jsb_cocos2d_Scene_prototype);
+//	JS_DefineFunction(cx, tmpObj, "getNavMesh", js_cocos2dx_Scene_getNavMesh, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//	JS_DefineFunction(cx, tmpObj, "setNavMeshDebugCamera", js_cocos2dx_Scene_setNavMeshDebugCamera, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//	JS_DefineFunction(cx, tmpObj, "setNavMesh", js_cocos2dx_Scene_setNavMesh, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+//#endif //CC_USE_NAVMESH
 }
