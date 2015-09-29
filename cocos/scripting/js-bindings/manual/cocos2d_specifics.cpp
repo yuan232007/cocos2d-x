@@ -1116,7 +1116,7 @@ void JSScheduleWrapper::setTargetForSchedule(JS::HandleValue sched, JSScheduleWr
         JSObject* jsfunc = sched.toObjectOrNull();
         auto targetArray = getTargetForSchedule(sched);
         if (nullptr == targetArray) {
-            targetArray = new (std::nothrow) Vector<Ref*>;
+            targetArray = new (std::nothrow) JSBinding::Array;
             schedFunc_proxy_t *p = (schedFunc_proxy_t *)malloc(sizeof(schedFunc_proxy_t));
             assert(p);
             p->jsfuncObj = jsfunc;
@@ -1130,7 +1130,7 @@ void JSScheduleWrapper::setTargetForSchedule(JS::HandleValue sched, JSScheduleWr
     } while(0);
 }
 
-Vector<Ref*>* JSScheduleWrapper::getTargetForSchedule(JS::HandleValue sched) {
+JSBinding::Array* JSScheduleWrapper::getTargetForSchedule(JS::HandleValue sched) {
     schedFunc_proxy_t *t = NULL;
     JSObject *o = sched.toObjectOrNull();
     HASH_FIND_PTR(_schedFunc_target_ht, &o, t);
@@ -1142,7 +1142,7 @@ void JSScheduleWrapper::setTargetForJSObject(JS::HandleObject jsTargetObj, JSSch
 {
     auto targetArray = getTargetForJSObject(jsTargetObj);
     if (nullptr == targetArray) {
-        targetArray = new (std::nothrow) Vector<Ref*>;
+        targetArray = new (std::nothrow) JSBinding::Array;
         schedTarget_proxy_t *p = (schedTarget_proxy_t *)malloc(sizeof(schedTarget_proxy_t));
         assert(p);
         p->jsTargetObj = jsTargetObj;
@@ -1154,7 +1154,7 @@ void JSScheduleWrapper::setTargetForJSObject(JS::HandleObject jsTargetObj, JSSch
     targetArray->pushBack(target);
 }
 
-Vector<Ref*>* JSScheduleWrapper::getTargetForJSObject(JS::HandleObject jsTargetObj)
+JSBinding::Array* JSScheduleWrapper::getTargetForJSObject(JS::HandleObject jsTargetObj)
 {
     schedTarget_proxy_t *t = NULL;
     HASH_FIND_PTR(_schedObj_target_ht, &jsTargetObj.get(), t);
@@ -1264,7 +1264,7 @@ void JSScheduleWrapper::removeAllTargetsForJSObject(JS::HandleObject jsTargetObj
 {
     CCLOGINFO("removeAllTargetsForNatiaveNode begin");
     dump();
-    Vector<Ref*>* removeNativeTargets = nullptr;
+    JSBinding::Array* removeNativeTargets = nullptr;
     schedTarget_proxy_t *t = NULL;
     HASH_FIND_PTR(_schedObj_target_ht, &jsTargetObj.get(), t);
     if (t != NULL) {

@@ -2124,22 +2124,6 @@ Node : function (
 };
 
 /**
- * @class __NodeRGBA
- */
-cc.NodeRGBA = {
-
-/**
- * @method __NodeRGBA
- * @constructor
- */
-__NodeRGBA : function (
-)
-{
-},
-
-};
-
-/**
  * @class Scene
  */
 cc.Scene = {
@@ -5783,9 +5767,13 @@ char
 
 /**
  * @method getString
+ * @param {char} arg0
+ * @param {char} arg1
  * @return {char}
  */
 getString : function (
+char, 
+char 
 )
 {
     return 0;
@@ -5793,9 +5781,11 @@ getString : function (
 
 /**
  * @method getLong
+ * @param {char} arg0
  * @return {long}
  */
 getLong : function (
+char 
 )
 {
     return 0;
@@ -5903,9 +5893,13 @@ char
 
 /**
  * @method getBool
+ * @param {char} arg0
+ * @param {bool} arg1
  * @return {bool}
  */
 getBool : function (
+char, 
+bool 
 )
 {
     return false;
@@ -5927,9 +5921,11 @@ vec3
 
 /**
  * @method getType
+ * @param {char} arg0
  * @return {cc.Properties::Type}
  */
 getType : function (
+char 
 )
 {
     return 0;
@@ -5947,9 +5943,11 @@ getNextNamespace : function (
 
 /**
  * @method getInt
+ * @param {char} arg0
  * @return {int}
  */
 getInt : function (
+char 
 )
 {
     return 0;
@@ -6009,9 +6007,11 @@ getNextProperty : function (
 
 /**
  * @method getFloat
+ * @param {char} arg0
  * @return {float}
  */
 getFloat : function (
+char 
 )
 {
     return 0;
@@ -12309,492 +12309,6 @@ LabelAtlas : function (
 };
 
 /**
- * @class LabelBMFont
- */
-cc.LabelBMFont = {
-
-/**
- * @method setLineBreakWithoutSpace
- * @param {bool} arg0
- */
-setLineBreakWithoutSpace : function (
-bool 
-)
-{
-},
-
-/**
- * @method getBlendFunc
- * @return {cc.BlendFunc}
- */
-getBlendFunc : function (
-)
-{
-    return cc.BlendFunc;
-},
-
-/**
- * @method getLetter
- * @param {int} arg0
- * @return {cc.Sprite}
- */
-getLetter : function (
-int 
-)
-{
-    return cc.Sprite;
-},
-
-/**
- * @method getString
- * @return {String}
- */
-getString : function (
-)
-{
-    return ;
-},
-
-/**
- * @method setBlendFunc
- * @param {cc.BlendFunc} arg0
- */
-setBlendFunc : function (
-blendfunc 
-)
-{
-},
-
-/**
- * @method setString
- * @param {String} arg0
- */
-setString : function (
-str 
-)
-{
-},
-
-/**
- * @method initWithString
- * @param {String} arg0
- * @param {String} arg1
- * @param {float} arg2
- * @param {cc.TextHAlignment} arg3
- * @param {vec2_object} arg4
- * @return {bool}
- */
-initWithString : function (
-str, 
-str, 
-float, 
-texthalignment, 
-vec2 
-)
-{
-    return false;
-},
-
-/**
- * @method getFntFile
- * @return {String}
- */
-getFntFile : function (
-)
-{
-    return ;
-},
-
-/**
- * @method setFntFile
- * @param {String} arg0
- * @param {vec2_object} arg1
- */
-setFntFile : function (
-str, 
-vec2 
-)
-{
-},
-
-/**
- * @method setAlignment
- * @param {cc.TextHAlignment} arg0
- */
-setAlignment : function (
-texthalignment 
-)
-{
-},
-
-/**
- * @method setWidth
- * @param {float} arg0
- */
-setWidth : function (
-float 
-)
-{
-},
-
-/**
- * @method create
-* @param {String} str
-* @param {String} str
-* @param {float} float
-* @param {cc.TextHAlignment} texthalignment
-* @param {vec2_object} vec2
-* @return {cc.LabelBMFont|cc.LabelBMFont}
-*/
-create : function(
-str,
-str,
-float,
-texthalignment,
-vec2 
-)
-{
-    return cc.LabelBMFont;
-},
-
-/**
- * @method LabelBMFont
- * @constructor
- */
-LabelBMFont : function (
-)
-{
-},
-
-};
-
-/**
- * @class LabelTTF
- */
-cc.LabelTTF = {
-
-/**
- * @method enableShadow
- * @param {size_object} arg0
- * @param {float} arg1
- * @param {float} arg2
- * @param {bool} arg3
- */
-enableShadow : function (
-size, 
-float, 
-float, 
-bool 
-)
-{
-},
-
-/**
- * @method setDimensions
- * @param {size_object} arg0
- */
-setDimensions : function (
-size 
-)
-{
-},
-
-/**
- * @method getFontSize
- * @return {float}
- */
-getFontSize : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method getString
- * @return {String}
- */
-getString : function (
-)
-{
-    return ;
-},
-
-/**
- * @method setFlippedY
- * @param {bool} arg0
- */
-setFlippedY : function (
-bool 
-)
-{
-},
-
-/**
- * @method setFlippedX
- * @param {bool} arg0
- */
-setFlippedX : function (
-bool 
-)
-{
-},
-
-/**
- * @method setTextDefinition
- * @param {cc.FontDefinition} arg0
- */
-setTextDefinition : function (
-fontdefinition 
-)
-{
-},
-
-/**
- * @method setFontName
- * @param {String} arg0
- */
-setFontName : function (
-str 
-)
-{
-},
-
-/**
- * @method getHorizontalAlignment
- * @return {cc.TextHAlignment}
- */
-getHorizontalAlignment : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method initWithStringAndTextDefinition
- * @param {String} arg0
- * @param {cc.FontDefinition} arg1
- * @return {bool}
- */
-initWithStringAndTextDefinition : function (
-str, 
-fontdefinition 
-)
-{
-    return false;
-},
-
-/**
- * @method setString
- * @param {String} arg0
- */
-setString : function (
-str 
-)
-{
-},
-
-/**
- * @method initWithString
- * @param {String} arg0
- * @param {String} arg1
- * @param {float} arg2
- * @param {size_object} arg3
- * @param {cc.TextHAlignment} arg4
- * @param {cc.TextVAlignment} arg5
- * @return {bool}
- */
-initWithString : function (
-str, 
-str, 
-float, 
-size, 
-texthalignment, 
-textvalignment 
-)
-{
-    return false;
-},
-
-/**
- * @method setFontFillColor
- * @param {color3b_object} arg0
- * @param {bool} arg1
- */
-setFontFillColor : function (
-color3b, 
-bool 
-)
-{
-},
-
-/**
- * @method getBlendFunc
- * @return {cc.BlendFunc}
- */
-getBlendFunc : function (
-)
-{
-    return cc.BlendFunc;
-},
-
-/**
- * @method enableStroke
- * @param {color3b_object} arg0
- * @param {float} arg1
- * @param {bool} arg2
- */
-enableStroke : function (
-color3b, 
-float, 
-bool 
-)
-{
-},
-
-/**
- * @method getDimensions
- * @return {size_object}
- */
-getDimensions : function (
-)
-{
-    return cc.Size;
-},
-
-/**
- * @method setVerticalAlignment
- * @param {cc.TextVAlignment} arg0
- */
-setVerticalAlignment : function (
-textvalignment 
-)
-{
-},
-
-/**
- * @method setFontSize
- * @param {float} arg0
- */
-setFontSize : function (
-float 
-)
-{
-},
-
-/**
- * @method getVerticalAlignment
- * @return {cc.TextVAlignment}
- */
-getVerticalAlignment : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method getTextDefinition
- * @return {cc.FontDefinition}
- */
-getTextDefinition : function (
-)
-{
-    return cc.FontDefinition;
-},
-
-/**
- * @method setBlendFunc
- * @param {cc.BlendFunc} arg0
- */
-setBlendFunc : function (
-blendfunc 
-)
-{
-},
-
-/**
- * @method getFontName
- * @return {String}
- */
-getFontName : function (
-)
-{
-    return ;
-},
-
-/**
- * @method setHorizontalAlignment
- * @param {cc.TextHAlignment} arg0
- */
-setHorizontalAlignment : function (
-texthalignment 
-)
-{
-},
-
-/**
- * @method disableShadow
- */
-disableShadow : function (
-)
-{
-},
-
-/**
- * @method disableStroke
- */
-disableStroke : function (
-)
-{
-},
-
-/**
- * @method create
-* @param {String} str
-* @param {String} str
-* @param {float} float
-* @param {size_object} size
-* @param {cc.TextHAlignment} texthalignment
-* @param {cc.TextVAlignment} textvalignment
-* @return {cc.LabelTTF|cc.LabelTTF}
-*/
-create : function(
-str,
-str,
-float,
-size,
-texthalignment,
-textvalignment 
-)
-{
-    return cc.LabelTTF;
-},
-
-/**
- * @method createWithFontDefinition
- * @param {String} arg0
- * @param {cc.FontDefinition} arg1
- * @return {cc.LabelTTF}
- */
-createWithFontDefinition : function (
-str, 
-fontdefinition 
-)
-{
-    return cc.LabelTTF;
-},
-
-/**
- * @method LabelTTF
- * @constructor
- */
-LabelTTF : function (
-)
-{
-},
-
-};
-
-/**
  * @class Layer
  */
 cc.Layer = {
@@ -12814,32 +12328,6 @@ create : function (
  * @constructor
  */
 Layer : function (
-)
-{
-},
-
-};
-
-/**
- * @class __LayerRGBA
- */
-cc.LayerRGBA = {
-
-/**
- * @method create
- * @return {cc.__LayerRGBA}
- */
-create : function (
-)
-{
-    return cc.__LayerRGBA;
-},
-
-/**
- * @method __LayerRGBA
- * @constructor
- */
-__LayerRGBA : function (
 )
 {
 },
@@ -13810,6 +13298,14 @@ isEnabled : function (
 },
 
 /**
+ * @method alignItemsHorizontally
+ */
+alignItemsHorizontally : function (
+)
+{
+},
+
+/**
  * @method alignItemsHorizontallyWithPadding
  * @param {float} arg0
  */
@@ -13825,14 +13321,6 @@ float
  */
 alignItemsVerticallyWithPadding : function (
 float 
-)
-{
-},
-
-/**
- * @method alignItemsHorizontally
- */
-alignItemsHorizontally : function (
 )
 {
 },

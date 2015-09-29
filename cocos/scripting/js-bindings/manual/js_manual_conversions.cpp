@@ -317,11 +317,11 @@ bool jsval_to_charptr( JSContext *cx, JS::HandleValue vp, const char **ret )
     JSStringWrapper strWrapper(jsstr);
     
     // XXX: It is converted to String and then back to char* to autorelease the created object.
-    __String *tmp = String::create(strWrapper.get());
+    /*__String *tmp = String::create(strWrapper.get());
 
     JSB_PRECONDITION2( tmp, cx, false, "Error creating string from UTF8");
 
-    *ret = tmp->getCString();
+    *ret = tmp->getCString();*/
 
     return true;
 }
