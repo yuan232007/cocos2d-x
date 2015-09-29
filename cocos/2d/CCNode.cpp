@@ -270,13 +270,6 @@ void Node::setLocalZOrder(int z)
     _eventDispatcher->setDirtyForNode(this);
 }
 
-/// zOrder setter : private method
-/// used internally to alter the zOrder variable. DON'T call this method manually
-void Node::_setLocalZOrder(int z)
-{
-    _localZOrder = z;
-}
-
 void Node::setGlobalZOrder(float globalZOrder)
 {
     if (_globalZOrder != globalZOrder)
@@ -1573,16 +1566,6 @@ void Node::pause()
     _eventDispatcher->pauseEventListenersForTarget(this);
 }
 
-void Node::resumeSchedulerAndActions()
-{
-    resume();
-}
-
-void Node::pauseSchedulerAndActions()
-{
-    pause();
-}
-
 // override me
 void Node::update(float fDelta)
 {
@@ -2121,13 +2104,6 @@ void Node::setCameraMask(unsigned short mask, bool applyChildren)
             child->setCameraMask(mask, applyChildren);
         }
     }
-}
-
-// MARK: Deprecated
-
-__NodeRGBA::__NodeRGBA()
-{
-    CCLOG("NodeRGBA deprecated.");
 }
 
 NS_CC_END

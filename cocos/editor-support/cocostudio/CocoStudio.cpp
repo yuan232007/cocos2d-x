@@ -22,7 +22,6 @@
 #include "cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.h"
 #include "cocostudio/WidgetReader/PageViewReader/PageViewReader.h"
 #include "cocostudio/WidgetReader/ListViewReader/ListViewReader.h"
-#include "cocostudio/WidgetReader/ArmatureNodeReader/ArmatureNodeReader.h"
 #include "cocostudio/WidgetReader/Node3DReader/Node3DReader.h"
 #include "cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.h"
 #include "cocostudio/WidgetReader/UserCameraReader/UserCameraReader.h"
@@ -56,16 +55,13 @@ namespace cocostudio
         PageViewReader::destroyInstance();
         ListViewReader::destroyInstance();
         
-        ArmatureNodeReader::destroyInstance();
         Node3DReader::destroyInstance();
         Sprite3DReader::destroyInstance();
         UserCameraReader::destroyInstance();
         Particle3DReader::destroyInstance();
         
         cocos2d::CSLoader::destroyInstance();
-        
-        
-        ArmatureDataManager::destroyInstance();
+
         SceneReader::destroyInstance();
         ActionManagerEx::destroyInstance();
         GUIReader::destroyInstance();

@@ -178,24 +178,6 @@
     <Filter Include="cocostudio\components">
       <UniqueIdentifier>{dc6e53e4-e518-403f-b2a9-97f6f7cd0961}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cocostudio\armature">
-      <UniqueIdentifier>{22a4587f-d4ca-44fa-a734-ded122cd79e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cocostudio\armature\animation">
-      <UniqueIdentifier>{137efcbb-0d14-4f1c-a856-7b1669a6d2af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cocostudio\armature\datas">
-      <UniqueIdentifier>{4825cd2d-ca8b-434c-8c79-2d3d3258086f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cocostudio\armature\display">
-      <UniqueIdentifier>{57ba2fcb-04bd-4b2f-9ae6-375992ad363a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cocostudio\armature\physics">
-      <UniqueIdentifier>{acdfaa6f-1374-4611-a5e7-9038dc6900c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cocostudio\armature\utils">
-      <UniqueIdentifier>{f195e2f1-1030-4848-9498-f8142bf89009}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocostudio\action">
       <UniqueIdentifier>{d48c8016-e933-48dd-a5c0-202b0a84b82a}</UniqueIdentifier>
     </Filter>
@@ -252,9 +234,6 @@
     </Filter>
     <Filter Include="extension\Particle3D\ParticleUniverse">
       <UniqueIdentifier>{ed9d0632-d777-44fe-b754-29d08f3b0572}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cocostudio\reader\WidgetReader\ArmatureNodeReader">
-      <UniqueIdentifier>{e1848cce-b225-42c4-bb6e-6430b6da123b}</UniqueIdentifier>
     </Filter>
     <Filter Include="external\poly2tri">
       <UniqueIdentifier>{46294cdb-c29a-4480-9988-2e017f5f7846}</UniqueIdentifier>
@@ -1012,60 +991,6 @@
     <ClCompile Include="..\editor-support\cocostudio\CCInputDelegate.cpp">
       <Filter>cocostudio\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCArmature.cpp">
-      <Filter>cocostudio\armature</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCBone.cpp">
-      <Filter>cocostudio\armature</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCArmatureAnimation.cpp">
-      <Filter>cocostudio\armature\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCProcessBase.cpp">
-      <Filter>cocostudio\armature\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCTween.cpp">
-      <Filter>cocostudio\armature\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCDatas.cpp">
-      <Filter>cocostudio\armature\datas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCBatchNode.cpp">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCDecorativeDisplay.cpp">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCDisplayFactory.cpp">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCDisplayManager.cpp">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCSkin.cpp">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCColliderDetector.cpp">
-      <Filter>cocostudio\armature\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCArmatureDataManager.cpp">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCArmatureDefine.cpp">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCDataReaderHelper.cpp">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCSpriteFrameCacheHelper.cpp">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCTransformHelp.cpp">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\CCUtilMath.cpp">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\CCActionFrame.cpp">
       <Filter>cocostudio\action</Filter>
     </ClCompile>
@@ -1317,9 +1242,6 @@
     </ClCompile>
     <ClCompile Include="..\base\allocator\CCAllocatorGlobalNewDelete.cpp">
       <Filter>base\allocator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\WidgetReader\ArmatureNodeReader\ArmatureNodeReader.cpp">
-      <Filter>cocostudio\reader\WidgetReader\ArmatureNodeReader</Filter>
     </ClCompile>
     <ClCompile Include="..\3d\CCFrustum.cpp" />
     <ClCompile Include="..\3d\CCPlane.cpp" />
@@ -2759,60 +2681,6 @@
     <ClInclude Include="..\editor-support\cocostudio\CCInputDelegate.h">
       <Filter>cocostudio\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCArmature.h">
-      <Filter>cocostudio\armature</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCBone.h">
-      <Filter>cocostudio\armature</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCArmatureAnimation.h">
-      <Filter>cocostudio\armature\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCProcessBase.h">
-      <Filter>cocostudio\armature\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCTween.h">
-      <Filter>cocostudio\armature\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCDatas.h">
-      <Filter>cocostudio\armature\datas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCBatchNode.h">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCDecorativeDisplay.h">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCDisplayFactory.h">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCDisplayManager.h">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCSkin.h">
-      <Filter>cocostudio\armature\display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCColliderDetector.h">
-      <Filter>cocostudio\armature\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCArmatureDataManager.h">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCArmatureDefine.h">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCDataReaderHelper.h">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCSpriteFrameCacheHelper.h">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCTransformHelp.h">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\CCUtilMath.h">
-      <Filter>cocostudio\armature\utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\editor-support\cocostudio\CCActionFrame.h">
       <Filter>cocostudio\action</Filter>
     </ClInclude>
@@ -3100,12 +2968,6 @@
     </ClInclude>
     <ClInclude Include="..\base\allocator\CCAllocatorStrategyPool.h">
       <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\WidgetReader\ArmatureNodeReader\ArmatureNodeReader.h">
-      <Filter>cocostudio\reader\WidgetReader\ArmatureNodeReader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\WidgetReader\ArmatureNodeReader\CSArmatureNode_generated.h">
-      <Filter>cocostudio\reader\WidgetReader\ArmatureNodeReader</Filter>
     </ClInclude>
     <ClInclude Include="..\3d\CCFrustum.h" />
     <ClInclude Include="..\3d\CCPlane.h" />

@@ -71,11 +71,6 @@ void QuadCommand::init(float globalOrder, GLuint textureID, GLProgramState* shad
     }
 }
 
-void QuadCommand::init(float globalOrder, GLuint textureID, GLProgramState* shader, const BlendFunc& blendType, V3F_C4B_T2F_Quad* quads, ssize_t quadCount, const Mat4 &mv)
-{
-    init(globalOrder, textureID, shader, blendType, quads, quadCount, mv, 0);
-}
-
 QuadCommand::~QuadCommand()
 {
 }

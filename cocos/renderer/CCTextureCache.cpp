@@ -76,15 +76,6 @@ void TextureCache::destroyInstance()
 {
 }
 
-TextureCache * TextureCache::sharedTextureCache() 
-{
-    return Director::getInstance()->getTextureCache();
-}
-
-void TextureCache::purgeSharedTextureCache() 
-{ 
-}
-
 std::string TextureCache::getDescription() const
 {
     return StringUtils::format("<TextureCache | Number of textures = %d>", static_cast<int>(_textures.size()));

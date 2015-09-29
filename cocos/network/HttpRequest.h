@@ -232,36 +232,7 @@ public:
     {
         return _pUserData;
     };
-    
-    /**
-     * Set the target and related callback selector.
-     * When response come back, it would call (pTarget->*pSelector) to process something.
-     *
-     * @param pTarget the target object pointer.
-     * @param pSelector the callback function.
-     */
-    CC_DEPRECATED_ATTRIBUTE inline void setResponseCallback(Ref* pTarget, SEL_CallFuncND pSelector)
-    {
-        setResponseCallback(pTarget, (SEL_HttpResponse) pSelector);
-    }
-    
-    /**
-     * Set the target and related callback selector of HttpRequest object.
-     * When response come back, we would call (pTarget->*pSelector) to process response data.
-     *
-     * @param pTarget the target object pointer.
-     * @param pSelector the SEL_HttpResponse function.
-     */
-    CC_DEPRECATED_ATTRIBUTE inline void setResponseCallback(Ref* pTarget, SEL_HttpResponse pSelector)
-    {
-        _pTarget = pTarget;
-        _pSelector = pSelector;
-        
-        if (_pTarget)
-        {
-            _pTarget->retain();
-        }
-    }
+
     /**
      * Set response callback function of HttpRequest object.
      * When response come back, we would call _pCallback to process response data.
