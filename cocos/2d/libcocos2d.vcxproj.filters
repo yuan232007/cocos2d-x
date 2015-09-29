@@ -49,9 +49,6 @@
     <Filter Include="storage">
       <UniqueIdentifier>{44bdf58f-4af2-433c-b4af-58dc05ef96b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="3d">
-      <UniqueIdentifier>{63733c51-582a-4f0f-9a82-e066da459a72}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocostudio">
       <UniqueIdentifier>{dbdbbfad-71fc-4f1d-a809-b43651f87267}</UniqueIdentifier>
     </Filter>
@@ -160,9 +157,6 @@
     <Filter Include="cocostudio\reader\WidgetReader\UserCameraReader">
       <UniqueIdentifier>{9421e104-69f8-4cee-8e59-51043ba06f15}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cocostudio\reader\WidgetReader\Sprite3DReader">
-      <UniqueIdentifier>{94210432-69f8-4cee-8e59-51043ba06f15}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocostudio\json">
       <UniqueIdentifier>{a9901b6a-0c7b-4adb-8e17-105c872d744d}</UniqueIdentifier>
     </Filter>
@@ -235,14 +229,8 @@
     <Filter Include="external\poly2tri\sweep">
       <UniqueIdentifier>{c37eceeb-5702-4ff7-88de-94680a22266f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="physics3d">
-      <UniqueIdentifier>{e492faef-2169-4117-8d73-e0c66271fe25}</UniqueIdentifier>
-    </Filter>
     <Filter Include="external\clipper">
       <UniqueIdentifier>{ff65e340-b79d-4f87-9b4c-ed46bda5d20f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="navmesh">
-      <UniqueIdentifier>{0f3fa25d-9e2b-4a2e-a1df-834b796b3fb3}</UniqueIdentifier>
     </Filter>
     <Filter Include="cocostudio\reader\WidgetReader\SkeletonReader">
       <UniqueIdentifier>{8405cf93-e86c-4ec1-8b16-01058f542b09}</UniqueIdentifier>
@@ -724,48 +712,6 @@
     <ClCompile Include="..\base\ccRandom.cpp">
       <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="..\3d\CCAnimate3D.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCAnimation3D.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCAttachNode.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCBundle3D.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCBundleReader.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCMesh.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCMeshSkin.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCOBB.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCObjLoader.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCRay.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCSkeleton3D.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCSprite3D.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCSprite3DMaterial.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCMotionStreak3D.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\extensions\assets-manager\AssetsManager.cpp">
       <Filter>extension\AssetsManager</Filter>
     </ClCompile>
@@ -952,9 +898,6 @@
     <ClCompile Include="..\editor-support\cocostudio\WidgetReader\Node3DReader\Node3DReader.cpp">
       <Filter>cocostudio\reader\WidgetReader\Node3DReader</Filter>
     </ClCompile>
-    <ClCompile Include="..\editor-support\cocostudio\WidgetReader\Sprite3DReader\Sprite3DReader.cpp">
-      <Filter>cocostudio\reader\WidgetReader\Sprite3DReader</Filter>
-    </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\WidgetReader\UserCameraReader\UserCameraReader.cpp">
       <Filter>cocostudio\reader\WidgetReader\UserCameraReader</Filter>
     </ClCompile>
@@ -993,9 +936,6 @@
     </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\CCActionObject.cpp">
       <Filter>cocostudio\action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCMeshVertexIndexData.cpp">
-      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="..\editor-support\cocosbuilder\CCBAnimationManager.cpp">
       <Filter>cocosbuilder\Source Files</Filter>
@@ -1062,9 +1002,6 @@
     </ClCompile>
     <ClCompile Include="..\editor-support\cocosbuilder\CCSpriteLoader.cpp">
       <Filter>cocosbuilder\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCBillBoard.cpp">
-      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="..\ui\UIEditBox\UIEditBox.cpp">
       <Filter>ui\UIWidgets\EditBox</Filter>
@@ -1231,17 +1168,6 @@
     <ClCompile Include="..\base\allocator\CCAllocatorGlobalNewDelete.cpp">
       <Filter>base\allocator</Filter>
     </ClCompile>
-    <ClCompile Include="..\3d\CCFrustum.cpp" />
-    <ClCompile Include="..\3d\CCPlane.cpp" />
-    <ClCompile Include="..\3d\CCAABB.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCTerrain.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3d\CCSkybox.cpp">
-      <Filter>3d</Filter>
-    </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\CocoStudio.cpp">
       <Filter>cocostudio\json</Filter>
     </ClCompile>
@@ -1260,30 +1186,6 @@
     <ClCompile Include="..\..\external\poly2tri\sweep\sweep_context.cc">
       <Filter>external\poly2tri\sweep</Filter>
     </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3D.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3DComponent.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3DConstraint.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3DDebugDrawer.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3DObject.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3DShape.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysics3DWorld.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics3d\CCPhysicsSprite3D.cpp">
-      <Filter>physics3d</Filter>
-    </ClCompile>
     <ClCompile Include="..\renderer\CCPass.cpp">
       <Filter>renderer</Filter>
     </ClCompile>
@@ -1301,21 +1203,6 @@
     </ClCompile>
     <ClCompile Include="..\renderer\CCVertexAttribBinding.cpp">
       <Filter>renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\navmesh\CCNavMesh.cpp">
-      <Filter>navmesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\navmesh\CCNavMeshAgent.cpp">
-      <Filter>navmesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\navmesh\CCNavMeshDebugDraw.cpp">
-      <Filter>navmesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\navmesh\CCNavMeshObstacle.cpp">
-      <Filter>navmesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\navmesh\CCNavMeshUtils.cpp">
-      <Filter>navmesh</Filter>
     </ClCompile>
     <ClCompile Include="..\base\CCNinePatchImageParser.cpp">
       <Filter>base</Filter>
@@ -1889,60 +1776,6 @@
     <ClInclude Include="..\base\ccRandom.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\3d\CCAABB.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCAnimate3D.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCAnimation3D.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCAnimationCurve.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCAttachNode.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCBundle3D.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCBundle3DData.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCBundleReader.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCMesh.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCMeshSkin.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCOBB.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCObjLoader.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCRay.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCSkeleton3D.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCSprite3D.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCSprite3DMaterial.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCMotionStreak3D.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\cocos3d.h">
-      <Filter>3d</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\extensions\assets-manager\AssetsManager.h">
       <Filter>extension\AssetsManager</Filter>
     </ClInclude>
@@ -2153,9 +1986,6 @@
     <ClInclude Include="..\editor-support\cocostudio\WidgetReader\UserCameraReader\UserCameraReader.h">
       <Filter>cocostudio\reader\WidgetReader\UserCameraReader</Filter>
     </ClInclude>
-    <ClInclude Include="..\editor-support\cocostudio\WidgetReader\Sprite3DReader\Sprite3DReader.h">
-      <Filter>cocostudio\reader\WidgetReader\Sprite3DReader</Filter>
-    </ClInclude>
     <ClInclude Include="..\editor-support\cocostudio\CocoLoader.h">
       <Filter>cocostudio\json</Filter>
     </ClInclude>
@@ -2227,9 +2057,6 @@
     </ClInclude>
     <ClInclude Include="..\editor-support\cocostudio\CCActionObject.h">
       <Filter>cocostudio\action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCMeshVertexIndexData.h">
-      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="..\editor-support\cocosbuilder\CCBAnimationManager.h">
       <Filter>cocosbuilder\Header Files</Filter>
@@ -2311,9 +2138,6 @@
     </ClInclude>
     <ClInclude Include="..\editor-support\cocosbuilder\CocosBuilder.h">
       <Filter>cocosbuilder\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCBillBoard.h">
-      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="..\ui\UIEditBox\UIEditBox.h">
       <Filter>ui\UIWidgets\EditBox</Filter>
@@ -2501,16 +2325,8 @@
     <ClInclude Include="..\base\allocator\CCAllocatorStrategyPool.h">
       <Filter>base\allocator</Filter>
     </ClInclude>
-    <ClInclude Include="..\3d\CCFrustum.h" />
-    <ClInclude Include="..\3d\CCPlane.h" />
     <ClInclude Include="..\physics\CCPhysicsHelper.h">
       <Filter>physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCTerrain.h">
-      <Filter>3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3d\CCSkybox.h">
-      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="..\platform\CCPlatformConfig.h">
       <Filter>platform</Filter>
@@ -2539,30 +2355,6 @@
     <ClInclude Include="..\..\external\poly2tri\sweep\sweep_context.h">
       <Filter>external\poly2tri\sweep</Filter>
     </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3D.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3DComponent.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3DConstraint.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3DDebugDrawer.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3DObject.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3DShape.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysics3DWorld.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics3d\CCPhysicsSprite3D.h">
-      <Filter>physics3d</Filter>
-    </ClInclude>
     <ClInclude Include="..\renderer\CCPass.h">
       <Filter>renderer</Filter>
     </ClInclude>
@@ -2580,21 +2372,6 @@
     </ClInclude>
     <ClInclude Include="..\renderer\CCVertexAttribBinding.h">
       <Filter>renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\navmesh\CCNavMesh.h">
-      <Filter>navmesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\navmesh\CCNavMeshAgent.h">
-      <Filter>navmesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\navmesh\CCNavMeshDebugDraw.h">
-      <Filter>navmesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\navmesh\CCNavMeshObstacle.h">
-      <Filter>navmesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\navmesh\CCNavMeshUtils.h">
-      <Filter>navmesh</Filter>
     </ClInclude>
     <ClInclude Include="..\base\CCNinePatchImageParser.h">
       <Filter>base</Filter>
@@ -2676,8 +2453,5 @@
       <Filter>math</Filter>
     </None>
     <None Include="cocos2d.def" />
-    <None Include="..\3d\CCAnimationCurve.inl">
-      <Filter>3d</Filter>
-    </None>
   </ItemGroup>
 </Project>
