@@ -139,7 +139,6 @@
 		185663FB1B422EE0009EF2AE /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 185663FA1B422EE0009EF2AE /* project.json */; };
 		185664081B422F72009EF2AE /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664021B422F72009EF2AE /* AppDelegate.cpp */; };
 		1856640A1B422F72009EF2AE /* js_DrawNode3D_bindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664041B422F72009EF2AE /* js_DrawNode3D_bindings.cpp */; };
-		1856640C1B422F72009EF2AE /* js_Effect3D_bindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664061B422F72009EF2AE /* js_Effect3D_bindings.cpp */; };
 		1856643C1B422FFF009EF2AE /* NativeOcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856641E1B422FFF009EF2AE /* NativeOcClass.m */; };
 		1856644F1B423047009EF2AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664461B423047009EF2AE /* main.cpp */; };
 		185664531B4234B1009EF2AE /* res in Resources */ = {isa = PBXBuildFile; fileRef = 185663F41B422EA7009EF2AE /* res */; };
@@ -152,7 +151,6 @@
 		1856647A1B423D95009EF2AE /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664021B422F72009EF2AE /* AppDelegate.cpp */; };
 		1856647B1B423DAA009EF2AE /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 185664211B422FFF009EF2AE /* RootViewController.mm */; };
 		1856647C1B423DBD009EF2AE /* js_DrawNode3D_bindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664041B422F72009EF2AE /* js_DrawNode3D_bindings.cpp */; };
-		1856647D1B423DCA009EF2AE /* js_Effect3D_bindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185664061B422F72009EF2AE /* js_Effect3D_bindings.cpp */; };
 		1856647E1B423DD6009EF2AE /* NativeOcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856641E1B422FFF009EF2AE /* NativeOcClass.m */; };
 		1856647F1B423DDF009EF2AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856641C1B422FFF009EF2AE /* main.m */; };
 		185664801B423DEC009EF2AE /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 185664101B422FFF009EF2AE /* AppController.mm */; };
@@ -1354,8 +1352,6 @@
 		185664031B422F72009EF2AE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		185664041B422F72009EF2AE /* js_DrawNode3D_bindings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_DrawNode3D_bindings.cpp; sourceTree = "<group>"; };
 		185664051B422F72009EF2AE /* js_DrawNode3D_bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = js_DrawNode3D_bindings.h; sourceTree = "<group>"; };
-		185664061B422F72009EF2AE /* js_Effect3D_bindings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_Effect3D_bindings.cpp; sourceTree = "<group>"; };
-		185664071B422F72009EF2AE /* js_Effect3D_bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = js_Effect3D_bindings.h; sourceTree = "<group>"; };
 		1856640F1B422FFF009EF2AE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		185664101B422FFF009EF2AE /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		185664111B422FFF009EF2AE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -2560,8 +2556,6 @@
 				185664031B422F72009EF2AE /* AppDelegate.h */,
 				185664041B422F72009EF2AE /* js_DrawNode3D_bindings.cpp */,
 				185664051B422F72009EF2AE /* js_DrawNode3D_bindings.h */,
-				185664061B422F72009EF2AE /* js_Effect3D_bindings.cpp */,
-				185664071B422F72009EF2AE /* js_Effect3D_bindings.h */,
 			);
 			name = Classes;
 			path = "../tests/js-tests/project/Classes";
@@ -5694,7 +5688,6 @@
 				1856640A1B422F72009EF2AE /* js_DrawNode3D_bindings.cpp in Sources */,
 				1856643C1B422FFF009EF2AE /* NativeOcClass.m in Sources */,
 				1856644F1B423047009EF2AE /* main.cpp in Sources */,
-				1856640C1B422F72009EF2AE /* js_Effect3D_bindings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5705,7 +5698,6 @@
 				185664801B423DEC009EF2AE /* AppController.mm in Sources */,
 				1856647F1B423DDF009EF2AE /* main.m in Sources */,
 				1856647E1B423DD6009EF2AE /* NativeOcClass.m in Sources */,
-				1856647D1B423DCA009EF2AE /* js_Effect3D_bindings.cpp in Sources */,
 				1856647C1B423DBD009EF2AE /* js_DrawNode3D_bindings.cpp in Sources */,
 				1856647B1B423DAA009EF2AE /* RootViewController.mm in Sources */,
 				1856647A1B423D95009EF2AE /* AppDelegate.cpp in Sources */,

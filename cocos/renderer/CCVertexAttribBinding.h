@@ -29,7 +29,7 @@
 
 NS_CC_BEGIN
 
-class MeshIndexData;
+//class MeshIndexData;
 class VertexAttribValue;
 
 /**
@@ -69,7 +69,7 @@ public:
      * 
      * @return A VertexAttribBinding for the requested parameters.
      */
-    static VertexAttribBinding* create(MeshIndexData* meshIndexData, GLProgramState* glProgramState);
+//    static VertexAttribBinding* create(MeshIndexData* meshIndexData, GLProgramState* glProgramState);
 
     /**
      * Binds this vertex array object.
@@ -89,7 +89,7 @@ public:
 
 private:
 
-    bool init(MeshIndexData* meshIndexData, GLProgramState* glProgramState);
+//    bool init(MeshIndexData* meshIndexData, GLProgramState* glProgramState);
 
     /**
      * Constructor.
@@ -113,7 +113,7 @@ private:
 
     GLuint _handle;
 
-    MeshIndexData* _meshIndexData;
+//    MeshIndexData* _meshIndexData;
     GLProgramState* _glProgramState;
 
     std::unordered_map<std::string, VertexAttribValue> _attributes;

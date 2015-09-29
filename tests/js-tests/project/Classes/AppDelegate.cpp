@@ -7,12 +7,8 @@
 #include "jsb_cocos2dx_extension_auto.hpp"
 #include "jsb_cocos2dx_builder_auto.hpp"
 #include "jsb_cocos2dx_spine_auto.hpp"
-#include "jsb_cocos2dx_3d_auto.hpp"
-#include "jsb_cocos2dx_physics3d_auto.hpp"
-#include "physics3d/jsb_cocos2dx_physics3d_manual.h"
-#include "jsb_cocos2dx_navmesh_auto.hpp"
-#include "navmesh/jsb_cocos2dx_navmesh_manual.h"
-#include "3d/jsb_cocos2dx_3d_manual.h"
+//#include "jsb_cocos2dx_navmesh_auto.hpp"
+//#include "navmesh/jsb_cocos2dx_navmesh_manual.h"
 #include "extension/jsb_cocos2dx_extension_manual.h"
 #include "cocostudio/jsb_cocos2dx_studio_manual.h"
 #include "jsb_cocos2dx_studio_auto.hpp"
@@ -28,15 +24,12 @@
 #include "network/jsb_websocket.h"
 #include "network/jsb_socketio.h"
 #include "cocosbuilder/js_bindings_ccbreader.h"
-#include "js_DrawNode3D_bindings.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/CCJavascriptJavaBridge.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #include "platform/ios/JavaScriptObjCBridge.h"
 #endif
-
-#include "js_Effect3D_bindings.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "jsb_cocos2dx_experimental_webView_auto.hpp"
@@ -114,28 +107,17 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     sc->addRegisterCallback(register_all_cocos2dx_spine);
     sc->addRegisterCallback(register_all_cocos2dx_spine_manual);
-
-    sc->addRegisterCallback(register_all_cocos2dx_3d);
-    sc->addRegisterCallback(register_all_cocos2dx_3d_manual);
-
-#if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
-    sc->addRegisterCallback(register_all_cocos2dx_physics3d);
-    sc->addRegisterCallback(register_all_cocos2dx_physics3d_manual);
-#endif
     
-#if CC_USE_NAVMESH
-	sc->addRegisterCallback(register_all_cocos2dx_navmesh);
-	sc->addRegisterCallback(register_all_cocos2dx_navmesh_manual);
-#endif
+//#if CC_USE_NAVMESH
+//	sc->addRegisterCallback(register_all_cocos2dx_navmesh);
+//	sc->addRegisterCallback(register_all_cocos2dx_navmesh_manual);
+//#endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     sc->addRegisterCallback(JavascriptJavaBridge::_js_register);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     sc->addRegisterCallback(JavaScriptObjCBridge::_js_register);
 #endif
-
-    sc->addRegisterCallback(register_DrawNode3D_bindings);
-    sc->addRegisterCallback(register_Effect3D_bindings);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     sc->addRegisterCallback(register_all_cocos2dx_experimental_webView);
