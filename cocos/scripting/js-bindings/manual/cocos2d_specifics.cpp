@@ -1115,9 +1115,8 @@ void JSScheduleWrapper::setTargetForSchedule(JS::HandleValue sched, JSScheduleWr
     do {
         JSObject* jsfunc = sched.toObjectOrNull();
         auto targetArray = getTargetForSchedule(sched);
-        if (NULL == targetArray) {
-            targetArray = new __Array();
-            targetArray->init();
+        if (nullptr == targetArray) {
+            targetArray = new (std::nothrow) Vector<Ref*>;
             schedFunc_proxy_t *p = (schedFunc_proxy_t *)malloc(sizeof(schedFunc_proxy_t));
             assert(p);
             p->jsfuncObj = jsfunc;
@@ -1125,26 +1124,25 @@ void JSScheduleWrapper::setTargetForSchedule(JS::HandleValue sched, JSScheduleWr
             HASH_ADD_PTR(_schedFunc_target_ht, jsfuncObj, p);
         }
 
-        CCASSERT(!targetArray->containsObject(target), "The target was already added.");
+        CCASSERT(!targetArray->contains(target), "The target was already added.");
 
-        targetArray->addObject(target);
+        targetArray->pushBack(target);
     } while(0);
 }
 
-__Array * JSScheduleWrapper::getTargetForSchedule(JS::HandleValue sched) {
+Vector<Ref*>* JSScheduleWrapper::getTargetForSchedule(JS::HandleValue sched) {
     schedFunc_proxy_t *t = NULL;
     JSObject *o = sched.toObjectOrNull();
     HASH_FIND_PTR(_schedFunc_target_ht, &o, t);
-    return t != NULL ? t->targets : NULL;
+    return t != nullptr ? t->targets : NULL;
 }
 
 
 void JSScheduleWrapper::setTargetForJSObject(JS::HandleObject jsTargetObj, JSScheduleWrapper *target)
 {
     auto targetArray = getTargetForJSObject(jsTargetObj);
-    if (NULL == targetArray) {
-        targetArray = new __Array();
-        targetArray->init();
+    if (nullptr == targetArray) {
+        targetArray = new (std::nothrow) Vector<Ref*>;
         schedTarget_proxy_t *p = (schedTarget_proxy_t *)malloc(sizeof(schedTarget_proxy_t));
         assert(p);
         p->jsTargetObj = jsTargetObj;
@@ -1152,11 +1150,11 @@ void JSScheduleWrapper::setTargetForJSObject(JS::HandleObject jsTargetObj, JSSch
         HASH_ADD_PTR(_schedObj_target_ht, jsTargetObj, p);
     }
     
-    CCASSERT(!targetArray->containsObject(target), "The target was already added.");
-    targetArray->addObject(target);
+    CCASSERT(!targetArray->contains(target), "The target was already added.");
+    targetArray->pushBack(target);
 }
 
-__Array * JSScheduleWrapper::getTargetForJSObject(JS::HandleObject jsTargetObj)
+Vector<Ref*>* JSScheduleWrapper::getTargetForJSObject(JS::HandleObject jsTargetObj)
 {
     schedTarget_proxy_t *t = NULL;
     HASH_FIND_PTR(_schedObj_target_ht, &jsTargetObj.get(), t);
@@ -1171,8 +1169,8 @@ void JSScheduleWrapper::removeAllTargets()
     {
         schedFunc_proxy_t *current, *tmp;
         HASH_ITER(hh, _schedFunc_target_ht, current, tmp) {
-            current->targets->removeAllObjects();
-            current->targets->release();
+            current->targets->clear();
+            delete current->targets;
             HASH_DEL(_schedFunc_target_ht, current);
             free(current);
         }
@@ -1181,8 +1179,8 @@ void JSScheduleWrapper::removeAllTargets()
     {
         schedTarget_proxy_t *current, *tmp;
         HASH_ITER(hh, _schedObj_target_ht, current, tmp) {
-            current->targets->removeAllObjects();
-            current->targets->release();
+            current->targets->clear();
+            delete current->targets;
             HASH_DEL(_schedObj_target_ht, current);
             free(current);
         }
@@ -1202,8 +1200,7 @@ void JSScheduleWrapper::removeAllTargetsForMinPriority(int minPriority)
         HASH_ITER(hh, _schedFunc_target_ht, current, tmp) {
             std::vector<Ref*> objectsNeedToBeReleased;
             auto targets = current->targets;
-            Ref* pObj = NULL;
-            CCARRAY_FOREACH(targets, pObj)
+            for (const auto& pObj : *targets)
             {
                 JSScheduleWrapper* wrapper = static_cast<JSScheduleWrapper*>(pObj);
                 bool isUpdateSchedule = wrapper->isUpdateSchedule();
@@ -1216,13 +1213,13 @@ void JSScheduleWrapper::removeAllTargetsForMinPriority(int minPriority)
             std::vector<Ref*>::iterator iter = objectsNeedToBeReleased.begin();
             for (; iter != objectsNeedToBeReleased.end(); ++iter)
             {
-                targets->removeObject(*iter, true);
+                targets->eraseObject(*iter, true);
             }
             
-            if (targets->count() == 0)
+            if (targets->empty())
             {
                 HASH_DEL(_schedFunc_target_ht, current);
-                targets->release();
+                delete targets;
                 free(current);
             }
         }
@@ -1233,8 +1230,7 @@ void JSScheduleWrapper::removeAllTargetsForMinPriority(int minPriority)
         HASH_ITER(hh, _schedObj_target_ht, current, tmp) {
             std::vector<Ref*> objectsNeedToBeReleased;
             auto targets = current->targets;
-            Ref* pObj = NULL;
-            CCARRAY_FOREACH(targets, pObj)
+            for (const auto& pObj : *targets)
             {
                 JSScheduleWrapper* wrapper = static_cast<JSScheduleWrapper*>(pObj);
                 bool isUpdateSchedule = wrapper->isUpdateSchedule();
@@ -1248,13 +1244,13 @@ void JSScheduleWrapper::removeAllTargetsForMinPriority(int minPriority)
             auto iter = objectsNeedToBeReleased.begin();
             for (; iter != objectsNeedToBeReleased.end(); ++iter)
             {
-                targets->removeObject(*iter, true);
+                targets->eraseObject(*iter, true);
             }
             
-            if (targets->count() == 0)
+            if (targets->empty())
             {
                 HASH_DEL(_schedObj_target_ht, current);
-                targets->release();
+                delete targets;
                 free(current);
             }
         }
@@ -1268,7 +1264,7 @@ void JSScheduleWrapper::removeAllTargetsForJSObject(JS::HandleObject jsTargetObj
 {
     CCLOGINFO("removeAllTargetsForNatiaveNode begin");
     dump();
-    __Array* removeNativeTargets = NULL;
+    Vector<Ref*>* removeNativeTargets = nullptr;
     schedTarget_proxy_t *t = NULL;
     HASH_FIND_PTR(_schedObj_target_ht, &jsTargetObj.get(), t);
     if (t != NULL) {
@@ -1282,10 +1278,9 @@ void JSScheduleWrapper::removeAllTargetsForJSObject(JS::HandleObject jsTargetObj
     HASH_ITER(hh, _schedFunc_target_ht, current, tmp) {
         std::vector<Ref*> objectsNeedToBeReleased;
         auto targets = current->targets;
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(targets, pObj)
+        for (const auto& pObj : *targets)
         {
-            if (removeNativeTargets->containsObject(pObj))
+            if (removeNativeTargets->contains(pObj))
             {
                 objectsNeedToBeReleased.push_back(pObj);
             }
@@ -1294,19 +1289,19 @@ void JSScheduleWrapper::removeAllTargetsForJSObject(JS::HandleObject jsTargetObj
         auto iter = objectsNeedToBeReleased.begin();
         for (; iter != objectsNeedToBeReleased.end(); ++iter)
         {
-            targets->removeObject(*iter, true);
+            targets->eraseObject(*iter, true);
         }
 
-        if (targets->count() == 0)
+        if (targets->empty())
         {
             HASH_DEL(_schedFunc_target_ht, current);
-            targets->release();
+            delete targets;
             free(current);
         }  
     }
 
-    removeNativeTargets->removeAllObjects();
-    removeNativeTargets->release();
+    removeNativeTargets->clear();
+    delete removeNativeTargets;
     free(t);
     dump();
     CCLOGINFO("removeAllTargetsForNatiaveNode end");
@@ -1319,10 +1314,10 @@ void JSScheduleWrapper::removeTargetForJSObject(JS::HandleObject jsTargetObj, JS
     schedTarget_proxy_t *t = NULL;
     HASH_FIND_PTR(_schedObj_target_ht, &jsTargetObj.get(), t);
     if (t != NULL) {
-        t->targets->removeObject(target);
-        if (t->targets->count() == 0)
+        t->targets->eraseObject(target,true);
+        if (t->targets->empty())
         {
-            t->targets->release();
+            delete t->targets;
             HASH_DEL(_schedObj_target_ht, t);
             free(t);
         }
@@ -1332,9 +1327,7 @@ void JSScheduleWrapper::removeTargetForJSObject(JS::HandleObject jsTargetObj, JS
 
     HASH_ITER(hh, _schedFunc_target_ht, current, tmp) {
         auto targets = current->targets;
-        Ref* pObj = NULL;
-        
-        CCARRAY_FOREACH(targets, pObj)
+        for (const auto& pObj : *targets)
         {
             JSScheduleWrapper* pOneTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (pOneTarget == target)
@@ -1348,10 +1341,10 @@ void JSScheduleWrapper::removeTargetForJSObject(JS::HandleObject jsTargetObj, JS
 
     if (removed)
     {
-        removed->targets->removeObject(target);
-        if (removed->targets->count() == 0)
+        removed->targets->eraseObject(target, true);
+        if (removed->targets->empty())
         {
-            removed->targets->release();
+            delete removed->targets;
             HASH_DEL(_schedFunc_target_ht, removed);
             free(removed);
         }  
@@ -1492,8 +1485,8 @@ bool js_CCNode_unschedule(JSContext *cx, uint32_t argc, jsval *vp)
         
         auto targetArray = JSScheduleWrapper::getTargetForSchedule(args.get(0));
         CCLOGINFO("unschedule target number: %d", targetArray->count());
-        Ref* tmp = NULL;
-        CCARRAY_FOREACH(targetArray, tmp)
+        
+        for (const auto& tmp : *targetArray)
         {
             JSScheduleWrapper* target = static_cast<JSScheduleWrapper*>(tmp);
             if (node == target->getTarget())
@@ -1521,15 +1514,15 @@ bool js_cocos2dx_CCNode_unscheduleAllSelectors(JSContext *cx, uint32_t argc, jsv
     {
         cobj->unscheduleAllCallbacks();
 
-        __Array *arr = JSScheduleWrapper::getTargetForJSObject(obj);
+        auto arr = JSScheduleWrapper::getTargetForJSObject(obj);
         // If there aren't any targets, just return true.
         // Otherwise, the for loop will break immediately. 
         // It will lead to logic errors. 
         // For details to reproduce it, please refer to SchedulerTest/SchedulerUpdate.
         if(! arr) return true;
         JSScheduleWrapper* wrapper = NULL;
-        for(ssize_t i = 0; i < arr->count(); ++i) {
-            wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+        for(ssize_t i = 0; i < arr->size(); ++i) {
+            wrapper = (JSScheduleWrapper*)arr->at(i);
             if(wrapper) {
                 cobj->getScheduler()->unscheduleAllForTarget(wrapper);
             }
@@ -1570,8 +1563,7 @@ bool js_CCNode_scheduleOnce(JSContext *cx, uint32_t argc, jsval *vp)
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(pTargetArr, pObj)
+        for (auto&& pObj : *pTargetArr)
         {
             JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (args.get(0) == pTarget->getJSCallbackFunc())
@@ -1663,8 +1655,7 @@ bool js_CCNode_schedule(JSContext *cx, uint32_t argc, jsval *vp)
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(pTargetArr, pObj)
+        for (auto&& pObj : *pTargetArr)
         {
             JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (args.get(0) == pTarget->getJSCallbackFunc())
@@ -1737,8 +1728,7 @@ bool js_cocos2dx_CCNode_scheduleUpdateWithPriority(JSContext *cx, uint32_t argc,
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(pTargetArr, pObj)
+        for (auto&& pObj : *pTargetArr)
         {
             JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (jsUpdateFunc == pTarget->getJSCallbackFunc())
@@ -1787,7 +1777,7 @@ bool js_cocos2dx_CCNode_unscheduleUpdate(JSContext *cx, uint32_t argc, jsval *vp
         do {
 //            JSObject *tmpObj = obj;
             
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(obj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(obj);
             // If there aren't any targets, just return true.
             // Otherwise, the for loop will break immediately.
             // It will lead to logic errors.
@@ -1795,8 +1785,8 @@ bool js_cocos2dx_CCNode_unscheduleUpdate(JSContext *cx, uint32_t argc, jsval *vp
             if(! arr) return true;
             
             JSScheduleWrapper* wrapper = NULL;
-            for(ssize_t i = 0; i < arr->count(); ++i) {
-                wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+            for(ssize_t i = 0; i < arr->size(); ++i) {
+                wrapper = (JSScheduleWrapper*)arr->at(i);
                 if(wrapper && wrapper->isUpdateSchedule()) {
                     cobj->getScheduler()->unscheduleUpdate(wrapper);
                     CCASSERT(OBJECT_TO_JSVAL(obj) == wrapper->getJSCallbackThis(), "Wrong target object.");
@@ -1841,8 +1831,7 @@ bool js_cocos2dx_CCNode_scheduleUpdate(JSContext *cx, uint32_t argc, jsval *vp)
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(pTargetArr, pObj)
+        for (auto&& pObj : *pTargetArr)
         {
             JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (jsUpdateFunc == pTarget->getJSCallbackFunc())
@@ -1887,7 +1876,7 @@ bool js_cocos2dx_CCScheduler_unscheduleAllSelectorsForTarget(JSContext *cx, uint
         do {
             JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
             
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
             // If there aren't any targets, just return true.
             // Otherwise, the for loop will break immediately.
             // It will lead to logic errors.
@@ -1895,8 +1884,8 @@ bool js_cocos2dx_CCScheduler_unscheduleAllSelectorsForTarget(JSContext *cx, uint
             if(! arr) return true;
             
             JSScheduleWrapper* wrapper = NULL;
-            for(ssize_t i = 0; i < arr->count(); ++i) {
-                wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+            for(ssize_t i = 0; i < arr->size(); ++i) {
+                wrapper = (JSScheduleWrapper*)arr->at(i);
                 if(wrapper) {
                     cobj->unscheduleAllForTarget(wrapper);
                 }
@@ -1956,8 +1945,7 @@ bool js_CCScheduler_scheduleUpdateForTarget(JSContext *cx, uint32_t argc, jsval 
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(pTargetArr, pObj)
+        for (auto&& pObj : *pTargetArr)
         {
             JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (jsUpdateFunc == pTarget->getJSCallbackFunc())
@@ -2004,7 +1992,7 @@ bool js_CCScheduler_unscheduleUpdateForTarget(JSContext *cx, uint32_t argc, jsva
         do {
             JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
             
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
             // If there aren't any targets, just return true.
             // Otherwise, the for loop will break immediately.
             // It will lead to logic errors.
@@ -2012,8 +2000,8 @@ bool js_CCScheduler_unscheduleUpdateForTarget(JSContext *cx, uint32_t argc, jsva
             if(! arr) return true;
             
             JSScheduleWrapper* wrapper = NULL;
-            for(ssize_t i = 0; i < arr->count(); ++i) {
-                wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+            for(ssize_t i = 0; i < arr->size(); ++i) {
+                wrapper = (JSScheduleWrapper*)arr->at(i);
                 if(wrapper && wrapper->isUpdateSchedule()) {
                     cobj->unscheduleUpdate(wrapper);
                     CCASSERT(args.get(0) == wrapper->getJSCallbackThis(), "Wrong target object.");
@@ -2078,8 +2066,7 @@ bool js_CCScheduler_scheduleCallbackForTarget(JSContext *cx, uint32_t argc, jsva
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
-        Ref* pObj = NULL;
-        CCARRAY_FOREACH(pTargetArr, pObj)
+        for (auto&& pObj : *pTargetArr)
         {
             JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
             if (args.get(1) == pTarget->getJSCallbackFunc())
@@ -2215,7 +2202,7 @@ bool js_CCScheduler_unscheduleCallbackForTarget(JSContext *cx, uint32_t argc, js
             else {
                 JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
                 
-                __Array *arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
+                auto arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
                 // If there aren't any targets, just return true.
                 // Otherwise, the for loop will break immediately.
                 // It will lead to logic errors.
@@ -2223,8 +2210,8 @@ bool js_CCScheduler_unscheduleCallbackForTarget(JSContext *cx, uint32_t argc, js
                 if(! arr) return true;
                 
                 JSScheduleWrapper* wrapper = NULL;
-                for(ssize_t i = 0; i < arr->count(); ++i) {
-                    wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+                for(ssize_t i = 0; i < arr->size(); ++i) {
+                    wrapper = (JSScheduleWrapper*)arr->at(i);
                     if(wrapper && wrapper->getJSCallbackFunc() == args.get(1)) {
                         cobj->unschedule(schedule_selector(JSScheduleWrapper::scheduleFunc), wrapper);
                         JSScheduleWrapper::removeTargetForJSObject(tmpObj, wrapper);
@@ -2292,11 +2279,11 @@ bool js_cocos2dx_CCScheduler_pauseTarget(JSContext *cx, uint32_t argc, jsval *vp
     if (argc == 1) {
         do {
             JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
             if(! arr) return true;
-            for(ssize_t i = 0; i < arr->count(); ++i) {
-                if(arr->getObjectAtIndex(i)) {
-                    sched->pauseTarget(arr->getObjectAtIndex(i));
+            for(ssize_t i = 0; i < arr->size(); ++i) {
+                if(arr->at(i)) {
+                    sched->pauseTarget(arr->at(i));
                 }
             }
 
@@ -2320,9 +2307,9 @@ bool js_cocos2dx_CCScheduler_resumeTarget(JSContext *cx, uint32_t argc, jsval *v
             JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
             auto arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
             if(! arr) return true;
-            for(ssize_t i = 0; i < arr->count(); ++i) {
-                if(arr->getObjectAtIndex(i)) {
-                    sched->resumeTarget(arr->getObjectAtIndex(i));
+            for(ssize_t i = 0; i < arr->size(); ++i) {
+                if(arr->at(i)) {
+                    sched->resumeTarget(arr->at(i));
                 }
             }
             
@@ -2345,11 +2332,11 @@ bool js_cocos2dx_CCScheduler_isTargetPaused(JSContext *cx, uint32_t argc, jsval 
         bool ret = false;
         do {
             JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
             if(! arr) return true;
-            for(ssize_t i = 0; i < arr->count(); ++i) {
-                if(arr->getObjectAtIndex(i)) {
-                    ret = cobj->isTargetPaused(arr->getObjectAtIndex(i)) ? true : false;
+            for(ssize_t i = 0; i < arr->size(); ++i) {
+                if(arr->at(i)) {
+                    ret = cobj->isTargetPaused(arr->at(i)) ? true : false;
                     // break directly since all targets have the same `pause` status.
                     break;
                 }
@@ -2600,11 +2587,11 @@ bool js_cocos2dx_CCNode_pause(JSContext *cx, uint32_t argc, jsval *vp)
         do {
 //            JSObject *tmpObj = obj;
 
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(obj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(obj);
             if(arr){
                 JSScheduleWrapper* wrapper = NULL;
-                for(ssize_t i = 0; i < arr->count(); ++i) {
-                    wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+                for(ssize_t i = 0; i < arr->size(); ++i) {
+                    wrapper = (JSScheduleWrapper*)arr->at(i);
                     if(wrapper) {
                         cobj->getScheduler()->pauseTarget(wrapper);
                     }
@@ -2632,11 +2619,11 @@ bool js_cocos2dx_CCNode_resume(JSContext *cx, uint32_t argc, jsval *vp)
         do {
 //            JSObject *tmpObj = obj;
 
-            __Array *arr = JSScheduleWrapper::getTargetForJSObject(obj);
+            auto arr = JSScheduleWrapper::getTargetForJSObject(obj);
             if(arr){
                 JSScheduleWrapper* wrapper = NULL;
-                for(ssize_t i = 0; i < arr->count(); ++i) {
-                    wrapper = (JSScheduleWrapper*)arr->getObjectAtIndex(i);
+                for(ssize_t i = 0; i < arr->size(); ++i) {
+                    wrapper = (JSScheduleWrapper*)arr->at(i);
                     if(wrapper) {
                         cobj->getScheduler()->resumeTarget(wrapper);
                     }

@@ -34,20 +34,20 @@ class JSScheduleWrapper;
 // It will prove that i'm right. :)
 typedef struct jsScheduleFunc_proxy {
     JS::Heap<JSObject*> jsfuncObj;
-    cocos2d::__Array*  targets;
+    cocos2d::Vector<cocos2d::Ref*>* targets;
     UT_hash_handle hh;
 } schedFunc_proxy_t;
 
 typedef struct jsScheduleTarget_proxy {
     JS::Heap<JSObject*> jsTargetObj;
-    cocos2d::__Array*  targets;
+    cocos2d::Vector<cocos2d::Ref*>* targets;
     UT_hash_handle hh;
 } schedTarget_proxy_t;
 
 
 typedef struct jsCallFuncTarget_proxy {
     void * ptr;
-    cocos2d::__Array *obj;
+    cocos2d::Vector<cocos2d::Ref*>* obj;
     UT_hash_handle hh;
 } callfuncTarget_proxy_t;
 
@@ -145,9 +145,9 @@ public:
     virtual ~JSScheduleWrapper();
 
     static void setTargetForSchedule(JS::HandleValue sched, JSScheduleWrapper *target);
-    static cocos2d::__Array * getTargetForSchedule(JS::HandleValue sched);
+    static cocos2d::Vector<cocos2d::Ref*>* getTargetForSchedule(JS::HandleValue sched);
     static void setTargetForJSObject(JS::HandleObject jsTargetObj, JSScheduleWrapper *target);
-    static cocos2d::__Array * getTargetForJSObject(JS::HandleObject jsTargetObj);
+    static cocos2d::Vector<cocos2d::Ref*>* getTargetForJSObject(JS::HandleObject jsTargetObj);
     
     // Remove all targets.
     static void removeAllTargets();
