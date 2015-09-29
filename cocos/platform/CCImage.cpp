@@ -74,9 +74,9 @@ extern "C"
 #include "base/pvr.h"
 #include "base/TGAlib.h"
 
-#if CC_USE_WEBP
-#include "decode.h"
-#endif // CC_USE_WEBP
+//#if CC_USE_WEBP
+//#include "decode.h"
+//#endif // CC_USE_WEBP
 
 #include "base/ccMacros.h"
 #include "CCCommon.h"
@@ -550,9 +550,9 @@ bool Image::initWithImageData(const unsigned char * data, ssize_t dataLen)
         case Format::TIFF:
             ret = initWithTiffData(unpackedData, unpackedLen);
             break;
-        case Format::WEBP:
-            ret = initWithWebpData(unpackedData, unpackedLen);
-            break;
+//        case Format::WEBP:
+//            ret = initWithWebpData(unpackedData, unpackedLen);
+//            break;
         case Format::PVR:
             ret = initWithPVRData(unpackedData, unpackedLen);
             break;
@@ -2104,53 +2104,53 @@ bool Image::initWithPVRData(const unsigned char * data, ssize_t dataLen)
     return initWithPVRv2Data(data, dataLen) || initWithPVRv3Data(data, dataLen);
 }
 
-bool Image::initWithWebpData(const unsigned char * data, ssize_t dataLen)
-{
-#if CC_USE_WEBP
-    bool ret = false;
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-    CCLOG("WEBP image format not supported on WinRT or WP8");
-#else
-    do
-    {
-        WebPDecoderConfig config;
-        if (WebPInitDecoderConfig(&config) == 0) break;
-        if (WebPGetFeatures(static_cast<const uint8_t*>(data), dataLen, &config.input) != VP8_STATUS_OK) break;
-        if (config.input.width == 0 || config.input.height == 0) break;
-        
-        config.output.colorspace = MODE_RGBA;
-        _renderFormat = Texture2D::PixelFormat::RGBA8888;
-        _width    = config.input.width;
-        _height   = config.input.height;
-        
-        //webp doesn't have premultipliedAlpha
-        _hasPremultipliedAlpha = false;
-        
-        _dataLen = _width * _height * 4;
-        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
-        
-        config.output.u.RGBA.rgba = static_cast<uint8_t*>(_data);
-        config.output.u.RGBA.stride = _width * 4;
-        config.output.u.RGBA.size = _dataLen;
-        config.output.is_external_memory = 1;
-        
-        if (WebPDecode(static_cast<const uint8_t*>(data), dataLen, &config) != VP8_STATUS_OK)
-        {
-            free(_data);
-            _data = nullptr;
-            break;
-        }
-        
-        ret = true;
-    } while (0);
-#endif // (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-    return ret;
-#else 
-    CCLOG("webp is not enabled, please enable it in ccConfig.h");
-    return false;
-#endif // CC_USE_WEBP
-}
+//bool Image::initWithWebpData(const unsigned char * data, ssize_t dataLen)
+//{
+//#if CC_USE_WEBP
+//    bool ret = false;
+//
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+//    CCLOG("WEBP image format not supported on WinRT or WP8");
+//#else
+//    do
+//    {
+//        WebPDecoderConfig config;
+//        if (WebPInitDecoderConfig(&config) == 0) break;
+//        if (WebPGetFeatures(static_cast<const uint8_t*>(data), dataLen, &config.input) != VP8_STATUS_OK) break;
+//        if (config.input.width == 0 || config.input.height == 0) break;
+//        
+//        config.output.colorspace = MODE_RGBA;
+//        _renderFormat = Texture2D::PixelFormat::RGBA8888;
+//        _width    = config.input.width;
+//        _height   = config.input.height;
+//        
+//        //webp doesn't have premultipliedAlpha
+//        _hasPremultipliedAlpha = false;
+//        
+//        _dataLen = _width * _height * 4;
+//        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
+//        
+//        config.output.u.RGBA.rgba = static_cast<uint8_t*>(_data);
+//        config.output.u.RGBA.stride = _width * 4;
+//        config.output.u.RGBA.size = _dataLen;
+//        config.output.is_external_memory = 1;
+//        
+//        if (WebPDecode(static_cast<const uint8_t*>(data), dataLen, &config) != VP8_STATUS_OK)
+//        {
+//            free(_data);
+//            _data = nullptr;
+//            break;
+//        }
+//        
+//        ret = true;
+//    } while (0);
+//#endif // (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+//    return ret;
+//#else 
+//    CCLOG("webp is not enabled, please enable it in ccConfig.h");
+//    return false;
+//#endif // CC_USE_WEBP
+//}
 
 
 bool Image::initWithRawData(const unsigned char * data, ssize_t dataLen, int width, int height, int bitsPerComponent, bool preMulti)
