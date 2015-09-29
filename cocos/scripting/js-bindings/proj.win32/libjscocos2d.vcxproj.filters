@@ -113,9 +113,6 @@
     <ClCompile Include="..\manual\cocostudio\jsb_cocos2dx_studio_manual.cpp">
       <Filter>manual\cocostudio</Filter>
     </ClCompile>
-    <ClCompile Include="..\manual\component\CCComponentJS.cpp">
-      <Filter>manual\component</Filter>
-    </ClCompile>
     <ClCompile Include="..\manual\extension\jsb_cocos2dx_extension_manual.cpp">
       <Filter>manual\extension</Filter>
     </ClCompile>
@@ -146,9 +143,6 @@
     <ClCompile Include="..\auto\jsb_cocos2dx_3d_auto.cpp">
       <Filter>auto</Filter>
     </ClCompile>
-    <ClCompile Include="..\auto\jsb_cocos2dx_3d_extension_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
     <ClCompile Include="..\manual\3d\jsb_cocos2dx_3d_manual.cpp">
       <Filter>manual\3d</Filter>
     </ClCompile>
@@ -166,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="..\manual\navmesh\jsb_cocos2dx_navmesh_conversions.cpp">
       <Filter>manual\navmesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\component\CCComponentJS.cpp">
+      <Filter>manual</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -253,9 +250,6 @@
     <ClInclude Include="..\manual\cocostudio\jsb_cocos2dx_studio_manual.h">
       <Filter>manual\cocostudio</Filter>
     </ClInclude>
-    <ClInclude Include="..\manual\component\CCComponentJS.h">
-      <Filter>manual\component</Filter>
-    </ClInclude>
     <ClInclude Include="..\manual\extension\jsb_cocos2dx_extension_manual.h">
       <Filter>manual\extension</Filter>
     </ClInclude>
@@ -289,9 +283,6 @@
     <ClInclude Include="..\auto\jsb_cocos2dx_3d_auto.hpp">
       <Filter>auto</Filter>
     </ClInclude>
-    <ClInclude Include="..\auto\jsb_cocos2dx_3d_extension_auto.hpp">
-      <Filter>auto</Filter>
-    </ClInclude>
     <ClInclude Include="..\manual\3d\jsb_cocos2dx_3d_manual.h">
       <Filter>manual\3d</Filter>
     </ClInclude>
@@ -309,6 +300,9 @@
     </ClInclude>
     <ClInclude Include="..\manual\navmesh\jsb_cocos2dx_navmesh_conversions.h">
       <Filter>manual\navmesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\component\CCComponentJS.h">
+      <Filter>auto</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
