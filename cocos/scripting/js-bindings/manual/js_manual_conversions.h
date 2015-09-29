@@ -108,8 +108,8 @@ bool jsval_to_ccdictionary(JSContext* cx, JS::HandleValue v, cocos2d::__Dictiona
 bool jsval_to_ccacceleration(JSContext* cx, JS::HandleValue v, cocos2d::Acceleration* ret);
 bool jsvals_variadic_to_ccarray( JSContext *cx, jsval *vp, int argc, cocos2d::__Array** ret);
 bool jsval_to_quaternion(JSContext *cx, JS::HandleValue vp, cocos2d::Quaternion* ret);
-bool jsval_to_obb(JSContext *cx, JS::HandleValue vp, cocos2d::OBB* ret);
-bool jsval_to_ray(JSContext *cx, JS::HandleValue vp, cocos2d::Ray* ret);
+//bool jsval_to_obb(JSContext *cx, JS::HandleValue vp, cocos2d::OBB* ret);
+//bool jsval_to_ray(JSContext *cx, JS::HandleValue vp, cocos2d::Ray* ret);
 
 // forward declaration
 js_proxy_t* jsb_get_js_proxy(JSObject* jsObj);
@@ -270,7 +270,7 @@ jsval ccacceleration_to_jsval(JSContext* cx, const cocos2d::Acceleration& v);
 jsval ccaffinetransform_to_jsval(JSContext* cx, const cocos2d::AffineTransform& t);
 jsval FontDefinition_to_jsval(JSContext* cx, const cocos2d::FontDefinition& t);
 jsval quaternion_to_jsval(JSContext* cx, const cocos2d::Quaternion& q);
-jsval meshVertexAttrib_to_jsval(JSContext* cx, const cocos2d::MeshVertexAttrib& q);
+//jsval meshVertexAttrib_to_jsval(JSContext* cx, const cocos2d::MeshVertexAttrib& q);
 jsval uniform_to_jsval(JSContext* cx, const cocos2d::Uniform* uniform);
 
 template<class T>
