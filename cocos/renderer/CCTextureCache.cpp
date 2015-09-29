@@ -38,8 +38,8 @@ THE SOFTWARE.
 #include "base/CCScheduler.h"
 #include "platform/CCFileUtils.h"
 #include "base/ccUtils.h"
+#include "base/CCString.h"
 
-#include "deprecated/CCString.h"
 #include "base/CCNinePatchImageParser.h"
 
 

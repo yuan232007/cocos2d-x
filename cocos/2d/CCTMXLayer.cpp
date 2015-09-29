@@ -31,7 +31,7 @@ THE SOFTWARE.
 #include "base/CCDirector.h"
 #include "renderer/CCTextureCache.h"
 #include "renderer/CCGLProgram.h"
-#include "deprecated/CCString.h" // For StringUtils::format
+#include "base/CCString.h"
 
 NS_CC_BEGIN
 

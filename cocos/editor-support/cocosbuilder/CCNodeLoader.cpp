@@ -11,6 +11,13 @@ using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
+namespace {
+    class RefVector : public cocos2d::Ref
+    {
+    public:
+        std::vector<std::string> data;
+    };
+}
 namespace cocosbuilder {
 
 NodeLoader::NodeLoader()
@@ -79,13 +86,11 @@ void NodeLoader::parseProperties(Node * pNode, Node * pParent, CCBReader * ccbRe
                 pNode = ccbNode->getCCBFileNode();
                 
                 // Skip properties that doesn't have a value to override
-                __Array *extraPropsNames = (__Array*)pNode->getUserObject();
-                Ref* pObj = nullptr;
+                auto extraPropsNames = (RefVector*)pNode->getUserObject();
                 bool bFound = false;
-                CCARRAY_FOREACH(extraPropsNames, pObj)
+                for (auto&& propName : extraPropsNames->data)
                 {
-                    __String* pStr = static_cast<__String*>(pObj);
-                    if (0 == pStr->compare(propertyName.c_str()))
+                    if (propertyName == propName)
                     {
                         bFound = true;
                         break;
@@ -96,14 +101,14 @@ void NodeLoader::parseProperties(Node * pNode, Node * pParent, CCBReader * ccbRe
         }
         else if (isExtraProp && pNode == ccbReader->getAnimationManager()->getRootNode())
         {
-            __Array *extraPropsNames = static_cast<__Array*>(pNode->getUserObject());
+            auto extraPropsNames = static_cast<RefVector*>(pNode->getUserObject());
             if (! extraPropsNames)
             {
-                extraPropsNames = __Array::create();
+                extraPropsNames = new (std::nothrow) RefVector;
                 pNode->setUserObject(extraPropsNames);
             }
             
-            extraPropsNames->addObject(__String::create(propertyName));
+            extraPropsNames->data.push_back(propertyName);
         }
 
         switch(type) 

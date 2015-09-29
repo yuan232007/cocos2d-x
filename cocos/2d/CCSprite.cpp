@@ -38,9 +38,7 @@ THE SOFTWARE.
 #include "renderer/CCRenderer.h"
 #include "base/CCDirector.h"
 #include "2d/CCCamera.h"
-
-#include "deprecated/CCString.h"
-
+#include "base/CCString.h"
 
 NS_CC_BEGIN
 

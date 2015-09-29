@@ -52,8 +52,8 @@ THE SOFTWARE.
 #include "base/ZipUtils.h"
 #include "base/CCDirector.h"
 #include "renderer/CCTextureCache.h"
-#include "deprecated/CCString.h"
 #include "platform/CCFileUtils.h"
+#include "base/CCString.h"
 
 using namespace std;
 

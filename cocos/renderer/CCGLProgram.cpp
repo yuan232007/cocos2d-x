@@ -34,10 +34,9 @@ THE SOFTWARE.
 
 #include "base/CCDirector.h"
 #include "base/uthash.h"
+#include "base/CCString.h"
 #include "renderer/ccGLStateCache.h"
 #include "platform/CCFileUtils.h"
-
-#include "deprecated/CCString.h"
 
 // helper functions
 

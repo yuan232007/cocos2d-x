@@ -413,7 +413,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\base\CCConfiguration.cpp" />
     <ClCompile Include="..\base\CCConsole.cpp" />
     <ClCompile Include="..\base\CCData.cpp" />
-    <ClCompile Include="..\base\CCDataVisitor.cpp" />
     <ClCompile Include="..\base\CCDirector.cpp" />
     <ClCompile Include="..\base\CCEvent.cpp" />
     <ClCompile Include="..\base\CCEventAcceleration.cpp" />
@@ -440,6 +439,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\base\CCRef.cpp" />
     <ClCompile Include="..\base\CCScheduler.cpp" />
     <ClCompile Include="..\base\CCScriptSupport.cpp" />
+    <ClCompile Include="..\base\CCString.cpp" />
     <ClCompile Include="..\base\CCTouch.cpp" />
     <ClCompile Include="..\base\ccTypes.cpp" />
     <ClCompile Include="..\base\CCUserDefault.cpp" />
@@ -453,12 +453,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\base\TGAlib.cpp" />
     <ClCompile Include="..\base\ZipUtils.cpp" />
     <ClCompile Include="..\cocos2d.cpp" />
-    <ClCompile Include="..\deprecated\CCArray.cpp" />
-    <ClCompile Include="..\deprecated\CCDeprecated.cpp" />
-    <ClCompile Include="..\deprecated\CCDictionary.cpp" />
-    <ClCompile Include="..\deprecated\CCNotificationCenter.cpp" />
-    <ClCompile Include="..\deprecated\CCSet.cpp" />
-    <ClCompile Include="..\deprecated\CCString.cpp" />
     <ClCompile Include="..\editor-support\cocosbuilder\CCBAnimationManager.cpp" />
     <ClCompile Include="..\editor-support\cocosbuilder\CCBFileLoader.cpp" />
     <ClCompile Include="..\editor-support\cocosbuilder\CCBKeyframe.cpp" />
@@ -701,9 +695,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="CCGrid.cpp" />
     <ClCompile Include="CCLabel.cpp" />
     <ClCompile Include="CCLabelAtlas.cpp" />
-    <ClCompile Include="CCLabelBMFont.cpp" />
     <ClCompile Include="CCLabelTextFormatter.cpp" />
-    <ClCompile Include="CCLabelTTF.cpp" />
     <ClCompile Include="CCLayer.cpp" />
     <ClCompile Include="CCLight.cpp" />
     <ClCompile Include="CCMenu.cpp" />
@@ -989,7 +981,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\base\CCConfiguration.h" />
     <ClInclude Include="..\base\CCConsole.h" />
     <ClInclude Include="..\base\CCData.h" />
-    <ClInclude Include="..\base\CCDataVisitor.h" />
     <ClInclude Include="..\base\CCDirector.h" />
     <ClInclude Include="..\base\CCEvent.h" />
     <ClInclude Include="..\base\CCEventAcceleration.h" />
@@ -1022,6 +1013,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\base\CCRefPtr.h" />
     <ClInclude Include="..\base\CCScheduler.h" />
     <ClInclude Include="..\base\CCScriptSupport.h" />
+    <ClInclude Include="..\base\CCString.h" />
     <ClInclude Include="..\base\CCTouch.h" />
     <ClInclude Include="..\base\ccTypes.h" />
     <ClInclude Include="..\base\CCUserDefault.h" />
@@ -1039,16 +1031,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\base\utlist.h" />
     <ClInclude Include="..\base\ZipUtils.h" />
     <ClInclude Include="..\cocos2d.h" />
-    <ClInclude Include="..\deprecated\CCArray.h" />
-    <ClInclude Include="..\deprecated\CCBool.h" />
-    <ClInclude Include="..\deprecated\CCDeprecated.h" />
-    <ClInclude Include="..\deprecated\CCDictionary.h" />
-    <ClInclude Include="..\deprecated\CCDouble.h" />
-    <ClInclude Include="..\deprecated\CCFloat.h" />
-    <ClInclude Include="..\deprecated\CCInteger.h" />
-    <ClInclude Include="..\deprecated\CCNotificationCenter.h" />
-    <ClInclude Include="..\deprecated\CCSet.h" />
-    <ClInclude Include="..\deprecated\CCString.h" />
     <ClInclude Include="..\editor-support\cocosbuilder\CCBAnimationManager.h" />
     <ClInclude Include="..\editor-support\cocosbuilder\CCBFileLoader.h" />
     <ClInclude Include="..\editor-support\cocosbuilder\CCBKeyframe.h" />
@@ -1319,8 +1301,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="CCGrid.h" />
     <ClInclude Include="CCLabel.h" />
     <ClInclude Include="CCLabelAtlas.h" />
-    <ClInclude Include="CCLabelBMFont.h" />
-    <ClInclude Include="CCLabelTTF.h" />
     <ClInclude Include="CCLayer.h" />
     <ClInclude Include="CCLight.h" />
     <ClInclude Include="CCMenu.h" />

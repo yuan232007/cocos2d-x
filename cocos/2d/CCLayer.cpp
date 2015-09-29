@@ -40,9 +40,7 @@ THE SOFTWARE.
 #include "base/CCEventListenerKeyboard.h"
 #include "base/CCEventAcceleration.h"
 #include "base/CCEventListenerAcceleration.h"
-
-
-#include "deprecated/CCString.h"
+#include "base/CCString.h"
 
 NS_CC_BEGIN
 

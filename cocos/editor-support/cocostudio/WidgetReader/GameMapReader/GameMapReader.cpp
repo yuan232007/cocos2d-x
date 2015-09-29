@@ -225,7 +225,7 @@ namespace cocostudio
                 Node* node = Node::create();
                 setPropsWithFlatBuffers(node, (Table*)gameMapOptions);
                 auto label = Label::create();
-                label->setString(__String::createWithFormat("Some error of gid are in TMX Layer '%s'", layerName.c_str())->getCString());
+                label->setString(StringUtils::format("Some error of gid are in TMX Layer '%s'", layerName.c_str()));
                 node->setScale(1.0f);
                 node->addChild(label);
                 return node;
