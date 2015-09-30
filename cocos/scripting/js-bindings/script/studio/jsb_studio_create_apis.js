@@ -22,55 +22,6 @@
 
 /************************  Cocostudio  *************************/
 
-ccs.Armature.prototype._ctor = function(name, parentBone) {
-    // parentBone !== undefined && ccs.Armature.prototype.init.call(this, name, parentBone);
-    if(parentBone !== undefined)
-        ccs.Armature.prototype.init.call(this, name, parentBone);
-    else if(name !== undefined)
-        ccs.Armature.prototype.init.call(this, name);
-};
-
-ccs.Bone.prototype._ctor = function(name) {
-    name !== undefined && ccs.Bone.prototype.init.call(this, name);
-};
-
-ccs.ArmatureAnimation.prototype._ctor = function(armature) {
-    armature !== undefined && ccs.ArmatureAnimation.prototype.init.call(this, armature);
-};
-
-ccs.Tween.prototype._ctor = function(bone) {
-    bone !== undefined && ccs.Tween.prototype.init.call(this, bone);
-};
-
-ccs.BatchNode.prototype._ctor = function() {
-    ccs.BatchNode.prototype.init.call(this);
-};
-
-ccs.DecorativeDisplay.prototype._ctor = function() {
-    ccs.DecorativeDisplay.prototype.init.call(this);
-};
-
-ccs.DisplayManager.prototype._ctor = function(bone) {
-    bone !== undefined && ccs.DisplayManager.prototype.init.call(this, bone);
-};
-
-ccs.Skin.prototype._ctor = function(fileName, rect) {
-    if (fileName == null || fileName == "") {
-        ccs.Skin.prototype.init.call(this);
-    } else {
-        if(fileName[0] == "#"){
-            ccs.Skin.prototype.initWithSpriteFrameName.call(this, fileName.substr(1));
-        } else {
-            rect ? ccs.Skin.prototype.initWithFile.call(this, fileName, rect)
-                : ccs.Skin.prototype.initWithFile.call(this, fileName);
-        }
-    }
-};
-
-ccs.ColliderDetector.prototype._ctor = function(bone) {
-    bone !== undefined && ccs.ColliderDetector.prototype.init.call(this, bone);
-};
-
 ccs.TriggerObj.prototype._ctor = function() {
     ccs.TriggerObj.prototype.init.call(this);
 };

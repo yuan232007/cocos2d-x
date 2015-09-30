@@ -43,7 +43,6 @@
         "src/SpineTest/SpineTest.js",
         "src/SpriteTest/SpriteTest.js",
         "src/LightTest/LightTest.js",
-        "src/BillBoardTest/BillBoardTest.js",
         "src/TextureCacheTest/TextureCacheTest.js",
         "src/CocosDenshionTest/CocosDenshionTest.js",
         "src/CocosNodeTest/CocosNodeTest.js",
@@ -68,11 +67,6 @@
         "src/MotionStreakTest/MotionStreakTest.js",
         "src/ClippingNodeTest/ClippingNodeTest.js",
         "src/OpenGLTest/OpenGLTest.js",
-
-        "src/FacebookTest/FacebookTest.js",
-        "src/FacebookTest/FacebookShareTest.js",
-        "src/FacebookTest/FacebookUserTest.js",
-        "src/FacebookTest/FacebookTestsManager.js",
 
         "src/ExtensionsTest/ExtensionsTest.js",
         "src/ExtensionsTest/AssetsManagerTest/AssetsManagerTest.js",
@@ -105,7 +99,6 @@
         "src/ExtensionsTest/PluginXTest/PluginXTestsManager.js",
         "src/ExtensionsTest/PluginXTest/IOSIAPTest.js",
         "src/ExtensionsTest/PluginXTest/AnalyticsTest.js",
-        "src/CocoStudioTest/ArmatureTest/ArmatureTest.js",
         "src/CocoStudioTest/ComponentsTest/ComponentsTestScene.js",
         "src/CocoStudioTest/ComponentsTest/EnemyController.js",
         "src/CocoStudioTest/ComponentsTest/GameOverScene.js",
@@ -169,14 +162,12 @@
         "src/XHRTest/XHRTest.js",
         "src/XHRTest/XHRArrayBufferTest.js",
 
-        "src/Box2dTest/Box2dTest.js",
         "src/ChipmunkTest/ChipmunkTest.js",
 
         "src/Presentation/Presentation.js",
         "src/ReflectionTest/ReflectionTest.js",
 
         "src/SpritePolygonTest/SpritePolygonTest.js",
-        "src/MaterialSystemTest/MaterialSystemTest.js",
         "src/VibrateTest/VibrateTest.js",
 
         "src/NativeTest/NativeTest.js",

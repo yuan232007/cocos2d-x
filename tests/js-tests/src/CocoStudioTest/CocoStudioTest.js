@@ -29,12 +29,6 @@ var ITEM_TAG_BASIC = 1000;
 
 var cocoStudioTestItemNames = [
     {
-        itemTitle:"CocoStudioArmatureTest",
-        testScene:function () {
-            runArmatureTestScene();
-        }
-    },
-    {
         itemTitle:"CocoStudioGUITest",
         testScene:function () {
             runGuiTestMain();

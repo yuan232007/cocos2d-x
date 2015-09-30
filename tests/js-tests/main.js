@@ -99,7 +99,6 @@ cc.game.onStart = function(){
             'res/resjs',
             'res',
             'res/scenetest',
-            'res/scenetest/ArmatureComponentTest',
             'res/scenetest/AttributeComponentTest',
             'res/scenetest/BackgroundComponentTest',
             'res/scenetest/EffectComponentTest',

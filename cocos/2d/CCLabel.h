@@ -455,8 +455,8 @@ public:
     virtual void removeChild(Node* child, bool cleanup = true) override;
     virtual void setGlobalZOrder(float globalZOrder) override;
 
-    CC_DEPRECATED_ATTRIBUTE virtual void setFontDefinition(const FontDefinition& textDefinition);
-    CC_DEPRECATED_ATTRIBUTE FontDefinition getFontDefinition() const { return _getFontDefinition(); }
+    virtual void setFontDefinition(const FontDefinition& textDefinition);
+    FontDefinition getFontDefinition() const { return _getFontDefinition(); }
 
 CC_CONSTRUCTOR_ACCESS:
     /**

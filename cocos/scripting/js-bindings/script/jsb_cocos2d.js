@@ -1960,6 +1960,132 @@ cc.TMXLayer.prototype.getPositonAt = function(x, y){
     return this._getPositionAt(pos);
 };
 
+//LabelTTF
+cc.LabelTTF = cc.Label.extend({
+    initWithString: function(text, fontName, fontSize, dimensions, hAlignment, vAlignment) {
+        var fontDef = new cc.FontDefinition();
+        if(fontName) fontDef.fontName = fontName;
+        if(fontSize) fontDef.fontSize = fontSize;
+        if(dimensions) {
+            fontDef.boundingWidth = dimensions.width;
+            fontDef.boundingHeight = dimensions.height;
+        }
+        if(hAlignment) fontDef.textAlign = hAlignment;
+        if(vAlignment) fontDef.verticalAlign = vAlignment;
+        this.setFontDefinition(fontDef);
+        
+        this.setString(text);
+    },
+    initWithStringAndTextDefinition: function(text, textDefinition) {
+        this.setFontDefinition(textDefinition);
+        this.setString(text);
+    },
+    setTextDefinition:function( textDefinition ) {
+        this.setFontDefinition( textDefinition );
+    },
+    getTextDefinition:function() {
+        return this.getFontDefinition();
+    },
+    enableShadow:function( shadowOffset, shadowOpacity, shadowBlur ) {
+        this._super(cc.color(0, 0, 0, 255 * shadowOpacity), shadowOffset);
+    },
+    disableShadow:function() {
+        this.disableEffect(2);
+    },
+    enableStroke:function( strokeColor, strokeSize ) {
+        this.enableOutline(cc.color(strokeColor.r, strokeColor.g, strokeColor.b, 255), strokeSize);
+    },
+    disableStroke:function() {
+        this.disableEffect(1);
+    },
+    setFontFillColor:function( textColor ) {
+        this.setTextColor(cc.color(textColor.r, textColor.g, textColor.b, 255));
+    },
+    getFontSize:function() {
+        return this.getSystemFontSize();
+    },
+    setFontSize:function( fontSize ) {
+        this.setSystemFontSize( fontSize );
+    },
+    getFontName:function() {
+        return this.getSystemFontName();
+    },
+    setFontName:function( fontName ) {
+        this.setSystemFontName( fontName );
+    }
+});
+
+cc.LabelTTF.create = function () {
+    return new cc.LabelTTF();
+};
+
+cc.LabelTTF.createWithFontDefinition = function (text, fontName, fontSize, dimensions, hAlignment, vAlignment) {
+    var ret = new cc.LabelTTF();
+	
+    var fontDef = new cc.FontDefinition();
+    if(fontName) fontDef.fontName = fontName;
+    if(fontSize) fontDef.fontSize = fontSize;
+    if(dimensions) {
+        fontDef.boundingWidth = dimensions.width;
+        fontDef.boundingHeight = dimensions.height;
+    }
+    if(hAlignment) fontDef.textAlign = hAlignment;
+    if(vAlignment) fontDef.verticalAlign = vAlignment;
+    ret.setFontDefinition(fontDef);
+    
+    ret.setString(text);
+    
+    return ret;
+};
+
+//LabelBMFont
+cc.LabelBMFont = cc.Label.extend({
+    ctor: function () {
+        this._super();
+    },
+    initWithString: function (text, fntFile, width, hAlignment, imageOffset) {
+        if (imageOffset) {
+            this.setBMFontFilePath(fntFile, imageOffset);
+        }
+        else {
+            this.setBMFontFilePath(fntFile);
+        }
+        if (width && width > 0)
+            this.setWidth(width);
+        if(hAlignment)
+            this.setAlignment(hAlignment);
+        
+        this.setString(text);
+    },
+    
+    setFntFile: function (fntFile, imageOffset) {
+        if (imageOffset) {
+            this.setBMFontFilePath(fntFile, imageOffset);
+        }
+        else {
+            this.setBMFontFilePath(fntFile);
+        }
+    },
+    getFntFile: function () {
+        return this.getBMFontFilePath();
+    },
+    getChildByTag: function (letterIndex) {
+        return this.getLetter(letterIndex);
+    }
+});
+
+cc.LabelBMFont.create = function (text, fntFile, width, hAlignment, imageOffset) {
+    if(arguments.length > 0) {
+        var ret = new cc.LabelBMFont();
+        ret.initWithString(text, fntFile, width, hAlignment, imageOffset);
+        
+        return ret;
+    }
+    else {
+        return new cc.LabelBMFont();
+    }
+};
+
 
 //
 // setBlendFunc JS API Wrapper
@@ -2619,7 +2745,6 @@ _p.setDisabledSpriteFrame = function(frame) {
 }
 
 cc.MenuItemToggle.prototype.selectedItem = cc.MenuItemToggle.prototype.getSelectedItem;
-
 
 //
 // LabelTTF API wrappers

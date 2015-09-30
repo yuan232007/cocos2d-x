@@ -35,7 +35,6 @@ require('script/jsb_create_apis.js');
 if (window.ccs) {
     require('script/studio/jsb_studio_boot.js');
     require('script/studio/jsb_cocos2d_studio.js');
-    require('script/studio/jsb_studio_property_apis.js');
     require('script/studio/jsb_studio_create_apis.js');
 
     require('script/studio/jsb_studio_load.js');
@@ -87,22 +86,6 @@ if (jsb.fileUtils.isFileExist('jsb_pluginx.js') || jsb.fileUtils.isFileExist('js
 
 if (window.sp) {
     require('script/jsb_spine.js');
-}
-
-if (jsb.Sprite3D){
-    require('script/3d/jsb_cocos2d_3d.js');
-}
-
-if (jsb.ParticleSystem3D) {
-    require('script/3d/jsb_cocos2d_3d_ext.js');
-}
-
-if (jsb.Physics3DObject) {
-    require("script/physics3d/jsb_physics3d.js");
-}
-
-if (jsb.NavMeshAgent) {
-    require("script/navmesh/jsb_navmesh.js");
 }
 
 require("script/jsb_audioengine.js");

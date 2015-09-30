@@ -11910,6 +11910,16 @@ int
 },
 
 /**
+ * @method getFontDefinition
+ * @return {cc.FontDefinition}
+ */
+getFontDefinition : function (
+)
+{
+    return cc.FontDefinition;
+},
+
+/**
  * @method getDimensions
  * @return {size_object}
  */
@@ -12087,6 +12097,16 @@ getBMFontFilePath : function (
  */
 setHorizontalAlignment : function (
 texthalignment 
+)
+{
+},
+
+/**
+ * @method setFontDefinition
+ * @param {cc.FontDefinition} arg0
+ */
+setFontDefinition : function (
+fontdefinition 
 )
 {
 },
@@ -13258,6 +13278,14 @@ isEnabled : function (
 },
 
 /**
+ * @method alignItemsHorizontally
+ */
+alignItemsHorizontally : function (
+)
+{
+},
+
+/**
  * @method alignItemsHorizontallyWithPadding
  * @param {float} arg0
  */
@@ -13273,14 +13301,6 @@ float
  */
 alignItemsVerticallyWithPadding : function (
 float 
-)
-{
-},
-
-/**
- * @method alignItemsHorizontally
- */
-alignItemsHorizontally : function (
 )
 {
 },
