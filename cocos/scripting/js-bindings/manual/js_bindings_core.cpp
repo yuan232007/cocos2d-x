@@ -23,8 +23,7 @@
 #include "js_bindings_config.h"
 #include "js_bindings_core.h"
 
-// cocos2d + chipmunk registration files
-#include "chipmunk/js_bindings_chipmunk_registration.h"
+// cocos2d registration files
 #include "cocos2d.h"
 
 //#pragma mark - Hash
