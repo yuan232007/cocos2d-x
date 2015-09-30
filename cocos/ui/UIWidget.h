@@ -249,23 +249,10 @@ public:
 
     /**
      * Gets the left boundary position of this widget in parent's coordination system.
-     * @deprecated use `getLeftBoundary` instead.
-     * @return The left boundary position of this widget.
-     */
-    CC_DEPRECATED_ATTRIBUTE float getLeftInParent(){return this->getLeftBoundary();}
-
-    /**
-     * Gets the left boundary position of this widget in parent's coordination system.
      * @return The left boundary position of this widget.
      */
     float getLeftBoundary() const;
 
-    /**
-     * Gets the bottom boundary position of this widget in parent's coordination system.
-     * @deprecated use `getBottomBoundary` instead.
-     * @return The bottom boundary position of this widget.
-     */
-    CC_DEPRECATED_ATTRIBUTE float getBottomInParent(){return this->getBottomBoundary();}
     /**
      * Gets the bottom boundary position of this widget in parent's coordination system.
      * @return The bottom boundary position of this widget.
@@ -274,22 +261,10 @@ public:
 
     /**
      * Gets the right boundary position of this widget in parent's coordination system.
-     * @deprecated use `getRightBoundary` instead.
-     * @return The right boundary position of this widget.
-     */
-    CC_DEPRECATED_ATTRIBUTE float getRightInParent(){return this->getRightBoundary();}
-    /**
-     * Gets the right boundary position of this widget in parent's coordination system.
      * @return The right boundary position of this widget.
      */
     float getRightBoundary() const;
 
-    /**
-     * Gets the top boundary position of this widget in parent's coordination system.
-     * @deprecated use `getTopBoundary` instead.
-     * @return The top boundary position of this widget.
-     */
-    CC_DEPRECATED_ATTRIBUTE float getTopInParent(){return this->getTopBoundary();}
     /**
      * Gets the top boundary position of this widget in parent's coordination system.
      * @return The top boundary position of this widget.
@@ -404,15 +379,6 @@ public:
      */
     virtual bool isFlippedY()const{return _flippedY;};
 
-    /** @deprecated Use isFlippedX() instead */
-    CC_DEPRECATED_ATTRIBUTE bool isFlipX() { return isFlippedX(); };
-    /** @deprecated Use setFlippedX() instead */
-    CC_DEPRECATED_ATTRIBUTE void setFlipX(bool flipX) { setFlippedX(flipX); };
-    /** @deprecated Use isFlippedY() instead */
-    CC_DEPRECATED_ATTRIBUTE bool isFlipY() { return isFlippedY(); };
-    /** @deprecated Use setFlippedY() instead */
-    CC_DEPRECATED_ATTRIBUTE void setFlipY(bool flipY) { setFlippedY(flipY); };
-
     //override the setScale function of Node
     virtual void setScaleX(float scaleX) override;
     virtual void setScaleY(float scaleY) override;
@@ -428,25 +394,10 @@ public:
      * Checks a point if in parent's area.
      *
      * @param pt A point in `Vec2`.
-     * @deprecated  use `isClippingParentContainsPoint` instead.
-     * @return true if the point is in parent's area, flase otherwise.
-     */
-    CC_DEPRECATED_ATTRIBUTE bool clippingParentAreaContainPoint(const Vec2 &pt){return this->isClippingParentContainsPoint(pt);}
-
-    /**
-     * Checks a point if in parent's area.
-     *
-     * @param pt A point in `Vec2`.
      * @return true if the point is in parent's area, flase otherwise.
      */
     bool isClippingParentContainsPoint(const Vec2& pt);
 
-    /**
-     * Gets the touch began point of widget when widget is selected.
-     * @deprecated use `getTouchBeganPosition` instead.
-     * @return the touch began point.
-     */
-    CC_DEPRECATED_ATTRIBUTE const Vec2& getTouchStartPos()const{return this->getTouchBeganPosition();}
     /**
      * Gets the touch began point of widget when widget is selected.
      * @return the touch began point.
@@ -455,34 +406,16 @@ public:
 
     /*
      * Gets the touch move point of widget when widget is selected.
-     * @deprecated use `getTouchMovePosition` instead.
-     * @return the touch move point.
-     */
-    CC_DEPRECATED_ATTRIBUTE const Vec2& getTouchMovePos()const{ return this->getTouchMovePosition();}
-    /*
-     * Gets the touch move point of widget when widget is selected.
      * @return the touch move point.
      */
     const Vec2& getTouchMovePosition()const;
 
     /*
      * Gets the touch end point of widget when widget is selected.
-     * @deprecated use `getTouchEndPosition` instead.
-     * @return the touch end point.
-     */
-    CC_DEPRECATED_ATTRIBUTE const Vec2& getTouchEndPos()const{return this->getTouchEndPosition();}
-    /*
-     * Gets the touch end point of widget when widget is selected.
      * @return the touch end point.
      */
     const Vec2& getTouchEndPosition()const;
 
-    /**
-     * Changes the size that is widget's size
-     * @deprecated use `setContentSize` instead.
-     * @param size that is widget's size
-     */
-    CC_DEPRECATED_ATTRIBUTE virtual void setSize(const Size &size);
     /**
      * Changes the size that is widget's size
      * @param contentSize A content size in `Size`.
@@ -512,13 +445,6 @@ public:
      */
     SizeType getSizeType() const;
 
-    /**
-     * Get the size of widget
-     *
-     * @return Widget content size.
-     */
-    CC_DEPRECATED_ATTRIBUTE const Size& getSize() const;
-    
     /**
      * Get the user defined widget size.
      *@return User defined size.
@@ -594,17 +520,7 @@ public:
      * @return LayoutParameter
      */
     LayoutParameter* getLayoutParameter()const override;
-    /**
-     * Gets LayoutParameter of widget.
-     *
-     * @see LayoutParameter
-     * @deprecated use `getLayoutParameter()` instead.
-     * @param type  Relative or Linear
-     * @return LayoutParameter
-     */
-    CC_DEPRECATED_ATTRIBUTE LayoutParameter* getLayoutParameter(LayoutParameter::Type type);
-
-
+    
     /**
      * Toggle whether ignore user defined content size for widget.
      * Set true will ignore user defined content size which means 
@@ -758,18 +674,6 @@ public:
      * when a widget calls this method, it will get focus immediately.
      */
     void requestFocus();
-
-    /**
-     * Return a current focused widget in your UI scene.
-     * No matter what widget object you call this method on , it will return you the exact one focused widget.
-     * @param isWidget  if your set isWidget to true, it will return the _realFocusedWidget which is always a widget
-     *                  otherwise, it will return a widget or a layout.
-     * @deprecated use `getCurrentFocusedWidget` instead.
-     */
-    CC_DEPRECATED_ATTRIBUTE Widget* getCurrentFocusedWidget(bool isWidget){
-        CC_UNUSED_PARAM(isWidget);
-        return getCurrentFocusedWidget();
-    }
 
     /**
      * Return a current focused widget in your UI scene.
