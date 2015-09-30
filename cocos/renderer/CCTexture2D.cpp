@@ -572,9 +572,9 @@ bool Texture2D::initWithMipmaps(MipmapInfo* mipmaps, int mipmapsNum, PixelFormat
     const PixelFormatInfo& info = _pixelFormatInfoTables.at(pixelFormat);
 
     if (info.compressed && !Configuration::getInstance()->supportsPVRTC()
-                        && !Configuration::getInstance()->supportsETC()
-                        && !Configuration::getInstance()->supportsS3TC()
-                        && !Configuration::getInstance()->supportsATITC())
+                        && !Configuration::getInstance()->supportsETC())
+//                        && !Configuration::getInstance()->supportsS3TC()
+//                        && !Configuration::getInstance()->supportsATITC())
     {
         CCLOG("cocos2d: WARNING: PVRTC/ETC images are not supported");
         return false;

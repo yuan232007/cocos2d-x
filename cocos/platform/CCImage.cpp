@@ -69,8 +69,8 @@ extern "C"
 #include "jpeglib.h"
 #endif // CC_USE_JPEG
 }
-#include "base/s3tc.h"
-#include "base/atitc.h"
+//#include "base/s3tc.h"
+//#include "base/atitc.h"
 #include "base/pvr.h"
 #include "base/TGAlib.h"
 
@@ -284,122 +284,122 @@ namespace
 //////////////////////////////////////////////////////////////////////////
 
 //struct and data for s3tc(dds) struct
-namespace
-{
-    struct DDColorKey
-    {
-        uint32_t colorSpaceLowValue;
-        uint32_t colorSpaceHighValue;
-    };
-    
-    struct DDSCaps
-    {
-        uint32_t caps;
-        uint32_t caps2;
-        uint32_t caps3;
-        uint32_t caps4;
-    };
-    
-    struct DDPixelFormat
-    {
-        uint32_t size;
-        uint32_t flags;
-        uint32_t fourCC;
-        uint32_t RGBBitCount;
-        uint32_t RBitMask;
-        uint32_t GBitMask;
-        uint32_t BBitMask;
-        uint32_t ABitMask;
-    };
-    
-    
-    struct DDSURFACEDESC2
-    {
-        uint32_t size;
-        uint32_t flags;
-        uint32_t height;
-        uint32_t width;
-        
-        union
-        {
-            uint32_t pitch;
-            uint32_t linearSize;
-        } DUMMYUNIONNAMEN1;
-        
-        union
-        {
-            uint32_t backBufferCount;
-            uint32_t depth;
-        } DUMMYUNIONNAMEN5;
-        
-        union
-        {
-            uint32_t mipMapCount;
-            uint32_t refreshRate;
-            uint32_t srcVBHandle;
-        } DUMMYUNIONNAMEN2;
-        
-        uint32_t alphaBitDepth;
-        uint32_t reserved;
-        uint32_t surface;
-        
-        union
-        {
-            DDColorKey ddckCKDestOverlay;
-            uint32_t emptyFaceColor;
-        } DUMMYUNIONNAMEN3;
-        
-        DDColorKey ddckCKDestBlt;
-        DDColorKey ddckCKSrcOverlay;
-        DDColorKey ddckCKSrcBlt;
-        
-        union
-        {
-            DDPixelFormat ddpfPixelFormat;
-            uint32_t FVF;
-        } DUMMYUNIONNAMEN4;
-        
-        DDSCaps ddsCaps;
-        uint32_t textureStage;
-    } ;
-    
-#pragma pack(push,1)
-    
-    struct S3TCTexHeader
-    {
-        char fileCode[4];
-        DDSURFACEDESC2 ddsd;
-    };
-    
-#pragma pack(pop)
-
-}
+//namespace
+//{
+//    struct DDColorKey
+//    {
+//        uint32_t colorSpaceLowValue;
+//        uint32_t colorSpaceHighValue;
+//    };
+//    
+//    struct DDSCaps
+//    {
+//        uint32_t caps;
+//        uint32_t caps2;
+//        uint32_t caps3;
+//        uint32_t caps4;
+//    };
+//    
+//    struct DDPixelFormat
+//    {
+//        uint32_t size;
+//        uint32_t flags;
+//        uint32_t fourCC;
+//        uint32_t RGBBitCount;
+//        uint32_t RBitMask;
+//        uint32_t GBitMask;
+//        uint32_t BBitMask;
+//        uint32_t ABitMask;
+//    };
+//    
+//    
+//    struct DDSURFACEDESC2
+//    {
+//        uint32_t size;
+//        uint32_t flags;
+//        uint32_t height;
+//        uint32_t width;
+//        
+//        union
+//        {
+//            uint32_t pitch;
+//            uint32_t linearSize;
+//        } DUMMYUNIONNAMEN1;
+//        
+//        union
+//        {
+//            uint32_t backBufferCount;
+//            uint32_t depth;
+//        } DUMMYUNIONNAMEN5;
+//        
+//        union
+//        {
+//            uint32_t mipMapCount;
+//            uint32_t refreshRate;
+//            uint32_t srcVBHandle;
+//        } DUMMYUNIONNAMEN2;
+//        
+//        uint32_t alphaBitDepth;
+//        uint32_t reserved;
+//        uint32_t surface;
+//        
+//        union
+//        {
+//            DDColorKey ddckCKDestOverlay;
+//            uint32_t emptyFaceColor;
+//        } DUMMYUNIONNAMEN3;
+//        
+//        DDColorKey ddckCKDestBlt;
+//        DDColorKey ddckCKSrcOverlay;
+//        DDColorKey ddckCKSrcBlt;
+//        
+//        union
+//        {
+//            DDPixelFormat ddpfPixelFormat;
+//            uint32_t FVF;
+//        } DUMMYUNIONNAMEN4;
+//        
+//        DDSCaps ddsCaps;
+//        uint32_t textureStage;
+//    } ;
+//    
+//#pragma pack(push,1)
+//    
+//    struct S3TCTexHeader
+//    {
+//        char fileCode[4];
+//        DDSURFACEDESC2 ddsd;
+//    };
+//    
+//#pragma pack(pop)
+//
+//}
 //s3tc struct end
 
 //////////////////////////////////////////////////////////////////////////
 
 //struct and data for atitc(ktx) struct
-namespace
-{
-    struct ATITCTexHeader
-    {
-        //HEADER
-        char identifier[12];
-        uint32_t endianness;
-        uint32_t glType;
-        uint32_t glTypeSize;
-        uint32_t glFormat;
-        uint32_t glInternalFormat;
-        uint32_t glBaseInternalFormat;
-        uint32_t pixelWidth;
-        uint32_t pixelHeight;
-        uint32_t pixelDepth;
-        uint32_t numberOfArrayElements;
-        uint32_t numberOfFaces;
-        uint32_t numberOfMipmapLevels;
-        uint32_t bytesOfKeyValueData;
-    };
-}
+//namespace
+//{
+//    struct ATITCTexHeader
+//    {
+//        //HEADER
+//        char identifier[12];
+//        uint32_t endianness;
+//        uint32_t glType;
+//        uint32_t glTypeSize;
+//        uint32_t glFormat;
+//        uint32_t glInternalFormat;
+//        uint32_t glBaseInternalFormat;
+//        uint32_t pixelWidth;
+//        uint32_t pixelHeight;
+//        uint32_t pixelDepth;
+//        uint32_t numberOfArrayElements;
+//        uint32_t numberOfFaces;
+//        uint32_t numberOfMipmapLevels;
+//        uint32_t bytesOfKeyValueData;
+//    };
+//}
 //atittc struct end
 
 //////////////////////////////////////////////////////////////////////////
@@ -559,12 +559,12 @@ bool Image::initWithImageData(const unsigned char * data, ssize_t dataLen)
         case Format::ETC:
             ret = initWithETCData(unpackedData, unpackedLen);
             break;
-        case Format::S3TC:
-            ret = initWithS3TCData(unpackedData, unpackedLen);
-            break;
-        case Format::ATITC:
-            ret = initWithATITCData(unpackedData, unpackedLen);
-            break;
+//        case Format::S3TC:
+//            ret = initWithS3TCData(unpackedData, unpackedLen);
+//            break;
+//        case Format::ATITC:
+//            ret = initWithATITCData(unpackedData, unpackedLen);
+//            break;
         default:
             {
                 // load and detect image format
@@ -612,28 +612,28 @@ bool Image::isEtc(const unsigned char * data, ssize_t dataLen)
 }
 
 
-bool Image::isS3TC(const unsigned char * data, ssize_t dataLen)
-{
-
-    S3TCTexHeader *header = (S3TCTexHeader *)data;
-    
-    if (strncmp(header->fileCode, "DDS", 3) != 0)
-    {
-        return false;
-    }
-    return true;
-}
-
-bool Image::isATITC(const unsigned char *data, ssize_t dataLen)
-{
-    ATITCTexHeader *header = (ATITCTexHeader *)data;
-    
-    if (strncmp(&header->identifier[1], "KTX", 3) != 0)
-    {
-        return false;
-    }
-    return true;
-}
+//bool Image::isS3TC(const unsigned char * data, ssize_t dataLen)
+//{
+//
+//    S3TCTexHeader *header = (S3TCTexHeader *)data;
+//    
+//    if (strncmp(header->fileCode, "DDS", 3) != 0)
+//    {
+//        return false;
+//    }
+//    return true;
+//}
+//
+//bool Image::isATITC(const unsigned char *data, ssize_t dataLen)
+//{
+//    ATITCTexHeader *header = (ATITCTexHeader *)data;
+//    
+//    if (strncmp(&header->identifier[1], "KTX", 3) != 0)
+//    {
+//        return false;
+//    }
+//    return true;
+//}
 
 bool Image::isJpg(const unsigned char * data, ssize_t dataLen)
 {
@@ -647,33 +647,33 @@ bool Image::isJpg(const unsigned char * data, ssize_t dataLen)
     return memcmp(data, JPG_SOI, 2) == 0;
 }
 
-bool Image::isTiff(const unsigned char * data, ssize_t dataLen)
-{
-    if (dataLen <= 4)
-    {
-        return false;
-    }
-
-    static const char* TIFF_II = "II";
-    static const char* TIFF_MM = "MM";
-
-    return (memcmp(data, TIFF_II, 2) == 0 && *(static_cast<const unsigned char*>(data) + 2) == 42 && *(static_cast<const unsigned char*>(data) + 3) == 0) ||
-        (memcmp(data, TIFF_MM, 2) == 0 && *(static_cast<const unsigned char*>(data) + 2) == 0 && *(static_cast<const unsigned char*>(data) + 3) == 42);
-}
-
-bool Image::isWebp(const unsigned char * data, ssize_t dataLen)
-{
-    if (dataLen <= 12)
-    {
-        return false;
-    }
-
-    static const char* WEBP_RIFF = "RIFF";
-    static const char* WEBP_WEBP = "WEBP";
-
-    return memcmp(data, WEBP_RIFF, 4) == 0 
-        && memcmp(static_cast<const unsigned char*>(data) + 8, WEBP_WEBP, 4) == 0;
-}
+//bool Image::isTiff(const unsigned char * data, ssize_t dataLen)
+//{
+//    if (dataLen <= 4)
+//    {
+//        return false;
+//    }
+//
+//    static const char* TIFF_II = "II";
+//    static const char* TIFF_MM = "MM";
+//
+//    return (memcmp(data, TIFF_II, 2) == 0 && *(static_cast<const unsigned char*>(data) + 2) == 42 && *(static_cast<const unsigned char*>(data) + 3) == 0) ||
+//        (memcmp(data, TIFF_MM, 2) == 0 && *(static_cast<const unsigned char*>(data) + 2) == 0 && *(static_cast<const unsigned char*>(data) + 3) == 42);
+//}
+//
+//bool Image::isWebp(const unsigned char * data, ssize_t dataLen)
+//{
+//    if (dataLen <= 12)
+//    {
+//        return false;
+//    }
+//
+//    static const char* WEBP_RIFF = "RIFF";
+//    static const char* WEBP_WEBP = "WEBP";
+//
+//    return memcmp(data, WEBP_RIFF, 4) == 0 
+//        && memcmp(static_cast<const unsigned char*>(data) + 8, WEBP_WEBP, 4) == 0;
+//}
 
 bool Image::isPvr(const unsigned char * data, ssize_t dataLen)
 {
@@ -698,14 +698,14 @@ Image::Format Image::detectFormat(const unsigned char * data, ssize_t dataLen)
     {
         return Format::JPG;
     }
-    else if (isTiff(data, dataLen))
-    {
-        return Format::TIFF;
-    }
-    else if (isWebp(data, dataLen))
-    {
-        return Format::WEBP;
-    }
+//    else if (isTiff(data, dataLen))
+//    {
+//        return Format::TIFF;
+//    }
+//    else if (isWebp(data, dataLen))
+//    {
+//        return Format::WEBP;
+//    }
     else if (isPvr(data, dataLen))
     {
         return Format::PVR;
@@ -714,14 +714,14 @@ Image::Format Image::detectFormat(const unsigned char * data, ssize_t dataLen)
     {
         return Format::ETC;
     }
-    else if (isS3TC(data, dataLen))
-    {
-        return Format::S3TC;
-    }
-    else if (isATITC(data, dataLen))
-    {
-        return Format::ATITC;
-    }
+//    else if (isS3TC(data, dataLen))
+//    {
+//        return Format::S3TC;
+//    }
+//    else if (isATITC(data, dataLen))
+//    {
+//        return Format::ATITC;
+//    }
     else
     {
         CCLOG("cocos2d: can't detect image format");
@@ -1343,10 +1343,10 @@ namespace
     bool testFormatForPvr3TCSupport(PVR3TexturePixelFormat format)
     {
         switch (format) {
-            case PVR3TexturePixelFormat::DXT1:
-            case PVR3TexturePixelFormat::DXT3:
-            case PVR3TexturePixelFormat::DXT5:
-                return Configuration::getInstance()->supportsS3TC();
+//            case PVR3TexturePixelFormat::DXT1:
+//            case PVR3TexturePixelFormat::DXT3:
+//            case PVR3TexturePixelFormat::DXT5:
+//                return Configuration::getInstance()->supportsS3TC();
                 
             case PVR3TexturePixelFormat::BGRA8888:
                 return Configuration::getInstance()->supportsBGRA8888();
@@ -1843,261 +1843,261 @@ namespace
     }
 }
 
-bool Image::initWithS3TCData(const unsigned char * data, ssize_t dataLen)
-{
-    
-    const uint32_t FOURCC_DXT1 = makeFourCC('D', 'X', 'T', '1');
-    const uint32_t FOURCC_DXT3 = makeFourCC('D', 'X', 'T', '3');
-    const uint32_t FOURCC_DXT5 = makeFourCC('D', 'X', 'T', '5');
-    
-    /* load the .dds file */
-    
-    S3TCTexHeader *header = (S3TCTexHeader *)data;
-    unsigned char *pixelData = static_cast<unsigned char*>(malloc((dataLen - sizeof(S3TCTexHeader)) * sizeof(unsigned char)));
-    memcpy((void *)pixelData, data + sizeof(S3TCTexHeader), dataLen - sizeof(S3TCTexHeader));
-    
-    _width = header->ddsd.width;
-    _height = header->ddsd.height;
-    _numberOfMipmaps = MAX(1, header->ddsd.DUMMYUNIONNAMEN2.mipMapCount); //if dds header reports 0 mipmaps, set to 1 to force correct software decoding (if needed).
-    _dataLen = 0;
-    int blockSize = (FOURCC_DXT1 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC) ? 8 : 16;
-    
-    /* calculate the dataLen */
-    
-    int width = _width;
-    int height = _height;
-    
-    if (Configuration::getInstance()->supportsS3TC())  //compressed data length
-    {
-        _dataLen = dataLen - sizeof(S3TCTexHeader);
-        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
-        memcpy((void *)_data,(void *)pixelData , _dataLen);
-    }
-    else                                               //decompressed data length
-    {
-        for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)
-        {
-            if (width == 0) width = 1;
-            if (height == 0) height = 1;
-            
-            _dataLen += (height * width *4);
+//bool Image::initWithS3TCData(const unsigned char * data, ssize_t dataLen)
+//{
+//    
+//    const uint32_t FOURCC_DXT1 = makeFourCC('D', 'X', 'T', '1');
+//    const uint32_t FOURCC_DXT3 = makeFourCC('D', 'X', 'T', '3');
+//    const uint32_t FOURCC_DXT5 = makeFourCC('D', 'X', 'T', '5');
+//    
+//    /* load the .dds file */
+//    
+//    S3TCTexHeader *header = (S3TCTexHeader *)data;
+//    unsigned char *pixelData = static_cast<unsigned char*>(malloc((dataLen - sizeof(S3TCTexHeader)) * sizeof(unsigned char)));
+//    memcpy((void *)pixelData, data + sizeof(S3TCTexHeader), dataLen - sizeof(S3TCTexHeader));
+//    
+//    _width = header->ddsd.width;
+//    _height = header->ddsd.height;
+//    _numberOfMipmaps = MAX(1, header->ddsd.DUMMYUNIONNAMEN2.mipMapCount); //if dds header reports 0 mipmaps, set to 1 to force correct software decoding (if needed).
+//    _dataLen = 0;
+//    int blockSize = (FOURCC_DXT1 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC) ? 8 : 16;
+//    
+//    /* calculate the dataLen */
+//    
+//    int width = _width;
+//    int height = _height;
+//    
+//    if (Configuration::getInstance()->supportsS3TC())  //compressed data length
+//    {
+//        _dataLen = dataLen - sizeof(S3TCTexHeader);
+//        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
+//        memcpy((void *)_data,(void *)pixelData , _dataLen);
+//    }
+//    else                                               //decompressed data length
+//    {
+//        for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)
+//        {
+//            if (width == 0) width = 1;
+//            if (height == 0) height = 1;
+//            
+//            _dataLen += (height * width *4);
+//
+//            width >>= 1;
+//            height >>= 1;
+//        }
+//        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
+//    }
+//    
+//    /* if hardware supports s3tc, set pixelformat before loading mipmaps, to support non-mipmapped textures  */
+//    if (Configuration::getInstance()->supportsS3TC())
+//    {   //decode texture through hardware
+//        
+//        if (FOURCC_DXT1 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
+//        {
+//            _renderFormat = Texture2D::PixelFormat::S3TC_DXT1;
+//        }
+//        else if (FOURCC_DXT3 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
+//        {
+//            _renderFormat = Texture2D::PixelFormat::S3TC_DXT3;
+//        }
+//        else if (FOURCC_DXT5 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
+//        {
+//            _renderFormat = Texture2D::PixelFormat::S3TC_DXT5;
+//        }
+//    } else { //will software decode
+//        _renderFormat = Texture2D::PixelFormat::RGBA8888;
+//    }
+//    
+//    /* load the mipmaps */
+//    
+//    int encodeOffset = 0;
+//    int decodeOffset = 0;
+//    width = _width;  height = _height;
+//    
+//    for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)  
+//    {
+//        if (width == 0) width = 1;
+//        if (height == 0) height = 1;
+//        
+//        int size = ((width+3)/4)*((height+3)/4)*blockSize;
+//                
+//        if (Configuration::getInstance()->supportsS3TC())
+//        {   //decode texture through hardware
+//            _mipmaps[i].address = (unsigned char *)_data + encodeOffset;
+//            _mipmaps[i].len = size;
+//        }
+//        else
+//        {   //if it is not gles or device do not support S3TC, decode texture by software
+//            
+//            CCLOG("cocos2d: Hardware S3TC decoder not present. Using software decoder");
+//
+//            int bytePerPixel = 4;
+//            unsigned int stride = width * bytePerPixel;
+//
+//            std::vector<unsigned char> decodeImageData(stride * height);
+//            if (FOURCC_DXT1 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
+//            {
+//                s3tc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, S3TCDecodeFlag::DXT1);
+//            }
+//            else if (FOURCC_DXT3 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
+//            {
+//                s3tc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, S3TCDecodeFlag::DXT3);
+//            }
+//            else if (FOURCC_DXT5 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
+//            {
+//                s3tc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, S3TCDecodeFlag::DXT5);
+//            }
+//            
+//            _mipmaps[i].address = (unsigned char *)_data + decodeOffset;
+//            _mipmaps[i].len = (stride * height);
+//            memcpy((void *)_mipmaps[i].address, (void *)&decodeImageData[0], _mipmaps[i].len);
+//            decodeOffset += stride * height;
+//        }
+//        
+//        encodeOffset += size;
+//        width >>= 1;
+//        height >>= 1;
+//    }
+//    
+//    /* end load the mipmaps */
+//    
+//    if (pixelData != nullptr)
+//    {
+//        free(pixelData);
+//    };
+//    
+//    return true;
+//}
 
-            width >>= 1;
-            height >>= 1;
-        }
-        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
-    }
-    
-    /* if hardware supports s3tc, set pixelformat before loading mipmaps, to support non-mipmapped textures  */
-    if (Configuration::getInstance()->supportsS3TC())
-    {   //decode texture through hardware
-        
-        if (FOURCC_DXT1 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
-        {
-            _renderFormat = Texture2D::PixelFormat::S3TC_DXT1;
-        }
-        else if (FOURCC_DXT3 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
-        {
-            _renderFormat = Texture2D::PixelFormat::S3TC_DXT3;
-        }
-        else if (FOURCC_DXT5 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
-        {
-            _renderFormat = Texture2D::PixelFormat::S3TC_DXT5;
-        }
-    } else { //will software decode
-        _renderFormat = Texture2D::PixelFormat::RGBA8888;
-    }
-    
-    /* load the mipmaps */
-    
-    int encodeOffset = 0;
-    int decodeOffset = 0;
-    width = _width;  height = _height;
-    
-    for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)  
-    {
-        if (width == 0) width = 1;
-        if (height == 0) height = 1;
-        
-        int size = ((width+3)/4)*((height+3)/4)*blockSize;
-                
-        if (Configuration::getInstance()->supportsS3TC())
-        {   //decode texture through hardware
-            _mipmaps[i].address = (unsigned char *)_data + encodeOffset;
-            _mipmaps[i].len = size;
-        }
-        else
-        {   //if it is not gles or device do not support S3TC, decode texture by software
-            
-            CCLOG("cocos2d: Hardware S3TC decoder not present. Using software decoder");
 
-            int bytePerPixel = 4;
-            unsigned int stride = width * bytePerPixel;
-
-            std::vector<unsigned char> decodeImageData(stride * height);
-            if (FOURCC_DXT1 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
-            {
-                s3tc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, S3TCDecodeFlag::DXT1);
-            }
-            else if (FOURCC_DXT3 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
-            {
-                s3tc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, S3TCDecodeFlag::DXT3);
-            }
-            else if (FOURCC_DXT5 == header->ddsd.DUMMYUNIONNAMEN4.ddpfPixelFormat.fourCC)
-            {
-                s3tc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, S3TCDecodeFlag::DXT5);
-            }
-            
-            _mipmaps[i].address = (unsigned char *)_data + decodeOffset;
-            _mipmaps[i].len = (stride * height);
-            memcpy((void *)_mipmaps[i].address, (void *)&decodeImageData[0], _mipmaps[i].len);
-            decodeOffset += stride * height;
-        }
-        
-        encodeOffset += size;
-        width >>= 1;
-        height >>= 1;
-    }
-    
-    /* end load the mipmaps */
-    
-    if (pixelData != nullptr)
-    {
-        free(pixelData);
-    };
-    
-    return true;
-}
-
-
-bool Image::initWithATITCData(const unsigned char *data, ssize_t dataLen)
-{
-    /* load the .ktx file */
-    ATITCTexHeader *header = (ATITCTexHeader *)data;
-    _width =  header->pixelWidth;
-    _height = header->pixelHeight;
-    _numberOfMipmaps = header->numberOfMipmapLevels;
-    
-    int blockSize = 0;
-    switch (header->glInternalFormat)
-    {
-        case CC_GL_ATC_RGB_AMD:
-            blockSize = 8;
-            break;
-        case CC_GL_ATC_RGBA_EXPLICIT_ALPHA_AMD:
-            blockSize = 16;
-            break;
-        case CC_GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD:
-            blockSize = 16;
-            break;
-        default:
-            break;
-    }
-    
-    /* pixelData point to the compressed data address */
-    unsigned char *pixelData = (unsigned char *)data + sizeof(ATITCTexHeader) + header->bytesOfKeyValueData + 4;
-    
-    /* calculate the dataLen */
-    int width = _width;
-    int height = _height;
-    
-    if (Configuration::getInstance()->supportsATITC())  //compressed data length
-    {
-        _dataLen = dataLen - sizeof(ATITCTexHeader) - header->bytesOfKeyValueData - 4;
-        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
-        memcpy((void *)_data,(void *)pixelData , _dataLen);
-    }
-    else                                               //decompressed data length
-    {
-        for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)
-        {
-            if (width == 0) width = 1;
-            if (height == 0) height = 1;
-            
-            _dataLen += (height * width *4);
-            
-            width >>= 1;
-            height >>= 1;
-        }
-        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
-    }
-    
-    /* load the mipmaps */
-    int encodeOffset = 0;
-    int decodeOffset = 0;
-    width = _width;  height = _height;
-    
-    for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)
-    {
-        if (width == 0) width = 1;
-        if (height == 0) height = 1;
-        
-        int size = ((width+3)/4)*((height+3)/4)*blockSize;
-        
-        if (Configuration::getInstance()->supportsATITC())
-        {
-            /* decode texture through hardware */
-            
-            CCLOG("this is atitc H decode");
-            
-            switch (header->glInternalFormat)
-            {
-                case CC_GL_ATC_RGB_AMD:
-                    _renderFormat = Texture2D::PixelFormat::ATC_RGB;
-                    break;
-                case CC_GL_ATC_RGBA_EXPLICIT_ALPHA_AMD:
-                    _renderFormat = Texture2D::PixelFormat::ATC_EXPLICIT_ALPHA;
-                    break;
-                case CC_GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD:
-                    _renderFormat = Texture2D::PixelFormat::ATC_INTERPOLATED_ALPHA;
-                    break;
-                default:
-                    break;
-            }
-            
-            _mipmaps[i].address = (unsigned char *)_data + encodeOffset;
-            _mipmaps[i].len = size;
-        }
-        else
-        {
-            /* if it is not gles or device do not support ATITC, decode texture by software */
-            
-            CCLOG("cocos2d: Hardware ATITC decoder not present. Using software decoder");
-            
-            int bytePerPixel = 4;
-            unsigned int stride = width * bytePerPixel;
-            _renderFormat = Texture2D::PixelFormat::RGBA8888;
-            
-            std::vector<unsigned char> decodeImageData(stride * height);
-            switch (header->glInternalFormat)
-            {
-                case CC_GL_ATC_RGB_AMD:
-                    atitc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, ATITCDecodeFlag::ATC_RGB);
-                    break;
-                case CC_GL_ATC_RGBA_EXPLICIT_ALPHA_AMD:
-                    atitc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, ATITCDecodeFlag::ATC_EXPLICIT_ALPHA);
-                    break;
-                case CC_GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD:
-                    atitc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, ATITCDecodeFlag::ATC_INTERPOLATED_ALPHA);
-                    break;
-                default:
-                    break;
-            }
-
-            _mipmaps[i].address = (unsigned char *)_data + decodeOffset;
-            _mipmaps[i].len = (stride * height);
-            memcpy((void *)_mipmaps[i].address, (void *)&decodeImageData[0], _mipmaps[i].len);
-            decodeOffset += stride * height;
-        }
-
-        encodeOffset += (size + 4);
-        width >>= 1;
-        height >>= 1;
-    }
-    /* end load the mipmaps */
-    
-    return true;
-}
+//bool Image::initWithATITCData(const unsigned char *data, ssize_t dataLen)
+//{
+//    /* load the .ktx file */
+//    ATITCTexHeader *header = (ATITCTexHeader *)data;
+//    _width =  header->pixelWidth;
+//    _height = header->pixelHeight;
+//    _numberOfMipmaps = header->numberOfMipmapLevels;
+//    
+//    int blockSize = 0;
+//    switch (header->glInternalFormat)
+//    {
+//        case CC_GL_ATC_RGB_AMD:
+//            blockSize = 8;
+//            break;
+//        case CC_GL_ATC_RGBA_EXPLICIT_ALPHA_AMD:
+//            blockSize = 16;
+//            break;
+//        case CC_GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD:
+//            blockSize = 16;
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    /* pixelData point to the compressed data address */
+//    unsigned char *pixelData = (unsigned char *)data + sizeof(ATITCTexHeader) + header->bytesOfKeyValueData + 4;
+//    
+//    /* calculate the dataLen */
+//    int width = _width;
+//    int height = _height;
+//    
+//    if (Configuration::getInstance()->supportsATITC())  //compressed data length
+//    {
+//        _dataLen = dataLen - sizeof(ATITCTexHeader) - header->bytesOfKeyValueData - 4;
+//        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
+//        memcpy((void *)_data,(void *)pixelData , _dataLen);
+//    }
+//    else                                               //decompressed data length
+//    {
+//        for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)
+//        {
+//            if (width == 0) width = 1;
+//            if (height == 0) height = 1;
+//            
+//            _dataLen += (height * width *4);
+//            
+//            width >>= 1;
+//            height >>= 1;
+//        }
+//        _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
+//    }
+//    
+//    /* load the mipmaps */
+//    int encodeOffset = 0;
+//    int decodeOffset = 0;
+//    width = _width;  height = _height;
+//    
+//    for (int i = 0; i < _numberOfMipmaps && (width || height); ++i)
+//    {
+//        if (width == 0) width = 1;
+//        if (height == 0) height = 1;
+//        
+//        int size = ((width+3)/4)*((height+3)/4)*blockSize;
+//        
+//        if (Configuration::getInstance()->supportsATITC())
+//        {
+//            /* decode texture through hardware */
+//            
+//            CCLOG("this is atitc H decode");
+//            
+//            switch (header->glInternalFormat)
+//            {
+//                case CC_GL_ATC_RGB_AMD:
+//                    _renderFormat = Texture2D::PixelFormat::ATC_RGB;
+//                    break;
+//                case CC_GL_ATC_RGBA_EXPLICIT_ALPHA_AMD:
+//                    _renderFormat = Texture2D::PixelFormat::ATC_EXPLICIT_ALPHA;
+//                    break;
+//                case CC_GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD:
+//                    _renderFormat = Texture2D::PixelFormat::ATC_INTERPOLATED_ALPHA;
+//                    break;
+//                default:
+//                    break;
+//            }
+//            
+//            _mipmaps[i].address = (unsigned char *)_data + encodeOffset;
+//            _mipmaps[i].len = size;
+//        }
+//        else
+//        {
+//            /* if it is not gles or device do not support ATITC, decode texture by software */
+//            
+//            CCLOG("cocos2d: Hardware ATITC decoder not present. Using software decoder");
+//            
+//            int bytePerPixel = 4;
+//            unsigned int stride = width * bytePerPixel;
+//            _renderFormat = Texture2D::PixelFormat::RGBA8888;
+//            
+//            std::vector<unsigned char> decodeImageData(stride * height);
+//            switch (header->glInternalFormat)
+//            {
+//                case CC_GL_ATC_RGB_AMD:
+//                    atitc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, ATITCDecodeFlag::ATC_RGB);
+//                    break;
+//                case CC_GL_ATC_RGBA_EXPLICIT_ALPHA_AMD:
+//                    atitc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, ATITCDecodeFlag::ATC_EXPLICIT_ALPHA);
+//                    break;
+//                case CC_GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD:
+//                    atitc_decode(pixelData + encodeOffset, &decodeImageData[0], width, height, ATITCDecodeFlag::ATC_INTERPOLATED_ALPHA);
+//                    break;
+//                default:
+//                    break;
+//            }
+//
+//            _mipmaps[i].address = (unsigned char *)_data + decodeOffset;
+//            _mipmaps[i].len = (stride * height);
+//            memcpy((void *)_mipmaps[i].address, (void *)&decodeImageData[0], _mipmaps[i].len);
+//            decodeOffset += stride * height;
+//        }
+//
+//        encodeOffset += (size + 4);
+//        width >>= 1;
+//        height >>= 1;
+//    }
+//    /* end load the mipmaps */
+//    
+//    return true;
+//}
 
 bool Image::initWithPVRData(const unsigned char * data, ssize_t dataLen)
 {
