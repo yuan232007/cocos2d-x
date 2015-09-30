@@ -156,14 +156,6 @@ public:
      */
     virtual void setLocalZOrder(int localZOrder);
 
-    CC_DEPRECATED_ATTRIBUTE virtual void setZOrder(int localZOrder) { setLocalZOrder(localZOrder); }
-    
-    /* 
-     Helper function used by `setLocalZOrder`. Don't use it unless you know what you are doing.
-     @js NA
-     */
-    CC_DEPRECATED_ATTRIBUTE virtual void _setLocalZOrder(int z);
-
     /**
      * Gets the local Z order of this node.
      *
@@ -172,7 +164,6 @@ public:
      * @return The local (relative to its siblings) Z order.
      */
     virtual int getLocalZOrder() const { return _localZOrder; }
-    CC_DEPRECATED_ATTRIBUTE virtual int getZOrder() const { return getLocalZOrder(); }
 
     /**
      Defines the oder in which the nodes are renderer.
@@ -423,7 +414,6 @@ public:
      * @js setVertexZ
      */
     virtual void setPositionZ(float positionZ);
-    CC_DEPRECATED_ATTRIBUTE virtual void setVertexZ(float vertexZ) { setPositionZ(vertexZ); }
 
     /**
      * Gets position Z coordinate of this node.
@@ -434,7 +424,6 @@ public:
      * @js getVertexZ
      */
     virtual float getPositionZ() const;
-    CC_DEPRECATED_ATTRIBUTE virtual float getVertexZ() const { return getPositionZ(); }
 
     /**
      * Changes the X skew angle of the node in degrees.
@@ -623,7 +612,6 @@ public:
      * @js setRotationX
      */
     virtual void setRotationSkewX(float rotationX);
-    CC_DEPRECATED_ATTRIBUTE virtual void setRotationX(float rotationX) { return setRotationSkewX(rotationX); }
 
     /**
      * Gets the X rotation (angle) of the node in degrees which performs a horizontal rotation skew.
@@ -634,7 +622,6 @@ public:
      * @js getRotationX 
      */
     virtual float getRotationSkewX() const;
-    CC_DEPRECATED_ATTRIBUTE virtual float getRotationX() const { return getRotationSkewX(); }
 
     /**
      * Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.
@@ -651,7 +638,6 @@ public:
      * @js setRotationY
      */
     virtual void setRotationSkewY(float rotationY);
-    CC_DEPRECATED_ATTRIBUTE virtual void setRotationY(float rotationY) { return setRotationSkewY(rotationY); }
 
     /**
      * Gets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.
@@ -662,7 +648,6 @@ public:
      * @js getRotationY
      */
     virtual float getRotationSkewY() const;
-    CC_DEPRECATED_ATTRIBUTE virtual float getRotationY() const { return getRotationSkewY(); }
 
     /**
      * Sets the arrival order when this node has a same ZOrder with other children.
@@ -684,15 +669,6 @@ public:
      */
     int getOrderOfArrival() const;
 
-
-    /** @deprecated No longer needed
-    * @lua NA
-    */
-    CC_DEPRECATED_ATTRIBUTE void setGLServerState(int serverState) { /* ignore */ };
-    /** @deprecated No longer needed
-    * @lua NA
-    */
-    CC_DEPRECATED_ATTRIBUTE int getGLServerState() const { return 0; }
 
     /**
      * Sets whether the anchor point will be (0,0) when you position this node.
@@ -1020,7 +996,7 @@ public:
      * @return The GLProgram (shader) currently used for this node.
      */
     GLProgram* getGLProgram() const;
-    CC_DEPRECATED_ATTRIBUTE GLProgram* getShaderProgram() const { return getGLProgram(); }
+
     /**
      * Sets the shader program for this node
      *
@@ -1033,7 +1009,6 @@ public:
      * @param glprogram The shader program.
      */
     virtual void setGLProgram(GLProgram *glprogram);
-    CC_DEPRECATED_ATTRIBUTE void setShaderProgram(GLProgram *glprogram) { setGLProgram(glprogram); }
     
     /**
      * Return the GLProgramState currently used for this node.
@@ -1158,9 +1133,6 @@ public:
      */
     virtual Rect getBoundingBox() const;
 
-    /** @deprecated Use getBoundingBox instead */
-    CC_DEPRECATED_ATTRIBUTE inline virtual Rect boundingBox() const { return getBoundingBox(); }
-
     /** Set event dispatcher for scene.
      *
      * @param dispatcher The event dispatcher of scene.
@@ -1254,9 +1226,6 @@ public:
      * @return The number of actions that are running plus the ones that are schedule to run.
      */
     ssize_t getNumberOfRunningActions() const;
-
-    /** @deprecated Use getNumberOfRunningActions() instead */
-    CC_DEPRECATED_ATTRIBUTE ssize_t numberOfRunningActions() const { return getNumberOfRunningActions(); };
 
     /// @} end of Actions
 
@@ -1442,8 +1411,6 @@ public:
      */
     void unscheduleAllCallbacks();
 
-    CC_DEPRECATED_ATTRIBUTE void unscheduleAllSelectors() { unscheduleAllCallbacks(); }
-
     /**
      * Resumes all scheduled selectors, actions and event listeners.
      * This method is called internally by onEnter.
@@ -1454,17 +1421,6 @@ public:
      * This method is called internally by onExit.
      */
     virtual void pause(void);
-
-    /**
-     * Resumes all scheduled selectors, actions and event listeners.
-     * This method is called internally by onEnter.
-     */
-    CC_DEPRECATED_ATTRIBUTE void resumeSchedulerAndActions();
-    /**
-     * Pauses all scheduled selectors, actions and event listeners.
-     * This method is called internally by onExit.
-     */
-    CC_DEPRECATED_ATTRIBUTE void pauseSchedulerAndActions();
 
     /**
      * Update method will be called automatically every frame if "scheduleUpdate" is called, and the node is "live".
@@ -1525,9 +1481,6 @@ public:
      */
     virtual void setNodeToParentTransform(const Mat4& transform);
 
-    /** @deprecated use getNodeToParentTransform() instead */
-    CC_DEPRECATED_ATTRIBUTE inline virtual AffineTransform nodeToParentTransform() const { return getNodeToParentAffineTransform(); }
-
     /**
      * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.
      * The matrix is in Pixels.
@@ -1537,9 +1490,6 @@ public:
     virtual const Mat4& getParentToNodeTransform() const;
     virtual AffineTransform getParentToNodeAffineTransform() const;
 
-    /** @deprecated Use getParentToNodeTransform() instead */
-    CC_DEPRECATED_ATTRIBUTE inline virtual AffineTransform parentToNodeTransform() const { return getParentToNodeAffineTransform(); }
-
     /**
      * Returns the world affine transform matrix. The matrix is in Pixels.
      *
@@ -1548,9 +1498,6 @@ public:
     virtual Mat4 getNodeToWorldTransform() const;
     virtual AffineTransform getNodeToWorldAffineTransform() const;
 
-    /** @deprecated Use getNodeToWorldTransform() instead */
-    CC_DEPRECATED_ATTRIBUTE inline virtual AffineTransform nodeToWorldTransform() const { return getNodeToWorldAffineTransform(); }
-
     /**
      * Returns the inverse world affine transform matrix. The matrix is in Pixels.
      *
@@ -1558,9 +1505,6 @@ public:
      */
     virtual Mat4 getWorldToNodeTransform() const;
     virtual AffineTransform getWorldToNodeAffineTransform() const;
-
-    /** @deprecated Use getWorldToNodeTransform() instead */
-    CC_DEPRECATED_ATTRIBUTE inline virtual AffineTransform worldToNodeTransform() const { return getWorldToNodeAffineTransform(); }
 
     /// @} end of Transformations
 
@@ -1881,48 +1825,6 @@ private:
  * @return true if the point is in content rectangle, false otherwise.
  */
 bool CC_DLL isScreenPointInRect(const Vec2 &pt, const Camera* camera, const Mat4& w2l, const Rect& rect, Vec3 *p);
-
-// NodeRGBA
-
-/** @class __NodeRGBA
- * @brief __NodeRGBA is a subclass of Node that implements the RGBAProtocol protocol.
- 
- All features from Node are valid, plus the following new features:
- - opacity
- - RGB colors
- 
- Opacity/Color propagates into children that conform to the RGBAProtocol if cascadeOpacity/cascadeColor is enabled.
- @since v2.1
- @js NA
- */
-class CC_DLL __NodeRGBA : public Node, public __RGBAProtocol
-{
-public:
-    // overrides
-    virtual GLubyte getOpacity() const override { return Node::getOpacity(); }
-    virtual GLubyte getDisplayedOpacity() const  override { return Node::getDisplayedOpacity(); }
-    virtual void setOpacity(GLubyte opacity) override { return Node::setOpacity(opacity); }
-    virtual void updateDisplayedOpacity(GLubyte parentOpacity) override { return Node::updateDisplayedOpacity(parentOpacity); }
-    virtual bool isCascadeOpacityEnabled() const  override { return Node::isCascadeOpacityEnabled(); }
-    virtual void setCascadeOpacityEnabled(bool cascadeOpacityEnabled) override { return Node::setCascadeOpacityEnabled(cascadeOpacityEnabled); }
-
-    virtual const Color3B& getColor(void) const override { return Node::getColor(); }
-    virtual const Color3B& getDisplayedColor() const override { return Node::getDisplayedColor(); }
-    virtual void setColor(const Color3B& color) override { return Node::setColor(color); }
-    virtual void updateDisplayedColor(const Color3B& parentColor) override { return Node::updateDisplayedColor(parentColor); }
-    virtual bool isCascadeColorEnabled() const override { return Node::isCascadeColorEnabled(); }
-    virtual void setCascadeColorEnabled(bool cascadeColorEnabled) override { return Node::setCascadeColorEnabled(cascadeColorEnabled); }
-
-    virtual void setOpacityModifyRGB(bool bValue) override { return Node::setOpacityModifyRGB(bValue); }
-    virtual bool isOpacityModifyRGB() const override { return Node::isOpacityModifyRGB(); }
-
-CC_CONSTRUCTOR_ACCESS:
-    __NodeRGBA();
-    virtual ~__NodeRGBA() {}
-
-private:
-    CC_DISALLOW_COPY_AND_ASSIGN(__NodeRGBA);
-};
 
 // end of _2d group
 /// @}

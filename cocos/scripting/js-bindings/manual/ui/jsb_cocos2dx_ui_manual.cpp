@@ -99,7 +99,7 @@ public:
     CallbacksComponent();
     virtual ~CallbacksComponent();
     
-    cocos2d::__Dictionary* callbacks;
+    JSBinding::Dictionary callbacks;
     static const std::string NAME;
 };
 
@@ -108,13 +108,10 @@ const std::string CallbacksComponent::NAME = "JSB_Callbacks";
 CallbacksComponent::CallbacksComponent()
 {
     setName(NAME);
-    callbacks = cocos2d::__Dictionary::create();
-    CC_SAFE_RETAIN(callbacks);
 }
 
 CallbacksComponent::~CallbacksComponent()
 {
-    CC_SAFE_RELEASE(callbacks);
 }
 
 static bool js_cocos2dx_UIWidget_addTouchEventListener(JSContext *cx, uint32_t argc, jsval *vp)
@@ -137,13 +134,15 @@ static bool js_cocos2dx_UIWidget_addTouchEventListener(JSContext *cx, uint32_t a
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "widgetTouchEvent");
+        auto& dict = comp->callbacks;
+        dict.insert("widgetTouchEvent", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
         
-        cobj->addTouchEventListener(tmpObj, toucheventselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addTouchEventListener([tmpObj](Ref* sender, Widget::TouchEventType event){
+            tmpObj->eventCallbackFunc(sender, (int)event);
+        });
 
         return true;
     }
@@ -191,13 +190,15 @@ static bool js_cocos2dx_UICheckBox_addEventListener(JSContext *cx, uint32_t argc
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "checkBoxEventListener");
+        auto& dict = comp->callbacks;
+        dict.insert("checkBoxEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
 
-        cobj->addEventListenerCheckBox(tmpObj, checkboxselectedeventselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addEventListener([tmpObj](Ref* sender, CheckBox::EventType event){
+            tmpObj->eventCallbackFunc(sender, (int)event);
+        });
 
         return true;
     }
@@ -245,13 +246,15 @@ static bool js_cocos2dx_UISlider_addEventListener(JSContext *cx, uint32_t argc, 
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "sliderEventListener");
+        auto& dict = comp->callbacks;
+        dict.insert("sliderEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
 
-        cobj->addEventListenerSlider(tmpObj, sliderpercentchangedselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addEventListener([tmpObj](Ref* sender, Slider::EventType event){
+            tmpObj->eventCallbackFunc(sender, (int)event);
+        });
 
         return true;
     }
@@ -299,13 +302,15 @@ static bool js_cocos2dx_UITextField_addEventListener(JSContext *cx, uint32_t arg
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "textfieldEventListener");
+        auto& dict = comp->callbacks;
+        dict.insert("textfieldEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
 
-        cobj->addEventListenerTextField(tmpObj, textfieldeventselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addEventListener([tmpObj](Ref* sender, TextField::EventType event){
+            tmpObj->eventCallbackFunc(sender, (int)event);
+        });
 
         return true;
     }
@@ -353,13 +358,15 @@ static bool js_cocos2dx_UIPageView_addEventListener(JSContext *cx, uint32_t argc
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "pageViewEventListener");
+        auto& dict = comp->callbacks;
+        dict.insert("pageViewEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
 
-        cobj->addEventListenerPageView(tmpObj, pagevieweventselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addEventListener([tmpObj](Ref* sender, PageView::EventType event){
+            tmpObj->eventCallbackFunc(sender, (int)event);
+        });
 
         return true;
     }
@@ -407,13 +414,15 @@ static bool js_cocos2dx_UIScrollView_addEventListener(JSContext *cx, uint32_t ar
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "scrollViewEventListener");
+        auto& dict = comp->callbacks;
+        dict.insert("scrollViewEventListener", tmpObj);
         
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
         
-        cobj->addEventListenerScrollView(tmpObj, scrollvieweventselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addEventListener([tmpObj](Ref* sender, ScrollView::EventType event){
+            tmpObj->eventCallbackFunc(sender, (int)event);
+        });
         
         return true;
     }else if(argc == 1){
@@ -460,13 +469,15 @@ static bool js_cocos2dx_UIListView_addEventListener(JSContext *cx, uint32_t argc
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        cocos2d::__Dictionary* dict = comp->callbacks;
-        dict->setObject(tmpObj, "listViewEventListener");
+        auto& dict = comp->callbacks;
+        dict.insert("listViewEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
 
-        cobj->addEventListenerListView(tmpObj, listvieweventselector(JSStudioEventListenerWrapper::eventCallbackFunc));
+        cobj->addEventListener([tmpObj](Ref* sender, ListView::EventType eventType){
+            tmpObj->eventCallbackFunc(sender, (int)eventType);
+        });
 
         return true;
     }

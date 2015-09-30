@@ -45,8 +45,7 @@ THE SOFTWARE.
 #include "renderer/CCGLProgramState.h"
 #include "renderer/CCMaterial.h"
 #include "math/TransformUtils.h"
-#include "deprecated/CCString.h"
-
+#include "base/CCString.h"
 
 #if CC_NODE_RENDER_SUBPIXEL
 #define RENDER_IN_SUBPIXEL
@@ -269,13 +268,6 @@ void Node::setLocalZOrder(int z)
     }
 
     _eventDispatcher->setDirtyForNode(this);
-}
-
-/// zOrder setter : private method
-/// used internally to alter the zOrder variable. DON'T call this method manually
-void Node::_setLocalZOrder(int z)
-{
-    _localZOrder = z;
 }
 
 void Node::setGlobalZOrder(float globalZOrder)
@@ -1574,16 +1566,6 @@ void Node::pause()
     _eventDispatcher->pauseEventListenersForTarget(this);
 }
 
-void Node::resumeSchedulerAndActions()
-{
-    resume();
-}
-
-void Node::pauseSchedulerAndActions()
-{
-    pause();
-}
-
 // override me
 void Node::update(float fDelta)
 {
@@ -2122,13 +2104,6 @@ void Node::setCameraMask(unsigned short mask, bool applyChildren)
             child->setCameraMask(mask, applyChildren);
         }
     }
-}
-
-// MARK: Deprecated
-
-__NodeRGBA::__NodeRGBA()
-{
-    CCLOG("NodeRGBA deprecated.");
 }
 
 NS_CC_END

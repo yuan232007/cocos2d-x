@@ -63,6 +63,7 @@ THE SOFTWARE.
 #include "base/ccTypes.h"
 #include "base/ccUTF8.h"
 #include "base/ccUtils.h"
+#include "base/CCString.h"
 
 // EventDispatcher
 #include "base/CCEventAcceleration.h"
@@ -116,8 +117,6 @@ THE SOFTWARE.
 #include "2d/CCFontFNT.h"
 #include "2d/CCLabel.h"
 #include "2d/CCLabelAtlas.h"
-#include "2d/CCLabelBMFont.h"
-#include "2d/CCLabelTTF.h"
 #include "2d/CCLayer.h"
 #include "2d/CCMenu.h"
 #include "2d/CCMenuItem.h"
@@ -214,13 +213,6 @@ THE SOFTWARE.
 //Enhance modification end
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
-    #include "platform/blackberry/CCApplication.h"
-    #include "platform/blackberry/CCGLViewImpl.h"
-    #include "platform/blackberry/CCGL.h"
-    #include "platform/blackberry/CCStdC.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     #include "platform/win32/CCApplication-win32.h"
     #include "platform/desktop/CCGLViewImpl-desktop.h"
@@ -300,21 +292,6 @@ THE SOFTWARE.
 //#include "3d/CCSprite3D.h"
 //#include "3d/CCSprite3DMaterial.h"
 //#include "3d/CCTerrain.h"
-
-
-// Deprecated include
-#include "deprecated/CCArray.h"
-#include "deprecated/CCBool.h"
-#include "deprecated/CCDictionary.h"
-#include "deprecated/CCDouble.h"
-#include "deprecated/CCFloat.h"
-#include "deprecated/CCInteger.h"
-#include "deprecated/CCNotificationCenter.h"
-#include "deprecated/CCSet.h"
-#include "deprecated/CCString.h"
-// CCDeprecated.h must be included at the end
-#include "deprecated/CCDeprecated.h"
-
 
 NS_CC_BEGIN
 

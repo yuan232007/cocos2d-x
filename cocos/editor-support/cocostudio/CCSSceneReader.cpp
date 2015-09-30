@@ -219,7 +219,7 @@ cocos2d::Component* SceneReader::createComponent(const std::string classname)
 std::string SceneReader::getComponentClassName(const std::string &name)
 {
     std::string comName;
-    if (name == "CCSprite" || name == "CCTMXTiledMap" || name == "CCParticleSystemQuad" || name == "CCArmature" || name == "GUIComponent")
+    if (name == "CCSprite" || name == "CCTMXTiledMap" || name == "CCParticleSystemQuad" || name == "GUIComponent")
     {
         comName = "ComRender";
     }

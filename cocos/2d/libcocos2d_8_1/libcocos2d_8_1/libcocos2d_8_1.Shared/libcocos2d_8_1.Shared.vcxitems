@@ -259,7 +259,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCConsole.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCController.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCData.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCDataVisitor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCDirector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCEventAcceleration.h" />
@@ -295,6 +294,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCRefPtr.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCScheduler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCScriptSupport.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCString.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCTouch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\ccTypes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCUserDefault.h" />
@@ -312,16 +312,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\utlist.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\base\ZipUtils.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\cocos2d.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCArray.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCBool.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCDeprecated.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCDictionary.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCDouble.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCFloat.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCInteger.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCNotificationCenter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCSet.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCString.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\editor-support\cocosbuilder\CCBAnimationManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\editor-support\cocosbuilder\CCBFileLoader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\editor-support\cocosbuilder\CCBKeyframe.h" />
@@ -889,7 +879,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCConsole.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCController.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCData.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCDataVisitor.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCDirector.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCEventAcceleration.cpp" />
@@ -923,6 +912,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCRef.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCScheduler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCScriptSupport.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCString.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCTouch.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\ccTypes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\CCUserDefault-winrt.cpp" />
@@ -936,12 +926,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\TGAlib.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\base\ZipUtils.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\cocos2d.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCArray.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCDeprecated.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCDictionary.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCNotificationCenter.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCSet.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\deprecated\CCString.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\editor-support\cocosbuilder\CCBAnimationManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\editor-support\cocosbuilder\CCBFileLoader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\editor-support\cocosbuilder\CCBKeyframe.cpp" />

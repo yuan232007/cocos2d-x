@@ -29,8 +29,7 @@ THE SOFTWARE.
 #include "platform/CCFileUtils.h"
 #include "base/CCDirector.h"
 #include "renderer/CCTextureCache.h"
-
-#include "deprecated/CCString.h"
+#include "base/CCString.h"
 
 #if CC_LABELATLAS_DEBUG_DRAW
 #include "renderer/CCRenderer.h"

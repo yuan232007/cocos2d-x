@@ -105,7 +105,7 @@ public:
     /**
      * ListView item click callback.
      */
-    typedef std::function<void(Ref*, EventType)> ccListViewCallback;
+    typedef std::function<void(Ref*, ListView::EventType)> ccListViewCallback;
     
     /**
      * Default constructor
@@ -358,7 +358,6 @@ public:
      *@param callback A callback function with type of `ccListViewCallback`.
      */
     void addEventListener(const ccListViewCallback& callback);
-    using ScrollView::addEventListener;
 
     /**
      * Changes scroll direction of scrollview.

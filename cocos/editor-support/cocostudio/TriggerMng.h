@@ -35,26 +35,11 @@ namespace cocostudio {
 
 class TriggerObj;
 
-class CC_STUDIO_DLL ArmatureMovementDispatcher : public cocos2d::Ref
-{
-public:
-	ArmatureMovementDispatcher(void);
-	~ArmatureMovementDispatcher(void);
-public:
-	void addAnimationEventCallBack(cocos2d::Ref*pTarget, SEL_MovementEventCallFunc mecf);
-	void removeAnnimationEventCallBack(cocos2d::Ref*pTarget, SEL_MovementEventCallFunc mecf);
-	void animationEvent(Armature *armature, MovementEventType movementType, const std::string& movementID);
-    
-private:
-	std::unordered_map<cocos2d::Ref*, SEL_MovementEventCallFunc> *_mapEventAnimation;
-
-};
-
 class CC_STUDIO_DLL TriggerMng
 {
 public:
-    TriggerMng(void);
-    virtual ~TriggerMng(void);
+    TriggerMng();
+    virtual ~TriggerMng();
 
 public:
     static TriggerMng* getInstance();
@@ -71,10 +56,6 @@ public:
     bool removeTriggerObj(unsigned int id);
     bool isEmpty(void) const;
 
-    void addArmatureMovementCallBack(Armature *pAr, cocos2d::Ref *pTarget, SEL_MovementEventCallFunc mecf);
-    void removeArmatureMovementCallBack(Armature *pAr, cocos2d::Ref *pTarget, SEL_MovementEventCallFunc mecf);
-    void removeArmatureAllMovementCallBack(Armature *pAr);
-    void removeAllArmatureMovementCallBack();
     void dispatchEvent(cocos2d::EventCustom* tEvent);
     void removeEventListener(cocos2d::EventListener* listener);
     void addEventListenerWithFixedPriority(cocos2d::EventListener* listener, int fixedPriority);
@@ -84,7 +65,6 @@ private:
 private:
     static TriggerMng *_sharedTriggerMng;
     std::unordered_map<unsigned int, TriggerObj*> _triggerObjs;
-    std::unordered_map<Armature*, ArmatureMovementDispatcher*> *_movementDispatches;
     cocos2d::EventDispatcher* _eventDispatcher;  ///< event dispatcher used to dispatch all kinds of events
 };
 

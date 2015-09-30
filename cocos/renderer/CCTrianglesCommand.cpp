@@ -66,11 +66,6 @@ void TrianglesCommand::init(float globalOrder, GLuint textureID, GLProgramState*
     }
 }
 
-void TrianglesCommand::init(float globalOrder, GLuint textureID, GLProgramState* glProgramState, BlendFunc blendType, const Triangles& triangles,const Mat4& mv)
-{
-    init(globalOrder, textureID, glProgramState, blendType, triangles, mv, 0);
-}
-
 TrianglesCommand::~TrianglesCommand()
 {
 }

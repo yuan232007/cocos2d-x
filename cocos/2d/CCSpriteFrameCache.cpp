@@ -40,9 +40,7 @@ THE SOFTWARE.
 #include "renderer/CCTexture2D.h"
 #include "renderer/CCTextureCache.h"
 #include "base/CCNinePatchImageParser.h"
-
-#include "deprecated/CCString.h"
-
+#include "base/CCString.h"
 
 using namespace std;
 
