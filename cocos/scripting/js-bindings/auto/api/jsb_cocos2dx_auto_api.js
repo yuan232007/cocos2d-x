@@ -3300,23 +3300,15 @@ str
 },
 
 /**
- * @method init
- * @return {bool}
+ * @method setValue
+ * @param {String} arg0
+ * @param {cc.Value} arg1
  */
-init : function (
+setValue : function (
+str, 
+value 
 )
 {
-    return false;
-},
-
-/**
- * @method supportsS3TC
- * @return {bool}
- */
-supportsS3TC : function (
-)
-{
-    return false;
 },
 
 /**
@@ -3400,25 +3392,13 @@ supportsDiscardFramebuffer : function (
 },
 
 /**
- * @method supportsATITC
+ * @method init
  * @return {bool}
  */
-supportsATITC : function (
+init : function (
 )
 {
     return false;
-},
-
-/**
- * @method setValue
- * @param {String} arg0
- * @param {cc.Value} arg1
- */
-setValue : function (
-str, 
-value 
-)
-{
 },
 
 /**
@@ -13278,14 +13258,6 @@ isEnabled : function (
 },
 
 /**
- * @method alignItemsHorizontally
- */
-alignItemsHorizontally : function (
-)
-{
-},
-
-/**
  * @method alignItemsHorizontallyWithPadding
  * @param {float} arg0
  */
@@ -13301,6 +13273,14 @@ float
  */
 alignItemsVerticallyWithPadding : function (
 float 
+)
+{
+},
+
+/**
+ * @method alignItemsHorizontally
+ */
+alignItemsHorizontally : function (
 )
 {
 },

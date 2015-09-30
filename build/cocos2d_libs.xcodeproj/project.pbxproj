@@ -1397,10 +1397,6 @@
 		50ABBDBE1925AB4100A911A9 /* CCTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBD811925AB4100A911A9 /* CCTextureCache.cpp */; };
 		50ABBDBF1925AB4100A911A9 /* CCTextureCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBD821925AB4100A911A9 /* CCTextureCache.h */; };
 		50ABBDC01925AB4100A911A9 /* CCTextureCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBD821925AB4100A911A9 /* CCTextureCache.h */; };
-		50ABBE1F1925AB6F00A911A9 /* atitc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBDC11925AB6E00A911A9 /* atitc.cpp */; };
-		50ABBE201925AB6F00A911A9 /* atitc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBDC11925AB6E00A911A9 /* atitc.cpp */; };
-		50ABBE211925AB6F00A911A9 /* atitc.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBDC21925AB6E00A911A9 /* atitc.h */; };
-		50ABBE221925AB6F00A911A9 /* atitc.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBDC21925AB6E00A911A9 /* atitc.h */; };
 		50ABBE231925AB6F00A911A9 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBDC31925AB6E00A911A9 /* base64.cpp */; };
 		50ABBE241925AB6F00A911A9 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBDC31925AB6E00A911A9 /* base64.cpp */; };
 		50ABBE251925AB6F00A911A9 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBDC41925AB6E00A911A9 /* base64.h */; };
@@ -1561,10 +1557,6 @@
 		50ABBEC81925AB6F00A911A9 /* etc1.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE151925AB6F00A911A9 /* etc1.h */; };
 		50ABBEC91925AB6F00A911A9 /* firePngData.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE161925AB6F00A911A9 /* firePngData.h */; };
 		50ABBECA1925AB6F00A911A9 /* firePngData.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE161925AB6F00A911A9 /* firePngData.h */; };
-		50ABBECB1925AB6F00A911A9 /* s3tc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE171925AB6F00A911A9 /* s3tc.cpp */; };
-		50ABBECC1925AB6F00A911A9 /* s3tc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE171925AB6F00A911A9 /* s3tc.cpp */; };
-		50ABBECD1925AB6F00A911A9 /* s3tc.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE181925AB6F00A911A9 /* s3tc.h */; };
-		50ABBECE1925AB6F00A911A9 /* s3tc.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE181925AB6F00A911A9 /* s3tc.h */; };
 		50ABBECF1925AB6F00A911A9 /* TGAlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE191925AB6F00A911A9 /* TGAlib.cpp */; };
 		50ABBED01925AB6F00A911A9 /* TGAlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE191925AB6F00A911A9 /* TGAlib.cpp */; };
 		50ABBED11925AB6F00A911A9 /* TGAlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE1A1925AB6F00A911A9 /* TGAlib.h */; };
@@ -2658,8 +2650,6 @@
 		50ABBD801925AB4100A911A9 /* CCTextureAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTextureAtlas.h; sourceTree = "<group>"; };
 		50ABBD811925AB4100A911A9 /* CCTextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTextureCache.cpp; sourceTree = "<group>"; };
 		50ABBD821925AB4100A911A9 /* CCTextureCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTextureCache.h; sourceTree = "<group>"; };
-		50ABBDC11925AB6E00A911A9 /* atitc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atitc.cpp; path = ../base/atitc.cpp; sourceTree = "<group>"; };
-		50ABBDC21925AB6E00A911A9 /* atitc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = atitc.h; path = ../base/atitc.h; sourceTree = "<group>"; };
 		50ABBDC31925AB6E00A911A9 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base64.cpp; path = ../base/base64.cpp; sourceTree = "<group>"; };
 		50ABBDC41925AB6E00A911A9 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = ../base/base64.h; sourceTree = "<group>"; };
 		50ABBDC51925AB6E00A911A9 /* CCAutoreleasePool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCAutoreleasePool.cpp; path = ../base/CCAutoreleasePool.cpp; sourceTree = "<group>"; };
@@ -2740,8 +2730,6 @@
 		50ABBE141925AB6F00A911A9 /* etc1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = etc1.cpp; path = ../base/etc1.cpp; sourceTree = "<group>"; };
 		50ABBE151925AB6F00A911A9 /* etc1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = etc1.h; path = ../base/etc1.h; sourceTree = "<group>"; };
 		50ABBE161925AB6F00A911A9 /* firePngData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = firePngData.h; path = ../base/firePngData.h; sourceTree = "<group>"; };
-		50ABBE171925AB6F00A911A9 /* s3tc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s3tc.cpp; path = ../base/s3tc.cpp; sourceTree = "<group>"; };
-		50ABBE181925AB6F00A911A9 /* s3tc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s3tc.h; path = ../base/s3tc.h; sourceTree = "<group>"; };
 		50ABBE191925AB6F00A911A9 /* TGAlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TGAlib.cpp; path = ../base/TGAlib.cpp; sourceTree = "<group>"; };
 		50ABBE1A1925AB6F00A911A9 /* TGAlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGAlib.h; path = ../base/TGAlib.h; sourceTree = "<group>"; };
 		50ABBE1B1925AB6F00A911A9 /* uthash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uthash.h; path = ../base/uthash.h; sourceTree = "<group>"; };
@@ -3242,8 +3230,6 @@
 				3E6176651960F89B00DE83F5 /* CCGameController.h */,
 				299754F2193EC95400A54AC3 /* ObjectFactory.cpp */,
 				299754F3193EC95400A54AC3 /* ObjectFactory.h */,
-				50ABBDC11925AB6E00A911A9 /* atitc.cpp */,
-				50ABBDC21925AB6E00A911A9 /* atitc.h */,
 				50ABBDC31925AB6E00A911A9 /* base64.cpp */,
 				50ABBDC41925AB6E00A911A9 /* base64.h */,
 				50ABBDC51925AB6E00A911A9 /* CCAutoreleasePool.cpp */,
@@ -3327,8 +3313,6 @@
 				50ABBE141925AB6F00A911A9 /* etc1.cpp */,
 				50ABBE151925AB6F00A911A9 /* etc1.h */,
 				50ABBE161925AB6F00A911A9 /* firePngData.h */,
-				50ABBE171925AB6F00A911A9 /* s3tc.cpp */,
-				50ABBE181925AB6F00A911A9 /* s3tc.h */,
 				50ABBE191925AB6F00A911A9 /* TGAlib.cpp */,
 				50ABBE1A1925AB6F00A911A9 /* TGAlib.h */,
 				50ABBE1B1925AB6F00A911A9 /* uthash.h */,
@@ -5621,7 +5605,6 @@
 				50ABBD5E1925AB0000A911A9 /* Vec3.h in Headers */,
 				15AE188919AAD33D00C27E9E /* CCControlButtonLoader.h in Headers */,
 				15AE189119AAD33D00C27E9E /* CCLayerColorLoader.h in Headers */,
-				50ABBE211925AB6F00A911A9 /* atitc.h in Headers */,
 				15AE19A519AAD39600C27E9E /* TextFieldReader.h in Headers */,
 				291901431B05895600F8B4BA /* CCNinePatchImageParser.h in Headers */,
 				B24AA98B195A675C007B4522 /* CCFastTMXTiledMap.h in Headers */,
@@ -5651,7 +5634,6 @@
 				15AE18DE19AAD35000C27E9E /* TriggerObj.h in Headers */,
 				507003231B69735300E83DDD /* HttpConnection-winrt.h in Headers */,
 				3EACC9A219F5014D00EB3C5E /* CCCamera.h in Headers */,
-				50ABBECD1925AB6F00A911A9 /* s3tc.h in Headers */,
 				15AE1BD119AAE01E00C27E9E /* CCControlHuePicker.h in Headers */,
 				B5CE6DC01B3BF2B1002B0419 /* UIAbstractCheckButton.h in Headers */,
 				D0FD03571A3B51AA00825BB5 /* CCAllocatorMutex.h in Headers */,
@@ -5888,7 +5870,6 @@
 				5034CA22191D591100CE6051 /* ccShader_PositionTextureColorAlphaTest.frag in Headers */,
 				15AE1B8E19AADA9A00C27E9E /* UIDeprecated.h in Headers */,
 				15AE1A3919AAD3D500C27E9E /* Box2D.h in Headers */,
-				50ABBECE1925AB6F00A911A9 /* s3tc.h in Headers */,
 				50643BE519BFCF1800EF68ED /* CCPlatformMacros.h in Headers */,
 				15AE1BFA19AAE01E00C27E9E /* CCControlSwitch.h in Headers */,
 				15AE1BAA19AADFDF00C27E9E /* UIVBox.h in Headers */,
@@ -6143,7 +6124,6 @@
 				15AE1B8519AADA9A00C27E9E /* UITextField.h in Headers */,
 				B29A7E1019EE1B7700872B35 /* SkeletonJson.h in Headers */,
 				15AE184B19AAD30500C27E9E /* Export.h in Headers */,
-				50ABBE221925AB6F00A911A9 /* atitc.h in Headers */,
 				15AE1AB719AAD40300C27E9E /* b2ContactSolver.h in Headers */,
 				15AE193319AAD35100C27E9E /* CCActionNode.h in Headers */,
 				85505F0E1B60E3DB003F2CD4 /* SkeletonNodeReader.h in Headers */,
@@ -6587,7 +6567,6 @@
 				15AE19A219AAD39600C27E9E /* TextBMFontReader.cpp in Sources */,
 				382384281A2590F9002C4610 /* NodeReader.cpp in Sources */,
 				50ABC01D1926664800A911A9 /* CCThread.cpp in Sources */,
-				50ABBECB1925AB6F00A911A9 /* s3tc.cpp in Sources */,
 				50ABBD481925AB0000A911A9 /* Mat4.cpp in Sources */,
 				826294341AAF003E00CB7CF7 /* HttpClient-apple.mm in Sources */,
 				15AE1A6E19AAD40300C27E9E /* b2CircleContact.cpp in Sources */,
@@ -6607,7 +6586,6 @@
 				292DB14319B4574100A80320 /* UIEditBoxImpl-android.cpp in Sources */,
 				15AE1A5219AAD40300C27E9E /* b2Draw.cpp in Sources */,
 				50ED2BE419BEAF7900A0AB90 /* UIEditBoxImpl-win32.cpp in Sources */,
-				50ABBE1F1925AB6F00A911A9 /* atitc.cpp in Sources */,
 				B29A7DF119EE1B7700872B35 /* AtlasAttachmentLoader.c in Sources */,
 				1AAF584F180E40B9000584C8 /* LocalStorage.cpp in Sources */,
 				15AE1BD219AAE01E00C27E9E /* CCControlPotentiometer.cpp in Sources */,
@@ -7002,7 +6980,6 @@
 				15AE1BAF19AADFDF00C27E9E /* UILayoutManager.cpp in Sources */,
 				50ABBD3D1925AB0000A911A9 /* CCGeometry.cpp in Sources */,
 				15AE18D919AAD33D00C27E9E /* CCSpriteLoader.cpp in Sources */,
-				50ABBECC1925AB6F00A911A9 /* s3tc.cpp in Sources */,
 				15AE1B7819AADA9A00C27E9E /* UIRichText.cpp in Sources */,
 				B29A7E3019EE1B7700872B35 /* SkeletonAnimation.cpp in Sources */,
 				1A5702F7180BCE750088DEC7 /* CCTMXTiledMap.cpp in Sources */,
@@ -7097,7 +7074,6 @@
 				1A9DCA28180E6955007A3AD4 /* CCGLBufferedNode.cpp in Sources */,
 				15AE1BF919AAE01E00C27E9E /* CCControlSwitch.cpp in Sources */,
 				4649FF011BBA9FBE0001CC6F /* CCVertexAttribBinding.cpp in Sources */,
-				50ABBE201925AB6F00A911A9 /* atitc.cpp in Sources */,
 				50CB248019D9C5A100687767 /* AudioPlayer.mm in Sources */,
 				50ABBE9A1925AB6F00A911A9 /* CCRef.cpp in Sources */,
 				2980F0251BA9A5550059E678 /* CCUIMultilineTextField.mm in Sources */,

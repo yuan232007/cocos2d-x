@@ -275,14 +275,14 @@ var testNames = [
             return new Box2DTestScene();
         }
     },
-    {
-        title:"Camera3D Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/Camera3DTest/Camera3DTest.js",
-        testScene:function () {
-            return new Camera3DTestScene();
-        }
-    },
+//    {
+//        title:"Camera3D Test",
+//        platforms: PLATFORM_JSB,
+//        linksrc:"src/Camera3DTest/Camera3DTest.js",
+//        testScene:function () {
+//            return new Camera3DTestScene();
+//        }
+//    },
     {
         title:"Chipmunk Test",
         platforms: PLATFORM_ALL,
@@ -468,14 +468,14 @@ var testNames = [
             return new LoaderTestScene();
         }
     },
-    {
-        title:"MaterialSystem Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/MaterialSystemTest/MaterialSystemTest.js",
-        testScene:function () {
-            return new MaterialSystemTestScene();
-        }
-    },
+//    {
+//        title:"MaterialSystem Test",
+//        platforms: PLATFORM_JSB,
+//        linksrc:"src/MaterialSystemTest/MaterialSystemTest.js",
+//        testScene:function () {
+//            return new MaterialSystemTestScene();
+//        }
+//    },
     {
         title:"Menu Test",
         resource:g_menu,
@@ -519,13 +519,13 @@ var testNames = [
             return new ParallaxTestScene();
         }
     },
-    {
-        title:"Particle3D Test",
-        platforms: PLATFORM_JSB,
-        testScene:function () {
-            return new Particle3DTestScene();
-        }
-    },
+//    {
+//        title:"Particle3D Test",
+//        platforms: PLATFORM_JSB,
+//        testScene:function () {
+//            return new Particle3DTestScene();
+//        }
+//    },
     {
         title:"Particle Test",
         platforms: PLATFORM_ALL,
@@ -543,22 +543,22 @@ var testNames = [
             return new PathTestScene();
         }
     },
-    {
-        title:"Physics3D Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/Physics3DTest/Physics3DTest.js",
-        testScene:function () {
-            return new Physics3DTestScene();
-        }
-    },
-    {
-        title:"NavMesh Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/NavMeshTest/NavMeshTest.js",
-        testScene:function () {
-            return new nextNavMeshTest();
-        }
-    },
+//    {
+//        title:"Physics3D Test",
+//        platforms: PLATFORM_JSB,
+//        linksrc:"src/Physics3DTest/Physics3DTest.js",
+//        testScene:function () {
+//            return new Physics3DTestScene();
+//        }
+//    },
+//    {
+//        title:"NavMesh Test",
+//        platforms: PLATFORM_JSB,
+//        linksrc:"src/NavMeshTest/NavMeshTest.js",
+//        testScene:function () {
+//            return new nextNavMeshTest();
+//        }
+//    },
     {
         title:"ProgressActions Test",
         platforms: PLATFORM_ALL,
@@ -616,14 +616,14 @@ var testNames = [
             return new SpineTestScene();
         }
     },
-    {
-        title:"Sprite3D Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/Sprite3DTest/Sprite3DTest.js",
-        testScene:function () {
-            return new Sprite3DTestScene();
-        }
-    },
+//    {
+//        title:"Sprite3D Test",
+//        platforms: PLATFORM_JSB,
+//        linksrc:"src/Sprite3DTest/Sprite3DTest.js",
+//        testScene:function () {
+//            return new Sprite3DTestScene();
+//        }
+//    },
     {
         title:"SpritePolygon Test",
         platforms: PLATFORM_JSB,
@@ -650,14 +650,14 @@ var testNames = [
             return new S9SpriteTestScene();
         }
     },
-    {
-        title:"Terrain Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/TerrainTest/TerrainTest.js",
-        testScene:function () {
-            return new TerrainTestScene();
-        }
-    },
+//    {
+//        title:"Terrain Test",
+//        platforms: PLATFORM_JSB,
+//        linksrc:"src/TerrainTest/TerrainTest.js",
+//        testScene:function () {
+//            return new TerrainTestScene();
+//        }
+//    },
     {
         title:"TextInput Test",
         platforms: PLATFORM_HTML5,
