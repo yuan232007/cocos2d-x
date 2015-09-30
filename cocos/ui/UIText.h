@@ -102,10 +102,6 @@ public:
      *
      * @param text  String value.
      */
-    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text)
-    {
-        this->setString(text);
-    }
     void setString(const std::string& text);
 
     /**
@@ -113,10 +109,6 @@ public:
      *
      * @return String value.
      */
-    CC_DEPRECATED_ATTRIBUTE const std::string& getStringValue()
-    {
-        return this->getString();
-    }
     const std::string& getString()const;
 
     /**

@@ -58,11 +58,6 @@ namespace cocostudio
         return _instanceComAudioReader;
     }
     
-    void ComAudioReader::purge()
-    {
-        CC_SAFE_DELETE(_instanceComAudioReader);
-    }
-    
     void ComAudioReader::destroyInstance()
     {
         CC_SAFE_DELETE(_instanceComAudioReader);

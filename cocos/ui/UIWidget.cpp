@@ -332,11 +332,6 @@ void Widget::setContentSize(const cocos2d::Size &contentSize)
     onSizeChanged();
 }
 
-void Widget::setSize(const Size &size)
-{
-    this->setContentSize(size);
-}
-
 void Widget::setSizePercent(const Vec2 &percent)
 {
     if (_usingLayoutComponent)
@@ -502,11 +497,6 @@ void Widget::ignoreContentAdaptWithSize(bool ignore)
 bool Widget::isIgnoreContentAdaptWithSize() const
 {
     return _ignoreSize;
-}
-
-const Size& Widget::getSize() const
-{
-    return this->getContentSize();
 }
 
 const Size& Widget::getCustomSize() const
@@ -1145,11 +1135,6 @@ void Widget::setLayoutParameter(LayoutParameter *parameter)
 LayoutParameter* Widget::getLayoutParameter()const
 {
     return dynamic_cast<LayoutParameter*>(_layoutParameterDictionary.at((int)_layoutParameterType));
-}
-
-LayoutParameter* Widget::getLayoutParameter(LayoutParameter::Type type)
-{
-    return dynamic_cast<LayoutParameter*>(_layoutParameterDictionary.at((int)type));
 }
 
 std::string Widget::getDescription() const

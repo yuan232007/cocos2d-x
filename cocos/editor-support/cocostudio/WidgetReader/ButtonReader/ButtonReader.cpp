@@ -59,11 +59,6 @@ namespace cocostudio
         return instanceButtonReader;
     }
     
-    void ButtonReader::purge()
-    {
-        CC_SAFE_DELETE(instanceButtonReader);
-    }
-    
     void ButtonReader::destroyInstance()
     {
         CC_SAFE_DELETE(instanceButtonReader);
