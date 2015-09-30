@@ -67,20 +67,10 @@ public:
      */
     static SpriteFrameCache* getInstance();
 
-    /** @deprecated Use getInstance() instead 
-     @js NA 
-	*/
-    CC_DEPRECATED_ATTRIBUTE static SpriteFrameCache* sharedSpriteFrameCache() { return SpriteFrameCache::getInstance(); }
-
     /** Destroys the cache. It releases all the Sprite Frames and the retained instance.
 	 * @js NA
      */
     static void destroyInstance();
-
-    /** @deprecated Use destroyInstance() instead 
-     * @js NA
-     */
-    CC_DEPRECATED_ATTRIBUTE static void purgeSharedSpriteFrameCache() { return SpriteFrameCache::destroyInstance(); }
 
     /** Destructor.
      * @js NA
@@ -206,9 +196,6 @@ public:
      * @return The sprite frame.
      */
     SpriteFrame* getSpriteFrameByName(const std::string& name);
-
-    /** @deprecated use getSpriteFrameByName() instead */
-    CC_DEPRECATED_ATTRIBUTE SpriteFrame* spriteFrameByName(const std::string&name) { return getSpriteFrameByName(name); }
 
 protected:
     // MARMALADE: Made this protected not private, as deriving from this class is pretty useful

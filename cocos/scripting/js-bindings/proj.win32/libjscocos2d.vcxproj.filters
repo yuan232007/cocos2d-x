@@ -33,18 +33,6 @@
     <Filter Include="manual\ui">
       <UniqueIdentifier>{db4d6533-8c6a-4a18-bdd6-c9b98b897458}</UniqueIdentifier>
     </Filter>
-    <Filter Include="manual\3d">
-      <UniqueIdentifier>{3d1a97d2-47a9-4fc2-8458-a58c4f1fc111}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="manual\experimental">
-      <UniqueIdentifier>{9f37ec66-1e00-4015-baa6-dabdf755f0ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="manual\physics3d">
-      <UniqueIdentifier>{3aaaf02d-80d8-4339-b4cd-89d89ade5293}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="manual\navmesh">
-      <UniqueIdentifier>{8c9f2cd3-9065-4bf5-a073-7697217022e2}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp">
@@ -113,9 +101,6 @@
     <ClCompile Include="..\manual\cocostudio\jsb_cocos2dx_studio_manual.cpp">
       <Filter>manual\cocostudio</Filter>
     </ClCompile>
-    <ClCompile Include="..\manual\component\CCComponentJS.cpp">
-      <Filter>manual\component</Filter>
-    </ClCompile>
     <ClCompile Include="..\manual\extension\jsb_cocos2dx_extension_manual.cpp">
       <Filter>manual\extension</Filter>
     </ClCompile>
@@ -143,29 +128,8 @@
     <ClCompile Include="..\manual\cocostudio\jsb_cocos2dx_studio_conversions.cpp">
       <Filter>manual\cocostudio</Filter>
     </ClCompile>
-    <ClCompile Include="..\auto\jsb_cocos2dx_3d_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\auto\jsb_cocos2dx_3d_extension_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\3d\jsb_cocos2dx_3d_manual.cpp">
-      <Filter>manual\3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\auto\jsb_cocos2dx_physics3d_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\physics3d\jsb_cocos2dx_physics3d_manual.cpp">
-      <Filter>manual\physics3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\auto\jsb_cocos2dx_navmesh_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\navmesh\jsb_cocos2dx_navmesh_manual.cpp">
-      <Filter>manual\navmesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\navmesh\jsb_cocos2dx_navmesh_conversions.cpp">
-      <Filter>manual\navmesh</Filter>
+    <ClCompile Include="..\manual\component\CCComponentJS.cpp">
+      <Filter>manual</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -253,9 +217,6 @@
     <ClInclude Include="..\manual\cocostudio\jsb_cocos2dx_studio_manual.h">
       <Filter>manual\cocostudio</Filter>
     </ClInclude>
-    <ClInclude Include="..\manual\component\CCComponentJS.h">
-      <Filter>manual\component</Filter>
-    </ClInclude>
     <ClInclude Include="..\manual\extension\jsb_cocos2dx_extension_manual.h">
       <Filter>manual\extension</Filter>
     </ClInclude>
@@ -286,29 +247,8 @@
     <ClInclude Include="..\manual\cocostudio\jsb_cocos2dx_studio_conversions.h">
       <Filter>manual\cocostudio</Filter>
     </ClInclude>
-    <ClInclude Include="..\auto\jsb_cocos2dx_3d_auto.hpp">
+    <ClInclude Include="..\manual\component\CCComponentJS.h">
       <Filter>auto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\auto\jsb_cocos2dx_3d_extension_auto.hpp">
-      <Filter>auto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\3d\jsb_cocos2dx_3d_manual.h">
-      <Filter>manual\3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\auto\jsb_cocos2dx_physics3d_auto.hpp">
-      <Filter>auto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\physics3d\jsb_cocos2dx_physics3d_manual.h">
-      <Filter>manual\physics3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\auto\jsb_cocos2dx_navmesh_auto.hpp">
-      <Filter>auto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\navmesh\jsb_cocos2dx_navmesh_manual.h">
-      <Filter>manual\navmesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\navmesh\jsb_cocos2dx_navmesh_conversions.h">
-      <Filter>manual\navmesh</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

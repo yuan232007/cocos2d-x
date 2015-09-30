@@ -1,5 +1,6 @@
 /****************************************************************************
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2010-2012 cocos2d-x.org
+Copyright (c) 2013-2015 Chukong Technologies
 
 http://www.cocos2d-x.org
 
@@ -22,13 +23,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-#include "cocostudio/CCArmatureDefine.h"
+#ifndef __CCSTRING_H__
+#define __CCSTRING_H__
+/// @cond DO_NOT_SHOW
 
-namespace cocostudio {
+#include <functional>
+#include <sstream>
+#include <string>
 
-const char *armatureVersion()
+#include "base/ccMacros.h"
+
+NS_CC_BEGIN
+
+namespace StringUtils {
+
+template<typename T>
+std::string toString(T arg)
 {
-    return "1.1.0.0";
+    std::stringstream ss;
+    ss << arg;
+    return ss.str();
 }
 
-}
+std::string CC_DLL format(const char* format, ...) CC_FORMAT_PRINTF(1, 2);
+    
+} // namespace StringUtils {
+
+NS_CC_END
+
+/// @endcond
+#endif //__CCSTRING_H__

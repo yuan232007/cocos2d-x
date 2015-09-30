@@ -20,11 +20,11 @@ using namespace cocos2d;
 namespace cocosbuilder {
   
 void LayerLoader::onHandlePropTypeCheck(Node * pNode, Node * pParent, const char * pPropertyName, bool pCheck, CCBReader * ccbReader) {
-    if(strcmp(pPropertyName, PROPERTY_TOUCH_ENABLED) == 0) {
+    /*if(strcmp(pPropertyName, PROPERTY_TOUCH_ENABLED) == 0) {
         ((Layer *)pNode)->setTouchEnabled(pCheck);
     } else if(strcmp(pPropertyName, PROPERTY_ACCELEROMETER_ENABLED) == 0) {
         ((Layer *)pNode)->setAccelerometerEnabled(pCheck);
-    } else if(strcmp(pPropertyName, PROPERTY_MOUSE_ENABLED) == 0) {
+    } else */if(strcmp(pPropertyName, PROPERTY_MOUSE_ENABLED) == 0) {
         // TODO: Not supported
         CCLOG("The property '%s' is not supported!", PROPERTY_MOUSE_ENABLED);
     } else if(strcmp(pPropertyName, PROPERTY_KEYBOARD_ENABLED) == 0) {

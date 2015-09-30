@@ -106,7 +106,7 @@ public:
     /**
      * A callback which would be called when a ScrollView is scrolling.
      */
-    typedef std::function<void(Ref*, EventType)> ccScrollViewCallback;
+    typedef std::function<void(Ref*, ScrollView::EventType)> ccScrollViewCallback;
 
     /**
      * Default constructor

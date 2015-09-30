@@ -29,25 +29,43 @@
 
 class JSScheduleWrapper;
 
+namespace JSBinding
+{
+    typedef cocos2d::Vector<cocos2d::Ref*> Array;
+    typedef cocos2d::Map<std::string, cocos2d::Ref*> Dictionary;
+
+    class DictionaryRef : public cocos2d::Ref
+    {
+    public:
+        Dictionary data;
+    };
+
+    class ArrayRef : public cocos2d::Ref
+    {
+    public:
+        Array data;
+    };
+}
+
 // JSScheduleWrapper* --> Array* since one js function may correspond to many targets.
 // To debug this, you could refer to JSScheduleWrapper::dump function.
 // It will prove that i'm right. :)
 typedef struct jsScheduleFunc_proxy {
     JS::Heap<JSObject*> jsfuncObj;
-    cocos2d::__Array*  targets;
+    JSBinding::Array* targets;
     UT_hash_handle hh;
 } schedFunc_proxy_t;
 
 typedef struct jsScheduleTarget_proxy {
     JS::Heap<JSObject*> jsTargetObj;
-    cocos2d::__Array*  targets;
+    JSBinding::Array* targets;
     UT_hash_handle hh;
 } schedTarget_proxy_t;
 
 
 typedef struct jsCallFuncTarget_proxy {
     void * ptr;
-    cocos2d::__Array *obj;
+    JSBinding::Array* obj;
     UT_hash_handle hh;
 } callfuncTarget_proxy_t;
 
@@ -145,9 +163,9 @@ public:
     virtual ~JSScheduleWrapper();
 
     static void setTargetForSchedule(JS::HandleValue sched, JSScheduleWrapper *target);
-    static cocos2d::__Array * getTargetForSchedule(JS::HandleValue sched);
+    static JSBinding::Array* getTargetForSchedule(JS::HandleValue sched);
     static void setTargetForJSObject(JS::HandleObject jsTargetObj, JSScheduleWrapper *target);
-    static cocos2d::__Array * getTargetForJSObject(JS::HandleObject jsTargetObj);
+    static JSBinding::Array* getTargetForJSObject(JS::HandleObject jsTargetObj);
     
     // Remove all targets.
     static void removeAllTargets();

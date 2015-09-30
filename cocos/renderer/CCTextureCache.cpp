@@ -38,8 +38,8 @@ THE SOFTWARE.
 #include "base/CCScheduler.h"
 #include "platform/CCFileUtils.h"
 #include "base/ccUtils.h"
+#include "base/CCString.h"
 
-#include "deprecated/CCString.h"
 #include "base/CCNinePatchImageParser.h"
 
 
@@ -74,15 +74,6 @@ TextureCache::~TextureCache()
 
 void TextureCache::destroyInstance()
 {
-}
-
-TextureCache * TextureCache::sharedTextureCache() 
-{
-    return Director::getInstance()->getTextureCache();
-}
-
-void TextureCache::purgeSharedTextureCache() 
-{ 
 }
 
 std::string TextureCache::getDescription() const

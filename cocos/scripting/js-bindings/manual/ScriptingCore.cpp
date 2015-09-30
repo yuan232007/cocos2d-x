@@ -803,7 +803,7 @@ void ScriptingCore::restartVM()
 {
     cleanup();
     initRegister();
-    CCApplication::getInstance()->applicationDidFinishLaunching();
+    Application::getInstance()->applicationDidFinishLaunching();
 }
 
 ScriptingCore::~ScriptingCore()
@@ -969,13 +969,13 @@ bool ScriptingCore::removeRootJS(JSContext *cx, uint32_t argc, jsval *vp)
 void ScriptingCore::pauseSchedulesAndActions(js_proxy_t* p)
 {
     JS::RootedObject obj(_cx, p->obj.get());
-    __Array * arr = JSScheduleWrapper::getTargetForJSObject(obj);
+    auto arr = JSScheduleWrapper::getTargetForJSObject(obj);
     if (! arr) return;
     
     Node* node = (Node*)p->ptr;
-    for(ssize_t i = 0; i < arr->count(); ++i) {
-        if (arr->getObjectAtIndex(i)) {
-            node->getScheduler()->pauseTarget(arr->getObjectAtIndex(i));
+    for(ssize_t i = 0; i < arr->size(); ++i) {
+        if (arr->at(i)) {
+            node->getScheduler()->pauseTarget(arr->at(i));
         }
     }
 }
@@ -984,27 +984,26 @@ void ScriptingCore::pauseSchedulesAndActions(js_proxy_t* p)
 void ScriptingCore::resumeSchedulesAndActions(js_proxy_t* p)
 {
     JS::RootedObject obj(_cx, p->obj.get());
-    __Array * arr = JSScheduleWrapper::getTargetForJSObject(obj);
+    auto arr = JSScheduleWrapper::getTargetForJSObject(obj);
     if (!arr) return;
     
     Node* node = (Node*)p->ptr;
-    for(ssize_t i = 0; i < arr->count(); ++i) {
-        if (!arr->getObjectAtIndex(i)) continue;
-        node->getScheduler()->resumeTarget(arr->getObjectAtIndex(i));
+    for(ssize_t i = 0; i < arr->size(); ++i) {
+        if (!arr->at(i)) continue;
+        node->getScheduler()->resumeTarget(arr->at(i));
     }
 }
 
 void ScriptingCore::cleanupSchedulesAndActions(js_proxy_t* p)
 {
     JS::RootedObject obj(_cx, p->obj.get());
-    __Array* arr = JSScheduleWrapper::getTargetForJSObject(obj);
-    if (arr) {
+    auto targetArray = JSScheduleWrapper::getTargetForJSObject(obj);
+    if (targetArray) {
         Node* node = (Node*)p->ptr;
-        Scheduler* pScheduler = node->getScheduler();
-        Ref* pObj = nullptr;
-        CCARRAY_FOREACH(arr, pObj)
+        auto scheduler = node->getScheduler();
+        for (auto&& obj : *targetArray)
         {
-            pScheduler->unscheduleAllForTarget(pObj);
+            scheduler->unscheduleAllForTarget(obj);
         }
 
         JSScheduleWrapper::removeAllTargetsForJSObject(obj);

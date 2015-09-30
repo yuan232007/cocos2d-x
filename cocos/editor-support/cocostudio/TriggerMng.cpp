@@ -33,20 +33,16 @@ namespace cocostudio {
     
 TriggerMng* TriggerMng::_sharedTriggerMng = nullptr;
 
-TriggerMng::TriggerMng(void)
-: _movementDispatches(new std::unordered_map<Armature*, ArmatureMovementDispatcher*>)
+TriggerMng::TriggerMng()
 {
     _eventDispatcher = Director::getInstance()->getEventDispatcher();
     _eventDispatcher->retain();
 }
 
-TriggerMng::~TriggerMng(void)
+TriggerMng::~TriggerMng()
 {
     removeAll();
 	_triggerObjs.clear();
-
-	removeAllArmatureMovementCallBack();
-	CC_SAFE_DELETE(_movementDispatches);
 
     CC_SAFE_RELEASE(_eventDispatcher);
 }
@@ -104,7 +100,6 @@ void TriggerMng::parse(const rapidjson::Value &root)
         }
     }
 }
-    
     
 void TriggerMng::parse(cocostudio::CocoLoader *pCocoLoader, cocostudio::stExpCocoNode *pCocoNode)
 {
@@ -190,7 +185,6 @@ bool TriggerMng::isEmpty(void) const
     return _triggerObjs.empty();
 }
 
-    
 void TriggerMng::buildJson(rapidjson::Document &document, cocostudio::CocoLoader *pCocoLoader, cocostudio::stExpCocoNode *pCocoNode)
 {
     int count = pCocoNode[13].GetChildNum();
@@ -400,79 +394,6 @@ void TriggerMng::buildJson(rapidjson::Document &document, cocostudio::CocoLoader
     }
 }
 
-void TriggerMng::addArmatureMovementCallBack(Armature *pAr, Ref *pTarget, SEL_MovementEventCallFunc mecf)
-{
-	if (pAr == nullptr || _movementDispatches == nullptr || pTarget == nullptr || mecf == nullptr)
-	{
-		return;
-	}
-
-	auto iter = _movementDispatches->find(pAr);
-	ArmatureMovementDispatcher *amd = nullptr;
-	if (iter == _movementDispatches->end())
-	{
-		amd = new (std::nothrow) ArmatureMovementDispatcher();
-        pAr->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(ArmatureMovementDispatcher::animationEvent, amd, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        amd->addAnimationEventCallBack(pTarget, mecf);
-		_movementDispatches->insert(std::make_pair(pAr, amd));
-
-	}
-	else
-	{
-		amd = iter->second;
-		amd->addAnimationEventCallBack(pTarget, mecf);
-	}
-}
-
-void TriggerMng::removeArmatureMovementCallBack(Armature *pAr, Ref *pTarget, SEL_MovementEventCallFunc mecf)
-{
-	if (pAr == nullptr || _movementDispatches == nullptr || pTarget == nullptr || mecf == nullptr)
-	{
-		return;
-	}
-    
-    auto iter =_movementDispatches->find(pAr);
-	ArmatureMovementDispatcher *amd = nullptr;
-	if (iter == _movementDispatches->end())
-	{
-		return;
-	}
-	else
-	{
-		amd = iter->second;
-		amd->removeAnnimationEventCallBack(pTarget, mecf);
-	}
-}
-
-void TriggerMng::removeArmatureAllMovementCallBack(Armature *pAr)
-{
-	if (pAr == nullptr)
-	{
-		return;
-	}
-
-	auto iter = _movementDispatches->find(pAr);
-	if (iter == _movementDispatches->end())
-	{
-		return;
-	}
-	else
-	{
-		CC_SAFE_DELETE(iter->second);
-		_movementDispatches->erase(iter);
-	}
-}
-
-void TriggerMng::removeAllArmatureMovementCallBack()
-{
-	auto iter = _movementDispatches->begin();
-	while (iter != _movementDispatches->end())
-	{
-		removeArmatureAllMovementCallBack(iter->first);
-	}
-	_movementDispatches->clear();
-}
-
 void TriggerMng::dispatchEvent(cocos2d::EventCustom* tEvent)
 {
     _eventDispatcher->dispatchEvent(tEvent);
@@ -488,35 +409,5 @@ void TriggerMng::addEventListenerWithFixedPriority(cocos2d::EventListener* liste
     _eventDispatcher->addEventListenerWithFixedPriority(listener, fixedPriority);
 }
 
-ArmatureMovementDispatcher::ArmatureMovementDispatcher(void)
-: _mapEventAnimation(nullptr)
-{
-	_mapEventAnimation = new std::unordered_map<Ref*, SEL_MovementEventCallFunc> ;
-}
-
-ArmatureMovementDispatcher::~ArmatureMovementDispatcher(void)
-{
-	_mapEventAnimation->clear();
-	CC_SAFE_DELETE(_mapEventAnimation);
-}
-
- void ArmatureMovementDispatcher::animationEvent(Armature *armature, MovementEventType movementType, const std::string& movementID)
- {
-	 for (auto iter = _mapEventAnimation->begin(); iter != _mapEventAnimation->end(); ++iter)
-	 {
-		   (iter->first->*iter->second)(armature, movementType, movementID);
-	 }
- }
-
-  void ArmatureMovementDispatcher::addAnimationEventCallBack(Ref *pTarget, SEL_MovementEventCallFunc mecf)
-  {
-	  _mapEventAnimation->insert(std::make_pair(pTarget, mecf));
-  }
-
-  void ArmatureMovementDispatcher::removeAnnimationEventCallBack(Ref *pTarget, SEL_MovementEventCallFunc mecf)
-  {
-	  _mapEventAnimation->erase(pTarget);
-  }
-  
 }
 

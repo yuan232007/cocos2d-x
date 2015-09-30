@@ -38,13 +38,13 @@ public:
     enum class AttachComponentType
     {
         ///parent: Empty Node
-        ///            ComRender(Sprite, Armature, TMXTiledMap, ParticleSystemQuad, GUIComponent)
+        ///            ComRender(Sprite, TMXTiledMap, ParticleSystemQuad, GUIComponent)
         ///            ComAttribute
         ///            ComAudio
         ///            ....
         EMPTY_NODE,
         
-        ///parent:   ComRender(Sprite, Armature, TMXTiledMap, ParticleSystemQuad, GUIComponent)
+        ///parent:   ComRender(Sprite, TMXTiledMap, ParticleSystemQuad, GUIComponent)
         ///          ComAttribute
         ///          ComAudio
         ///          .....

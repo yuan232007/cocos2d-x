@@ -46,8 +46,7 @@ THE SOFTWARE.
 #include "renderer/ccGLStateCache.h"
 #include "renderer/CCGLProgramCache.h"
 #include "base/CCNinePatchImageParser.h"
-#include "deprecated/CCString.h"
-
+#include "base/CCString.h"
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     #include "renderer/CCTextureCache.h"
@@ -1193,12 +1192,6 @@ void Texture2D::drawInRect(const Rect& rect)
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_TEX_COORD, 2, GL_FLOAT, GL_FALSE, 0, coordinates);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
-
-void Texture2D::PVRImagesHavePremultipliedAlpha(bool haveAlphaPremultiplied)
-{
-    Image::setPVRImagesHavePremultipliedAlpha(haveAlphaPremultiplied);
-}
-
 
 //
 // Use to apply MIN/MAG filter

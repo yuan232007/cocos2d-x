@@ -226,15 +226,15 @@ static bool js_cocos2dx_CCTableView_setDelegate(JSContext *cx, uint32_t argc, js
         JSB_TableViewDelegate* nativeDelegate = new JSB_TableViewDelegate();
         nativeDelegate->setJSDelegate(jsDelegate);
         
-        __Dictionary* userDict = static_cast<__Dictionary*>(cobj->getUserObject());
+        auto userDict = static_cast<JSBinding::DictionaryRef*>(cobj->getUserObject());
         if (NULL == userDict)
         {
-            userDict = new __Dictionary();
+            userDict = new (std::nothrow) JSBinding::DictionaryRef();
             cobj->setUserObject(userDict);
             userDict->release();
         }
-        
-        userDict->setObject(nativeDelegate, KEY_TABLEVIEW_DELEGATE);
+         
+        userDict->data.insert(KEY_TABLEVIEW_DELEGATE, nativeDelegate);
         
         cobj->setDelegate(nativeDelegate);
         
@@ -420,15 +420,15 @@ static bool js_cocos2dx_CCTableView_setDataSource(JSContext *cx, uint32_t argc, 
         JSB_TableViewDataSource* pNativeSource = new JSB_TableViewDataSource();
         pNativeSource->setTableViewDataSource(args.get(0).toObjectOrNull());
     
-        __Dictionary* userDict = static_cast<__Dictionary*>(cobj->getUserObject());
+        auto userDict = static_cast<JSBinding::DictionaryRef*>(cobj->getUserObject());
         if (NULL == userDict)
         {
-            userDict = new __Dictionary();
+            userDict = new (std::nothrow) JSBinding::DictionaryRef();
             cobj->setUserObject(userDict);
             userDict->release();
         }
 
-        userDict->setObject(pNativeSource, KEY_TABLEVIEW_DATA_SOURCE);
+        userDict->data.insert(KEY_TABLEVIEW_DATA_SOURCE, pNativeSource);
 
         cobj->setDataSource(pNativeSource);
         
@@ -493,8 +493,8 @@ static bool js_cocos2dx_CCTableView_create(JSContext *cx, uint32_t argc, jsval *
         }
         ret->reloadData();
         
-        __Dictionary* userDict = new __Dictionary();
-        userDict->setObject(pNativeSource, KEY_TABLEVIEW_DATA_SOURCE);
+        JSBinding::DictionaryRef* userDict = new JSBinding::DictionaryRef();
+        userDict->data.insert(KEY_TABLEVIEW_DATA_SOURCE, pNativeSource);
         ret->setUserObject(userDict);
         userDict->release();
         
@@ -545,8 +545,8 @@ static bool js_cocos2dx_CCTableView_init(JSContext *cx, uint32_t argc, jsval *vp
         }
         cobj->reloadData();
         
-        __Dictionary* userDict = new __Dictionary();
-        userDict->setObject(pNativeSource, KEY_TABLEVIEW_DATA_SOURCE);
+        JSBinding::DictionaryRef* userDict = new JSBinding::DictionaryRef();
+        userDict->data.insert(KEY_TABLEVIEW_DATA_SOURCE, pNativeSource);
         cobj->setUserObject(userDict);
         userDict->release();
         
@@ -673,16 +673,15 @@ static bool js_cocos2dx_CCControl_addTargetWithActionForControlEvents(JSContext 
         nativeDelegate->setJSCallback(args.get(1), jsDelegate);
         nativeDelegate->setEventType(arg2);
 
-        __Array* nativeDelegateArray = static_cast<__Array*>(cobj->getUserObject());
+        auto nativeDelegateArray = static_cast<JSBinding::ArrayRef*>(cobj->getUserObject());
         if (nullptr == nativeDelegateArray)
         {
-            nativeDelegateArray = new __Array();
-            nativeDelegateArray->init();
+            nativeDelegateArray = new JSBinding::ArrayRef();
             cobj->setUserObject(nativeDelegateArray);  // The reference of nativeDelegateArray is added to 2
             nativeDelegateArray->release(); // Release nativeDelegateArray to make the reference to 1
         }
         
-        nativeDelegateArray->addObject(nativeDelegate); // The reference of nativeDelegate is added to 2
+        nativeDelegateArray->data.pushBack(nativeDelegate); // The reference of nativeDelegate is added to 2
         nativeDelegate->release(); // Release nativeDelegate to make the reference to 1
         
         cobj->addTargetWithActionForControlEvents(nativeDelegate, cccontrol_selector(JSB_ControlButtonTarget::onEvent), arg2);
