@@ -15,7 +15,6 @@
 #include "spine/jsb_cocos2dx_spine_manual.h"
 #include "cocos2d_specifics.hpp"
 #include "cocosbuilder/cocosbuilder_specifics.hpp"
-#include "chipmunk/js_bindings_chipmunk_registration.h"
 #include "localstorage/js_bindings_system_registration.h"
 #include "jsb_opengl_registration.h"
 #include "network/XMLHTTPRequest.h"
@@ -88,7 +87,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_cocos2dx_extension);
     sc->addRegisterCallback(register_all_cocos2dx_extension_manual);
 
-    sc->addRegisterCallback(jsb_register_chipmunk);
     sc->addRegisterCallback(JSB_register_opengl);
     
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);

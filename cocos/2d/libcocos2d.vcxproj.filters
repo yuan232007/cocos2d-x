@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="physics">
-      <UniqueIdentifier>{08593631-5bf5-46aa-9436-62595c4f7bf6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="2d">
       <UniqueIdentifier>{0965e868-aacd-4d73-9c78-31d3cdaaed52}</UniqueIdentifier>
     </Filter>
@@ -69,9 +66,6 @@
     </Filter>
     <Filter Include="extension\GUI\CCScrollView">
       <UniqueIdentifier>{a1f539bc-d5be-4224-a4d2-01c0b6f17d6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="extension\physics_nodes">
-      <UniqueIdentifier>{1de7fce7-0dee-4571-8fcd-43eb617aaf8b}</UniqueIdentifier>
     </Filter>
     <Filter Include="cocosdenshion\Header Files">
       <UniqueIdentifier>{f42979de-0079-4eba-b469-81ebff9ec588}</UniqueIdentifier>
@@ -240,21 +234,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\physics\CCPhysicsBody.cpp">
-      <Filter>physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics\CCPhysicsContact.cpp">
-      <Filter>physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics\CCPhysicsJoint.cpp">
-      <Filter>physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics\CCPhysicsShape.cpp">
-      <Filter>physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\physics\CCPhysicsWorld.cpp">
-      <Filter>physics</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\external\xxhash\xxhash.c">
       <Filter>external\xxhash</Filter>
     </ClCompile>
@@ -717,12 +696,6 @@
     </ClCompile>
     <ClCompile Include="..\..\extensions\GUI\CCScrollView\CCTableViewCell.cpp">
       <Filter>extension\GUI\CCScrollView</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\extensions\physics-nodes\CCPhysicsDebugNode.cpp">
-      <Filter>extension\physics_nodes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\extensions\physics-nodes\CCPhysicsSprite.cpp">
-      <Filter>extension\physics_nodes</Filter>
     </ClCompile>
     <ClCompile Include="..\audio\win32\MciPlayer.cpp">
       <Filter>cocosdenshion\Source Files</Filter>
@@ -1244,21 +1217,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\physics\CCPhysicsBody.h">
-      <Filter>physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics\CCPhysicsContact.h">
-      <Filter>physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics\CCPhysicsJoint.h">
-      <Filter>physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics\CCPhysicsShape.h">
-      <Filter>physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics\CCPhysicsWorld.h">
-      <Filter>physics</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\external\xxhash\xxhash.h">
       <Filter>external\xxhash</Filter>
     </ClInclude>
@@ -1772,12 +1730,6 @@
     </ClInclude>
     <ClInclude Include="..\..\extensions\GUI\CCScrollView\CCTableViewCell.h">
       <Filter>extension\GUI\CCScrollView</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsDebugNode.h">
-      <Filter>extension\physics_nodes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsSprite.h">
-      <Filter>extension\physics_nodes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\extensions\cocos-ext.h">
       <Filter>extension</Filter>
@@ -2306,9 +2258,6 @@
     </ClInclude>
     <ClInclude Include="..\base\allocator\CCAllocatorStrategyPool.h">
       <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\physics\CCPhysicsHelper.h">
-      <Filter>physics</Filter>
     </ClInclude>
     <ClInclude Include="..\platform\CCPlatformConfig.h">
       <Filter>platform</Filter>

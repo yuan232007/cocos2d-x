@@ -525,7 +525,6 @@ public:
      * @param deltaAngleZ_X In degreesCW.
      * @param deltaAngleZ_Y In degreesCW.
      * @return An autoreleased RotateBy object.
-     * @warning The physics body contained in Node doesn't support rotate with different x and y angle.
      */
     static RotateBy* create(float duration, float deltaAngleZ_X, float deltaAngleZ_Y);
     /** Creates the action with 3D rotation angles.
@@ -554,7 +553,6 @@ CC_CONSTRUCTOR_ACCESS:
     /** initializes the action */
     bool initWithDuration(float duration, float deltaAngle);
     /** 
-     * @warning The physics body contained in Node doesn't support rotate with different x and y angle.
      * @param deltaAngleZ_X in degreesCW
      * @param deltaAngleZ_Y in degreesCW
      */
@@ -954,7 +952,6 @@ private:
 /** @class ScaleTo
  @brief Scales a Node object to a zoom factor by modifying it's scale attribute.
  @warning This action doesn't support "reverse".
- @warning The physics body contained in Node doesn't support this action.
  */
 class CC_DLL ScaleTo : public ActionInterval
 {
@@ -1037,7 +1034,6 @@ private:
 
 /** @class ScaleBy
  * @brief Scales a Node object a zoom factor by modifying it's scale attribute.
- @warning The physics body contained in Node doesn't support this action.
 */
 class CC_DLL ScaleBy : public ScaleTo
 {

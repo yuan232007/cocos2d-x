@@ -61,16 +61,6 @@ if (cc.ControlButton) {
     require('script/extension/jsb_ext_create_apis.js');
 }
 
-if (cc.PhysicsSprite) {
-    require('script/physicsSprite/jsb_physicsSprite.js');
-}
-
-if (window.cp) {
-    // chipmunk
-    require('script/chipmunk/jsb_chipmunk_constants.js');
-    require('script/chipmunk/jsb_chipmunk.js');
-}
-
 require('script/jsb_opengl_constants.js');
 require('script/jsb_opengl.js');
 

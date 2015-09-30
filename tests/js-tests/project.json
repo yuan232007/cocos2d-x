@@ -162,8 +162,6 @@
         "src/XHRTest/XHRTest.js",
         "src/XHRTest/XHRArrayBufferTest.js",
 
-        "src/ChipmunkTest/ChipmunkTest.js",
-
         "src/Presentation/Presentation.js",
         "src/ReflectionTest/ReflectionTest.js",
 

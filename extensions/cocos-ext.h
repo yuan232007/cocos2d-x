@@ -8,10 +8,6 @@
 #include "GUI/CCScrollView/CCScrollView.h"
 #include "GUI/CCScrollView/CCTableView.h"
 
-// Physics integration
-#include "physics-nodes/CCPhysicsDebugNode.h"
-#include "physics-nodes/CCPhysicsSprite.h"
-
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT && _MSC_VER < 1900)
 // Window 10 UWP does not yet support CURL
 #include "assets-manager/AssetsManager.h"
