@@ -50,23 +50,6 @@ ccs.AnimationInfo = function (name, startIndex, endIndex) {
     this.endIndex = endIndex != undefined ? endIndex : 0;
 };
 
-// Armature
-if(ccs.Armature){
-    ccs.Armature.prototype.setBody = function( body ) {
-    var b = body;
-    if( body.handle !== undefined )
-        b = body.handle;
-    return this._setCPBody( b );
-  };
-  
-  ccs.ComController.extend = cc.Class.extend;
-  ccs.Armature.extend = cc.Class.extend;
-}
-
-ccs.Armature.prototype._setBlendFunc = ccs.Armature.prototype.setBlendFunc;
-ccs.Armature.prototype.setBlendFunc = templateSetBlendFunc;
-
-
 ccs.sendEvent = function (event) {
     var triggerObjArr = ccs.triggerManager.get(event);
     if (triggerObjArr == null) {
@@ -398,121 +381,10 @@ ccs.triggerManager = {
     isEmpty: function () {
         return !this._eventTriggers || this._eventTriggers.length <= 0;
     },
-
-    addArmatureMovementCallBack: function (armature, callFunc, target) {
-        if (armature == null || target == null || callFunc == null) {
-            return;
-        }
-        var locAmd, hasADD = false;
-        for (var i = 0; i < this._movementDispatches.length; i++) {
-            locAmd = this._movementDispatches[i];
-            if (locAmd && locAmd[0] == armature) {
-                locAmd.addAnimationEventCallBack(callFunc, target);
-                hasADD = true;
-            }
-        }
-        if (!hasADD) {
-            var newAmd = new ccs.ArmatureMovementDispatcher();
-            armature.getAnimation().setMovementEventCallFunc(newAmd.animationEvent, newAmd);
-            newAmd.addAnimationEventCallBack(callFunc, target);
-            this._movementDispatches.push([armature, newAmd]);
-        }
-    },
-
-    removeArmatureMovementCallBack: function (armature, target, callFunc) {
-        if (armature == null || target == null || callFunc == null) {
-            return;
-        }
-        var locAmd;
-        for (var i = 0; i < this._movementDispatches.length; i++) {
-            locAmd = this._movementDispatches[i];
-            if (locAmd && locAmd[0] == armature) {
-                locAmd.removeAnimationEventCallBack(callFunc, target);
-            }
-        }
-    },
-
-    removeArmatureAllMovementCallBack: function (armature) {
-        if (armature == null) {
-            return;
-        }
-        var locAmd;
-        for (var i = 0; i < this._movementDispatches.length; i++) {
-            locAmd = this._movementDispatches[i];
-            if (locAmd && locAmd[0] == armature) {
-                this._movementDispatches.splice(i, 1);
-                break;
-            }
-        }
-    },
-
-    removeAllArmatureMovementCallBack: function () {
-        this._movementDispatches = [];
-    },
-                                  
+                            
     version: function () {
         return "1.2.0.0";
     }
-};
-
-
-// Functions don't support binding
-ccs.Bone.prototype.getColliderBodyList = function() {
-    var decoDisplay = this.getDisplayManager().getCurrentDecorativeDisplay();
-    if (decoDisplay) {
-        var detector = decoDisplay.getColliderDetector();
-        if (detector) {
-            return detector.getColliderBodyList();
-        }
-    }
-    return [];
-};
-
-ccs.TweenType = {
-    CUSTOM_EASING: -1,
-    LINEAR: 0,
-
-    SINE_EASEIN: 1,
-    SINE_EASEOUT: 2,
-    SINE_EASEINOUT: 3,
-
-    QUAD_EASEIN: 4,
-    QUAD_EASEOUT: 5,
-    QUAD_EASEINOUT: 6,
-
-    CUBIC_EASEIN: 7,
-    CUBIC_EASEOUT: 8,
-    CUBIC_EASEINOUT: 9,
-
-    QUART_EASEIN: 10,
-    QUART_EASEOUT: 11,
-    QUART_EASEINOUT: 12,
-
-    QUINT_EASEIN: 13,
-    QUINT_EASEOUT: 14,
-    QUINT_EASEINOUT: 15,
-
-    EXPO_EASEIN: 16,
-    EXPO_EASEOUT: 17,
-    EXPO_EASEINOUT: 18,
-
-    CIRC_EASEIN: 19,
-    CIRC_EASEOUT: 20,
-    CIRC_EASEINOUT: 21,
-
-    ELASTIC_EASEIN: 22,
-    ELASTIC_EASEOUT: 23,
-    ELASTIC_EASEINOUT: 24,
-
-    BACK_EASEIN: 25,
-    BACK_EASEOUT: 26,
-    BACK_EASEINOUT: 27,
-
-    BOUNCE_EASEIN: 28,
-    BOUNCE_EASEOUT: 29,
-    BOUNCE_EASEINOUT: 30,
-
-    TWEEN_EASING_MAX: 10000
 };
 
 ccs.FrameEaseType = {

@@ -1563,14 +1563,17 @@ bool js_CCNode_scheduleOnce(JSContext *cx, uint32_t argc, jsval *vp)
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        for (auto&& pObj : *pTargetArr)
+        if (pTargetArr)
         {
-            JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
-            if (args.get(0) == pTarget->getJSCallbackFunc())
+            for (auto&& pObj : *pTargetArr)
             {
-                tmpCobj = pTarget;
-                bFound = true;
-                break;
+                JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
+                if (args.get(0) == pTarget->getJSCallbackFunc())
+                {
+                    tmpCobj = pTarget;
+                    bFound = true;
+                    break;
+                }
             }
         }
 
@@ -1654,15 +1657,18 @@ bool js_CCNode_schedule(JSContext *cx, uint32_t argc, jsval *vp)
         JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
         
         bool bFound = false;
-        auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        for (auto&& pObj : *pTargetArr)
+        auto targetArray = JSScheduleWrapper::getTargetForJSObject(obj);
+        if (targetArray)
         {
-            JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
-            if (args.get(0) == pTarget->getJSCallbackFunc())
+            for (auto&& pObj : *targetArray)
             {
-                tmpCobj = pTarget;
-                bFound = true;
-                break;
+                auto target = static_cast<JSScheduleWrapper*>(pObj);
+                if (args.get(0) == target->getJSCallbackFunc())
+                {
+                    tmpCobj = target;
+                    bFound = true;
+                    break;
+                }
             }
         }
 
@@ -1728,14 +1734,17 @@ bool js_cocos2dx_CCNode_scheduleUpdateWithPriority(JSContext *cx, uint32_t argc,
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        for (auto&& pObj : *pTargetArr)
+        if (pTargetArr)
         {
-            JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
-            if (jsUpdateFunc == pTarget->getJSCallbackFunc())
+            for (auto&& pObj : *pTargetArr)
             {
-                tmpCobj = pTarget;
-                bFound = true;
-                break;
+                JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
+                if (jsUpdateFunc == pTarget->getJSCallbackFunc())
+                {
+                    tmpCobj = pTarget;
+                    bFound = true;
+                    break;
+                }
             }
         }
         
@@ -1831,14 +1840,17 @@ bool js_cocos2dx_CCNode_scheduleUpdate(JSContext *cx, uint32_t argc, jsval *vp)
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(obj);
-        for (auto&& pObj : *pTargetArr)
+        if (pTargetArr)
         {
-            JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
-            if (jsUpdateFunc == pTarget->getJSCallbackFunc())
+            for (auto&& pObj : *pTargetArr)
             {
-                tmpCobj = pTarget;
-                bFound = true;
-                break;
+                JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
+                if (jsUpdateFunc == pTarget->getJSCallbackFunc())
+                {
+                    tmpCobj = pTarget;
+                    bFound = true;
+                    break;
+                }
             }
         }
         
@@ -1945,14 +1957,17 @@ bool js_CCScheduler_scheduleUpdateForTarget(JSContext *cx, uint32_t argc, jsval 
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
-        for (auto&& pObj : *pTargetArr)
+        if (pTargetArr)
         {
-            JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
-            if (jsUpdateFunc == pTarget->getJSCallbackFunc())
+            for (auto&& pObj : *pTargetArr)
             {
-                tmpCObj = pTarget;
-                bFound = true;
-                break;
+                JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
+                if (jsUpdateFunc == pTarget->getJSCallbackFunc())
+                {
+                    tmpCObj = pTarget;
+                    bFound = true;
+                    break;
+                }
             }
         }
         
@@ -2066,14 +2081,17 @@ bool js_CCScheduler_scheduleCallbackForTarget(JSContext *cx, uint32_t argc, jsva
         
         bool bFound = false;
         auto pTargetArr = JSScheduleWrapper::getTargetForJSObject(tmpObj);
-        for (auto&& pObj : *pTargetArr)
+        if (pTargetArr)
         {
-            JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
-            if (args.get(1) == pTarget->getJSCallbackFunc())
+            for (auto&& pObj : *pTargetArr)
             {
-                tmpCObj = pTarget;
-                bFound = true;
-                break;
+                JSScheduleWrapper* pTarget = static_cast<JSScheduleWrapper*>(pObj);
+                if (args.get(1) == pTarget->getJSCallbackFunc())
+                {
+                    tmpCObj = pTarget;
+                    bFound = true;
+                    break;
+                }
             }
         }
         

@@ -126,30 +126,6 @@
             node.addComponent(render);
             return render;
         },
-        "CCArmature": function(node, component, resourcePath){
-            var child = null;
-            loadTexture(component["fileData"], resourcePath, function(path, type){
-                if(type === 0){
-                    var jsonDict = cc.loader.getRes(path);
-                    if (!jsonDict) cc.log("Please load the resource [%s] first!", path);
-                    var armature_data = jsonDict["armature_data"];
-                    var subData = armature_data[0];
-                    var name = subData["name"];
-                    ccs.armatureDataManager.addArmatureFileInfo(path);
-                    child = new ccs.Armature(name);
-                }
-            });
-            if(child){
-                var render = new ccs.ComRender(child, "CCArmature");
-                node.addComponent(render);
-                var actionName = component["selectedactionname"];
-                if (actionName && child.getAnimation())
-                    child.getAnimation().play(actionName);
-
-                return render;
-            }
-
-        },
         "CCComAudio": function(node, component, resourcePath){
             var audio = null;
             loadTexture(component["fileData"], resourcePath, function(path, type){

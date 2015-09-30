@@ -20,17 +20,6 @@
  * THE SOFTWARE.
  */
 
-/**
- * @type {Object} Format and manage armature configuration and armature animation
- * @name ccs.armatureDataManager
- */
-ccs.armatureDataManager = null;
-cc.defineGetterSetter(ccs, "armatureDataManager", function() {
-    return ccs.ArmatureDataManager.getInstance();
-});
-ccs.ArmatureDataManager.prototype.clear = function() {
-    ccs.ArmatureDataManager.destroyInstance();
-};
 
 /**
  * @type {Object} Base singleton object for ccs.ActionManager

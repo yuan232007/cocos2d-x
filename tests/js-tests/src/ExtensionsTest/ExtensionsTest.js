@@ -33,13 +33,6 @@ var TEST_COCOSBUILDER = 2;
 var TEST_HTTPCLIENT = 3;
 
 var extensionsTestItemNames = [
-    /*    {
-     itemTitle:"NotificationCenterTest",
-     testScene:function () {
-     //runNotificationCenterTest();
-     cc.log("not implement");
-     }
-     },*/
     {
         itemTitle:"CCControlButtonTest",
         testScene:function () {
@@ -57,13 +50,6 @@ var extensionsTestItemNames = [
             }
         }
     },
-    /*    {
-     itemTitle:"HttpClientTest",
-     testScene:function () {
-     //runHttpClientTest();
-     cc.log("not implement");
-     }
-     },*/
     {
         itemTitle:"TableViewTest",
         testScene:function () {

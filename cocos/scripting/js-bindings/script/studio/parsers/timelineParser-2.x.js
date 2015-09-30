@@ -1257,51 +1257,6 @@
             return "";
     };
 
-    /**
-     * Armature
-     * @param json
-     * @param resourcePath
-     */
-    parser.initArmature = function(json, resourcePath){
-
-        var node = new ccs.Armature();
-
-        var isLoop = json["IsLoop"];
-
-        var isAutoPlay = json["IsAutoPlay"];
-
-        var currentAnimationName = json["CurrentAnimationName"];
-
-        loadTexture(json["FileData"], resourcePath, function(path, type){
-            var plists, pngs;
-            var armJson = cc.loader.getRes(path);
-            if(!armJson)
-                cc.log("%s need to be preloaded", path);
-            else{
-                plists = armJson["config_file_path"];
-                pngs = armJson["config_png_path"];
-                plists.forEach(function(plist, index){
-                    if(pngs[index])
-                        cc.spriteFrameCache.addSpriteFrames(plist, pngs[index]);
-                });
-            }
-            ccs.armatureDataManager.addArmatureFileInfo(path);
-            node.init(getFileName(path));
-            if(isAutoPlay)
-                node.getAnimation().play(currentAnimationName, -1, isLoop);
-            else{
-                node.getAnimation().play(currentAnimationName);
-                node.getAnimation().gotoAndPause(0);
-            }
-
-        });
-
-        parser.generalAttributes(node, json);
-
-        node.setColor(getColor(json["CColor"]));
-        return node;
-    };
-
     parser.initBoneNode = function(json, resourcePath){
 
         var node = new ccs.BoneNode();
@@ -1634,7 +1589,6 @@
         {name: "SimpleAudioObjectData", handle: parser.initSimpleAudio},
         {name: "GameMapObjectData", handle: parser.initGameMap},
         {name: "ProjectNodeObjectData", handle: parser.initProjectNode},
-        {name: "ArmatureNodeObjectData", handle: parser.initArmature},
         {name: "BoneNodeObjectData", handle: parser.initBoneNode},
         {name: "SkeletonNodeObjectData", handle: parser.initSkeletonNode},
 
