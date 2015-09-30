@@ -720,16 +720,6 @@ str
 },
 
 /**
- * @method setPhysicsBody
- * @param {cc.Component} arg0
- */
-setPhysicsBody : function (
-component 
-)
-{
-},
-
-/**
  * @method getGLProgram
  * @return {cc.GLProgram}
  */
@@ -1399,16 +1389,6 @@ getRotation : function (
 )
 {
     return 0;
-},
-
-/**
- * @method getPhysicsBody
- * @return {cc.PhysicsBody}
- */
-getPhysicsBody : function (
-)
-{
-    return cc.PhysicsBody;
 },
 
 /**

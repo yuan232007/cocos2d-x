@@ -56,7 +56,6 @@ class GLProgram;
 class GLProgramState;
 class Material;
 class Camera;
-class PhysicsBody;
 
 /**
  * @addtogroup _2d
@@ -203,7 +202,6 @@ public:
      *
      * @param scaleX   The scale factor on X axis.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setScaleX(float scaleX);
     /**
@@ -223,7 +221,6 @@ public:
      *
      * @param scaleY   The scale factor on Y axis.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setScaleY(float scaleY);
     /**
@@ -242,7 +239,6 @@ public:
      *
      * @param scaleZ   The scale factor on Z axis.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setScaleZ(float scaleZ);
     /**
@@ -262,7 +258,6 @@ public:
      *
      * @param scale     The scale factor for both X and Y axis.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setScale(float scale);
     /**
@@ -283,7 +278,6 @@ public:
      * @param scaleX     The scale factor on X axis.
      * @param scaleY     The scale factor on Y axis.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setScale(float scaleX, float scaleY);
 
@@ -437,7 +431,6 @@ public:
      *
      * @param skewX The X skew angle of the node in degrees.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setSkewX(float skewX);
     /**
@@ -462,7 +455,6 @@ public:
      *
      * @param skewY    The Y skew angle of the node in degrees.
      *
-     * @warning The physics body doesn't support this.
      */
     virtual void setSkewY(float skewY);
     /**
@@ -483,7 +475,6 @@ public:
      * The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.
      * But you can use values higher than (1,1) and lower than (0,0) too.
      * The default anchorPoint is (0.5,0.5), so it starts in the center of the node.
-     * @note If node has a physics body, the anchor must be in the middle, you can't change this to other value.
      *
      * @param anchorPoint   The anchor point of node.
      */
@@ -566,7 +557,6 @@ public:
      * Sets the rotation (X,Y,Z) in degrees.
      * Useful for 3d rotations.
      *
-     * @warning The physics body doesn't support this.
      *
      * @param rotation The rotation of the node in 3d.
      * @js NA
@@ -608,7 +598,6 @@ public:
      *
      * @param rotationX    The X rotation in degrees which performs a horizontal rotational skew.
      *
-     * @warning The physics body doesn't support this.
      * @js setRotationX
      */
     virtual void setRotationSkewX(float rotationX);
@@ -634,7 +623,6 @@ public:
      *
      * @param rotationY    The Y rotation in degrees.
      *
-     * @warning The physics body doesn't support this.
      * @js setRotationY
      */
     virtual void setRotationSkewY(float rotationY);
@@ -1790,19 +1778,6 @@ protected:
     std::function<void()> _onExitCallback;
     std::function<void()> _onEnterTransitionDidFinishCallback;
     std::function<void()> _onExitTransitionDidStartCallback;
-
-//Physics:remaining backwardly compatible  
-#if CC_USE_PHYSICS
-    PhysicsBody* _physicsBody;
-public:
-    void setPhysicsBody(Component* physicsBody) 
-    { 
-        addComponent(physicsBody);
-    }
-    PhysicsBody* getPhysicsBody() const { return _physicsBody; }
-
-    friend class PhysicsBody;
-#endif
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Node);

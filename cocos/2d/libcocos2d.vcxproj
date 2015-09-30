@@ -164,7 +164,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
 </Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>sqlite3.lib;libcurl_imp.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;libbullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sqlite3.lib;libcurl_imp.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -201,8 +201,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\..\extensions\GUI\CCScrollView\CCScrollView.cpp" />
     <ClCompile Include="..\..\extensions\GUI\CCScrollView\CCTableView.cpp" />
     <ClCompile Include="..\..\extensions\GUI\CCScrollView\CCTableViewCell.cpp" />
-    <ClCompile Include="..\..\extensions\physics-nodes\CCPhysicsDebugNode.cpp" />
-    <ClCompile Include="..\..\extensions\physics-nodes\CCPhysicsSprite.cpp" />
     <ClCompile Include="..\..\external\clipper\clipper.cpp" />
     <ClCompile Include="..\..\external\ConvertUTF\ConvertUTF.c" />
     <ClCompile Include="..\..\external\ConvertUTF\ConvertUTFWrapper.cpp" />
@@ -374,11 +372,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\network\HttpClient.cpp" />
     <ClCompile Include="..\network\SocketIO.cpp" />
     <ClCompile Include="..\network\WebSocket.cpp" />
-    <ClCompile Include="..\physics\CCPhysicsBody.cpp" />
-    <ClCompile Include="..\physics\CCPhysicsContact.cpp" />
-    <ClCompile Include="..\physics\CCPhysicsJoint.cpp" />
-    <ClCompile Include="..\physics\CCPhysicsShape.cpp" />
-    <ClCompile Include="..\physics\CCPhysicsWorld.cpp" />
     <ClCompile Include="..\platform\CCFileUtils.cpp" />
     <ClCompile Include="..\platform\CCGLView.cpp" />
     <ClCompile Include="..\platform\CCImage.cpp" />
@@ -542,8 +535,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\..\extensions\GUI\CCScrollView\CCScrollView.h" />
     <ClInclude Include="..\..\extensions\GUI\CCScrollView\CCTableView.h" />
     <ClInclude Include="..\..\extensions\GUI\CCScrollView\CCTableViewCell.h" />
-    <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsDebugNode.h" />
-    <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsSprite.h" />
     <ClInclude Include="..\..\external\clipper\clipper.hpp" />
     <ClInclude Include="..\..\external\ConvertUTF\ConvertUTF.h" />
     <ClInclude Include="..\..\external\edtaa3func\edtaa3func.h" />
@@ -758,12 +749,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\network\HttpResponse.h" />
     <ClInclude Include="..\network\SocketIO.h" />
     <ClInclude Include="..\network\WebSocket.h" />
-    <ClInclude Include="..\physics\CCPhysicsBody.h" />
-    <ClInclude Include="..\physics\CCPhysicsContact.h" />
-    <ClInclude Include="..\physics\CCPhysicsHelper.h" />
-    <ClInclude Include="..\physics\CCPhysicsJoint.h" />
-    <ClInclude Include="..\physics\CCPhysicsShape.h" />
-    <ClInclude Include="..\physics\CCPhysicsWorld.h" />
     <ClInclude Include="..\platform\CCApplicationProtocol.h" />
     <ClInclude Include="..\platform\CCCommon.h" />
     <ClInclude Include="..\platform\CCDevice.h" />
