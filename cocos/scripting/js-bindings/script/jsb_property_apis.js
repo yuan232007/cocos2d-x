@@ -255,7 +255,7 @@ cc.defineGetterSetter(_proto, "string", _proto.getString, _proto.setString);
 cc.defineGetterSetter(_proto, "opacity", _proto.getOpacity, _proto.setOpacity);
 
 _proto = cc.LabelBMFont.prototype;
-cc.defineGetterSetter(_proto, "string", _proto.getString, _proto._setStringForSetter);
+cc.defineGetterSetter(_proto, "string", _proto.getString, _proto.setString);
 cc.defineGetterSetter(_proto, "textAlign", _proto._getAlignment, _proto.setAlignment);
 cc.defineGetterSetter(_proto, "boundingWidth", _proto._getBoundingWidth, _proto.setBoundingWidth);
 cc.defineGetterSetter(_proto, "boundingHeight", _proto._getBoundingHeight, _proto.setBoundingHeight);
