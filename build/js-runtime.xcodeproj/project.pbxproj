@@ -447,7 +447,8 @@
 		1A7303721BC0F34700BD99DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 建华 陈 (8K8UT2U99J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -458,6 +459,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../external/chipmunk/include/chipmunk $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios";
 			};
@@ -466,7 +468,8 @@
 		1A7303731BC0F34700BD99DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 建华 陈 (8K8UT2U99J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -477,6 +480,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../external/chipmunk/include/chipmunk $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios";
 			};
