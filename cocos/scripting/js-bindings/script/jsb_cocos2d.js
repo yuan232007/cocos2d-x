@@ -1964,14 +1964,15 @@ cc.TMXLayer.prototype.getPositonAt = function(x, y){
 cc.LabelTTF = cc.Label.extend({
     initWithString: function(text, fontName, fontSize, dimensions, hAlignment, vAlignment) {
         var fontDef = new cc.FontDefinition();
-        if(fontName) fontDef.fontName = fontName;
-        if(fontSize) fontDef.fontSize = fontSize;
+        if(typeof(fontName) == 'string') fontDef.fontName = fontName;
+        if(typeof(fontSize) == 'number') fontDef.fontSize = fontSize;
         if(dimensions) {
             fontDef.boundingWidth = dimensions.width;
             fontDef.boundingHeight = dimensions.height;
         }
-        if(hAlignment) fontDef.textAlign = hAlignment;
-        if(vAlignment) fontDef.verticalAlign = vAlignment;
+        if(typeof(hAlignment) == 'number') fontDef.textAlign = hAlignment;
+        if(typeof(vAlignment) == 'number') fontDef.verticalAlign = vAlignment;
+        
         this.setFontDefinition(fontDef);
         
         this.setString(text);
@@ -1979,6 +1980,14 @@ cc.LabelTTF = cc.Label.extend({
     initWithStringAndTextDefinition: function(text, textDefinition) {
         this.setFontDefinition(textDefinition);
         this.setString(text);
+    },
+    setDimensions: function (arg1, arg2) {
+        if(arguments.length == 2) {
+            this._super(arg1, arg2);
+        }
+        else{
+            this._super(arg1.width, arg1.height);
+        }
     },
     setTextDefinition:function( textDefinition ) {
         this.setFontDefinition( textDefinition );
@@ -2012,6 +2021,9 @@ cc.LabelTTF = cc.Label.extend({
     },
     setFontName:function( fontName ) {
         this.setSystemFontName( fontName );
+    },
+    setDrawMode:function() {
+        
     }
 });
 
@@ -2039,10 +2051,7 @@ cc.LabelTTF.createWithFontDefinition = function (text, fontName, fontSize, dimen
 };
 
 //LabelBMFont
-cc.LabelBMFont = cc.Label.extend({
-    ctor: function () {
-        this._super();
-    },
+cc.LabelBMFont = cc.Label.extend({  
     initWithString: function (text, fntFile, width, hAlignment, imageOffset) {
         if (imageOffset) {
             this.setBMFontFilePath(fntFile, imageOffset);
@@ -2057,7 +2066,6 @@ cc.LabelBMFont = cc.Label.extend({
         
         this.setString(text);
     },
-    
     setFntFile: function (fntFile, imageOffset) {
         if (imageOffset) {
             this.setBMFontFilePath(fntFile, imageOffset);

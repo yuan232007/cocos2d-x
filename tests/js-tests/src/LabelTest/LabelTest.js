@@ -1728,7 +1728,7 @@ var BMFontUnicode = AtlasDemo.extend({
         var japanese = "良い一日を";
         var spanish = "Buen día";
 
-        var label1 = new cc.LabelBMFont(spanish, s_resprefix + "fonts/arial-unicode-26.fnt", 200, cc.TEXT_ALIGNMENT_LEFT);
+        var label1 = new cc.LabelBMFont(spanish, s_resprefix + "fonts/arial-unicode-26.fnt");
         this.addChild(label1);
         label1.x = winSize.width / 2;
         label1.y = winSize.height / 4;
