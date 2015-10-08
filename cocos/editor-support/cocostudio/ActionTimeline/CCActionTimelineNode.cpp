@@ -23,7 +23,6 @@
  ****************************************************************************/
 
 #include "CCActionTimelineNode.h"
-#include "CSLoader.h"
 
 USING_NS_CC;
 

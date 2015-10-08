@@ -37,10 +37,6 @@ THE SOFTWARE.
 #include "cocostudio/CCComRender.h"
 #include "cocostudio/CCInputDelegate.h"
 #include "cocostudio/DictionaryHelper.h"
-#include "cocostudio/CCSGUIReader.h"
-#include "cocostudio/CCSSceneReader.h"
-#include "cocostudio/TriggerBase.h"
-#include "cocostudio/ActionTimeline/CCActionTimelineCache.h"
 #include "cocostudio/ActionTimeline/CCFrame.h"
 #include "cocostudio/ActionTimeline/CCTimeLine.h"
 #include "cocostudio/ActionTimeline/CCActionTimeline.h"
@@ -48,7 +44,6 @@ THE SOFTWARE.
 #include "cocostudio/ActionTimeline/CCBoneNode.h"
 #include "cocostudio/ActionTimeline/CCSkeletonNode.h"
 #include "cocostudio/CocosStudioExport.h"
-#include "cocostudio/ActionTimeline/CSLoader.h"
 
 #include "cocostudio/CocosStudioExport.h"
 

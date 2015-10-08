@@ -24,6 +24,10 @@ THE SOFTWARE.
 
 #include "cocostudio/CCComRender.h"
 #include "cocostudio/CocoStudio.h"
+#include "platform/CCFileUtils.h"
+#include "2d/CCFastTMXTiledMap.h"
+#include "2d/CCParticleSystemQuad.h"
+#include "2d/CCSpriteFrameCache.h"
 
 using namespace cocos2d;
 
@@ -191,7 +195,7 @@ bool ComRender::serialize(void* r)
             }
             else if(strcmp(className, "GUIComponent") == 0)
             {
-                std::string fileExtension = FileUtils::getInstance()->getFileExtension(filePath);
+                /*std::string fileExtension = FileUtils::getInstance()->getFileExtension(filePath);
                 if (fileExtension == ".json" || fileExtension == ".exportjson")
                 {
                     cocos2d::ui::Widget* widget = GUIReader::getInstance()->widgetFromJsonFile(filePath.c_str());
@@ -207,7 +211,7 @@ bool ComRender::serialize(void* r)
                     _render->retain();
                     
                     ret = true;
-                }
+                }*/
             }
             else
             {
