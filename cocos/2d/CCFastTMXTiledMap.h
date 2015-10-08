@@ -1,8 +1,5 @@
 /****************************************************************************
-Copyright (c) 2009-2010 Ricardo Quesada
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2014-2015 Chukong Technologies Inc.
 
 http://www.cocos2d-x.org
 
@@ -35,10 +32,8 @@ NS_CC_BEGIN
 class TMXLayerInfo;
 class TMXTilesetInfo;
 class TMXMapInfo;
-
-namespace experimental {
-    
 class TMXLayer;
+
 /**
  * @addtogroup _2d
  * @{
@@ -204,7 +199,7 @@ public:
 
     virtual std::string getDescription() const override;
 
-protected:
+CC_CONSTRUCTOR_ACCESS:
     /**
      * @js ctor
      */
@@ -220,7 +215,8 @@ protected:
 
     /** initializes a TMX Tiled Map with a TMX formatted XML string and a path to TMX resources */
     bool initWithXML(const std::string& tmxString, const std::string& resourcePath);
-    
+
+protected:
     TMXLayer * parseLayer(TMXLayerInfo *layerInfo, TMXMapInfo *mapInfo);
     TMXTilesetInfo * tilesetForLayer(TMXLayerInfo *layerInfo, TMXMapInfo *mapInfo);
     void buildWithMapInfo(TMXMapInfo* mapInfo);
@@ -246,8 +242,6 @@ private:
 
 // end of tilemap_parallax_nodes group
 /** @} */
-    
-} //end of namespace experimental
 
 NS_CC_END
 

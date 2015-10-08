@@ -29,7 +29,7 @@ THE SOFTWARE.
 #include "2d/CCTMXXMLParser.h"
 #include <unordered_map>
 #include <sstream>
-#include "2d/CCTMXTiledMap.h"
+#include "2d/CCFastTMXTiledMap.h"
 #include "base/ZipUtils.h"
 #include "base/base64.h"
 #include "base/CCDirector.h"
@@ -233,16 +233,16 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
         }
         std::string orientationStr = attributeDict["orientation"].asString();
         if (orientationStr == "orthogonal") {
-            tmxMapInfo->setOrientation(TMXOrientationOrtho);
+            tmxMapInfo->setOrientation(0);
         }
         else if (orientationStr  == "isometric") {
-            tmxMapInfo->setOrientation(TMXOrientationIso);
+            tmxMapInfo->setOrientation(2);
         }
         else if (orientationStr == "hexagonal") {
-            tmxMapInfo->setOrientation(TMXOrientationHex);
+            tmxMapInfo->setOrientation(1);
         }
         else if (orientationStr == "staggered") {
-            tmxMapInfo->setOrientation(TMXOrientationStaggered);
+            tmxMapInfo->setOrientation(3);
         }
         else {
             CCLOG("cocos2d: TMXFomat: Unsupported orientation: %d", tmxMapInfo->getOrientation());

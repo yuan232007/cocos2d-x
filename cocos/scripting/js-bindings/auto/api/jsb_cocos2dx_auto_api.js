@@ -21706,6 +21706,110 @@ TMXMapInfo : function (
 };
 
 /**
+ * @class TileMapAtlas
+ */
+cc.TileMapAtlas = {
+
+/**
+ * @method initWithTileFile
+ * @param {String} arg0
+ * @param {String} arg1
+ * @param {int} arg2
+ * @param {int} arg3
+ * @return {bool}
+ */
+initWithTileFile : function (
+str, 
+str, 
+int, 
+int 
+)
+{
+    return false;
+},
+
+/**
+ * @method releaseMap
+ */
+releaseMap : function (
+)
+{
+},
+
+/**
+ * @method getTGAInfo
+ * @return {cc.sImageTGA}
+ */
+getTGAInfo : function (
+)
+{
+    return cc.sImageTGA;
+},
+
+/**
+ * @method getTileAt
+ * @param {vec2_object} arg0
+ * @return {color3b_object}
+ */
+getTileAt : function (
+vec2 
+)
+{
+    return cc.Color3B;
+},
+
+/**
+ * @method setTile
+ * @param {color3b_object} arg0
+ * @param {vec2_object} arg1
+ */
+setTile : function (
+color3b, 
+vec2 
+)
+{
+},
+
+/**
+ * @method setTGAInfo
+ * @param {cc.sImageTGA} arg0
+ */
+setTGAInfo : function (
+simagetga 
+)
+{
+},
+
+/**
+ * @method create
+ * @param {String} arg0
+ * @param {String} arg1
+ * @param {int} arg2
+ * @param {int} arg3
+ * @return {cc.TileMapAtlas}
+ */
+create : function (
+str, 
+str, 
+int, 
+int 
+)
+{
+    return cc.TileMapAtlas;
+},
+
+/**
+ * @method TileMapAtlas
+ * @constructor
+ */
+TileMapAtlas : function (
+)
+{
+},
+
+};
+
+/**
  * @class TMXLayer
  */
 cc.TMXLayer = {
@@ -21714,7 +21818,7 @@ cc.TMXLayer = {
  * @method getTileGIDAt
  * @param {vec2_object} arg0
  * @param {cc.TMXTileFlags_} arg1
- * @return {unsigned int}
+ * @return {int}
  */
 getTileGIDAt : function (
 vec2, 
@@ -21722,6 +21826,16 @@ tmxtileflags_
 )
 {
     return 0;
+},
+
+/**
+ * @method getTexture
+ * @return {cc.Texture2D}
+ */
+getTexture : function (
+)
+{
+    return cc.Texture2D;
 },
 
 /**
@@ -21744,6 +21858,22 @@ setLayerOrientation : function (
 int 
 )
 {
+},
+
+/**
+ * @method initWithTilesetInfo
+ * @param {cc.TMXTilesetInfo} arg0
+ * @param {cc.TMXLayerInfo} arg1
+ * @param {cc.TMXMapInfo} arg2
+ * @return {bool}
+ */
+initWithTilesetInfo : function (
+tmxtilesetinfo, 
+tmxlayerinfo, 
+map 
+)
+{
+    return false;
 },
 
 /**
@@ -21825,19 +21955,13 @@ vec2
 },
 
 /**
- * @method initWithTilesetInfo
- * @param {cc.TMXTilesetInfo} arg0
- * @param {cc.TMXLayerInfo} arg1
- * @param {cc.TMXMapInfo} arg2
- * @return {bool}
- */
-initWithTilesetInfo : function (
-tmxtilesetinfo, 
-tmxlayerinfo, 
-map 
+ * @method getProperties
+* @return {map_object|map_object}
+*/
+getProperties : function(
 )
 {
-    return false;
+    return map_object;
 },
 
 /**
@@ -21849,8 +21973,22 @@ setupTiles : function (
 },
 
 /**
+ * @method setupTileSprite
+ * @param {cc.Sprite} arg0
+ * @param {vec2_object} arg1
+ * @param {int} arg2
+ */
+setupTileSprite : function (
+sprite, 
+vec2, 
+int 
+)
+{
+},
+
+/**
  * @method setTileGID
-* @param {unsigned int|unsigned int} int
+* @param {int|int} int
 * @param {vec2_object|vec2_object} vec2
 * @param {cc.TMXTileFlags_} tmxtileflags_
 */
@@ -21922,16 +22060,6 @@ getTileSet : function (
 )
 {
     return cc.TMXTilesetInfo;
-},
-
-/**
- * @method getProperties
-* @return {map_object|map_object}
-*/
-getProperties : function(
-)
-{
-    return map_object;
 },
 
 /**
@@ -22090,16 +22218,14 @@ getProperties : function (
 
 /**
  * @method getPropertiesForGID
-* @param {int|int} int
-* @param {cc.Value} value
-* @return {bool|cc.Value}
-*/
-getPropertiesForGID : function(
-int,
-value 
+ * @param {int} arg0
+ * @return {cc.Value}
+ */
+getPropertiesForGID : function (
+int 
 )
 {
-    return false;
+    return cc.Value;
 },
 
 /**
@@ -22185,110 +22311,6 @@ str
  * @constructor
  */
 TMXTiledMap : function (
-)
-{
-},
-
-};
-
-/**
- * @class TileMapAtlas
- */
-cc.TileMapAtlas = {
-
-/**
- * @method initWithTileFile
- * @param {String} arg0
- * @param {String} arg1
- * @param {int} arg2
- * @param {int} arg3
- * @return {bool}
- */
-initWithTileFile : function (
-str, 
-str, 
-int, 
-int 
-)
-{
-    return false;
-},
-
-/**
- * @method releaseMap
- */
-releaseMap : function (
-)
-{
-},
-
-/**
- * @method getTGAInfo
- * @return {cc.sImageTGA}
- */
-getTGAInfo : function (
-)
-{
-    return cc.sImageTGA;
-},
-
-/**
- * @method getTileAt
- * @param {vec2_object} arg0
- * @return {color3b_object}
- */
-getTileAt : function (
-vec2 
-)
-{
-    return cc.Color3B;
-},
-
-/**
- * @method setTile
- * @param {color3b_object} arg0
- * @param {vec2_object} arg1
- */
-setTile : function (
-color3b, 
-vec2 
-)
-{
-},
-
-/**
- * @method setTGAInfo
- * @param {cc.sImageTGA} arg0
- */
-setTGAInfo : function (
-simagetga 
-)
-{
-},
-
-/**
- * @method create
- * @param {String} arg0
- * @param {String} arg1
- * @param {int} arg2
- * @param {int} arg3
- * @return {cc.TileMapAtlas}
- */
-create : function (
-str, 
-str, 
-int, 
-int 
-)
-{
-    return cc.TileMapAtlas;
-},
-
-/**
- * @method TileMapAtlas
- * @constructor
- */
-TileMapAtlas : function (
 )
 {
 },

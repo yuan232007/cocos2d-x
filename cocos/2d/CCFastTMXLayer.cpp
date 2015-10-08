@@ -1,10 +1,5 @@
 /****************************************************************************
-Copyright (c) 2008-2010 Ricardo Quesada
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2014 Chukong Technologies Inc.
-
-Copyright (c) 2011 HKASoftware
+Copyright (c) 2014-2015 Chukong Technologies Inc.
 
 http://www.cocos2d-x.org
 
@@ -47,7 +42,6 @@ THE SOFTWARE.
 #include "base/CCString.h"
 
 NS_CC_BEGIN
-namespace experimental {
 
 const int TMXLayer::FAST_TMX_ORIENTATION_ORTHO = 0;
 const int TMXLayer::FAST_TMX_ORIENTATION_HEX = 1;
@@ -150,10 +144,15 @@ void TMXLayer::draw(Renderer *renderer, const Mat4& transform, uint32_t flags)
     if( flags != 0 || _dirty || _quadsDirty || isViewProjectionUpdated)
     {
         Size s = Director::getInstance()->getVisibleSize();
-        auto rect = Rect(Camera::getVisitingCamera()->getPositionX() - s.width * 0.5,
-                     Camera::getVisitingCamera()->getPositionY() - s.height * 0.5,
-                     s.width,
-                     s.height);
+        auto camera = Camera::getVisitingCamera();
+        if (camera == nullptr)
+        {
+            camera = Camera::getDefaultCamera();
+        }
+        auto rect = Rect(camera->getPositionX() - s.width * 0.5f,
+                         camera->getPositionY() - s.height * 0.5f,
+                         s.width,
+                         s.height);
         
         Mat4 inv = transform;
         inv.inverse();
@@ -887,6 +886,5 @@ std::string TMXLayer::getDescription() const
     return StringUtils::format("<FastTMXLayer | tag = %d, size = %d,%d>", _tag, (int)_mapTileSize.width, (int)_mapTileSize.height);
 }
 
-} //end of namespace experimental
 
 NS_CC_END
