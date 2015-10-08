@@ -1,8 +1,5 @@
 /****************************************************************************
-Copyright (c) 2008-2010 Ricardo Quesada
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2014-2015 Chukong Technologies Inc.
 
 http://www.cocos2d-x.org
 
@@ -43,7 +40,6 @@ class Texture2D;
 class Sprite;
 struct _ccCArray;
 
-namespace experimental{
 
 /**
  * @addtogroup _2d
@@ -263,6 +259,8 @@ public:
      */
     void setupTileSprite(Sprite* sprite, Vec2 pos, int gid);
 
+    //Unsupported
+    void releaseMap() {}
     //
     // Override
     //
@@ -270,9 +268,12 @@ public:
     virtual void draw(Renderer *renderer, const Mat4& transform, uint32_t flags) override;
     void removeChild(Node* child, bool cleanup = true) override;
 
-protected:
+    Texture2D* getTexture() const { return _texture; }
 
+CC_CONSTRUCTOR_ACCESS:
     bool initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *layerInfo, TMXMapInfo *mapInfo);
+
+protected:
     void updateTiles(const Rect& culledRect);
     Vec2 calculateLayerOffset(const Vec2& offset);
 
@@ -357,7 +358,7 @@ public:
 
 // end of tilemap_parallax_nodes group
 /// @}
-} //end of namespace experimental
+
 NS_CC_END
 
 #endif //__CCTMX_LAYER2_H__
