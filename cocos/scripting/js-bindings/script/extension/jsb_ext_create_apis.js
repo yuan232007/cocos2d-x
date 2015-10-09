@@ -26,9 +26,9 @@
  *
  ************************************************************/
 
-jsb.EventListenerAssetsManager.prototype._ctor = function(assetsManager, callback) {
-    callback !== undefined && this.init(assetsManager, callback);
-};
+//jsb.EventListenerAssetsManager.prototype._ctor = function(assetsManager, callback) {
+//    callback !== undefined && this.init(assetsManager, callback);
+//};
 
 
 
