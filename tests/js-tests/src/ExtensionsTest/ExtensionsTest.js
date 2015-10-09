@@ -95,17 +95,17 @@ if (cc.sys.isNative && cc.sys.OS_IOS == cc.sys.os) {
     })
 }
 
-if (cc.sys.isNative && cc.sys.OS_WINDOWS != cc.sys.os) {
-    extensionsTestItemNames.push({
-        itemTitle:"AssetsManagerTest",
-        testScene:function () {
-            var testScene = new AssetsManagerLoaderScene();
-            if (testScene) {
-                testScene.runThisTest();
-            }
-        }
-    });
-}
+// if (cc.sys.isNative && cc.sys.OS_WINDOWS != cc.sys.os) {
+//     extensionsTestItemNames.push({
+//         itemTitle:"AssetsManagerTest",
+//         testScene:function () {
+//             var testScene = new AssetsManagerLoaderScene();
+//             if (testScene) {
+//                 testScene.runThisTest();
+//             }
+//         }
+//     });
+// }
 
 var ExtensionsMainLayer = cc.Layer.extend({
     onEnter:function () {
