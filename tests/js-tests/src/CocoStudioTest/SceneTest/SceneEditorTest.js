@@ -51,9 +51,6 @@ var sceneEditorArr = [
         return new SpriteComponentTest();
     },
     function () {
-        return new ArmatureComponentTest();
-    },
-    function () {
         return new UIComponentTest();
     },
     function () {
@@ -120,7 +117,6 @@ var SceneEditorTestLayer = BaseTestLayer.extend({
         director.runScene(s);
     },
     onExit: function () {
-        ccs.armatureDataManager.clear();
         ccs.sceneReader.clear();
         ccs.actionManager.clear();
         ccs.uiReader.clear();
@@ -212,40 +208,6 @@ var SpriteComponentTest = SceneEditorTestLayer.extend({
 
 //------------------------------------------------------------------
 //
-// ArmatureComponentTest
-//
-//------------------------------------------------------------------
-var ArmatureComponentTest = SceneEditorTestLayer.extend({
-    onEnter: function () {
-        this._super();
-        var node,
-            file = "ccs-res/scenetest/ArmatureComponentTest/ArmatureComponentTest.json";
-        if(cocoStudioOldApiFlag == 0){
-            cc.log("ccs.load : %s", file);
-            var json = ccs.load(file);
-            node = json.node;ccs.load(file);
-        }else{
-            //ccs.sceneReader only supports 1.x file
-            cc.log("ccs.sceneReader.createNodeWithSceneFile : %s", file);
-            node = ccs.sceneReader.createNodeWithSceneFile(file);
-        }
-        this.addChild(node);
-
-        var blowFish = node.getChildByTag(10007).getComponent("CCArmature").getNode();
-        blowFish.runAction(cc.moveBy(10, cc.p(-1000, 0)));
-
-        var butterFlyFish = node.getChildByTag(10008).getComponent("CCArmature").getNode();
-        butterFlyFish.runAction(cc.moveBy(10, cc.p(-1000, 0)));
-
-        this.initSize(node);
-    },
-    title: function () {
-        return "Armature Component Test";
-    }
-});
-
-//------------------------------------------------------------------
-//
 // UIComponentTest
 //
 //------------------------------------------------------------------
@@ -275,11 +237,7 @@ var UIComponentTest = SceneEditorTestLayer.extend({
     touchEvent: function (sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
-                var blowFish = this._node.getChildByTag(10010).getComponent("CCArmature").getNode();
-                blowFish.runAction(cc.moveBy(10, cc.p(-1000, 0)));
-
-                var butterFlyFish = this._node.getChildByTag(10011).getComponent("CCArmature").getNode();
-                butterFlyFish.runAction(cc.moveBy(10, cc.p(-1000.0, 0)));
+                
                 break;
             default:
                 break;
@@ -387,21 +345,11 @@ var EffectComponentTest = SceneEditorTestLayer.extend({
         this._node = node;
         this.addChild(this._node);
 
-        var armature = this._node.getChildByTag(10015).getComponent("CCArmature").getNode();
-        armature.getAnimation().setMovementEventCallFunc(this.animationEvent, this);
 
         this.initSize(this._node);
     },
     title: function () {
         return "Effect Component Test";
-    },
-    animationEvent: function (armature, movementType, movementID) {
-        if (movementType == ccs.MovementEventType.loopComplete) {
-            if (movementID == "Fire") {
-                var audio = this._node.getChildByTag(10015).getComponent("CCComAudio");
-                audio.playEffect();
-            }
-        }
     }
 });
 

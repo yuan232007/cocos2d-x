@@ -130,18 +130,6 @@
     <Filter Include="base\allocator">
       <UniqueIdentifier>{92ff4e66-3943-47da-a439-c8f182bb871a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\poly2tri">
-      <UniqueIdentifier>{46294cdb-c29a-4480-9988-2e017f5f7846}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\poly2tri\common">
-      <UniqueIdentifier>{b0703876-33ee-433c-bba3-45304ce83813}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\poly2tri\sweep">
-      <UniqueIdentifier>{c37eceeb-5702-4ff7-88de-94680a22266f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\clipper">
-      <UniqueIdentifier>{ff65e340-b79d-4f87-9b4c-ed46bda5d20f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocostudio\TimelineAction\Skeleton">
       <UniqueIdentifier>{ca5e1475-3bfd-4aae-ad54-2e19d5021b92}</UniqueIdentifier>
     </Filter>
@@ -922,21 +910,6 @@
     <ClCompile Include="..\editor-support\cocostudio\CocoStudio.cpp">
       <Filter>cocostudio\json</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\external\poly2tri\common\shapes.cc">
-      <Filter>external\poly2tri\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\poly2tri\sweep\advancing_front.cc">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\poly2tri\sweep\cdt.cc">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\poly2tri\sweep\sweep.cc">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\poly2tri\sweep\sweep_context.cc">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClCompile>
     <ClCompile Include="..\renderer\CCPass.cpp">
       <Filter>renderer</Filter>
     </ClCompile>
@@ -964,9 +937,6 @@
     </ClCompile>
     <ClCompile Include="CCAutoPolygon.cpp">
       <Filter>2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\clipper\clipper.cpp">
-      <Filter>external\clipper</Filter>
     </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\ActionTimeline\CCBoneNode.cpp">
       <Filter>cocostudio\TimelineAction\Skeleton</Filter>
@@ -1898,27 +1868,6 @@
     <ClInclude Include="..\platform\CCPlatformMacros.h">
       <Filter>platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\poly2tri.h">
-      <Filter>external\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\common\shapes.h">
-      <Filter>external\poly2tri\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\common\utils.h">
-      <Filter>external\poly2tri\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\sweep\advancing_front.h">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\sweep\cdt.h">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\sweep\sweep.h">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\poly2tri\sweep\sweep_context.h">
-      <Filter>external\poly2tri\sweep</Filter>
-    </ClInclude>
     <ClInclude Include="..\renderer\CCPass.h">
       <Filter>renderer</Filter>
     </ClInclude>
@@ -1946,9 +1895,6 @@
     </ClInclude>
     <ClInclude Include="CCAutoPolygon.h">
       <Filter>2d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\clipper\clipper.hpp">
-      <Filter>external\clipper</Filter>
     </ClInclude>
     <ClInclude Include="..\editor-support\cocostudio\ActionTimeline\CCBoneNode.h">
       <Filter>cocostudio\TimelineAction\Skeleton</Filter>
