@@ -411,14 +411,6 @@ var testNames = [
         }
     },
     {
-        title:"Light Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/LightTest/LightTest.js",
-        testScene:function () {
-            return new LightTestScene();
-        }
-    },
-    {
         title:"Loader Test",
         platforms: PLATFORM_ALL,
         linksrc:"src/LoaderTest/LoaderTest.js",

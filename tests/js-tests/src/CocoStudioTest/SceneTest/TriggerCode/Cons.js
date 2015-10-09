@@ -68,73 +68,7 @@ var TimeElapsed = ccs.BaseTriggerCondition.extend({
         }
     }
 });
-var ArmatureActionState = ccs.BaseTriggerCondition.extend({
-    _tag: -1,
-    _state: -1,
-    _success: false,
-    _aniName: "",
-    _comName: "",
-    _armature: null,
-    ctor: function () {
-        this._tag = -1;
-        this._state = -1;
-        this._success = false;
-        this._aniName = "";
-        this._comName = "";
-        this._armature = null;
-    },
-    
-    init: function () {
-        var node = ccs.sceneReader.getNodeByTag(this._tag);
-        if (!node) return false;
-        var render = node.getComponent(this._comName);
-        if (!render) return false;
-        var armature = render.getNode();
-        if (!armature) return false;
-        this._armature = armature;
-        ccs.triggerManager.addArmatureMovementCallBack(this._armature, this.animationEvent, this);
-        return true;
-    },
 
-    detect: function () {
-        return this._success;
-    },
-
-    serialize: function (jsonVal) {
-        var dataitems = jsonVal["dataitems"] || [];
-        for (var i = 0; i < dataitems.length; i++) {
-            var subDict = dataitems[i];
-            var key = subDict["key"];
-            if (key == "TotalTime") {
-                this._totalTime = subDict["value"];
-                continue;
-            }
-            if (key == "componentName") {
-                this._comName = subDict["value"];
-                continue;
-            }
-            if (key == "AnimationName") {
-                this._aniName = subDict["value"];
-                continue;
-            }
-            if (key == "ActionType") {
-                this._state = subDict["value"];
-            }
-        }
-    },
-
-    removeAll: function () {
-        if (this._armature) {
-            ccs.triggerManager.removeArmatureMovementCallBack(this._armature, this.animationEvent, this);
-        }
-    },
-
-    animationEvent: function (armature, movementType, movementID) {
-        if (movementType == this._state && movementID == this._aniName) {
-            this._success = true;
-        }
-    }
-});
 var NodeInRect = ccs.BaseTriggerCondition.extend({
     _tag: -1,
     _origin: null,
@@ -240,6 +174,5 @@ var NodeVisible = ccs.BaseTriggerCondition.extend({
 
 
 ccs.registerTriggerClass("TimeElapsed", TimeElapsed);
-ccs.registerTriggerClass("ArmatureActionState", ArmatureActionState);
 ccs.registerTriggerClass("NodeInRect", NodeInRect);
 ccs.registerTriggerClass("NodeVisible", NodeVisible);
