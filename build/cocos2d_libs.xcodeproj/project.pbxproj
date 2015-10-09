@@ -954,8 +954,6 @@
 		1A57035A180BD0B00088DEC7 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A570353180BD0B00088DEC7 /* unzip.h */; };
 		1A57035B180BD0B00088DEC7 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A570353180BD0B00088DEC7 /* unzip.h */; };
 		1A570361180BD1080088DEC7 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A570360180BD1080088DEC7 /* libpng.a */; };
-		1A570364180BD1120088DEC7 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A570363180BD1120088DEC7 /* libpng.a */; };
-		1A570378180BD1B40088DEC7 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A570377180BD1B40088DEC7 /* libjpeg.a */; };
 		1A57037B180BD1C90088DEC7 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57037A180BD1C90088DEC7 /* libjpeg.a */; };
 		1A57052B180BD31F0088DEC7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57052A180BD31F0088DEC7 /* libfreetype.a */; };
 		1A57052E180BD3280088DEC7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57052D180BD3280088DEC7 /* libfreetype.a */; };
@@ -2932,8 +2930,6 @@
 				15AE1C1919AAE30900C27E9E /* libwebsockets.a in Frameworks */,
 				292F1A5E1A5151CE00E479F8 /* libssl.a in Frameworks */,
 				A07A4CAF1783777C0073F6A7 /* Foundation.framework in Frameworks */,
-				1A570364180BD1120088DEC7 /* libpng.a in Frameworks */,
-				1A570378180BD1B40088DEC7 /* libjpeg.a in Frameworks */,
 				292F1A5D1A5151CE00E479F8 /* libcrypto.a in Frameworks */,
 				1A57052E180BD3280088DEC7 /* libfreetype.a in Frameworks */,
 			);
