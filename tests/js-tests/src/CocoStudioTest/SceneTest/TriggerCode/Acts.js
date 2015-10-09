@@ -578,56 +578,6 @@ var TriggerState = ccs.BaseTriggerAction.extend({
     }
 });
 
-var ArmaturePlayAction = ccs.BaseTriggerAction.extend({
-    _tag: -1,
-    _comName: 0,
-    _aniName: "",
-    ctor: function () {
-        this._tag = -1;
-        this._comName = 0;
-        this._aniName = "";
-    },
-    
-    init: function () {
-        return true;
-    },
-
-    done: function () {
-        var node = ccs.sceneReader.getNodeByTag(this._tag);
-        if (!node)
-            return;
-        var render = node.getComponent(this._comName);
-        if (!render)
-            return;
-        var armature = render.getNode();
-        if (!armature)
-            return;
-        armature.getAnimation().play(this._aniName);
-    },
-
-    serialize: function (jsonVal) {
-        var dataitems = jsonVal["dataitems"] || [];
-        for (var i = 0; i < dataitems.length; i++) {
-            var subDict = dataitems[i];
-
-            var key = subDict["key"];
-            if (key == "ID") {
-                this._id = subDict["value"];
-                continue;
-            }
-            if (key == "componentName") {
-                this._comName = subDict["value"];
-                continue;
-            }
-            if (key == "AnimationName") {
-                this._aniName = subDict["value"];
-            }
-        }
-    },
-
-    removeAll: function () {
-    }
-});
 
 ccs.registerTriggerClass("PlayMusic", PlayMusic);
 ccs.registerTriggerClass("TMoveTo", TMoveTo);
@@ -639,4 +589,3 @@ ccs.registerTriggerClass("TScaleBy", TScaleBy);
 ccs.registerTriggerClass("TSkewTo", TSkewTo);
 ccs.registerTriggerClass("TSkewBy", TSkewBy);
 ccs.registerTriggerClass("TriggerState", TriggerState);
-ccs.registerTriggerClass("ArmaturePlayAction", ArmaturePlayAction);

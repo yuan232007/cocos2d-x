@@ -411,14 +411,6 @@ var testNames = [
         }
     },
     {
-        title:"Light Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/LightTest/LightTest.js",
-        testScene:function () {
-            return new LightTestScene();
-        }
-    },
-    {
         title:"Loader Test",
         platforms: PLATFORM_ALL,
         linksrc:"src/LoaderTest/LoaderTest.js",
@@ -541,14 +533,6 @@ var testNames = [
         linksrc:"src/SpineTest/SpineTest.js",
         testScene:function () {
             return new SpineTestScene();
-        }
-    },
-    {
-        title:"SpritePolygon Test",
-        platforms: PLATFORM_JSB,
-        linksrc:"src/SpritePolygonTest/SpritePolygonTest.js",
-        testScene:function () {
-            return new SpritePolygonTestScene();
         }
     },
     {

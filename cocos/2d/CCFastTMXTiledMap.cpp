@@ -1,8 +1,5 @@
 /****************************************************************************
-Copyright (c) 2009-2010 Ricardo Quesada
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2014-2015 Chukong Technologies Inc.
 
 http://www.cocos2d-x.org
 
@@ -29,7 +26,6 @@ THE SOFTWARE.
 #include "base/CCString.h"
 
 NS_CC_BEGIN
-namespace experimental {
 
 // implementation FastTMXTiledMap
 
@@ -254,7 +250,6 @@ std::string TMXTiledMap::getDescription() const
     return StringUtils::format("<FastTMXTiledMap | Tag = %d, Layers = %d", _tag, static_cast<int>(_children.size()));
 }
 
-} //end of namespace experimental
 
 NS_CC_END
 

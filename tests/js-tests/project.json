@@ -42,7 +42,6 @@
         "src/SceneTest/SceneTest.js",
         "src/SpineTest/SpineTest.js",
         "src/SpriteTest/SpriteTest.js",
-        "src/LightTest/LightTest.js",
         "src/TextureCacheTest/TextureCacheTest.js",
         "src/CocosDenshionTest/CocosDenshionTest.js",
         "src/CocosNodeTest/CocosNodeTest.js",
@@ -165,7 +164,6 @@
         "src/Presentation/Presentation.js",
         "src/ReflectionTest/ReflectionTest.js",
 
-        "src/SpritePolygonTest/SpritePolygonTest.js",
         "src/VibrateTest/VibrateTest.js",
 
         "src/NativeTest/NativeTest.js",

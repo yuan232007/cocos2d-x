@@ -2716,7 +2716,7 @@ bool js_cocos2dx_CCTMXLayer_getTiles(JSContext *cx, uint32_t argc, jsval *vp)
     cocos2d::TMXLayer* cobj = (cocos2d::TMXLayer *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "Invalid Native Object");
     if (argc == 0) {
-        uint32_t* ret = cobj->getTiles();
+        auto ret = cobj->getTiles();
         Size size = cobj->getLayerSize();
         int count = size.width * size.height;
         JSObject* array = JS_NewUint32Array(cx, count);
@@ -5823,195 +5823,6 @@ void js_register_cocos2dx_PolygonInfo(JSContext *cx, JS::HandleObject global)
     }
 }
 
-JSClass  *jsb_cocos2d_AutoPolygon_class;
-JSObject *jsb_cocos2d_AutoPolygon_prototype;
-
-bool js_cocos2dx_AutoPolygon_generatePolygon(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 1) {
-        std::string arg0;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_AutoPolygon_generatePolygon : Error processing arguments");
-        cocos2d::PolygonInfo* ret = new cocos2d::PolygonInfo(cocos2d::AutoPolygon::generatePolygon(arg0));
-        jsval jsret = JSVAL_NULL;
-        do {
-            if (ret) {
-                js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::PolygonInfo>(cx, ret);
-                jsret = OBJECT_TO_JSVAL(jsProxy->obj);
-            } else {
-                jsret = JSVAL_NULL;
-            }
-        } while (0);
-        args.rval().set(jsret);
-        return true;
-    }
-    if (argc == 2) {
-        std::string arg0;
-        cocos2d::Rect arg1;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        ok &= jsval_to_ccrect(cx, args.get(1), &arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_AutoPolygon_generatePolygon : Error processing arguments");
-        cocos2d::PolygonInfo* ret = new cocos2d::PolygonInfo(cocos2d::AutoPolygon::generatePolygon(arg0, arg1));
-        jsval jsret = JSVAL_NULL;
-        do {
-            if (ret) {
-                js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::PolygonInfo>(cx, ret);
-                jsret = OBJECT_TO_JSVAL(jsProxy->obj);
-            } else {
-                jsret = JSVAL_NULL;
-            }
-        } while (0);
-        args.rval().set(jsret);
-        return true;
-    }
-    if (argc == 3) {
-        std::string arg0;
-        cocos2d::Rect arg1;
-        double arg2;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        ok &= jsval_to_ccrect(cx, args.get(1), &arg1);
-        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !isnan(arg2);
-        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_AutoPolygon_generatePolygon : Error processing arguments");
-        cocos2d::PolygonInfo* ret = new cocos2d::PolygonInfo(cocos2d::AutoPolygon::generatePolygon(arg0, arg1, arg2));
-        jsval jsret = JSVAL_NULL;
-        do {
-            if (ret) {
-                js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::PolygonInfo>(cx, ret);
-                jsret = OBJECT_TO_JSVAL(jsProxy->obj);
-            } else {
-                jsret = JSVAL_NULL;
-            }
-        } while (0);
-        args.rval().set(jsret);
-        return true;
-    }
-    if (argc == 4) {
-        std::string arg0;
-        cocos2d::Rect arg1;
-        double arg2;
-        double arg3;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        ok &= jsval_to_ccrect(cx, args.get(1), &arg1);
-        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !isnan(arg2);
-        ok &= JS::ToNumber( cx, args.get(3), &arg3) && !isnan(arg3);
-        JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_AutoPolygon_generatePolygon : Error processing arguments");
-        cocos2d::PolygonInfo* ret = new cocos2d::PolygonInfo(cocos2d::AutoPolygon::generatePolygon(arg0, arg1, arg2, arg3));
-        jsval jsret = JSVAL_NULL;
-        do {
-            if (ret) {
-                js_proxy_t *jsProxy = js_get_or_create_proxy<cocos2d::PolygonInfo>(cx, ret);
-                jsret = OBJECT_TO_JSVAL(jsProxy->obj);
-            } else {
-                jsret = JSVAL_NULL;
-            }
-        } while (0);
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_cocos2dx_AutoPolygon_generatePolygon : wrong number of arguments");
-    return false;
-}
-
-bool js_cocos2dx_AutoPolygon_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    std::string arg0;
-    ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-    JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_AutoPolygon_constructor : Error processing arguments");
-    cocos2d::AutoPolygon* cobj = new (std::nothrow) cocos2d::AutoPolygon(arg0);
-    TypeTest<cocos2d::AutoPolygon> t;
-    js_type_class_t *typeClass = nullptr;
-    std::string typeName = t.s_name();
-    auto typeMapIter = _js_global_type_map.find(typeName);
-    CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
-    typeClass = typeMapIter->second;
-    CCASSERT(typeClass, "The value is null.");
-    // JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
-    JS::RootedObject proto(cx, typeClass->proto.get());
-    JS::RootedObject parent(cx, typeClass->parentProto.get());
-    JS::RootedObject obj(cx, JS_NewObject(cx, typeClass->jsclass, proto, parent));
-    args.rval().set(OBJECT_TO_JSVAL(obj));
-    // link the native object with the javascript object
-    jsb_new_proxy(cobj, obj);
-    if (JS_HasProperty(cx, obj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(obj), "_ctor", args);
-    return true;
-}
-
-void js_cocos2d_AutoPolygon_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (AutoPolygon)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    jsproxy = jsb_get_js_proxy(obj);
-    if (jsproxy) {
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-        
-        cocos2d::AutoPolygon *nobj = static_cast<cocos2d::AutoPolygon *>(nproxy->ptr);
-        if (nobj)
-            delete nobj;
-        
-        jsb_remove_proxy(nproxy, jsproxy);
-    }
-}
-
-void js_register_cocos2dx_AutoPolygon(JSContext *cx, JS::HandleObject global) {
-    jsb_cocos2d_AutoPolygon_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_cocos2d_AutoPolygon_class->name = "AutoPolygon";
-    jsb_cocos2d_AutoPolygon_class->addProperty = JS_PropertyStub;
-    jsb_cocos2d_AutoPolygon_class->delProperty = JS_DeletePropertyStub;
-    jsb_cocos2d_AutoPolygon_class->getProperty = JS_PropertyStub;
-    jsb_cocos2d_AutoPolygon_class->setProperty = JS_StrictPropertyStub;
-    jsb_cocos2d_AutoPolygon_class->enumerate = JS_EnumerateStub;
-    jsb_cocos2d_AutoPolygon_class->resolve = JS_ResolveStub;
-    jsb_cocos2d_AutoPolygon_class->convert = JS_ConvertStub;
-    jsb_cocos2d_AutoPolygon_class->finalize = js_cocos2d_AutoPolygon_finalize;
-    jsb_cocos2d_AutoPolygon_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-    
-    static JSPropertySpec properties[] = {
-        JS_PSG("__nativeObj", js_is_native_obj, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_PS_END
-    };
-    
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-    
-    static JSFunctionSpec st_funcs[] = {
-        JS_FN("generatePolygon", js_cocos2dx_AutoPolygon_generatePolygon, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-    
-    jsb_cocos2d_AutoPolygon_prototype = JS_InitClass(
-                                                     cx, global,
-                                                     JS::NullPtr(), // parent proto
-                                                     jsb_cocos2d_AutoPolygon_class,
-                                                     js_cocos2dx_AutoPolygon_constructor, 0, // constructor
-                                                     properties,
-                                                     funcs,
-                                                     NULL, // no static properties
-                                                     st_funcs);
-    // make the class enumerable in the registered namespace
-    //  bool found;
-    //FIXME: Removed in Firefox v27
-    //  JS_SetPropertyAttributes(cx, global, "AutoPolygon", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-    
-    // add the proto and JSClass to the type->js info hash table
-    TypeTest<cocos2d::AutoPolygon> t;
-    js_type_class_t *p;
-    std::string typeName = t.s_name();
-    if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
-    {
-        p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-        p->jsclass = jsb_cocos2d_AutoPolygon_class;
-        p->proto = jsb_cocos2d_AutoPolygon_prototype;
-        p->parentProto = NULL;
-        _js_global_type_map.insert(std::make_pair(typeName, p));
-    }
-}
-
 bool js_cocos2dx_ComponentJS_getScriptObject(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -6040,7 +5851,6 @@ void register_cocos2dx_js_core(JSContext* cx, JS::HandleObject global)
     get_or_create_js_obj(cx, global, "jsb", &jsbObj);
     
     js_register_cocos2dx_PolygonInfo(cx, jsbObj);
-    js_register_cocos2dx_AutoPolygon(cx, jsbObj);
     
     JS_GetProperty(cx, ccObj, "PlistParser", &tmpVal);
     tmpObj = tmpVal.toObjectOrNull();
@@ -6320,9 +6130,7 @@ void register_cocos2dx_js_core(JSContext* cx, JS::HandleObject global)
     JS_DefineFunction(cx, ccObj, "unregisterTouchDelegate", js_cocos2dx_JSTouchDelegate_unregisterTouchDelegate, 1, JSPROP_READONLY | JSPROP_PERMANENT);
 
     get_or_create_js_obj(cx, ccObj, "math", &tmpObj);
-//    JS_DefineFunction(cx, tmpObj, "obbGetCorners", js_cocos2dx_ccobbGetCorners, 1, JSPROP_READONLY | JSPROP_PERMANENT);
-//    JS_DefineFunction(cx, tmpObj, "obbIntersectsObb", js_cocos2dx_ccobbIntersects, 1, JSPROP_READONLY | JSPROP_PERMANENT);
-//    JS_DefineFunction(cx, tmpObj, "rayIntersectsObb", js_cocos2dx_ccrayIntersectsObb, 1, JSPROP_READONLY | JSPROP_PERMANENT);
+
     JS_DefineFunction(cx, tmpObj, "mat4CreateTranslation", js_cocos2dx_ccmat4CreateTranslation, 1, JSPROP_READONLY | JSPROP_PERMANENT);
     JS_DefineFunction(cx, tmpObj, "mat4CreateRotation", js_cocos2dx_ccmat4CreateRotation, 1, JSPROP_READONLY | JSPROP_PERMANENT);
     JS_DefineFunction(cx, tmpObj, "mat4Multiply", js_cocos2dx_ccmat4Multiply, 2, JSPROP_READONLY | JSPROP_PERMANENT);
