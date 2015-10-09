@@ -165,7 +165,6 @@
         "src/Presentation/Presentation.js",
         "src/ReflectionTest/ReflectionTest.js",
 
-        "src/SpritePolygonTest/SpritePolygonTest.js",
         "src/VibrateTest/VibrateTest.js",
 
         "src/NativeTest/NativeTest.js",
