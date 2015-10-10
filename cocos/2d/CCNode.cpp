@@ -664,7 +664,7 @@ void Node::setTag(int tag)
     _tag = tag ;
 }
 
-std::string Node::getName() const
+const std::string& Node::getName() const
 {
     return _name;
 }
