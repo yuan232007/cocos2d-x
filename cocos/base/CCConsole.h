@@ -128,7 +128,6 @@ protected:
     void commandDirector(int fd, const std::string &args);
     void commandTouch(int fd, const std::string &args);
     void commandUpload(int fd);
-    void commandAllocator(int fd, const std::string &args);
     // file descriptor: socket, console, etc.
     int _listenfd;
     int _maxfd;
