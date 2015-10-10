@@ -58,9 +58,6 @@
     <Filter Include="extension">
       <UniqueIdentifier>{976bf662-699e-482e-b5db-a20d4abab137}</UniqueIdentifier>
     </Filter>
-    <Filter Include="extension\AssetsManager">
-      <UniqueIdentifier>{ad47c713-2196-4c8f-9205-2a2a7ecc0b80}</UniqueIdentifier>
-    </Filter>
     <Filter Include="extension\GUI">
       <UniqueIdentifier>{b27aba95-51a2-413c-8570-0aff9adf2b6b}</UniqueIdentifier>
     </Filter>
@@ -126,9 +123,6 @@
     </Filter>
     <Filter Include="audioengine">
       <UniqueIdentifier>{e916e2b4-0a6e-4d25-8b36-66fa03719f48}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="base\allocator">
-      <UniqueIdentifier>{92ff4e66-3943-47da-a439-c8f182bb871a}</UniqueIdentifier>
     </Filter>
     <Filter Include="cocostudio\TimelineAction\Skeleton">
       <UniqueIdentifier>{ca5e1475-3bfd-4aae-ad54-2e19d5021b92}</UniqueIdentifier>
@@ -580,9 +574,6 @@
     <ClCompile Include="..\base\ccRandom.cpp">
       <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\extensions\assets-manager\AssetsManager.cpp">
-      <Filter>extension\AssetsManager</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\extensions\GUI\CCScrollView\CCScrollView.cpp">
       <Filter>extension\GUI\CCScrollView</Filter>
     </ClCompile>
@@ -853,18 +844,6 @@
     <ClCompile Include="..\ui\UIEditBox\UIEditBoxImpl-win32.cpp">
       <Filter>ui\UIWidgets\EditBox</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\extensions\assets-manager\AssetsManagerEx.cpp">
-      <Filter>extension\AssetsManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\extensions\assets-manager\CCEventAssetsManagerEx.cpp">
-      <Filter>extension\AssetsManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\extensions\assets-manager\CCEventListenerAssetsManagerEx.cpp">
-      <Filter>extension\AssetsManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\extensions\assets-manager\Manifest.cpp">
-      <Filter>extension\AssetsManager</Filter>
-    </ClCompile>
     <ClCompile Include="..\ui\UIWebView.cpp">
       <Filter>ui\UIWidgets</Filter>
     </ClCompile>
@@ -897,15 +876,6 @@
     </ClCompile>
     <ClCompile Include="..\base\CCAsyncTaskPool.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\allocator\CCAllocatorDiagnostics.cpp">
-      <Filter>base\allocator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\allocator\CCAllocatorGlobal.cpp">
-      <Filter>base\allocator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\allocator\CCAllocatorGlobalNewDelete.cpp">
-      <Filter>base\allocator</Filter>
     </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\CocoStudio.cpp">
       <Filter>cocostudio\json</Filter>
@@ -1463,9 +1433,6 @@
     <ClInclude Include="..\base\ccRandom.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\extensions\assets-manager\AssetsManager.h">
-      <Filter>extension\AssetsManager</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\extensions\GUI\CCScrollView\CCScrollView.h">
       <Filter>extension\GUI\CCScrollView</Filter>
     </ClInclude>
@@ -1781,18 +1748,6 @@
     <ClInclude Include="..\ui\UIEditBox\UIEditBoxImpl-win32.h">
       <Filter>ui\UIWidgets\EditBox</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\extensions\assets-manager\AssetsManagerEx.h">
-      <Filter>extension\AssetsManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\extensions\assets-manager\CCEventAssetsManagerEx.h">
-      <Filter>extension\AssetsManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\extensions\assets-manager\CCEventListenerAssetsManagerEx.h">
-      <Filter>extension\AssetsManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\extensions\assets-manager\Manifest.h">
-      <Filter>extension\AssetsManager</Filter>
-    </ClInclude>
     <ClInclude Include="..\ui\UIWebView-inl.h">
       <Filter>ui\UIWidgets</Filter>
     </ClInclude>
@@ -1834,33 +1789,6 @@
     </ClInclude>
     <ClInclude Include="..\base\CCAsyncTaskPool.h">
       <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorGlobal.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorBase.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorDiagnostics.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorMacros.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorMutex.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorStrategyDefault.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorStrategyFixedBlock.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorStrategyGlobalSmallBlock.h">
-      <Filter>base\allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\allocator\CCAllocatorStrategyPool.h">
-      <Filter>base\allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\platform\CCPlatformConfig.h">
       <Filter>platform</Filter>
