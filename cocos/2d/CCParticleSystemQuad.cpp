@@ -479,7 +479,7 @@ void ParticleSystemQuad::setTotalParticles(int tp)
         size_t indicesSize = sizeof(_indices[0]) * tp * 6 * 1;
 
         _particleData.release();
-        if (_particleData.init(tp))
+        if (!_particleData.init(tp))
         {
             CCLOG("Particle system: not enough memory");
             return;
