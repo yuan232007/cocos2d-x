@@ -32,7 +32,7 @@
 #include "renderer/CCCustomCommand.h"
 #include "renderer/CCGroupCommand.h"
 #include "renderer/CCPrimitiveCommand.h"
-#include "renderer/CCMeshCommand.h"
+//#include "renderer/CCMeshCommand.h"
 #include "renderer/CCGLProgramCache.h"
 #include "renderer/CCMaterial.h"
 #include "renderer/CCTechnique.h"
@@ -471,34 +471,34 @@ void Renderer::processRenderCommand(RenderCommand* command)
             drawBatchedQuads();
         }
     }
-    else if (RenderCommand::Type::MESH_COMMAND == commandType)
-    {
-        flush2D();
-        auto cmd = static_cast<MeshCommand*>(command);
-        
-        if (cmd->isSkipBatching() || _lastBatchedMeshCommand == nullptr || _lastBatchedMeshCommand->getMaterialID() != cmd->getMaterialID())
-        {
-            flush3D();
-            
-            if(cmd->isSkipBatching())
-            {
-                // XXX: execute() will call bind() and unbind()
-                // but unbind() shouldn't be call if the next command is a MESH_COMMAND with Material.
-                // Once most of cocos2d-x moves to Pass/StateBlock, only bind() should be used.
-                cmd->execute();
-            }
-            else
-            {
-                cmd->preBatchDraw();
-                cmd->batchDraw();
-                _lastBatchedMeshCommand = cmd;
-            }
-        }
-        else
-        {
-            cmd->batchDraw();
-        }
-    }
+//    else if (RenderCommand::Type::MESH_COMMAND == commandType)
+//    {
+//        flush2D();
+//        auto cmd = static_cast<MeshCommand*>(command);
+//        
+//        if (cmd->isSkipBatching() || _lastBatchedMeshCommand == nullptr || _lastBatchedMeshCommand->getMaterialID() != cmd->getMaterialID())
+//        {
+//            flush3D();
+//            
+//            if(cmd->isSkipBatching())
+//            {
+//                // XXX: execute() will call bind() and unbind()
+//                // but unbind() shouldn't be call if the next command is a MESH_COMMAND with Material.
+//                // Once most of cocos2d-x moves to Pass/StateBlock, only bind() should be used.
+//                cmd->execute();
+//            }
+//            else
+//            {
+//                cmd->preBatchDraw();
+//                cmd->batchDraw();
+//                _lastBatchedMeshCommand = cmd;
+//            }
+//        }
+//        else
+//        {
+//            cmd->batchDraw();
+//        }
+//    }
     else if(RenderCommand::Type::GROUP_COMMAND == commandType)
     {
         flush();
@@ -1036,7 +1036,7 @@ void Renderer::flush3D()
 {
     if (_lastBatchedMeshCommand)
     {
-        _lastBatchedMeshCommand->postBatchDraw();
+//        _lastBatchedMeshCommand->postBatchDraw();
         _lastBatchedMeshCommand = nullptr;
     }
 }

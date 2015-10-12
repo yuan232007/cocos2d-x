@@ -1463,10 +1463,6 @@
 		B276EF641988D1D500CD400F /* CCVertexIndexBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = B276EF5D1988D1D500CD400F /* CCVertexIndexBuffer.h */; };
 		B276EF651988D1D500CD400F /* CCVertexIndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B276EF5E1988D1D500CD400F /* CCVertexIndexBuffer.cpp */; };
 		B276EF661988D1D500CD400F /* CCVertexIndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B276EF5E1988D1D500CD400F /* CCVertexIndexBuffer.cpp */; };
-		B29594B41926D5EC003EEF37 /* CCMeshCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B29594B21926D5EC003EEF37 /* CCMeshCommand.cpp */; };
-		B29594B51926D5EC003EEF37 /* CCMeshCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B29594B21926D5EC003EEF37 /* CCMeshCommand.cpp */; };
-		B29594B61926D5EC003EEF37 /* CCMeshCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = B29594B31926D5EC003EEF37 /* CCMeshCommand.h */; };
-		B29594B71926D5EC003EEF37 /* CCMeshCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = B29594B31926D5EC003EEF37 /* CCMeshCommand.h */; };
 		B29A7DC719EE1B7700872B35 /* SkeletonRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B29A7D8A19EE1B7700872B35 /* SkeletonRenderer.cpp */; };
 		B29A7DC819EE1B7700872B35 /* SkeletonRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B29A7D8A19EE1B7700872B35 /* SkeletonRenderer.cpp */; };
 		B29A7DC919EE1B7700872B35 /* SlotData.c in Sources */ = {isa = PBXBuildFile; fileRef = B29A7D8B19EE1B7700872B35 /* SlotData.c */; };
@@ -2443,8 +2439,6 @@
 		B29594AF1926D5D9003EEF37 /* ccShader_3D_Color.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ccShader_3D_Color.frag; sourceTree = "<group>"; };
 		B29594B01926D5D9003EEF37 /* ccShader_3D_ColorTex.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ccShader_3D_ColorTex.frag; sourceTree = "<group>"; };
 		B29594B11926D5D9003EEF37 /* ccShader_3D_PositionTex.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ccShader_3D_PositionTex.vert; sourceTree = "<group>"; };
-		B29594B21926D5EC003EEF37 /* CCMeshCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCMeshCommand.cpp; sourceTree = "<group>"; };
-		B29594B31926D5EC003EEF37 /* CCMeshCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMeshCommand.h; sourceTree = "<group>"; };
 		B29A7D8A19EE1B7700872B35 /* SkeletonRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkeletonRenderer.cpp; sourceTree = "<group>"; };
 		B29A7D8B19EE1B7700872B35 /* SlotData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SlotData.c; sourceTree = "<group>"; };
 		B29A7D8C19EE1B7700872B35 /* Skeleton.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Skeleton.c; sourceTree = "<group>"; };
@@ -3972,8 +3966,6 @@
 				50ABBD711925AB4100A911A9 /* ccGLStateCache.h */,
 				50ABBD721925AB4100A911A9 /* CCGroupCommand.cpp */,
 				50ABBD731925AB4100A911A9 /* CCGroupCommand.h */,
-				B29594B21926D5EC003EEF37 /* CCMeshCommand.cpp */,
-				B29594B31926D5EC003EEF37 /* CCMeshCommand.h */,
 				B230ED6F19B417AE00364AA8 /* CCTrianglesCommand.cpp */,
 				B230ED7019B417AE00364AA8 /* CCTrianglesCommand.h */,
 				50ABBD741925AB4100A911A9 /* CCQuadCommand.cpp */,
@@ -4618,7 +4610,6 @@
 				15AE189119AAD33D00C27E9E /* CCLayerColorLoader.h in Headers */,
 				291901431B05895600F8B4BA /* CCNinePatchImageParser.h in Headers */,
 				B24AA98B195A675C007B4522 /* CCFastTMXTiledMap.h in Headers */,
-				B29594B61926D5EC003EEF37 /* CCMeshCommand.h in Headers */,
 				50ABBE371925AB6F00A911A9 /* CCConsole.h in Headers */,
 				50ABC00B1926664800A911A9 /* CCDevice.h in Headers */,
 				50ABC0131926664800A911A9 /* CCGLView.h in Headers */,
@@ -4992,7 +4983,6 @@
 				B29A7DE619EE1B7700872B35 /* SkeletonAnimation.h in Headers */,
 				50ABBEC81925AB6F00A911A9 /* etc1.h in Headers */,
 				50ABBDB01925AB4100A911A9 /* CCRenderer.h in Headers */,
-				B29594B71926D5EC003EEF37 /* CCMeshCommand.h in Headers */,
 				50ABBD861925AB4100A911A9 /* CCBatchCommand.h in Headers */,
 				15AE18CA19AAD33D00C27E9E /* CCMenuItemLoader.h in Headers */,
 				50ABBE481925AB6F00A911A9 /* CCEvent.h in Headers */,
@@ -5519,7 +5509,6 @@
 				B29A7E2119EE1B7700872B35 /* PolygonBatch.cpp in Sources */,
 				15AE1A9219AAD40300C27E9E /* b2WheelJoint.cpp in Sources */,
 				43015DBF1B60DF4000E75161 /* CCComExtensionData.cpp in Sources */,
-				B29594B41926D5EC003EEF37 /* CCMeshCommand.cpp in Sources */,
 				15AE189619AAD33D00C27E9E /* CCMenuItemImageLoader.cpp in Sources */,
 				15AE1BB719AADFEF00C27E9E /* WebSocket.cpp in Sources */,
 				15AE1B5119AADA9900C27E9E /* UIPageView.cpp in Sources */,
@@ -5599,7 +5588,6 @@
 				292DB13E19B4574100A80320 /* UIEditBox.cpp in Sources */,
 				B29A7E0619EE1B7700872B35 /* extension.c in Sources */,
 				15AE18B219AAD33D00C27E9E /* CCBReader.cpp in Sources */,
-				B29594B51926D5EC003EEF37 /* CCMeshCommand.cpp in Sources */,
 				15AE194B19AAD35100C27E9E /* CCComRender.cpp in Sources */,
 				15AE1ACA19AAD40300C27E9E /* b2MouseJoint.cpp in Sources */,
 				50ABBE7E1925AB6F00A911A9 /* CCEventTouch.cpp in Sources */,
