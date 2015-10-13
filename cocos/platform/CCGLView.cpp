@@ -222,11 +222,10 @@ Vec2 GLView::getVisibleOrigin() const
 
 void GLView::setViewPortInPoints(float x , float y , float w , float h)
 {
-    experimental::Viewport vp((float)(x * _scaleX + _viewPortRect.origin.x),
+    glViewport((float)(x * _scaleX + _viewPortRect.origin.x),
         (float)(y * _scaleY + _viewPortRect.origin.y),
         (float)(w * _scaleX),
         (float)(h * _scaleY));
-    Camera::setDefaultViewport(vp);
 }
 
 void GLView::setScissorInPoints(float x , float y , float w , float h)
