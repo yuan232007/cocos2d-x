@@ -48,7 +48,6 @@ THE SOFTWARE.
 #include "renderer/ccGLStateCache.h"
 #include "renderer/CCRenderer.h"
 #include "renderer/CCRenderState.h"
-#include "renderer/CCFrameBuffer.h"
 #include "2d/CCCamera.h"
 #include "base/CCUserDefault.h"
 #include "base/ccFPSImages.h"
@@ -678,9 +677,6 @@ void Director::setDepthTest(bool on)
 void Director::setClearColor(const Color4F& clearColor)
 {
     _renderer->setClearColor(clearColor);
-    auto defaultFBO = experimental::FrameBuffer::getOrCreateDefaultFBO(_openGLView);
-    
-    if(defaultFBO) defaultFBO->setClearColor(clearColor);
 }
 
 static void GLToClipTransform(Mat4 *transformOut)
