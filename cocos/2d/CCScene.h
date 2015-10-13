@@ -82,7 +82,7 @@ public:
      * @return The vector of all cameras, ordered by camera depth.
      * @js NA
      */
-    const std::vector<Camera*>& getCameras();
+    //const std::vector<Camera*>& getCameras();
 
     /** Get the default camera.
      * @js NA
