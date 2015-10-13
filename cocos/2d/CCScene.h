@@ -94,7 +94,7 @@ public:
      * @return The vector of lights.
      * @js NA
      */
-    const std::vector<BaseLight*>& getLights() const { return _lights; }
+    //const std::vector<BaseLight*>& getLights() const { return _lights; }
     
     /** Render the scene.
      * @param renderer The renderer use to render the scene.
@@ -129,7 +129,7 @@ protected:
     bool                 _cameraOrderDirty; // order is dirty, need sort
     EventListenerCustom*       _event;
 
-    std::vector<BaseLight *> _lights;
+    //std::vector<BaseLight *> _lights;
     
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Scene);
