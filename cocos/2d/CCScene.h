@@ -124,12 +124,10 @@ protected:
     friend class BaseLight;
     friend class Renderer;
     
-    std::vector<Camera*> _cameras; //weak ref to Camera
     Camera*              _defaultCamera; //weak ref, default camera created by scene, _cameras[0], Caution that the default camera can not be added to _cameras before onEnter is called
     bool                 _cameraOrderDirty; // order is dirty, need sort
     EventListenerCustom*       _event;
 
-    //std::vector<BaseLight *> _lights;
     
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Scene);

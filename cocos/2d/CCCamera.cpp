@@ -375,31 +375,6 @@ void Camera::onExit()
 
 void Camera::setScene(Scene* scene)
 {
-    if (_scene != scene)
-    {
-        //remove old scene
-        if (_scene)
-        {
-            auto& cameras = _scene->_cameras;
-            auto it = std::find(cameras.begin(), cameras.end(), this);
-            if (it != cameras.end())
-                cameras.erase(it);
-            _scene = nullptr;
-        }
-        //set new scene
-        if (scene)
-        {
-            _scene = scene;
-            auto& cameras = _scene->_cameras;
-            auto it = std::find(cameras.begin(), cameras.end(), this);
-            if (it == cameras.end())
-            {
-                _scene->_cameras.push_back(this);
-                //notify scene that the camera order is dirty
-                _scene->setCameraOrderDirty();
-            }
-        }
-    }
 }
 
 void Camera::clearBackground()
