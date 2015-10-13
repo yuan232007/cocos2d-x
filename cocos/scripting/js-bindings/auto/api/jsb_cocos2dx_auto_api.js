@@ -2109,19 +2109,19 @@ Node : function (
 cc.Scene = {
 
 /**
- * @method setCameraOrderDirty
- */
-setCameraOrderDirty : function (
-)
-{
-},
-
-/**
  * @method render
  * @param {cc.Renderer} arg0
  */
 render : function (
 renderer 
+)
+{
+},
+
+/**
+ * @method setCameraOrderDirty
+ */
+setCameraOrderDirty : function (
 )
 {
 },
@@ -17985,14 +17985,6 @@ getViewProjectionMatrix : function (
 },
 
 /**
- * @method applyViewport
- */
-applyViewport : function (
-)
-{
-},
-
-/**
  * @method setBackgroundBrush
  * @param {cc.CameraBackgroundBrush} arg0
  */
@@ -18010,14 +18002,6 @@ camerabackgroundbrush
 lookAt : function (
 vec3, 
 vec3 
-)
-{
-},
-
-/**
- * @method apply
- */
-apply : function (
 )
 {
 },
@@ -18068,16 +18052,6 @@ clearBackground : function (
  */
 setAdditionalProjection : function (
 mat4 
-)
-{
-},
-
-/**
- * @method setViewport
- * @param {cc.experimental::Viewport} arg0
- */
-setViewport : function (
-viewport 
 )
 {
 },
@@ -18225,24 +18199,6 @@ getFarPlane : function (
 },
 
 /**
- * @method applyFrameBufferObject
- */
-applyFrameBufferObject : function (
-)
-{
-},
-
-/**
- * @method setFrameBufferObject
- * @param {cc.experimental::FrameBuffer} arg0
- */
-setFrameBufferObject : function (
-framebuffer 
-)
-{
-},
-
-/**
  * @method isViewProjectionUpdated
  * @return {bool}
  */
@@ -18268,34 +18224,6 @@ float
 )
 {
     return false;
-},
-
-/**
- * @method createOrthographic
- * @param {float} arg0
- * @param {float} arg1
- * @param {float} arg2
- * @param {float} arg3
- * @return {cc.Camera}
- */
-createOrthographic : function (
-float, 
-float, 
-float, 
-float 
-)
-{
-    return cc.Camera;
-},
-
-/**
- * @method getVisitingCamera
- * @return {cc.Camera}
- */
-getVisitingCamera : function (
-)
-{
-    return cc.Camera;
 },
 
 /**
@@ -18327,23 +18255,21 @@ float
 },
 
 /**
- * @method getDefaultViewport
- * @return {cc.experimental::Viewport}
+ * @method createOrthographic
+ * @param {float} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {float} arg3
+ * @return {cc.Camera}
  */
-getDefaultViewport : function (
+createOrthographic : function (
+float, 
+float, 
+float, 
+float 
 )
 {
-    return cc.experimental::Viewport;
-},
-
-/**
- * @method setDefaultViewport
- * @param {cc.experimental::Viewport} arg0
- */
-setDefaultViewport : function (
-viewport 
-)
-{
+    return cc.Camera;
 },
 
 /**
@@ -18351,6 +18277,16 @@ viewport
  * @return {cc.Camera}
  */
 getDefaultCamera : function (
+)
+{
+    return cc.Camera;
+},
+
+/**
+ * @method getVisitingCamera
+ * @return {cc.Camera}
+ */
+getVisitingCamera : function (
 )
 {
     return cc.Camera;
