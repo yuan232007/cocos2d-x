@@ -35,7 +35,6 @@ THE SOFTWARE.
 NS_CC_BEGIN
 
 class Scene;
-class CameraBackgroundBrush;
 
 /**
  * Note: 
@@ -246,17 +245,6 @@ public:
      */
     bool isViewProjectionUpdated() const {return _viewProjectionUpdated;}
     
-    /**
-     * set the background brush. See CameraBackgroundBrush for more information.
-     * @param clearBrush Brush used to clear the background
-     */
-    void setBackgroundBrush(CameraBackgroundBrush* clearBrush);
-    
-    /**
-     * Get clear brush
-     */
-    CameraBackgroundBrush* getBackgroundBrush() const { return _clearBrush; }
-    
     virtual void visit(Renderer* renderer, const Mat4 &parentTransform, uint32_t parentFlags) override;
     
 CC_CONSTRUCTOR_ACCESS:
@@ -296,8 +284,6 @@ protected:
 //    mutable bool _frustumDirty;
     int8_t  _depth;                 //camera depth, the depth of camera with CameraFlag::DEFAULT flag is 0 by default, a camera with larger depth is drawn on top of camera with smaller depth
     static Camera* _visitingCamera;
-    
-    CameraBackgroundBrush* _clearBrush; //brush used to clear the back ground
     
 };
 

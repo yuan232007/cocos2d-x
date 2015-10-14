@@ -25,7 +25,6 @@
 
  ****************************************************************************/
 #include "2d/CCCamera.h"
-#include "2d/CCCameraBackgroundBrush.h"
 #include "base/CCDirector.h"
 #include "platform/CCGLView.h"
 #include "2d/CCScene.h"
@@ -94,13 +93,10 @@ Camera::Camera()
 , _depth(-1)
 {
 //    _frustum.setClipZ(true);
-    _clearBrush = CameraBackgroundBrush::createDepthBrush(1.f);
-    _clearBrush->retain();
 }
 
 Camera::~Camera()
 {
-    CC_SAFE_RELEASE(_clearBrush);
 }
 
 const Mat4& Camera::getProjectionMatrix() const
@@ -375,10 +371,6 @@ void Camera::setScene(Scene* scene)
 
 void Camera::clearBackground()
 {
-    if (_clearBrush)
-    {
-        _clearBrush->drawBackground(this);
-    }
 }
 
 int Camera::getRenderOrder() const
@@ -392,13 +384,6 @@ void Camera::visit(Renderer* renderer, const Mat4 &parentTransform, uint32_t par
 {
     _viewProjectionUpdated = _transformUpdated;
     return Node::visit(renderer, parentTransform, parentFlags);
-}
-
-void Camera::setBackgroundBrush(CameraBackgroundBrush* clearBrush)
-{
-    CC_SAFE_RETAIN(clearBrush);
-    CC_SAFE_RELEASE(_clearBrush);
-    _clearBrush = clearBrush;
 }
 
 NS_CC_END
