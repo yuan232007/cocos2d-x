@@ -1678,38 +1678,18 @@ bool js_cocos2dx_ui_Widget_hitTest(JSContext *cx, uint32_t argc, jsval *vp)
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     cocos2d::ui::Widget* cobj = (cocos2d::ui::Widget *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_ui_Widget_hitTest : Invalid Native Object");
-    if (argc == 3) {
+    if (argc == 1) {
         cocos2d::Vec2 arg0;
-        const cocos2d::Camera* arg1 = nullptr;
-        cocos2d::Vec3* arg2 = nullptr;
         ok &= jsval_to_vector2(cx, args.get(0), &arg0);
-        do {
-            if (args.get(1).isNull()) { arg1 = nullptr; break; }
-            if (!args.get(1).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JSObject *tmpObj = args.get(1).toObjectOrNull();
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg1 = (const cocos2d::Camera*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
-        } while (0);
-        do {
-            if (args.get(2).isNull()) { arg2 = nullptr; break; }
-            if (!args.get(2).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JSObject *tmpObj = args.get(2).toObjectOrNull();
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg2 = (cocos2d::Vec3*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg2, cx, false, "Invalid Native Object");
-        } while (0);
         JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_ui_Widget_hitTest : Error processing arguments");
-        bool ret = cobj->hitTest(arg0, arg1, arg2);
+        bool ret = cobj->hitTest(arg0);
         jsval jsret = JSVAL_NULL;
         jsret = BOOLEAN_TO_JSVAL(ret);
         args.rval().set(jsret);
         return true;
     }
 
-    JS_ReportError(cx, "js_cocos2dx_ui_Widget_hitTest : wrong number of arguments: %d, was expecting %d", argc, 3);
+    JS_ReportError(cx, "js_cocos2dx_ui_Widget_hitTest : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_cocos2dx_ui_Widget_isLayoutComponentEnabled(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2326,7 +2306,7 @@ void js_register_cocos2dx_ui_Widget(JSContext *cx, JS::HandleObject global) {
         JS_FN("setUnifySizeEnabled", js_cocos2dx_ui_Widget_setUnifySizeEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("isPropagateTouchEvents", js_cocos2dx_ui_Widget_isPropagateTouchEvents, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getCurrentFocusedWidget", js_cocos2dx_ui_Widget_getCurrentFocusedWidget, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("hitTest", js_cocos2dx_ui_Widget_hitTest, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("hitTest", js_cocos2dx_ui_Widget_hitTest, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("isLayoutComponentEnabled", js_cocos2dx_ui_Widget_isLayoutComponentEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("requestFocus", js_cocos2dx_ui_Widget_requestFocus, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("updateSizeAndPosition", js_cocos2dx_ui_Widget_updateSizeAndPosition, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

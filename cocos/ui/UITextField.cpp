@@ -381,17 +381,24 @@ void TextField::setTouchAreaEnabled(bool enable)
     _useTouchArea = enable;
 }
     
-bool TextField::hitTest(const Vec2 &pt, const Camera* camera, Vec3 *p) const
+bool TextField::hitTest(const Vec2 &pt) const
 {
-    if (false == _useTouchArea)
+    if(_useTouchArea)
     {
-        return Widget::hitTest(pt, camera, nullptr);
+        Vec2 nsp = convertToNodeSpace(pt);
+        Rect bb = Rect(-_touchWidth * _anchorPoint.x, -_touchHeight * _anchorPoint.y, _touchWidth, _touchHeight);
+        if (nsp.x >= bb.origin.x && nsp.x <= bb.origin.x + bb.size.width
+            && nsp.y >= bb.origin.y && nsp.y <= bb.origin.y + bb.size.height)
+        {
+            return true;
+        }
     }
-
-    auto size = getContentSize();
-    auto anch = getAnchorPoint();
-    Rect rect((size.width - _touchWidth) * anch.x, (size.height - _touchHeight) * anch.y, _touchWidth, _touchHeight);
-    return isScreenPointInRect(pt, camera, getWorldToNodeTransform(), rect, nullptr);
+    else
+    {
+        return Widget::hitTest(pt);
+    }
+    
+    return false;
 }
 
 Size TextField::getTouchSize()const

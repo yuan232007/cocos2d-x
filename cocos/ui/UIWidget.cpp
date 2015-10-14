@@ -155,7 +155,6 @@ _positionType(PositionType::ABSOLUTE),
 _actionTag(0),
 _customSize(Size::ZERO),
 _hitted(false),
-_hittedByCamera(nullptr),
 _touchListener(nullptr),
 _flippedX(false),
 _flippedY(false),
@@ -759,11 +758,9 @@ bool Widget::onTouchBegan(Touch *touch, Event *unusedEvent)
     if (isVisible() && isEnabled() && isAncestorsEnabled() && isAncestorsVisible(this) )
     {
         _touchBeganPosition = touch->getLocation();
-        auto camera = Camera::getVisitingCamera();
-        if(hitTest(_touchBeganPosition, camera, nullptr))
+        if(hitTest(_touchBeganPosition))
         {
             if (isClippingParentContainsPoint(_touchBeganPosition)) {
-                _hittedByCamera = camera;
                 _hitted = true;
             }
         }
@@ -791,9 +788,7 @@ void Widget::propagateTouchEvent(cocos2d::ui::Widget::TouchEventType event, coco
     Widget* widgetParent = getWidgetParent();
     if (widgetParent)
     {
-        widgetParent->_hittedByCamera = _hittedByCamera;
         widgetParent->interceptTouchEvent(event, sender, touch);
-        widgetParent->_hittedByCamera = nullptr;
     }
 }
 
@@ -801,7 +796,7 @@ void Widget::onTouchMoved(Touch *touch, Event *unusedEvent)
 {
     _touchMovePosition = touch->getLocation();
 
-    setHighlighted(hitTest(_touchMovePosition, _hittedByCamera, nullptr));
+    setHighlighted(hitTest(_touchMovePosition));
 
     /*
      * Propagate touch events to its parents
@@ -930,11 +925,17 @@ void Widget::addCCSEventListener(const ccWidgetEventCallback &callback)
     this->_ccEventCallback = callback;
 }
 
-bool Widget::hitTest(const Vec2 &pt, const Camera* camera, Vec3 *p) const
+bool Widget::hitTest(const Vec2 &pt) const
 {
-    Rect rect;
-    rect.size = getContentSize();
-    return isScreenPointInRect(pt, camera, getWorldToNodeTransform(), rect, p);
+    auto nsp = convertToNodeSpace(pt);
+    Rect bb;
+    bb.size = _contentSize;
+    
+    if(bb.containsPoint(nsp))
+    {
+        return true;
+    }
+    return false;
 }
 
 bool Widget::isClippingParentContainsPoint(const Vec2 &pt)
@@ -966,9 +967,7 @@ bool Widget::isClippingParentContainsPoint(const Vec2 &pt)
     if (clippingParent)
     {
         bool bRet = false;
-        auto camera = Camera::getVisitingCamera();
-        // Camera isn't null means in touch begin process, otherwise use _hittedByCamera instead.
-        if (clippingParent->hitTest(pt, (camera ? camera : _hittedByCamera), nullptr))
+        if (clippingParent->hitTest(pt))
         {
             bRet = true;
         }
@@ -986,9 +985,7 @@ void Widget::interceptTouchEvent(cocos2d::ui::Widget::TouchEventType event, coco
     Widget* widgetParent = getWidgetParent();
     if (widgetParent)
     {
-        widgetParent->_hittedByCamera = _hittedByCamera;
         widgetParent->interceptTouchEvent(event,sender,touch);
-        widgetParent->_hittedByCamera = nullptr;
     }
 
 }

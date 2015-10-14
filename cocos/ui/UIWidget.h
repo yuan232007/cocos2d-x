@@ -474,7 +474,7 @@ public:
      * @param p         Point to a Vec3 for store the intersect point, if don't need them set to nullptr.
      * @return true if the point is in widget's content space, flase otherwise.
      */
-    virtual bool hitTest(const Vec2 &pt, const Camera* camera, Vec3 *p) const;
+    virtual bool hitTest(const Vec2 &pt) const;
 
     /**
      * A callback which will be called when touch began event is issued.
@@ -862,9 +862,6 @@ protected:
     Vec2 _positionPercent;
 
     bool _hitted;
-    // weak reference of the camera which made the widget passed the hit test when response touch begin event
-    // it's useful in the next touch move/end events
-    const Camera *_hittedByCamera;
     EventListenerTouchOneByOne* _touchListener;
     Vec2 _touchBeganPosition;
     Vec2 _touchMovePosition;

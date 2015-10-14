@@ -851,9 +851,8 @@ void ScrollView::jumpToPercentBothDirection(const Vec2& percent)
 
 bool ScrollView::calculateCurrAndPrevTouchPoints(Touch* touch, Vec3* currPt, Vec3* prevPt)
 {
-    if (nullptr == _hittedByCamera ||
-        false == hitTest(touch->getLocation(), _hittedByCamera, currPt) ||
-        false == hitTest(touch->getPreviousLocation(), _hittedByCamera, prevPt))
+    if (false == hitTest(touch->getLocation()) ||
+        false == hitTest(touch->getPreviousLocation()))
     {
         return false;
     }
@@ -898,13 +897,9 @@ void ScrollView::handlePressLogic(Touch *touch)
 
 void ScrollView::handleMoveLogic(Touch *touch)
 {
-    Vec3 currPt, prevPt;
-    if(!calculateCurrAndPrevTouchPoints(touch, &currPt, &prevPt))
-    {
-        return;
-    }
-    Vec3 delta3 = currPt - prevPt;
-    Vec2 delta(delta3.x, delta3.y);
+    Vec2 touchPositionInNodeSpace = this->convertToNodeSpace(touch->getLocation());
+    Vec2 previousTouchPositionInNodeSpace = this->convertToNodeSpace(touch->getPreviousLocation());
+    Vec2 delta = touchPositionInNodeSpace - previousTouchPositionInNodeSpace;
     scrollChildren(delta.x, delta.y);
     
     // Gather touch move information for speed calculation

@@ -426,16 +426,16 @@ void Slider::setPercent(int percent)
     }
 }
     
-bool Slider::hitTest(const cocos2d::Vec2 &pt, const Camera *camera, Vec3 *p) const
+bool Slider::hitTest(const cocos2d::Vec2 &pt) const
 {
-    Rect rect;
-    rect.size = _slidBallNormalRenderer->getContentSize();
-    auto w2l = _slidBallNormalRenderer->getWorldToNodeTransform();
-
-    Rect sliderBarRect;
-    sliderBarRect.size = this->_barRenderer->getContentSize();
-    auto barW2l = this->_barRenderer->getWorldToNodeTransform();
-    return isScreenPointInRect(pt, camera, w2l, rect, nullptr) || isScreenPointInRect(pt, camera, barW2l, sliderBarRect, nullptr);
+    Vec2 nsp = this->_slidBallNormalRenderer->convertToNodeSpace(pt);
+    Size ballSize = this->_slidBallNormalRenderer->getContentSize();
+    Rect ballRect = Rect(0,0, ballSize.width, ballSize.height);
+    if (ballRect.containsPoint(nsp))
+    {
+        return true;
+    }
+    return false;
 }
 
 bool Slider::onTouchBegan(Touch *touch, Event *unusedEvent)
@@ -443,7 +443,8 @@ bool Slider::onTouchBegan(Touch *touch, Event *unusedEvent)
     bool pass = Widget::onTouchBegan(touch, unusedEvent);
     if (_hitted)
     {
-        setPercent(getPercentWithBallPos(_touchBeganPosition));
+        Vec2 nsp = convertToNodeSpace(_touchBeganPosition);
+        setPercent(getPercentWithBallPos(nsp.x));
         percentChangedEvent(EventType::ON_SLIDEBALL_DOWN);
     }
     return pass;
@@ -452,7 +453,8 @@ bool Slider::onTouchBegan(Touch *touch, Event *unusedEvent)
 void Slider::onTouchMoved(Touch *touch, Event *unusedEvent)
 {
     _touchMovePosition = touch->getLocation();
-    setPercent(getPercentWithBallPos(_touchMovePosition));
+    Vec2 nsp = convertToNodeSpace(_touchMovePosition);
+    setPercent(getPercentWithBallPos(nsp.x));
     percentChangedEvent(EventType::ON_PERCENTAGE_CHANGED);
 }
 
@@ -469,11 +471,9 @@ void Slider::onTouchCancelled(Touch *touch, Event *unusedEvent)
     percentChangedEvent(EventType::ON_SLIDEBALL_CANCEL);
 }
 
-float Slider::getPercentWithBallPos(const Vec2 &pt) const
+float Slider::getPercentWithBallPos(float px) const
 {
-    Vec3 p;
-    Widget::hitTest(pt, _hittedByCamera, &p);
-    return ((p.x/_barLength) * static_cast<float>(_maxPercent));
+    return ((px/_barLength) * static_cast<float>(_maxPercent));
 }
 
 void Slider::addEventListenerSlider(Ref *target, SEL_SlidPercentChangedEvent selector)

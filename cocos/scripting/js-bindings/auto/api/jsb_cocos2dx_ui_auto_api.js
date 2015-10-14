@@ -705,14 +705,10 @@ getCurrentFocusedWidget : function (
 /**
  * @method hitTest
  * @param {vec2_object} arg0
- * @param {cc.Camera} arg1
- * @param {vec3_object} arg2
  * @return {bool}
  */
 hitTest : function (
-vec2, 
-camera, 
-vec3 
+vec2 
 )
 {
     return false;
