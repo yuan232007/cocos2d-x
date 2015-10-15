@@ -2109,21 +2109,15 @@ Node : function (
 cc.Scene = {
 
 /**
- * @method render
- * @param {cc.Renderer} arg0
+ * @method initWithSize
+ * @param {size_object} arg0
+ * @return {bool}
  */
-render : function (
-renderer 
+initWithSize : function (
+size 
 )
 {
-},
-
-/**
- * @method setCameraOrderDirty
- */
-setCameraOrderDirty : function (
-)
-{
+    return false;
 },
 
 /**
@@ -2137,25 +2131,21 @@ eventcustom
 },
 
 /**
- * @method initWithSize
- * @param {size_object} arg0
- * @return {bool}
+ * @method setCameraOrderDirty
  */
-initWithSize : function (
-size 
+setCameraOrderDirty : function (
 )
 {
-    return false;
 },
 
 /**
- * @method getDefaultCamera
- * @return {cc.Camera}
+ * @method render
+ * @param {cc.Renderer} arg0
  */
-getDefaultCamera : function (
+render : function (
+renderer 
 )
 {
-    return cc.Camera;
 },
 
 /**
@@ -18247,16 +18237,6 @@ float,
 float, 
 float, 
 float 
-)
-{
-    return cc.Camera;
-},
-
-/**
- * @method getDefaultCamera
- * @return {cc.Camera}
- */
-getDefaultCamera : function (
 )
 {
     return cc.Camera;

@@ -42,14 +42,9 @@ Scene::Scene()
     
     _cameraOrderDirty = true;
     
-    //create default camera
-    _defaultCamera = Camera::create();
-    addChild(_defaultCamera);
-    
     _event = Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_PROJECTION_CHANGED, std::bind(&Scene::onProjectionChanged, this, std::placeholders::_1));
     _event->retain();
     
-    Camera::_visitingCamera = nullptr;
 }
 
 Scene::~Scene()
@@ -107,59 +102,21 @@ std::string Scene::getDescription() const
 
 void Scene::onProjectionChanged(EventCustom* event)
 {
-    if (_defaultCamera)
-    {
-        _defaultCamera->initDefault();
-    }
-}
-
-static bool camera_cmp(const Camera* a, const Camera* b)
-{
-    return a->getRenderOrder() < b->getRenderOrder();
 }
 
 void Scene::render(Renderer* renderer)
 {
-    auto director = Director::getInstance();
-    Camera* defaultCamera = nullptr;
     const auto& transform = getNodeToParentTransform();
-    auto camera = getDefaultCamera();
+    visit(renderer, transform, 0);
+    
+    renderer->render();
 
-    if (camera->isVisible())
-    {
-        Camera::_visitingCamera = camera;
-        if (Camera::_visitingCamera->getCameraFlag() == CameraFlag::DEFAULT)
-        {
-            defaultCamera = Camera::_visitingCamera;
-        }
-        
-        director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION);
-        director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION, Camera::_visitingCamera->getViewProjectionMatrix());
-        //clear background with max depth
-        camera->clearBackground();
-        //visit the scene
-        visit(renderer, transform, 0);
-        
-        renderer->render();
-        
-        director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION);
-    }
-
-    Camera::_visitingCamera = nullptr;
 }
 
 void Scene::removeAllChildren()
 {
-    if (_defaultCamera)
-        _defaultCamera->retain();
-    
     Node::removeAllChildren();
     
-    if (_defaultCamera)
-    {
-        addChild(_defaultCamera);
-        _defaultCamera->release();
-    }
 }
 
 NS_CC_END

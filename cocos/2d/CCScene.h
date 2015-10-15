@@ -33,7 +33,6 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 
-class Camera;
 class BaseLight;
 class Renderer;
 class EventListenerCustom;
@@ -77,19 +76,6 @@ public:
     using Node::addChild;
     virtual std::string getDescription() const override;
     
-    /** Get all cameras.
-     * 
-     * @return The vector of all cameras, ordered by camera depth.
-     * @js NA
-     */
-    //const std::vector<Camera*>& getCameras();
-
-    /** Get the default camera.
-     * @js NA
-     * @return The default camera of scene.
-     */
-    Camera* getDefaultCamera() const { return _defaultCamera; }
-
     /** Get lights.
      * @return The vector of lights.
      * @js NA
@@ -120,11 +106,8 @@ protected:
     friend class Node;
     friend class ProtectedNode;
     friend class SpriteBatchNode;
-    friend class Camera;
     friend class BaseLight;
     friend class Renderer;
-    
-    Camera*              _defaultCamera; //weak ref, default camera created by scene, _cameras[0], Caution that the default camera can not be added to _cameras before onEnter is called
     bool                 _cameraOrderDirty; // order is dirty, need sort
     EventListenerCustom*       _event;
 
