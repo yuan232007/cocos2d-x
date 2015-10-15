@@ -37,7 +37,6 @@ THE SOFTWARE.
 #include "renderer/CCTexture2D.h"
 #include "renderer/CCRenderer.h"
 #include "base/CCDirector.h"
-#include "2d/CCCamera.h"
 #include "base/CCString.h"
 
 NS_CC_BEGIN

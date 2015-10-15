@@ -26,7 +26,6 @@ THE SOFTWARE.
 #include "platform/CCFileUtils.h"
 #include "ui/UIHelper.h"
 #include "base/ccUTF8.h"
-#include "2d/CCCamera.h"
 
 NS_CC_BEGIN
 

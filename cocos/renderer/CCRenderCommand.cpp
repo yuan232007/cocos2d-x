@@ -24,7 +24,6 @@
 
 
 #include "renderer/CCRenderCommand.h"
-#include "2d/CCCamera.h"
 #include "2d/CCNode.h"
 
 NS_CC_BEGIN

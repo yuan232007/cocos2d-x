@@ -30,7 +30,6 @@
 #include "2d/CCSprite.h"
 #include "2d/CCSpriteBatchNode.h"
 #include "2d/CCDrawNode.h"
-#include "2d/CCCamera.h"
 #include "base/ccUTF8.h"
 #include "platform/CCFileUtils.h"
 #include "renderer/CCRenderer.h"

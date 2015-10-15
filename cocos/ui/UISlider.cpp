@@ -26,7 +26,6 @@ THE SOFTWARE.
 #include "ui/UIScale9Sprite.h"
 #include "ui/UIHelper.h"
 #include "2d/CCSprite.h"
-#include "2d/CCCamera.h"
 
 NS_CC_BEGIN
 
