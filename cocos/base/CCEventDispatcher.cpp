@@ -775,71 +775,6 @@ void EventDispatcher::dispatchEventToListeners(EventListenerVector* listeners, c
             }
         }
     }
-}
-
-void EventDispatcher::dispatchTouchEventToListeners(EventListenerVector* listeners, const std::function<bool(EventListener*)>& onEvent)
-{
-    bool shouldStopPropagation = false;
-    auto fixedPriorityListeners = listeners->getFixedPriorityListeners();
-    auto sceneGraphPriorityListeners = listeners->getSceneGraphPriorityListeners();
-    
-    ssize_t i = 0;
-    // priority < 0
-    if (fixedPriorityListeners)
-    {
-        CCASSERT(listeners->getGt0Index() <= static_cast<ssize_t>(fixedPriorityListeners->size()), "Out of range exception!");
-        
-        if (!fixedPriorityListeners->empty())
-        {
-            for (; i < listeners->getGt0Index(); ++i)
-            {
-                auto l = fixedPriorityListeners->at(i);
-                if (l->isEnabled() && !l->isPaused() && l->isRegistered() && onEvent(l))
-                {
-                    shouldStopPropagation = true;
-                    break;
-                }
-            }
-        }
-    }
-    
-    auto scene = Director::getInstance()->getRunningScene();
-    if (scene && sceneGraphPriorityListeners)
-    {
-        if (!shouldStopPropagation)
-        {
-            // priority == 0, scene graph priority
-            
-            // first, get all enabled, unPaused and registered listeners
-            std::vector<EventListener*> sceneListeners;
-            for (auto& l : *sceneGraphPriorityListeners)
-            {
-                if (l->isEnabled() && !l->isPaused() && l->isRegistered())
-                {
-                    sceneListeners.push_back(l);
-                }
-            }
-
-            Camera* camera = scene->getDefaultCamera();
-            if(camera->isVisible())
-            {
-                Camera::_visitingCamera = camera;
-                auto cameraFlag = (unsigned short)camera->getCameraFlag();
-                for (auto& l : sceneListeners)
-                {
-                    if (nullptr == l->getAssociatedNode() || 0 == (l->getAssociatedNode()->getCameraMask() & cameraFlag))
-                    {
-                        continue;
-                    }
-                    if (onEvent(l))
-                    {
-                        shouldStopPropagation = true;
-                        break;
-                    }
-                }
-            }
-        }
-    }
     
     if (fixedPriorityListeners)
     {
@@ -881,10 +816,6 @@ void EventDispatcher::dispatchEvent(Event* event)
     
     sortEventListeners(listenerID);
     
-    auto pfnDispatchEventToListeners = &EventDispatcher::dispatchEventToListeners;
-    if (event->getType() == Event::Type::MOUSE) {
-        pfnDispatchEventToListeners = &EventDispatcher::dispatchTouchEventToListeners;
-    }
     auto iter = _listenerMap.find(listenerID);
     if (iter != _listenerMap.end())
     {
@@ -896,7 +827,7 @@ void EventDispatcher::dispatchEvent(Event* event)
             return event->isStopped();
         };
         
-        (this->*pfnDispatchEventToListeners)(listeners, onEvent);
+        dispatchEventToListeners(listeners, onEvent);
     }
     
     updateListeners(event);
@@ -1028,7 +959,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
             };
             
             //
-            dispatchTouchEventToListeners(oneByOneListeners, onTouchEvent);
+            dispatchEventToListeners(oneByOneListeners, onTouchEvent);
             if (event->isStopped())
             {
                 return;
@@ -1094,7 +1025,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
             return false;
         };
         
-        dispatchTouchEventToListeners(allAtOnceListeners, onTouchesEvent);
+        dispatchEventToListeners(allAtOnceListeners, onTouchesEvent);
         if (event->isStopped())
         {
             return;

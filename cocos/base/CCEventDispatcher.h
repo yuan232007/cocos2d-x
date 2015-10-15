@@ -284,7 +284,7 @@ protected:
      *      to 3D world space is different by different camera.
      *  When listener process touch event, can get current camera by Camera::getVisitingCamera().
      */
-    void dispatchTouchEventToListeners(EventListenerVector* listeners, const std::function<bool(EventListener*)>& onEvent);
+//    void dispatchTouchEventToListeners(EventListenerVector* listeners, const std::function<bool(EventListener*)>& onEvent);
     
     /// Priority dirty flag
     enum class DirtyFlag

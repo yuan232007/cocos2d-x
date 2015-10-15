@@ -24,7 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #include "2d/CCMenu.h"
-#include "2d/CCCamera.h"
 #include "base/CCDirector.h"
 #include "base/CCTouch.h"
 #include "base/CCEventListenerTouch.h"
@@ -253,8 +252,7 @@ void Menu::removeChild(Node* child, bool cleanup)
 
 bool Menu::onTouchBegan(Touch* touch, Event* event)
 {
-    auto camera = Camera::getVisitingCamera();
-    if (_state != Menu::State::WAITING || ! _visible || !_enabled || !camera)
+    if (_state != Menu::State::WAITING || ! _visible || !_enabled)
     {
         return false;
     }
@@ -267,11 +265,10 @@ bool Menu::onTouchBegan(Touch* touch, Event* event)
         }
     }
     
-    _selectedItem = this->getItemForTouch(touch, camera);
+    _selectedItem = this->getItemForTouch(touch);
     if (_selectedItem)
     {
         _state = Menu::State::TRACKING_TOUCH;
-        _selectedWithCamera = camera;
         _selectedItem->selected();
         
         return true;
@@ -290,7 +287,6 @@ void Menu::onTouchEnded(Touch* touch, Event* event)
         _selectedItem->activate();
     }
     _state = Menu::State::WAITING;
-    _selectedWithCamera = nullptr;
     this->release();
 }
 
@@ -309,7 +305,7 @@ void Menu::onTouchCancelled(Touch* touch, Event* event)
 void Menu::onTouchMoved(Touch* touch, Event* event)
 {
     CCASSERT(_state == Menu::State::TRACKING_TOUCH, "[Menu ccTouchMoved] -- invalid state");
-    MenuItem *currentItem = this->getItemForTouch(touch, _selectedWithCamera);
+    MenuItem *currentItem = this->getItemForTouch(touch);
     if (currentItem != _selectedItem)
     {
         if (_selectedItem)
@@ -556,7 +552,7 @@ void Menu::alignItemsInRowsWithArray(const ValueVector& columns)
     }
 }
 
-MenuItem* Menu::getItemForTouch(Touch *touch, const Camera *camera)
+MenuItem* Menu::getItemForTouch(Touch *touch)
 {
     Vec2 touchLocation = touch->getLocation();
     if (!_children.empty())
@@ -564,15 +560,15 @@ MenuItem* Menu::getItemForTouch(Touch *touch, const Camera *camera)
         for (auto iter = _children.crbegin(); iter != _children.crend(); ++iter)
         {
             MenuItem* child = dynamic_cast<MenuItem*>(*iter);
-            if (nullptr == child || false == child->isVisible() || false == child->isEnabled())
+            if (child && child->isVisible() && child->isEnabled())
             {
-                continue;
-            }
-            Rect rect;
-            rect.size = child->getContentSize();
-            if (isScreenPointInRect(touchLocation, camera, child->getWorldToNodeTransform(), rect, nullptr))
-            {
-                return child;
+                Vec2 local = child->convertToNodeSpace(touchLocation);
+                Rect r = child->rect();
+                r.origin.setZero();
+                if (r.containsPoint(local))
+                {
+                    return child;
+                }
             }
         }
     }
