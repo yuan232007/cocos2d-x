@@ -444,7 +444,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios";
-				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -475,7 +475,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios";
-				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
