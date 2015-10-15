@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDAF7CC11BCCAAB30032B305 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
+		EDAF7CC61BCCABF40032B305 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CAB1BCCA9DC0032B305 /* libcocos2d iOS.a */; };
+		EDAF7CC71BCCABF70032B305 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */; };
+		EDAF7CCA1BCCB4BC0032B305 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CC81BCCB4340032B305 /* libiconv.tbd */; };
+		EDAF7CCC1BCCB4CB0032B305 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CCB1BCCB4CB0032B305 /* libz.tbd */; };
+		EDAF7CCE1BCCB4D90032B305 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CCD1BCCB4D90032B305 /* libsqlite3.tbd */; };
+		EDAF7CD01BCCB4EE0032B305 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CCF1BCCB4EE0032B305 /* OpenAL.framework */; };
+		EDAF7CD21BCCB5000032B305 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD11BCCB5000032B305 /* OpenGLES.framework */; };
+		EDAF7CD41BCCB5140032B305 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD31BCCB5140032B305 /* AudioToolbox.framework */; };
+		EDAF7CD61BCCB53E0032B305 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD51BCCB53E0032B305 /* MediaPlayer.framework */; };
+		EDAF7CD81BCCB5640032B305 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD71BCCB5640032B305 /* AVFoundation.framework */; };
+		EDAF7CDA1BCCB58E0032B305 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD91BCCB58E0032B305 /* CoreMotion.framework */; };
+		EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */; settings = {ASSET_TAGS = (); }; };
+		EDAF7CDE1BCCB6B90032B305 /* MttGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */; settings = {ASSET_TAGS = (); }; };
+		EDAF7CE51BCCD1450032B305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */; };
+		EDAF7CE71BCCD1E50032B305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
+		EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDAF7CA81BCCA9DC0032B305 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1551A33F158F2AB200E66CFE;
+			remoteInfo = "libcocos2d Mac";
+		};
+		EDAF7CAA1BCCA9DC0032B305 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A07A4D641783777C0073F6A7;
+			remoteInfo = "libcocos2d iOS";
+		};
+		EDAF7CB11BCCA9FF0032B305 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A5410A418B785A10016A3AF;
+			remoteInfo = "libjscocos2d Mac";
+		};
+		EDAF7CB31BCCA9FF0032B305 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A5410A518B785A10016A3AF;
+			remoteInfo = "libjscocos2d iOS";
+		};
+		EDAF7CB71BCCAA850032B305 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A07A4FB5178387750073F6A7;
+			remoteInfo = "libjscocos2d iOS";
+		};
+		EDAF7CBD1BCCAA890032B305 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A07A4C241783777C0073F6A7;
+			remoteInfo = "libcocos2d iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		802BF5221B945662008C45C2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		802BF5241B945662008C45C2 /* CocosJSRuntime.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = CocosJSRuntime.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		8059FC971BB0F5BB009354CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D50C68411BC64F9F00655E6E /* MttGameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngine.h; sourceTree = "<group>"; };
+		D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineDelegate.h; sourceTree = "<group>"; };
+		D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFactory.h; sourceTree = "<group>"; };
+		D50C68461BC64F9F00655E6E /* MttGameEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineProtocol.h; sourceTree = "<group>"; };
+		EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
+		EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_js_bindings.xcodeproj; path = "../cocos/scripting/js-bindings/proj.ios_mac/cocos2d_js_bindings.xcodeproj"; sourceTree = "<group>"; };
+		EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
+		EDAF7CC01BCCAAB30032B305 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EDAF7CC81BCCB4340032B305 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		EDAF7CCB1BCCB4CB0032B305 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		EDAF7CCD1BCCB4D90032B305 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		EDAF7CCF1BCCB4EE0032B305 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		EDAF7CD11BCCB5000032B305 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EDAF7CD31BCCB5140032B305 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EDAF7CD51BCCB53E0032B305 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		EDAF7CD71BCCB5640032B305 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EDAF7CD91BCCB58E0032B305 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MttGameEngine.mm; sourceTree = "<group>"; };
+		EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MttGameEngineFactory.mm; sourceTree = "<group>"; };
+		EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EDAF7CE61BCCD1E50032B305 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		802BF5211B945662008C45C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */,
+				EDAF7CE71BCCD1E50032B305 /* UIKit.framework in Frameworks */,
+				EDAF7CE51BCCD1450032B305 /* CoreGraphics.framework in Frameworks */,
+				EDAF7CDA1BCCB58E0032B305 /* CoreMotion.framework in Frameworks */,
+				EDAF7CD81BCCB5640032B305 /* AVFoundation.framework in Frameworks */,
+				EDAF7CD61BCCB53E0032B305 /* MediaPlayer.framework in Frameworks */,
+				EDAF7CD41BCCB5140032B305 /* AudioToolbox.framework in Frameworks */,
+				EDAF7CD21BCCB5000032B305 /* OpenGLES.framework in Frameworks */,
+				EDAF7CD01BCCB4EE0032B305 /* OpenAL.framework in Frameworks */,
+				EDAF7CCE1BCCB4D90032B305 /* libsqlite3.tbd in Frameworks */,
+				EDAF7CCC1BCCB4CB0032B305 /* libz.tbd in Frameworks */,
+				EDAF7CCA1BCCB4BC0032B305 /* libiconv.tbd in Frameworks */,
+				EDAF7CC71BCCABF70032B305 /* libjscocos2d iOS.a in Frameworks */,
+				EDAF7CC61BCCABF40032B305 /* libcocos2d iOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		802BF51B1B945662008C45C2 = {
+			isa = PBXGroup;
+			children = (
+				EDCA007E1BCF87F8006842D7 /* DependentLibs */,
+				EDCA007D1BCF87C0006842D7 /* Frameworks */,
+				EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */,
+				EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */,
+				802BF5261B945662008C45C2 /* CocosJSRuntime */,
+				802BF5251B945662008C45C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		802BF5251B945662008C45C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				802BF5241B945662008C45C2 /* CocosJSRuntime.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		802BF5261B945662008C45C2 /* CocosJSRuntime */ = {
+			isa = PBXGroup;
+			children = (
+				EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */,
+				EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */,
+				EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */,
+				EDAF7CC01BCCAAB30032B305 /* AppDelegate.h */,
+				D50C68411BC64F9F00655E6E /* MttGameEngine.h */,
+				D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */,
+				D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */,
+				D50C68461BC64F9F00655E6E /* MttGameEngineProtocol.h */,
+			);
+			path = CocosJSRuntime;
+			sourceTree = "<group>";
+		};
+		EDAF7CA41BCCA9DC0032B305 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDAF7CA91BCCA9DC0032B305 /* libcocos2d Mac.a */,
+				EDAF7CAB1BCCA9DC0032B305 /* libcocos2d iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDAF7CAD1BCCA9FF0032B305 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDAF7CB21BCCA9FF0032B305 /* libjscocos2d Mac.a */,
+				EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDCA007D1BCF87C0006842D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8059FC971BB0F5BB009354CE /* Foundation.framework */,
+				EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */,
+				EDAF7CE61BCCD1E50032B305 /* UIKit.framework */,
+				EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */,
+				EDAF7CD91BCCB58E0032B305 /* CoreMotion.framework */,
+				EDAF7CD71BCCB5640032B305 /* AVFoundation.framework */,
+				EDAF7CD51BCCB53E0032B305 /* MediaPlayer.framework */,
+				EDAF7CD31BCCB5140032B305 /* AudioToolbox.framework */,
+				EDAF7CD11BCCB5000032B305 /* OpenGLES.framework */,
+				EDAF7CCF1BCCB4EE0032B305 /* OpenAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDCA007E1BCF87F8006842D7 /* DependentLibs */ = {
+			isa = PBXGroup;
+			children = (
+				EDAF7CCD1BCCB4D90032B305 /* libsqlite3.tbd */,
+				EDAF7CCB1BCCB4CB0032B305 /* libz.tbd */,
+				EDAF7CC81BCCB4340032B305 /* libiconv.tbd */,
+			);
+			name = DependentLibs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		802BF5231B945662008C45C2 /* CocosJSRuntime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802BF5381B945662008C45C2 /* Build configuration list for PBXNativeTarget "CocosJSRuntime" */;
+			buildPhases = (
+				802BF5201B945662008C45C2 /* Sources */,
+				802BF5211B945662008C45C2 /* Frameworks */,
+				802BF5221B945662008C45C2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDAF7CBE1BCCAA890032B305 /* PBXTargetDependency */,
+				EDAF7CB81BCCAA850032B305 /* PBXTargetDependency */,
+			);
+			name = CocosJSRuntime;
+			productName = CocosJSRuntime;
+			productReference = 802BF5241B945662008C45C2 /* CocosJSRuntime.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		802BF51C1B945662008C45C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "kinglong huang";
+				TargetAttributes = {
+					802BF5231B945662008C45C2 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 3D53JJGYS2;
+					};
+				};
+			};
+			buildConfigurationList = 802BF51F1B945662008C45C2 /* Build configuration list for PBXProject "CocosJSRuntime" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 802BF51B1B945662008C45C2;
+			productRefGroup = 802BF5251B945662008C45C2 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EDAF7CAD1BCCA9FF0032B305 /* Products */;
+					ProjectRef = EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */;
+				},
+				{
+					ProductGroup = EDAF7CA41BCCA9DC0032B305 /* Products */;
+					ProjectRef = EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				802BF5231B945662008C45C2 /* CocosJSRuntime */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EDAF7CA91BCCA9DC0032B305 /* libcocos2d Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d Mac.a";
+			remoteRef = EDAF7CA81BCCA9DC0032B305 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EDAF7CAB1BCCA9DC0032B305 /* libcocos2d iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d iOS.a";
+			remoteRef = EDAF7CAA1BCCA9DC0032B305 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EDAF7CB21BCCA9FF0032B305 /* libjscocos2d Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjscocos2d Mac.a";
+			remoteRef = EDAF7CB11BCCA9FF0032B305 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjscocos2d iOS.a";
+			remoteRef = EDAF7CB31BCCA9FF0032B305 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		802BF5201B945662008C45C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDAF7CC11BCCAAB30032B305 /* AppDelegate.cpp in Sources */,
+				EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */,
+				EDAF7CDE1BCCB6B90032B305 /* MttGameEngineFactory.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDAF7CB81BCCAA850032B305 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libjscocos2d iOS";
+			targetProxy = EDAF7CB71BCCAA850032B305 /* PBXContainerItemProxy */;
+		};
+		EDAF7CBE1BCCAA890032B305 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libcocos2d iOS";
+			targetProxy = EDAF7CBD1BCCAA890032B305 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		802BF5361B945662008C45C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		802BF5371B945662008C45C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		802BF5391B945662008C45C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CC_TARGET_OS_IPHONE,
+					COCOS2D_JAVASCRIPT,
+					"COCOS2D_DEBUG=1",
+					USE_FILE32API,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.runtime;
+				PRODUCT_NAME = CocosJSRuntime;
+				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios";
+				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+			};
+			name = Debug;
+		};
+		802BF53A1B945662008C45C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CC_TARGET_OS_IPHONE,
+					COCOS2D_JAVASCRIPT,
+					USE_FILE32API,
+					NDEBUG,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.runtime;
+				PRODUCT_NAME = CocosJSRuntime;
+				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios";
+				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		802BF51F1B945662008C45C2 /* Build configuration list for PBXProject "CocosJSRuntime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802BF5361B945662008C45C2 /* Debug */,
+				802BF5371B945662008C45C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		802BF5381B945662008C45C2 /* Build configuration list for PBXNativeTarget "CocosJSRuntime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802BF5391B945662008C45C2 /* Debug */,
+				802BF53A1B945662008C45C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 802BF51C1B945662008C45C2 /* Project object */;
+}
