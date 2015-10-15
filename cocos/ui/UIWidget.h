@@ -38,7 +38,6 @@ THE SOFTWARE.
 NS_CC_BEGIN
 
 class EventListenerTouchOneByOne;
-class Camera;
 
 namespace ui {
     class LayoutComponent;

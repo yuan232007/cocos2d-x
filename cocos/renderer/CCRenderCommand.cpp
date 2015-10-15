@@ -48,8 +48,9 @@ void RenderCommand::init(float globalZOrder, const cocos2d::Mat4 &transform, uin
     _globalOrder = globalZOrder;
     if (flags & Node::FLAGS_RENDER_AS_3D)
     {
-        if (Camera::getVisitingCamera())
-            _depth = Camera::getVisitingCamera()->getDepthInView(transform);
+        //hack to remove camera
+        //todo remove set3D
+        _depth = 0;
         
         set3D(true);
     }
