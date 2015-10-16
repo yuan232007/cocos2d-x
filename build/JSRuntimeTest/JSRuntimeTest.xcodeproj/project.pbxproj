@@ -15,11 +15,6 @@
 		EDCA00B91BD08D71006842D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDCA00B71BD08D71006842D7 /* LaunchScreen.storyboard */; };
 		EDCA00D01BD08F06006842D7 /* MttGameEngineFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00CE1BD08F06006842D7 /* MttGameEngineFramework.m */; settings = {ASSET_TAGS = (); }; };
 		EDCA00D41BD09063006842D7 /* gameResources.zip in Resources */ = {isa = PBXBuildFile; fileRef = EDCA00D31BD09063006842D7 /* gameResources.zip */; settings = {ASSET_TAGS = (); }; };
-		EDCA00DB1BD0994F006842D7 /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00DA1BD0994F006842D7 /* Main.m */; settings = {ASSET_TAGS = (); }; };
-		EDCA00E61BD09981006842D7 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00DE1BD09981006842D7 /* ioapi.c */; settings = {ASSET_TAGS = (); }; };
-		EDCA00E71BD09981006842D7 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00E01BD09981006842D7 /* mztools.c */; settings = {ASSET_TAGS = (); }; };
-		EDCA00E81BD09981006842D7 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00E21BD09981006842D7 /* unzip.c */; settings = {ASSET_TAGS = (); }; };
-		EDCA00E91BD09981006842D7 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00E41BD09981006842D7 /* zip.c */; settings = {ASSET_TAGS = (); }; };
 		EDCA00EB1BD09A44006842D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA00EA1BD09A44006842D7 /* libz.tbd */; };
 		EDCA01101BD09C80006842D7 /* libCocosJSRuntime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA010D1BD09C40006842D7 /* libCocosJSRuntime.a */; };
 		EDCA01121BD09E03006842D7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA01111BD09E03006842D7 /* OpenGLES.framework */; };
@@ -76,17 +71,6 @@
 		EDCA00CD1BD08F06006842D7 /* MttGameEngineFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFramework.h; sourceTree = "<group>"; };
 		EDCA00CE1BD08F06006842D7 /* MttGameEngineFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MttGameEngineFramework.m; sourceTree = "<group>"; };
 		EDCA00D31BD09063006842D7 /* gameResources.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = gameResources.zip; path = ../../CocosJSRuntimeDemo/Resources/gameResources.zip; sourceTree = "<group>"; };
-		EDCA00D91BD0994F006842D7 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Main.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/Main.h; sourceTree = "<group>"; };
-		EDCA00DA1BD0994F006842D7 /* Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Main.m; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/Main.m; sourceTree = "<group>"; };
-		EDCA00DD1BD09981006842D7 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/crypt.h; sourceTree = "<group>"; };
-		EDCA00DE1BD09981006842D7 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/ioapi.c; sourceTree = "<group>"; };
-		EDCA00DF1BD09981006842D7 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/ioapi.h; sourceTree = "<group>"; };
-		EDCA00E01BD09981006842D7 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/mztools.c; sourceTree = "<group>"; };
-		EDCA00E11BD09981006842D7 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/mztools.h; sourceTree = "<group>"; };
-		EDCA00E21BD09981006842D7 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/unzip.c; sourceTree = "<group>"; };
-		EDCA00E31BD09981006842D7 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/unzip.h; sourceTree = "<group>"; };
-		EDCA00E41BD09981006842D7 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/zip.c; sourceTree = "<group>"; };
-		EDCA00E51BD09981006842D7 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/minizip/zip.h; sourceTree = "<group>"; };
 		EDCA00EA1BD09A44006842D7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EDCA01111BD09E03006842D7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		EDCA01131BD09E0A006842D7 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -150,7 +134,6 @@
 		EDCA00A81BD08D71006842D7 /* JSRuntimeTest */ = {
 			isa = PBXGroup;
 			children = (
-				EDCA00D81BD09933006842D7 /* KLZip */,
 				EDCA00D31BD09063006842D7 /* gameResources.zip */,
 				EDCA00CD1BD08F06006842D7 /* MttGameEngineFramework.h */,
 				EDCA00CE1BD08F06006842D7 /* MttGameEngineFramework.m */,
@@ -182,32 +165,6 @@
 				EDCA010D1BD09C40006842D7 /* libCocosJSRuntime.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EDCA00D81BD09933006842D7 /* KLZip */ = {
-			isa = PBXGroup;
-			children = (
-				EDCA00DC1BD09963006842D7 /* minizip */,
-				EDCA00D91BD0994F006842D7 /* Main.h */,
-				EDCA00DA1BD0994F006842D7 /* Main.m */,
-			);
-			name = KLZip;
-			sourceTree = "<group>";
-		};
-		EDCA00DC1BD09963006842D7 /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				EDCA00DD1BD09981006842D7 /* crypt.h */,
-				EDCA00DE1BD09981006842D7 /* ioapi.c */,
-				EDCA00DF1BD09981006842D7 /* ioapi.h */,
-				EDCA00E01BD09981006842D7 /* mztools.c */,
-				EDCA00E11BD09981006842D7 /* mztools.h */,
-				EDCA00E21BD09981006842D7 /* unzip.c */,
-				EDCA00E31BD09981006842D7 /* unzip.h */,
-				EDCA00E41BD09981006842D7 /* zip.c */,
-				EDCA00E51BD09981006842D7 /* zip.h */,
-			);
-			name = minizip;
 			sourceTree = "<group>";
 		};
 		EDCA01151BD09E30006842D7 /* Frameworks */ = {
@@ -326,14 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDCA00E61BD09981006842D7 /* ioapi.c in Sources */,
-				EDCA00DB1BD0994F006842D7 /* Main.m in Sources */,
 				EDCA00B11BD08D71006842D7 /* ViewController.m in Sources */,
-				EDCA00E91BD09981006842D7 /* zip.c in Sources */,
 				EDCA00AE1BD08D71006842D7 /* AppDelegate.m in Sources */,
-				EDCA00E71BD09981006842D7 /* mztools.c in Sources */,
 				EDCA00D01BD08F06006842D7 /* MttGameEngineFramework.m in Sources */,
-				EDCA00E81BD09981006842D7 /* unzip.c in Sources */,
 				EDCA00AB1BD08D71006842D7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
