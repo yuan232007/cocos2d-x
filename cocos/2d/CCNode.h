@@ -239,7 +239,7 @@ public:
      * @param scaleZ   The scale factor on Z axis.
      *
      */
-    virtual void setScaleZ(float scaleZ);
+    //virtual void setScaleZ(float scaleZ);
     /**
      * Returns the scale factor on Z axis of this node
      *
@@ -247,7 +247,7 @@ public:
      *
      * @return The scale factor on Z axis.
      */
-    virtual float getScaleZ() const;
+    //virtual float getScaleZ() const;
 
 
     /**
@@ -384,14 +384,14 @@ public:
      * @param position The position (X, Y, and Z) in its parent's coordinate system.
      * @js NA
      */
-    virtual void setPosition3D(const Vec3& position);
+    //virtual void setPosition3D(const Vec3& position);
     /**
      * Returns the position (X,Y,Z) in its parent's coordinate system.
      *
      * @return The position (X, Y, and Z) in its parent's coordinate system.
      * @js NA
      */
-    virtual Vec3 getPosition3D() const;
+    //virtual Vec3 getPosition3D() const;
 
     /**
      * Sets the 'z' coordinate in the position. It is the OpenGL Z vertex value.

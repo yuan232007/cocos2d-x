@@ -1030,11 +1030,6 @@ RotateBy* RotateBy::reverse() const
 
 MoveBy* MoveBy::create(float duration, const Vec2& deltaPosition)
 {
-    return MoveBy::create(duration, Vec3(deltaPosition.x, deltaPosition.y, 0));
-}
-
-MoveBy* MoveBy::create(float duration, const Vec3 &deltaPosition)
-{
     MoveBy *ret = new (std::nothrow) MoveBy();
     
     if (ret)
@@ -1054,11 +1049,6 @@ MoveBy* MoveBy::create(float duration, const Vec3 &deltaPosition)
 }
 
 bool MoveBy::initWithDuration(float duration, const Vec2& deltaPosition)
-{
-    return MoveBy::initWithDuration(duration, Vec3(deltaPosition.x, deltaPosition.y, 0));
-}
-
-bool MoveBy::initWithDuration(float duration, const Vec3& deltaPosition)
 {
     bool ret = false;
     
@@ -1084,7 +1074,7 @@ MoveBy* MoveBy::clone() const
 void MoveBy::startWithTarget(Node *target)
 {
     ActionInterval::startWithTarget(target);
-    _previousPosition = _startPosition = target->getPosition3D();
+    _previousPosition = _startPosition = target->getPosition();
 }
 
 MoveBy* MoveBy::reverse() const
@@ -1098,14 +1088,14 @@ void MoveBy::update(float t)
     if (_target)
     {
 #if CC_ENABLE_STACKABLE_ACTIONS
-        Vec3 currentPos = _target->getPosition3D();
-        Vec3 diff = currentPos - _previousPosition;
+        auto currentPos = _target->getPosition();
+        auto diff = currentPos - _previousPosition;
         _startPosition = _startPosition + diff;
-        Vec3 newPos =  _startPosition + (_positionDelta * t);
-        _target->setPosition3D(newPos);
+        auto newPos =  _startPosition + (_positionDelta * t);
+        _target->setPosition(newPos);
         _previousPosition = newPos;
 #else
-        _target->setPosition3D(_startPosition + _positionDelta * t);
+        _target->setPosition(_startPosition + _positionDelta * t);
 #endif // CC_ENABLE_STACKABLE_ACTIONS
     }
 }
@@ -1115,11 +1105,6 @@ void MoveBy::update(float t)
 //
 
 MoveTo* MoveTo::create(float duration, const Vec2& position)
-{
-    return MoveTo::create(duration, Vec3(position.x, position.y, 0));
-}
-
-MoveTo* MoveTo::create(float duration, const Vec3& position)
 {
     MoveTo *ret = new (std::nothrow) MoveTo();
     
@@ -1140,11 +1125,6 @@ MoveTo* MoveTo::create(float duration, const Vec3& position)
 }
 
 bool MoveTo::initWithDuration(float duration, const Vec2& position)
-{
-    return initWithDuration(duration, Vec3(position.x, position.y, 0));
-}
-
-bool MoveTo::initWithDuration(float duration, const Vec3& position)
 {
     bool ret = false;
     
@@ -1169,7 +1149,7 @@ MoveTo* MoveTo::clone() const
 void MoveTo::startWithTarget(Node *target)
 {
     MoveBy::startWithTarget(target);
-    _positionDelta = _endPosition - target->getPosition3D();
+    _positionDelta = _endPosition = target->getPosition();
 }
 
 MoveTo* MoveTo::reverse() const
@@ -1646,14 +1626,14 @@ ScaleTo* ScaleTo::create(float duration, float sx, float sy)
     return scaleTo;
 }
 
-ScaleTo* ScaleTo::create(float duration, float sx, float sy, float sz)
-{
-    ScaleTo *scaleTo = new (std::nothrow) ScaleTo();
-    scaleTo->initWithDuration(duration, sx, sy, sz);
-    scaleTo->autorelease();
-
-    return scaleTo;
-}
+//ScaleTo* ScaleTo::create(float duration, float sx, float sy, float sz)
+//{
+//    ScaleTo *scaleTo = new (std::nothrow) ScaleTo();
+//    scaleTo->initWithDuration(duration, sx, sy, sz);
+//    scaleTo->autorelease();
+//
+//    return scaleTo;
+//}
 
 bool ScaleTo::initWithDuration(float duration, float s)
 {
@@ -1661,7 +1641,7 @@ bool ScaleTo::initWithDuration(float duration, float s)
     {
         _endScaleX = s;
         _endScaleY = s;
-        _endScaleZ = s;
+        //_endScaleZ = s;
 
         return true;
     }
@@ -1675,7 +1655,7 @@ bool ScaleTo::initWithDuration(float duration, float sx, float sy)
     {
         _endScaleX = sx;
         _endScaleY = sy;
-        _endScaleZ = 1.f;
+        //_endScaleZ = 1.f;
 
         return true;
     }
@@ -1683,25 +1663,25 @@ bool ScaleTo::initWithDuration(float duration, float sx, float sy)
     return false;
 }
 
-bool ScaleTo::initWithDuration(float duration, float sx, float sy, float sz)
-{
-    if (ActionInterval::initWithDuration(duration))
-    {
-        _endScaleX = sx;
-        _endScaleY = sy;
-        _endScaleZ = sz;
-
-        return true;
-    }
-
-    return false;
-}
+//bool ScaleTo::initWithDuration(float duration, float sx, float sy, float sz)
+//{
+//    if (ActionInterval::initWithDuration(duration))
+//    {
+//        _endScaleX = sx;
+//        _endScaleY = sy;
+//        _endScaleZ = sz;
+//
+//        return true;
+//    }
+//
+//    return false;
+//}
 
 ScaleTo* ScaleTo::clone() const
 {
     // no copy constructor
     auto a = new (std::nothrow) ScaleTo();
-    a->initWithDuration(_duration, _endScaleX, _endScaleY, _endScaleZ);
+    a->initWithDuration(_duration, _endScaleX, _endScaleY);
     a->autorelease();
     return a;
 }
@@ -1718,10 +1698,10 @@ void ScaleTo::startWithTarget(Node *target)
     ActionInterval::startWithTarget(target);
     _startScaleX = target->getScaleX();
     _startScaleY = target->getScaleY();
-    _startScaleZ = target->getScaleZ();
+    //_startScaleZ = target->getScaleZ();
     _deltaX = _endScaleX - _startScaleX;
     _deltaY = _endScaleY - _startScaleY;
-    _deltaZ = _endScaleZ - _startScaleZ;
+    //_deltaZ = _endScaleZ - _startScaleZ;
 }
 
 void ScaleTo::update(float time)
@@ -1730,7 +1710,7 @@ void ScaleTo::update(float time)
     {
         _target->setScaleX(_startScaleX + _deltaX * time);
         _target->setScaleY(_startScaleY + _deltaY * time);
-        _target->setScaleZ(_startScaleZ + _deltaZ * time);
+        //_target->setScaleZ(_startScaleZ + _deltaZ * time);
     }
 }
 
@@ -1750,26 +1730,26 @@ ScaleBy* ScaleBy::create(float duration, float s)
 ScaleBy* ScaleBy::create(float duration, float sx, float sy)
 {
     ScaleBy *scaleBy = new (std::nothrow) ScaleBy();
-    scaleBy->initWithDuration(duration, sx, sy, 1.f);
+    scaleBy->initWithDuration(duration, sx, sy);
     scaleBy->autorelease();
 
     return scaleBy;
 }
 
-ScaleBy* ScaleBy::create(float duration, float sx, float sy, float sz)
-{
-    ScaleBy *scaleBy = new (std::nothrow) ScaleBy();
-    scaleBy->initWithDuration(duration, sx, sy, sz);
-    scaleBy->autorelease();
-
-    return scaleBy;
-}
+//ScaleBy* ScaleBy::create(float duration, float sx, float sy, float sz)
+//{
+//    ScaleBy *scaleBy = new (std::nothrow) ScaleBy();
+//    scaleBy->initWithDuration(duration, sx, sy, sz);
+//    scaleBy->autorelease();
+//
+//    return scaleBy;
+//}
 
 ScaleBy* ScaleBy::clone() const
 {
     // no copy constructor
     auto a = new (std::nothrow) ScaleBy();
-    a->initWithDuration(_duration, _endScaleX, _endScaleY, _endScaleZ);
+    a->initWithDuration(_duration, _endScaleX, _endScaleY);
     a->autorelease();
     return a;
 }
@@ -1779,12 +1759,12 @@ void ScaleBy::startWithTarget(Node *target)
     ScaleTo::startWithTarget(target);
     _deltaX = _startScaleX * _endScaleX - _startScaleX;
     _deltaY = _startScaleY * _endScaleY - _startScaleY;
-    _deltaZ = _startScaleZ * _endScaleZ - _startScaleZ;
+    //_deltaZ = _startScaleZ * _endScaleZ - _startScaleZ;
 }
 
 ScaleBy* ScaleBy::reverse() const
 {
-    return ScaleBy::create(_duration, 1 / _endScaleX, 1 / _endScaleY, 1/ _endScaleZ);
+    return ScaleBy::create(_duration, 1 / _endScaleX, 1 / _endScaleY);
 }
 
 //

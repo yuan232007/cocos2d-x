@@ -442,20 +442,20 @@ float Node::getScaleY() const
 }
 
 /// scaleY setter
-void Node::setScaleZ(float scaleZ)
-{
-    if (_scaleZ == scaleZ)
-        return;
-    
-    _scaleZ = scaleZ;
-    _transformUpdated = _transformDirty = _inverseDirty = true;
-}
+//void Node::setScaleZ(float scaleZ)
+//{
+//    if (_scaleZ == scaleZ)
+//        return;
+//    
+//    _scaleZ = scaleZ;
+//    _transformUpdated = _transformDirty = _inverseDirty = true;
+//}
 
 /// scaleY getter
-float Node::getScaleZ() const
-{
-    return _scaleZ;
-}
+//float Node::getScaleZ() const
+//{
+//    return _scaleZ;
+//}
 
 /// scaleY setter
 void Node::setScaleY(float scaleY)
@@ -498,16 +498,16 @@ void Node::setPosition(float x, float y)
     _usingNormalizedPosition = false;
 }
 
-void Node::setPosition3D(const Vec3& position)
-{
-    setPositionZ(position.z);
-    setPosition(position.x, position.y);
-}
+//void Node::setPosition3D(const Vec3& position)
+//{
+//    setPositionZ(position.z);
+//    setPosition(position.x, position.y);
+//}
 
-Vec3 Node::getPosition3D() const
-{
-    return Vec3(_position.x, _position.y, _positionZ);
-}
+//Vec3 Node::getPosition3D() const
+//{
+//    return Vec3(_position.x, _position.y, _positionZ);
+//}
 
 float Node::getPositionX() const
 {
