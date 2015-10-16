@@ -3409,60 +3409,6 @@ bool js_cocos2dx_RenderState_setParent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_RenderState_initialize(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_RenderState_finalize(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_Pass_class;
-extern JSObject *jsb_cocos2d_Pass_prototype;
-
-bool js_cocos2dx_Pass_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_Pass_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_Pass(JSContext *cx, JS::HandleObject global);
-void register_all_cocos2dx(JSContext* cx, JS::HandleObject obj);
-bool js_cocos2dx_Pass_unbind(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_bind(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_clone(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_getGLProgramState(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_getVertexAttributeBinding(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_getHash(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_setVertexAttribBinding(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Pass_createWithGLProgramState(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_cocos2d_Technique_class;
-extern JSObject *jsb_cocos2d_Technique_prototype;
-
-bool js_cocos2dx_Technique_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_Technique_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_Technique(JSContext *cx, JS::HandleObject global);
-void register_all_cocos2dx(JSContext* cx, JS::HandleObject obj);
-bool js_cocos2dx_Technique_getPassCount(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_clone(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_addPass(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_getPasses(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_getName(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_getPassByIndex(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Technique_createWithGLProgramState(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_cocos2d_Material_class;
-extern JSObject *jsb_cocos2d_Material_prototype;
-
-bool js_cocos2dx_Material_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_Material_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_Material(JSContext *cx, JS::HandleObject global);
-void register_all_cocos2dx(JSContext* cx, JS::HandleObject obj);
-bool js_cocos2dx_Material_clone(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_getTechniqueCount(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_setName(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_getTechniqueByIndex(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_getName(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_getTechniques(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_setTechnique(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_getTechniqueByName(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_addTechnique(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_getTechnique(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_createWithFilename(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_createWithGLStateProgram(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Material_createWithProperties(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_cocos2d_TextureCache_class;
 extern JSObject *jsb_cocos2d_TextureCache_prototype;
 

@@ -32,11 +32,7 @@
 #include "renderer/CCCustomCommand.h"
 #include "renderer/CCGroupCommand.h"
 #include "renderer/CCPrimitiveCommand.h"
-//#include "renderer/CCMeshCommand.h"
 #include "renderer/CCGLProgramCache.h"
-#include "renderer/CCMaterial.h"
-#include "renderer/CCTechnique.h"
-#include "renderer/CCPass.h"
 #include "renderer/CCRenderState.h"
 #include "renderer/ccGLStateCache.h"
 
