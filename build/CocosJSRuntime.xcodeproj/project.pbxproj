@@ -27,15 +27,6 @@
 		EDCA00F41BD09BF3006842D7 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		EDCA00F51BD09BF3006842D7 /* MttGameEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */; settings = {ASSET_TAGS = (); }; };
 		EDCA00F61BD09BF3006842D7 /* MttGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */; settings = {ASSET_TAGS = (); }; };
-		EDCA00F81BD09BF3006842D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
-		EDCA00F91BD09BF3006842D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
-		EDCA00FA1BD09BF3006842D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */; };
-		EDCA00FB1BD09BF3006842D7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD91BCCB58E0032B305 /* CoreMotion.framework */; };
-		EDCA00FC1BD09BF3006842D7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD71BCCB5640032B305 /* AVFoundation.framework */; };
-		EDCA00FD1BD09BF3006842D7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD51BCCB53E0032B305 /* MediaPlayer.framework */; };
-		EDCA00FE1BD09BF3006842D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD31BCCB5140032B305 /* AudioToolbox.framework */; };
-		EDCA00FF1BD09BF3006842D7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CD11BCCB5000032B305 /* OpenGLES.framework */; };
-		EDCA01001BD09BF3006842D7 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CCF1BCCB4EE0032B305 /* OpenAL.framework */; };
 		EDCA01041BD09BF3006842D7 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */; };
 		EDCA01051BD09BF3006842D7 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CAB1BCCA9DC0032B305 /* libcocos2d iOS.a */; };
 /* End PBXBuildFile section */
@@ -174,15 +165,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDCA00F81BD09BF3006842D7 /* QuartzCore.framework in Frameworks */,
-				EDCA00F91BD09BF3006842D7 /* UIKit.framework in Frameworks */,
-				EDCA00FA1BD09BF3006842D7 /* CoreGraphics.framework in Frameworks */,
-				EDCA00FB1BD09BF3006842D7 /* CoreMotion.framework in Frameworks */,
-				EDCA00FC1BD09BF3006842D7 /* AVFoundation.framework in Frameworks */,
-				EDCA00FD1BD09BF3006842D7 /* MediaPlayer.framework in Frameworks */,
-				EDCA00FE1BD09BF3006842D7 /* AudioToolbox.framework in Frameworks */,
-				EDCA00FF1BD09BF3006842D7 /* OpenGLES.framework in Frameworks */,
-				EDCA01001BD09BF3006842D7 /* OpenAL.framework in Frameworks */,
 				EDCA01041BD09BF3006842D7 /* libjscocos2d iOS.a in Frameworks */,
 				EDCA01051BD09BF3006842D7 /* libcocos2d iOS.a in Frameworks */,
 			);
