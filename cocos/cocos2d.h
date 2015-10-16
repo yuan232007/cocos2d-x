@@ -156,7 +156,6 @@ THE SOFTWARE.
 #include "renderer/CCRenderState.h"
 #include "renderer/CCRenderer.h"
 #include "renderer/CCTexture2D.h"
-#include "renderer/CCTextureCube.h"
 #include "renderer/CCTextureCache.h"
 #include "renderer/CCTrianglesCommand.h"
 #include "renderer/CCVertexAttribBinding.h"
