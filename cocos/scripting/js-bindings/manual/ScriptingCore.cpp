@@ -1001,9 +1001,9 @@ void ScriptingCore::cleanupSchedulesAndActions(js_proxy_t* p)
     if (targetArray) {
         Node* node = (Node*)p->ptr;
         auto scheduler = node->getScheduler();
-        for (auto&& obj : *targetArray)
+        for (auto&& target : *targetArray)
         {
-            scheduler->unscheduleAllForTarget(obj);
+            scheduler->unscheduleAllForTarget(target);
         }
 
         JSScheduleWrapper::removeAllTargetsForJSObject(obj);

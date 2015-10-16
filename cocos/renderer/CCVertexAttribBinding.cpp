@@ -41,7 +41,7 @@ std::string s_attributeNames[] = {
     GLProgram::ATTRIBUTE_NAME_BLEND_INDEX
 };
 
-static GLuint __maxVertexAttribs = 0;
+//static GLuint __maxVertexAttribs = 0;
 static std::vector<VertexAttribBinding*> __vertexAttribBindingCache;
 
 VertexAttribBinding::VertexAttribBinding()
