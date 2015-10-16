@@ -197,13 +197,13 @@
 		802BF5261B945662008C45C2 /* CocosJSRuntime */ = {
 			isa = PBXGroup;
 			children = (
-				EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */,
-				EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */,
 				EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */,
 				EDAF7CC01BCCAAB30032B305 /* AppDelegate.h */,
 				D50C68411BC64F9F00655E6E /* MttGameEngine.h */,
+				EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */,
 				D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */,
 				D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */,
+				EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */,
 				D50C68461BC64F9F00655E6E /* MttGameEngineProtocol.h */,
 			);
 			path = CocosJSRuntime;
@@ -302,7 +302,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "kinglong huang";
 				TargetAttributes = {
 					802BF5231B945662008C45C2 = {
@@ -562,7 +562,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -596,7 +595,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";

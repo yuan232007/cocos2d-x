@@ -27,7 +27,6 @@ THE SOFTWARE.
 USING_NS_CC;
 
 static unsigned short quadIndices[]={0,1,2, 3,2,1};
-const static float PRECISION = 10.0f;
 
 PolygonInfo::PolygonInfo(const PolygonInfo& other):
 triangles(),

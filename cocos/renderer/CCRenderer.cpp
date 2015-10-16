@@ -1057,8 +1057,6 @@ void Renderer::flushTriangles()
 // helpers
 bool Renderer::checkVisibility(const Mat4 &transform, const Size &size)
 {
-    auto scene = Director::getInstance()->getRunningScene();
-    
     // half size of the screen
     Size screen_half = Director::getInstance()->getWinSize();
     screen_half.width /= 2;

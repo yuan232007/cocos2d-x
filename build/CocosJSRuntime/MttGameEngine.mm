@@ -1,18 +1,10 @@
-//
-//  MttGameEngine.m
-//  mtt
-//
-//  Created by stevencai on 15/9/29.
-//  Copyright (c) 2015年 Tencent. All rights reserved.
-//
-
 #import "MttGameEngine.h"
 
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "platform/ios/CCEAGLView-ios.h"
 
-static AppDelegate s_application;
+static CocosAppDelegate s_application;
 
 @interface MttGameEngine()
 @property (nonatomic, weak) id<MttGameEngineDelegate> delegate;

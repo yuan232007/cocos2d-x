@@ -151,9 +151,9 @@ static bool js_cocos2dx_UIWidget_addTouchEventListener(JSContext *cx, uint32_t a
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addTouchEventListener([=](Ref* widget, Widget::TouchEventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t* widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -207,9 +207,9 @@ static bool js_cocos2dx_UICheckBox_addEventListener(JSContext *cx, uint32_t argc
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addEventListener([=](Ref* widget, CheckBox::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -263,9 +263,9 @@ static bool js_cocos2dx_UISlider_addEventListener(JSContext *cx, uint32_t argc, 
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addEventListener([=](Ref* widget, Slider::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -319,9 +319,9 @@ static bool js_cocos2dx_UITextField_addEventListener(JSContext *cx, uint32_t arg
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addEventListener([=](Ref* widget, TextField::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -375,9 +375,9 @@ static bool js_cocos2dx_UIPageView_addEventListener(JSContext *cx, uint32_t argc
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addEventListener([=](Ref* widget, PageView::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -430,9 +430,9 @@ static bool js_cocos2dx_UIScrollView_addEventListener(JSContext *cx, uint32_t ar
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addEventListener([=](Ref* widget, ScrollView::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -486,9 +486,9 @@ static bool js_cocos2dx_UIListView_addEventListener(JSContext *cx, uint32_t argc
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         auto lambda = [=](Ref* widget, ListView::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
