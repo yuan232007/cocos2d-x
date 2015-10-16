@@ -43,23 +43,23 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace CocosDenshion;
 
-AppDelegate::AppDelegate()
+CocosAppDelegate::CocosAppDelegate()
 {
 }
 
-AppDelegate::~AppDelegate()
+CocosAppDelegate::~CocosAppDelegate()
 {
     ScriptEngineManager::destroyInstance();
 }
 
-void AppDelegate::initGLContextAttrs()
+void CocosAppDelegate::initGLContextAttrs()
 {
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
     
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
-bool AppDelegate::applicationDidFinishLaunching()
+bool CocosAppDelegate::applicationDidFinishLaunching()
 {
     // initialize director
     auto director = Director::getInstance();
@@ -140,7 +140,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
-void AppDelegate::applicationDidEnterBackground()
+void CocosAppDelegate::applicationDidEnterBackground()
 {
     auto director = Director::getInstance();
     director->stopAnimation();
@@ -150,7 +150,7 @@ void AppDelegate::applicationDidEnterBackground()
 }
 
 // this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground()
+void CocosAppDelegate::applicationWillEnterForeground()
 {
     auto director = Director::getInstance();
     director->startAnimation();

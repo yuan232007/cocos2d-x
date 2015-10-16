@@ -21,7 +21,7 @@
 		EDCA00E81BD09981006842D7 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00E21BD09981006842D7 /* unzip.c */; settings = {ASSET_TAGS = (); }; };
 		EDCA00E91BD09981006842D7 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCA00E41BD09981006842D7 /* zip.c */; settings = {ASSET_TAGS = (); }; };
 		EDCA00EB1BD09A44006842D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA00EA1BD09A44006842D7 /* libz.tbd */; };
-		EDCA01101BD09C80006842D7 /* CocosJSRuntimeStatic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA010D1BD09C40006842D7 /* CocosJSRuntimeStatic.dylib */; };
+		EDCA01101BD09C80006842D7 /* libCocosJSRuntime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA010D1BD09C40006842D7 /* libCocosJSRuntime.a */; };
 		EDCA01121BD09E03006842D7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA01111BD09E03006842D7 /* OpenGLES.framework */; };
 		EDCA01141BD09E0A006842D7 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA01131BD09E0A006842D7 /* OpenAL.framework */; };
 		EDCA01171BD09E59006842D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCA01161BD09E59006842D7 /* AudioToolbox.framework */; };
@@ -73,10 +73,8 @@
 		EDCA00B81BD08D71006842D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDCA00BA1BD08D71006842D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDCA00C01BD08DC4006842D7 /* CocosJSRuntime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocosJSRuntime.xcodeproj; path = ../CocosJSRuntime.xcodeproj; sourceTree = "<group>"; };
-		EDCA00CC1BD08F06006842D7 /* MttGameEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineDelegate.h; sourceTree = "<group>"; };
 		EDCA00CD1BD08F06006842D7 /* MttGameEngineFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFramework.h; sourceTree = "<group>"; };
 		EDCA00CE1BD08F06006842D7 /* MttGameEngineFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MttGameEngineFramework.m; sourceTree = "<group>"; };
-		EDCA00CF1BD08F06006842D7 /* MttGameEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineProtocol.h; sourceTree = "<group>"; };
 		EDCA00D31BD09063006842D7 /* gameResources.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = gameResources.zip; path = ../../CocosJSRuntimeDemo/Resources/gameResources.zip; sourceTree = "<group>"; };
 		EDCA00D91BD0994F006842D7 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Main.h; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/Main.h; sourceTree = "<group>"; };
 		EDCA00DA1BD0994F006842D7 /* Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Main.m; path = ../../CocosJSRuntimeDemo/JSRuntimeDemo/KLZip/Main.m; sourceTree = "<group>"; };
@@ -123,7 +121,7 @@
 				EDCA01171BD09E59006842D7 /* AudioToolbox.framework in Frameworks */,
 				EDCA01141BD09E0A006842D7 /* OpenAL.framework in Frameworks */,
 				EDCA01121BD09E03006842D7 /* OpenGLES.framework in Frameworks */,
-				EDCA01101BD09C80006842D7 /* CocosJSRuntimeStatic.dylib in Frameworks */,
+				EDCA01101BD09C80006842D7 /* libCocosJSRuntime.a in Frameworks */,
 				EDCA00EB1BD09A44006842D7 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,10 +152,8 @@
 			children = (
 				EDCA00D81BD09933006842D7 /* KLZip */,
 				EDCA00D31BD09063006842D7 /* gameResources.zip */,
-				EDCA00CC1BD08F06006842D7 /* MttGameEngineDelegate.h */,
 				EDCA00CD1BD08F06006842D7 /* MttGameEngineFramework.h */,
 				EDCA00CE1BD08F06006842D7 /* MttGameEngineFramework.m */,
-				EDCA00CF1BD08F06006842D7 /* MttGameEngineProtocol.h */,
 				EDCA00AC1BD08D71006842D7 /* AppDelegate.h */,
 				EDCA00AD1BD08D71006842D7 /* AppDelegate.m */,
 				EDCA00AF1BD08D71006842D7 /* ViewController.h */,
@@ -183,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				EDCA00C51BD08DC4006842D7 /* CocosJSRuntime.dylib */,
-				EDCA010D1BD09C40006842D7 /* CocosJSRuntimeStatic.dylib */,
+				EDCA010D1BD09C40006842D7 /* libCocosJSRuntime.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,10 +298,10 @@
 			remoteRef = EDCA00C41BD08DC4006842D7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EDCA010D1BD09C40006842D7 /* CocosJSRuntimeStatic.dylib */ = {
+		EDCA010D1BD09C40006842D7 /* libCocosJSRuntime.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = CocosJSRuntimeStatic.dylib;
+			path = libCocosJSRuntime.a;
 			remoteRef = EDCA010C1BD09C40006842D7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

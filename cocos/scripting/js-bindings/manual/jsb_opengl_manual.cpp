@@ -377,16 +377,16 @@ bool JSB_glGetSupportedExtensions(JSContext *cx, uint32_t argc, jsval *vp)
     GLubyte* copy = new GLubyte[len+1];
     strncpy((char*)copy, (const char*)extensions, len );
 
-    int start_extension=0;
-    int element=0;
-    for( size_t i=0; i<len+1; i++) {
+    size_t start_extension = 0;
+    int element = 0;
+    for( size_t i = 0; i < len + 1; i++) {
         if( copy[i]==' ' || copy[i]==',' || i==len ) {
             copy[i] = 0;
 
             JS::RootedValue str(cx, charptr_to_jsval(cx, (const char*)&copy[start_extension]));
             JS_SetElement(cx, jsobj, element++, str );
 
-            start_extension = i+1;
+            start_extension = i + 1;
 
             i++;
         }

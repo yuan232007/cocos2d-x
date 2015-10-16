@@ -22,9 +22,9 @@ static bool jsb_cocos2dx_experimental_ui_VideoPlayer_addEventListener(JSContext 
         std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
         cobj->addEventListener([=](Ref* widget, experimental::ui::VideoPlayer::EventType type)->void{
             jsval arg[2];
-            js_proxy_t *proxy = js_get_or_create_proxy(cx, widget);
-            if(proxy)
-                arg[0] = OBJECT_TO_JSVAL(proxy->obj);
+            js_proxy_t *widgetProxy = js_get_or_create_proxy(cx, widget);
+            if(widgetProxy)
+                arg[0] = OBJECT_TO_JSVAL(widgetProxy->obj);
             else
                 arg[0] = JSVAL_NULL;
             arg[1] = int32_to_jsval(cx, (int32_t)type);
@@ -37,6 +37,8 @@ static bool jsb_cocos2dx_experimental_ui_VideoPlayer_addEventListener(JSContext 
         });
         return true;
     }
+    
+    return false;
 }
 
 extern JSObject* jsb_cocos2d_experimental_ui_VideoPlayer_prototype;
