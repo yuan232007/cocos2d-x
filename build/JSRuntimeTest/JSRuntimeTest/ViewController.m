@@ -1,5 +1,5 @@
 #import "ViewController.h"
-#import "Main.h"
+#import "ZipHelper.h"
 #import <dlfcn.h>
 
 #import "MttGameEngineProtocol.h"
@@ -56,10 +56,10 @@
             [[NSFileManager defaultManager] removeItemAtPath:resDestPath error:nil];
         }
         
-        [Main unzipFileAtPath:resPath toDestination:resDestPath];
+        [ZipHelper unzipFileAtPath:resPath toDestination:resDestPath];
     }
     
-    //id<MttGameEngineProtocol> engine = [[MttGameEngine alloc] init];
+    
     id<MttGameEngineProtocol> engine = [MttGameEngineFactory CreateGameRuntimeEngine];
     
     UIView* rootView = [self view];
