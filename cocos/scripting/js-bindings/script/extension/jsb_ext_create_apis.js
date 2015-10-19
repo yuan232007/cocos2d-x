@@ -26,12 +26,6 @@
  *
  ************************************************************/
 
-//jsb.EventListenerAssetsManager.prototype._ctor = function(assetsManager, callback) {
-//    callback !== undefined && this.init(assetsManager, callback);
-//};
-
-
-
 cc.ControlButton.prototype._ctor = function(label, backgroundSprite, fontSize){
     if(fontSize != undefined)
         this.initWithTitleAndFontNameAndFontSize(label, backgroundSprite, fontSize);
