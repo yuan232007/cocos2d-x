@@ -538,9 +538,6 @@
     <ClCompile Include="..\base\CCIMEDispatcher.cpp">
       <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="..\renderer\CCMeshCommand.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
     <ClCompile Include="..\base\ObjectFactory.cpp">
       <Filter>base</Filter>
     </ClCompile>
@@ -862,12 +859,6 @@
     <ClCompile Include="..\ui\UILayoutComponent.cpp">
       <Filter>ui\Layouts</Filter>
     </ClCompile>
-    <ClCompile Include="CCCamera.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
-    <ClCompile Include="CCLight.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
     <ClCompile Include="..\editor-support\cocostudio\WidgetCallBackHandlerProtocol.cpp">
       <Filter>cocostudio\json</Filter>
     </ClCompile>
@@ -880,16 +871,7 @@
     <ClCompile Include="..\editor-support\cocostudio\CocoStudio.cpp">
       <Filter>cocostudio\json</Filter>
     </ClCompile>
-    <ClCompile Include="..\renderer\CCPass.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
     <ClCompile Include="..\renderer\CCRenderState.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\renderer\CCTechnique.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\renderer\CCMaterial.cpp">
       <Filter>renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\base\CCProperties.cpp">
@@ -902,9 +884,6 @@
       <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\base\CCNinePatchImageParser.cpp" />
-    <ClCompile Include="..\renderer\CCFrameBuffer.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
     <ClCompile Include="CCAutoPolygon.cpp">
       <Filter>2d</Filter>
     </ClCompile>
@@ -922,12 +901,6 @@
     </ClCompile>
     <ClCompile Include="..\network\CCDownloader.cpp">
       <Filter>network\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CCCameraBackgroundBrush.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\renderer\CCTextureCube.cpp">
-      <Filter>renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\network\CCDownloader-curl.cpp">
       <Filter>network</Filter>
@@ -1397,9 +1370,6 @@
     <ClInclude Include="..\base\CCIMEDispatcher.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\renderer\CCMeshCommand.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\base\ObjectFactory.h">
       <Filter>base</Filter>
     </ClInclude>
@@ -1769,12 +1739,6 @@
     <ClInclude Include="..\ui\UILayoutComponent.h">
       <Filter>ui\Layouts</Filter>
     </ClInclude>
-    <ClInclude Include="CCCamera.h">
-      <Filter>2d</Filter>
-    </ClInclude>
-    <ClInclude Include="CCLight.h">
-      <Filter>2d</Filter>
-    </ClInclude>
     <ClInclude Include="..\editor-support\cocostudio\CSParseBinary_generated.h">
       <Filter>cocostudio\json</Filter>
     </ClInclude>
@@ -1796,16 +1760,7 @@
     <ClInclude Include="..\platform\CCPlatformMacros.h">
       <Filter>platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\renderer\CCPass.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\renderer\CCRenderState.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\renderer\CCTechnique.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\renderer\CCMaterial.h">
       <Filter>renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\base\CCProperties.h">
@@ -1818,9 +1773,6 @@
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\base\CCNinePatchImageParser.h" />
-    <ClInclude Include="..\renderer\CCFrameBuffer.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
     <ClInclude Include="CCAutoPolygon.h">
       <Filter>2d</Filter>
     </ClInclude>
@@ -1844,12 +1796,6 @@
     </ClInclude>
     <ClInclude Include="..\network\CCIDownloaderImpl.h">
       <Filter>network\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CCCameraBackgroundBrush.h">
-      <Filter>2d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\renderer\CCTextureCube.h">
-      <Filter>renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\network\CCDownloader-curl.h">
       <Filter>network\Header Files</Filter>

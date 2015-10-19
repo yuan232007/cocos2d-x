@@ -117,7 +117,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\debug-lib\*.*" 
       <ImportLibrary>$(TargetDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ModuleDefinitionFile>cocos2d.def</ModuleDefinitionFile>
-      <AdditionalDependencies>sqlite3.lib;libcurl_imp.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;libbullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sqlite3.lib;libcurl_imp.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -328,16 +328,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\platform\win32\CCStdC-win32.cpp" />
     <ClCompile Include="..\renderer\CCBatchCommand.cpp" />
     <ClCompile Include="..\renderer\CCCustomCommand.cpp" />
-    <ClCompile Include="..\renderer\CCFrameBuffer.cpp" />
     <ClCompile Include="..\renderer\CCGLProgram.cpp" />
     <ClCompile Include="..\renderer\CCGLProgramCache.cpp" />
     <ClCompile Include="..\renderer\CCGLProgramState.cpp" />
     <ClCompile Include="..\renderer\CCGLProgramStateCache.cpp" />
     <ClCompile Include="..\renderer\ccGLStateCache.cpp" />
     <ClCompile Include="..\renderer\CCGroupCommand.cpp" />
-    <ClCompile Include="..\renderer\CCMaterial.cpp" />
-    <ClCompile Include="..\renderer\CCMeshCommand.cpp" />
-    <ClCompile Include="..\renderer\CCPass.cpp" />
     <ClCompile Include="..\renderer\CCPrimitive.cpp" />
     <ClCompile Include="..\renderer\CCPrimitiveCommand.cpp" />
     <ClCompile Include="..\renderer\CCQuadCommand.cpp" />
@@ -345,11 +341,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="..\renderer\CCRenderer.cpp" />
     <ClCompile Include="..\renderer\CCRenderState.cpp" />
     <ClCompile Include="..\renderer\ccShaders.cpp" />
-    <ClCompile Include="..\renderer\CCTechnique.cpp" />
     <ClCompile Include="..\renderer\CCTexture2D.cpp" />
     <ClCompile Include="..\renderer\CCTextureAtlas.cpp" />
     <ClCompile Include="..\renderer\CCTextureCache.cpp" />
-    <ClCompile Include="..\renderer\CCTextureCube.cpp" />
     <ClCompile Include="..\renderer\CCTrianglesCommand.cpp" />
     <ClCompile Include="..\renderer\CCVertexAttribBinding.cpp" />
     <ClCompile Include="..\renderer\CCVertexIndexBuffer.cpp" />
@@ -402,8 +396,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="CCAnimationCache.cpp" />
     <ClCompile Include="CCAtlasNode.cpp" />
     <ClCompile Include="CCAutoPolygon.cpp" />
-    <ClCompile Include="CCCamera.cpp" />
-    <ClCompile Include="CCCameraBackgroundBrush.cpp" />
     <ClCompile Include="CCClippingNode.cpp" />
     <ClCompile Include="CCClippingRectangleNode.cpp" />
     <ClCompile Include="CCComponent.cpp" />
@@ -424,7 +416,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClCompile Include="CCLabelAtlas.cpp" />
     <ClCompile Include="CCLabelTextFormatter.cpp" />
     <ClCompile Include="CCLayer.cpp" />
-    <ClCompile Include="CCLight.cpp" />
     <ClCompile Include="CCMenu.cpp" />
     <ClCompile Include="CCMenuItem.cpp" />
     <ClCompile Include="CCMotionStreak.cpp" />
@@ -636,16 +627,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\platform\win32\compat\stdint.h" />
     <ClInclude Include="..\renderer\CCBatchCommand.h" />
     <ClInclude Include="..\renderer\CCCustomCommand.h" />
-    <ClInclude Include="..\renderer\CCFrameBuffer.h" />
     <ClInclude Include="..\renderer\CCGLProgram.h" />
     <ClInclude Include="..\renderer\CCGLProgramCache.h" />
     <ClInclude Include="..\renderer\CCGLProgramState.h" />
     <ClInclude Include="..\renderer\CCGLProgramStateCache.h" />
     <ClInclude Include="..\renderer\ccGLStateCache.h" />
     <ClInclude Include="..\renderer\CCGroupCommand.h" />
-    <ClInclude Include="..\renderer\CCMaterial.h" />
-    <ClInclude Include="..\renderer\CCMeshCommand.h" />
-    <ClInclude Include="..\renderer\CCPass.h" />
     <ClInclude Include="..\renderer\CCPrimitive.h" />
     <ClInclude Include="..\renderer\CCPrimitiveCommand.h" />
     <ClInclude Include="..\renderer\CCQuadCommand.h" />
@@ -654,11 +641,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="..\renderer\CCRenderer.h" />
     <ClInclude Include="..\renderer\CCRenderState.h" />
     <ClInclude Include="..\renderer\ccShaders.h" />
-    <ClInclude Include="..\renderer\CCTechnique.h" />
     <ClInclude Include="..\renderer\CCTexture2D.h" />
     <ClInclude Include="..\renderer\CCTextureAtlas.h" />
     <ClInclude Include="..\renderer\CCTextureCache.h" />
-    <ClInclude Include="..\renderer\CCTextureCube.h" />
     <ClInclude Include="..\renderer\CCTrianglesCommand.h" />
     <ClInclude Include="..\renderer\CCVertexAttribBinding.h" />
     <ClInclude Include="..\renderer\CCVertexIndexBuffer.h" />
@@ -711,8 +696,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="CCAnimationCache.h" />
     <ClInclude Include="CCAtlasNode.h" />
     <ClInclude Include="CCAutoPolygon.h" />
-    <ClInclude Include="CCCamera.h" />
-    <ClInclude Include="CCCameraBackgroundBrush.h" />
     <ClInclude Include="CCClippingNode.h" />
     <ClInclude Include="CCClippingRectangleNode.h" />
     <ClInclude Include="CCComponent.h" />
@@ -733,7 +716,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <ClInclude Include="CCLabel.h" />
     <ClInclude Include="CCLabelAtlas.h" />
     <ClInclude Include="CCLayer.h" />
-    <ClInclude Include="CCLight.h" />
     <ClInclude Include="CCMenu.h" />
     <ClInclude Include="CCMenuItem.h" />
     <ClInclude Include="CCMotionStreak.h" />
@@ -772,15 +754,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*
     <None Include="cocos2d.def" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\external\Box2D\proj.win32\libbox2d.vcxproj">
-      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\external\bullet\proj.win32\libbullet.vcxproj">
-      <Project>{012dff48-a13f-4f52-b07b-f8b9d21ce95b}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\external\recast\proj.win32\librecast.vcxproj">
-      <Project>{41e34993-647e-4282-8384-4ab1ae31a452}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\editor-support\spine\proj.win32\libSpine.vcxproj">
       <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
     </ProjectReference>
