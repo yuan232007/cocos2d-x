@@ -1092,7 +1092,7 @@ MoveTo* MoveTo::clone() const
 void MoveTo::startWithTarget(Node *target)
 {
     MoveBy::startWithTarget(target);
-    _positionDelta = _endPosition = target->getPosition();
+    _positionDelta = _endPosition - target->getPosition();
 }
 
 MoveTo* MoveTo::reverse() const
