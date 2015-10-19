@@ -673,11 +673,11 @@ namespace ui {
         virtual void setScaleY(float scaleY) override;
         virtual void setScale(float scale) override;
         virtual void setScale(float scaleX, float scaleY) override;
-        using Node::setScaleZ;
+        //using Node::setScaleZ;
         virtual float getScaleX() const override;
         virtual float getScaleY() const override;
         virtual float getScale() const override;
-        using Node::getScaleZ;
+        //using Node::getScaleZ;
         virtual void setCameraMask(unsigned short mask, bool applyChildren = true) override;
     protected:
         void updateCapInset();

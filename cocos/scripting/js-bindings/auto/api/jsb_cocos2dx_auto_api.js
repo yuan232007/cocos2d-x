@@ -842,16 +842,6 @@ float
 },
 
 /**
- * @method setScaleZ
- * @param {float} arg0
- */
-setScaleZ : function (
-float 
-)
-{
-},
-
-/**
  * @method setScaleY
  * @param {float} arg0
  */
@@ -949,16 +939,6 @@ getNodeToWorldAffineTransform : function (
 )
 {
     return cc.AffineTransform;
-},
-
-/**
- * @method getPosition3D
- * @return {vec3_object}
- */
-getPosition3D : function (
-)
-{
-    return cc.Vec3;
 },
 
 /**
@@ -1136,16 +1116,6 @@ getName : function (
 },
 
 /**
- * @method getRotation3D
- * @return {vec3_object}
- */
-getRotation3D : function (
-)
-{
-    return cc.Vec3;
-},
-
-/**
  * @method getNodeToParentAffineTransform
 * @param {cc.Node} node
 * @return {cc.AffineTransform|cc.AffineTransform}
@@ -1155,18 +1125,6 @@ node
 )
 {
     return cc.AffineTransform;
-},
-
-/**
- * @method convertTouchToNodeSpaceAR
- * @param {cc.Touch} arg0
- * @return {vec2_object}
- */
-convertTouchToNodeSpaceAR : function (
-touch 
-)
-{
-    return cc.Vec2;
 },
 
 /**
@@ -1232,11 +1190,11 @@ float
 },
 
 /**
- * @method setRotation3D
- * @param {vec3_object} arg0
+ * @method setPositionY
+ * @param {float} arg0
  */
-setRotation3D : function (
-vec3 
+setPositionY : function (
+float 
 )
 {
 },
@@ -1346,18 +1304,6 @@ component
 },
 
 /**
- * @method runAction
- * @param {cc.Action} arg0
- * @return {cc.Action}
- */
-runAction : function (
-action 
-)
-{
-    return cc.Action;
-},
-
-/**
  * @method visit
 * @param {cc.Renderer} renderer
 * @param {mat4_object} mat4
@@ -1402,13 +1348,15 @@ getAnchorPointInPoints : function (
 },
 
 /**
- * @method getRotationQuat
- * @return {cc.Quaternion}
+ * @method runAction
+ * @param {cc.Action} arg0
+ * @return {cc.Action}
  */
-getRotationQuat : function (
+runAction : function (
+action 
 )
 {
-    return cc.Quaternion;
+    return cc.Action;
 },
 
 /**
@@ -1671,16 +1619,6 @@ bool
 },
 
 /**
- * @method setPositionY
- * @param {float} arg0
- */
-setPositionY : function (
-float 
-)
-{
-},
-
-/**
  * @method updateDisplayedColor
  * @param {color3b_object} arg0
  */
@@ -1772,16 +1710,6 @@ setOrderOfArrival : function (
 int 
 )
 {
-},
-
-/**
- * @method getScaleZ
- * @return {float}
- */
-getScaleZ : function (
-)
-{
-    return 0;
 },
 
 /**
@@ -1953,13 +1881,15 @@ bool
 },
 
 /**
- * @method setPosition3D
- * @param {vec3_object} arg0
+ * @method convertTouchToNodeSpaceAR
+ * @param {cc.Touch} arg0
+ * @return {vec2_object}
  */
-setPosition3D : function (
-vec3 
+convertTouchToNodeSpaceAR : function (
+touch 
 )
 {
+    return cc.Vec2;
 },
 
 /**
@@ -2050,16 +1980,6 @@ isCascadeColorEnabled : function (
 )
 {
     return false;
-},
-
-/**
- * @method setRotationQuat
- * @param {cc.Quaternion} arg0
- */
-setRotationQuat : function (
-quaternion 
-)
-{
 },
 
 /**
@@ -6108,14 +6028,14 @@ cc.RotateTo = {
 
 /**
  * @method initWithDuration
-* @param {float|float} float
-* @param {vec3_object|float} vec3
-* @param {float} float
-* @return {bool|bool}
-*/
-initWithDuration : function(
-float,
-float,
+ * @param {float} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @return {bool}
+ */
+initWithDuration : function (
+float, 
+float, 
 float 
 )
 {
@@ -6124,10 +6044,10 @@ float
 
 /**
  * @method create
-* @param {float|float|float} float
-* @param {float|float|vec3_object} float
+* @param {float|float} float
+* @param {float|float} float
 * @param {float} float
-* @return {cc.RotateTo|cc.RotateTo|cc.RotateTo}
+* @return {cc.RotateTo|cc.RotateTo}
 */
 create : function(
 float,
@@ -6156,10 +6076,10 @@ cc.RotateBy = {
 
 /**
  * @method initWithDuration
-* @param {float|float|float} float
-* @param {float|float|vec3_object} float
+* @param {float|float} float
+* @param {float|float} float
 * @param {float} float
-* @return {bool|bool|bool}
+* @return {bool|bool}
 */
 initWithDuration : function(
 float,
@@ -6172,10 +6092,10 @@ float
 
 /**
  * @method create
-* @param {float|float|float} float
-* @param {float|float|vec3_object} float
+* @param {float|float} float
+* @param {float|float} float
 * @param {float} float
-* @return {cc.RotateBy|cc.RotateBy|cc.RotateBy}
+* @return {cc.RotateBy|cc.RotateBy}
 */
 create : function(
 float,
@@ -6204,12 +6124,12 @@ cc.MoveBy = {
 
 /**
  * @method initWithDuration
-* @param {float|float} float
-* @param {vec3_object|vec2_object} vec3
-* @return {bool|bool}
-*/
-initWithDuration : function(
-float,
+ * @param {float} arg0
+ * @param {vec2_object} arg1
+ * @return {bool}
+ */
+initWithDuration : function (
+float, 
 vec2 
 )
 {
@@ -6218,12 +6138,12 @@ vec2
 
 /**
  * @method create
-* @param {float|float} float
-* @param {vec3_object|vec2_object} vec3
-* @return {cc.MoveBy|cc.MoveBy}
-*/
-create : function(
-float,
+ * @param {float} arg0
+ * @param {vec2_object} arg1
+ * @return {cc.MoveBy}
+ */
+create : function (
+float, 
 vec2 
 )
 {
@@ -6248,12 +6168,12 @@ cc.MoveTo = {
 
 /**
  * @method initWithDuration
-* @param {float|float} float
-* @param {vec3_object|vec2_object} vec3
-* @return {bool|bool}
-*/
-initWithDuration : function(
-float,
+ * @param {float} arg0
+ * @param {vec2_object} arg1
+ * @return {bool}
+ */
+initWithDuration : function (
+float, 
 vec2 
 )
 {
@@ -6262,12 +6182,12 @@ vec2
 
 /**
  * @method create
-* @param {float|float} float
-* @param {vec3_object|vec2_object} vec3
-* @return {cc.MoveTo|cc.MoveTo}
-*/
-create : function(
-float,
+ * @param {float} arg0
+ * @param {vec2_object} arg1
+ * @return {cc.MoveTo}
+ */
+create : function (
+float, 
 vec2 
 )
 {
@@ -6524,14 +6444,12 @@ cc.ScaleTo = {
 
 /**
  * @method initWithDuration
-* @param {float|float|float} float
-* @param {float|float|float} float
+* @param {float|float} float
 * @param {float|float} float
 * @param {float} float
-* @return {bool|bool|bool}
+* @return {bool|bool}
 */
 initWithDuration : function(
-float,
 float,
 float,
 float 
@@ -6542,14 +6460,12 @@ float
 
 /**
  * @method create
-* @param {float|float|float} float
-* @param {float|float|float} float
+* @param {float|float} float
 * @param {float|float} float
 * @param {float} float
-* @return {cc.ScaleTo|cc.ScaleTo|cc.ScaleTo}
+* @return {cc.ScaleTo|cc.ScaleTo}
 */
 create : function(
-float,
 float,
 float,
 float 
@@ -6576,14 +6492,12 @@ cc.ScaleBy = {
 
 /**
  * @method create
-* @param {float|float|float} float
-* @param {float|float|float} float
+* @param {float|float} float
 * @param {float|float} float
 * @param {float} float
-* @return {cc.ScaleBy|cc.ScaleBy|cc.ScaleBy}
+* @return {cc.ScaleBy|cc.ScaleBy}
 */
 create : function(
-float,
 float,
 float,
 float 

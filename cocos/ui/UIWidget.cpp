@@ -1266,7 +1266,7 @@ void Widget::copyProperties(Widget *widget)
     {
         this->setScaleX(scale);
         this->setScaleY(scale);
-        this->setScaleZ(scale);
+        //this->setScaleZ(scale);
     }
 
     void Widget::setScale(float scaleX, float scaleY)

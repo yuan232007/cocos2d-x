@@ -239,7 +239,7 @@ public:
      * @param scaleZ   The scale factor on Z axis.
      *
      */
-    virtual void setScaleZ(float scaleZ);
+    //virtual void setScaleZ(float scaleZ);
     /**
      * Returns the scale factor on Z axis of this node
      *
@@ -247,7 +247,7 @@ public:
      *
      * @return The scale factor on Z axis.
      */
-    virtual float getScaleZ() const;
+    //virtual float getScaleZ() const;
 
 
     /**
@@ -384,14 +384,14 @@ public:
      * @param position The position (X, Y, and Z) in its parent's coordinate system.
      * @js NA
      */
-    virtual void setPosition3D(const Vec3& position);
+    //virtual void setPosition3D(const Vec3& position);
     /**
      * Returns the position (X,Y,Z) in its parent's coordinate system.
      *
      * @return The position (X, Y, and Z) in its parent's coordinate system.
      * @js NA
      */
-    virtual Vec3 getPosition3D() const;
+    //virtual Vec3 getPosition3D() const;
 
     /**
      * Sets the 'z' coordinate in the position. It is the OpenGL Z vertex value.
@@ -560,14 +560,14 @@ public:
      * @param rotation The rotation of the node in 3d.
      * @js NA
      */
-    virtual void setRotation3D(const Vec3& rotation);
+    //virtual void setRotation3D(const Vec3& rotation);
     /**
      * Returns the rotation (X,Y,Z) in degrees.
      * 
      * @return The rotation of the node in 3d.
      * @js NA
      */
-    virtual Vec3 getRotation3D() const;
+    //virtual Vec3 getRotation3D() const;
     
     /**
      * Set rotation by quaternion. You should make sure the quaternion is normalized.
@@ -575,7 +575,7 @@ public:
      * @param quat The rotation in quaternion, note that the quat must be normalized.
      * @js NA
      */
-    virtual void setRotationQuat(const Quaternion& quat);
+    //virtual void setRotationQuat(const Quaternion& quat);
     
     /**
      * Return the rotation by quaternion, Note that when _rotationZ_X == _rotationZ_Y, the returned quaternion equals to RotationZ_X * RotationY * RotationX,
@@ -584,7 +584,7 @@ public:
      * @return The rotation in quaternion.
      * @js NA
      */
-    virtual Quaternion getRotationQuat() const;
+    //virtual Quaternion getRotationQuat() const;
 
     /**
      * Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.

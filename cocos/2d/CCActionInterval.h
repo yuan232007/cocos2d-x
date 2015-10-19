@@ -458,7 +458,7 @@ public:
      * @param dstAngle3D A Vec3 angle.
      * @return An autoreleased RotateTo object.
      */
-    static RotateTo* create(float duration, const Vec3& dstAngle3D);
+    //static RotateTo* create(float duration, const Vec3& dstAngle3D);
 
     //
     // Overrides
@@ -486,7 +486,7 @@ CC_CONSTRUCTOR_ACCESS:
      * initializes the action
      * @param duration in seconds
      */
-    bool initWithDuration(float duration, const Vec3& dstAngle3D);
+    //bool initWithDuration(float duration, const Vec3& dstAngle3D);
 
     /** 
      * calculates the start and diff angles
@@ -495,7 +495,7 @@ CC_CONSTRUCTOR_ACCESS:
     void calculateAngles(float &startAngle, float &diffAngle, float dstAngle);
     
 protected:
-    bool _is3D;
+    //bool _is3D;
     Vec3 _dstAngle;
     Vec3 _startAngle;
     Vec3 _diffAngle;
@@ -533,7 +533,7 @@ public:
      * @param deltaAngle3D A Vec3 angle.
      * @return An autoreleased RotateBy object.
      */
-    static RotateBy* create(float duration, const Vec3& deltaAngle3D);
+    //static RotateBy* create(float duration, const Vec3& deltaAngle3D);
 
     //
     // Override
@@ -557,10 +557,10 @@ CC_CONSTRUCTOR_ACCESS:
      * @param deltaAngleZ_Y in degreesCW
      */
     bool initWithDuration(float duration, float deltaAngleZ_X, float deltaAngleZ_Y);
-    bool initWithDuration(float duration, const Vec3& deltaAngle3D);
+    //bool initWithDuration(float duration, const Vec3& deltaAngle3D);
     
 protected:
-    bool _is3D;
+    //bool _is3D;
     Vec3 _deltaAngle;
     Vec3 _startAngle;
 
@@ -593,7 +593,7 @@ public:
      * @param deltaPosition The delta distance in 3d, it's a Vec3 type.
      * @return An autoreleased MoveBy object.
      */
-    static MoveBy* create(float duration, const Vec3& deltaPosition);
+    //static MoveBy* create(float duration, const Vec3& deltaPosition);
 
     //
     // Overrides
@@ -612,13 +612,13 @@ CC_CONSTRUCTOR_ACCESS:
 
     /** initializes the action */
     bool initWithDuration(float duration, const Vec2& deltaPosition);
-    bool initWithDuration(float duration, const Vec3& deltaPosition);
+    //bool initWithDuration(float duration, const Vec3& deltaPosition);
 
 protected:
     bool _is3D;
-    Vec3 _positionDelta;
-    Vec3 _startPosition;
-    Vec3 _previousPosition;
+    Vec2 _positionDelta;
+    Vec2 _startPosition;
+    Vec2 _previousPosition;
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(MoveBy);
@@ -646,7 +646,7 @@ public:
      * @param position The destination position in 3d.
      * @return An autoreleased MoveTo object.
      */
-    static MoveTo* create(float duration, const Vec3& position);
+    //static MoveTo* create(float duration, const Vec3& position);
 
     //
     // Overrides
@@ -668,10 +668,10 @@ CC_CONSTRUCTOR_ACCESS:
      * initializes the action
      * @param duration in seconds
      */
-    bool initWithDuration(float duration, const Vec3& position);
+    //bool initWithDuration(float duration, const Vec3& position);
 
 protected:
-    Vec3 _endPosition;
+    Vec2 _endPosition;
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(MoveTo);
@@ -981,7 +981,7 @@ public:
      * @param sz Scale factor of z.
      * @return An autoreleased ScaleTo object.
      */
-    static ScaleTo* create(float duration, float sx, float sy, float sz);
+    //static ScaleTo* create(float duration, float sx, float sy, float sz);
 
     //
     // Overrides
@@ -1012,21 +1012,21 @@ CC_CONSTRUCTOR_ACCESS:
      * initializes the action with X Y Z factor 
      * @param duration in seconds
      */
-    bool initWithDuration(float duration, float sx, float sy, float sz);
+    //bool initWithDuration(float duration, float sx, float sy, float sz);
 
 protected:
     float _scaleX;
     float _scaleY;
-    float _scaleZ;
+    //float _scaleZ;
     float _startScaleX;
     float _startScaleY;
-    float _startScaleZ;
+    //float _startScaleZ;
     float _endScaleX;
     float _endScaleY;
-    float _endScaleZ;
+    //float _endScaleZ;
     float _deltaX;
     float _deltaY;
-    float _deltaZ;
+    //float _deltaZ;
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(ScaleTo);
@@ -1063,7 +1063,7 @@ public:
      * @param sz Scale factor of z.
      * @return An autoreleased ScaleBy object.
      */
-    static ScaleBy* create(float duration, float sx, float sy, float sz);
+    //static ScaleBy* create(float duration, float sx, float sy, float sz);
 
     //
     // Overrides
