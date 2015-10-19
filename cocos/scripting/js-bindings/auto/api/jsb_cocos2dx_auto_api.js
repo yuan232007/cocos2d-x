@@ -1116,16 +1116,6 @@ getName : function (
 },
 
 /**
- * @method getRotation3D
- * @return {vec3_object}
- */
-getRotation3D : function (
-)
-{
-    return cc.Vec3;
-},
-
-/**
  * @method getNodeToParentAffineTransform
 * @param {cc.Node} node
 * @return {cc.AffineTransform|cc.AffineTransform}
@@ -1200,11 +1190,11 @@ float
 },
 
 /**
- * @method setRotation3D
- * @param {vec3_object} arg0
+ * @method setPositionY
+ * @param {float} arg0
  */
-setRotation3D : function (
-vec3 
+setPositionY : function (
+float 
 )
 {
 },
@@ -1314,18 +1304,6 @@ component
 },
 
 /**
- * @method runAction
- * @param {cc.Action} arg0
- * @return {cc.Action}
- */
-runAction : function (
-action 
-)
-{
-    return cc.Action;
-},
-
-/**
  * @method visit
 * @param {cc.Renderer} renderer
 * @param {mat4_object} mat4
@@ -1370,13 +1348,15 @@ getAnchorPointInPoints : function (
 },
 
 /**
- * @method getRotationQuat
- * @return {cc.Quaternion}
+ * @method runAction
+ * @param {cc.Action} arg0
+ * @return {cc.Action}
  */
-getRotationQuat : function (
+runAction : function (
+action 
 )
 {
-    return cc.Quaternion;
+    return cc.Action;
 },
 
 /**
@@ -1634,16 +1614,6 @@ getPositionX : function (
 removeChildByTag : function (
 int, 
 bool 
-)
-{
-},
-
-/**
- * @method setPositionY
- * @param {float} arg0
- */
-setPositionY : function (
-float 
 )
 {
 },
@@ -2010,16 +1980,6 @@ isCascadeColorEnabled : function (
 )
 {
     return false;
-},
-
-/**
- * @method setRotationQuat
- * @param {cc.Quaternion} arg0
- */
-setRotationQuat : function (
-quaternion 
-)
-{
 },
 
 /**
@@ -6068,14 +6028,14 @@ cc.RotateTo = {
 
 /**
  * @method initWithDuration
-* @param {float|float} float
-* @param {vec3_object|float} vec3
-* @param {float} float
-* @return {bool|bool}
-*/
-initWithDuration : function(
-float,
-float,
+ * @param {float} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @return {bool}
+ */
+initWithDuration : function (
+float, 
+float, 
 float 
 )
 {
@@ -6084,10 +6044,10 @@ float
 
 /**
  * @method create
-* @param {float|float|float} float
-* @param {float|float|vec3_object} float
+* @param {float|float} float
+* @param {float|float} float
 * @param {float} float
-* @return {cc.RotateTo|cc.RotateTo|cc.RotateTo}
+* @return {cc.RotateTo|cc.RotateTo}
 */
 create : function(
 float,
@@ -6116,10 +6076,10 @@ cc.RotateBy = {
 
 /**
  * @method initWithDuration
-* @param {float|float|float} float
-* @param {float|float|vec3_object} float
+* @param {float|float} float
+* @param {float|float} float
 * @param {float} float
-* @return {bool|bool|bool}
+* @return {bool|bool}
 */
 initWithDuration : function(
 float,
@@ -6132,10 +6092,10 @@ float
 
 /**
  * @method create
-* @param {float|float|float} float
-* @param {float|float|vec3_object} float
+* @param {float|float} float
+* @param {float|float} float
 * @param {float} float
-* @return {cc.RotateBy|cc.RotateBy|cc.RotateBy}
+* @return {cc.RotateBy|cc.RotateBy}
 */
 create : function(
 float,

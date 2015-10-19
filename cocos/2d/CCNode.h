@@ -560,14 +560,14 @@ public:
      * @param rotation The rotation of the node in 3d.
      * @js NA
      */
-    virtual void setRotation3D(const Vec3& rotation);
+    //virtual void setRotation3D(const Vec3& rotation);
     /**
      * Returns the rotation (X,Y,Z) in degrees.
      * 
      * @return The rotation of the node in 3d.
      * @js NA
      */
-    virtual Vec3 getRotation3D() const;
+    //virtual Vec3 getRotation3D() const;
     
     /**
      * Set rotation by quaternion. You should make sure the quaternion is normalized.
@@ -575,7 +575,7 @@ public:
      * @param quat The rotation in quaternion, note that the quat must be normalized.
      * @js NA
      */
-    virtual void setRotationQuat(const Quaternion& quat);
+    //virtual void setRotationQuat(const Quaternion& quat);
     
     /**
      * Return the rotation by quaternion, Note that when _rotationZ_X == _rotationZ_Y, the returned quaternion equals to RotationZ_X * RotationY * RotationX,
@@ -584,7 +584,7 @@ public:
      * @return The rotation in quaternion.
      * @js NA
      */
-    virtual Quaternion getRotationQuat() const;
+    //virtual Quaternion getRotationQuat() const;
 
     /**
      * Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.

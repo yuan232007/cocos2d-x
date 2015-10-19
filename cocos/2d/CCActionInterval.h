@@ -458,7 +458,7 @@ public:
      * @param dstAngle3D A Vec3 angle.
      * @return An autoreleased RotateTo object.
      */
-    static RotateTo* create(float duration, const Vec3& dstAngle3D);
+    //static RotateTo* create(float duration, const Vec3& dstAngle3D);
 
     //
     // Overrides
@@ -486,7 +486,7 @@ CC_CONSTRUCTOR_ACCESS:
      * initializes the action
      * @param duration in seconds
      */
-    bool initWithDuration(float duration, const Vec3& dstAngle3D);
+    //bool initWithDuration(float duration, const Vec3& dstAngle3D);
 
     /** 
      * calculates the start and diff angles
@@ -495,7 +495,7 @@ CC_CONSTRUCTOR_ACCESS:
     void calculateAngles(float &startAngle, float &diffAngle, float dstAngle);
     
 protected:
-    bool _is3D;
+    //bool _is3D;
     Vec3 _dstAngle;
     Vec3 _startAngle;
     Vec3 _diffAngle;
@@ -533,7 +533,7 @@ public:
      * @param deltaAngle3D A Vec3 angle.
      * @return An autoreleased RotateBy object.
      */
-    static RotateBy* create(float duration, const Vec3& deltaAngle3D);
+    //static RotateBy* create(float duration, const Vec3& deltaAngle3D);
 
     //
     // Override
@@ -557,10 +557,10 @@ CC_CONSTRUCTOR_ACCESS:
      * @param deltaAngleZ_Y in degreesCW
      */
     bool initWithDuration(float duration, float deltaAngleZ_X, float deltaAngleZ_Y);
-    bool initWithDuration(float duration, const Vec3& deltaAngle3D);
+    //bool initWithDuration(float duration, const Vec3& deltaAngle3D);
     
 protected:
-    bool _is3D;
+    //bool _is3D;
     Vec3 _deltaAngle;
     Vec3 _startAngle;
 

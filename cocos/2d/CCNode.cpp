@@ -298,31 +298,31 @@ float Node::getRotationSkewX() const
     return _rotationZ_X;
 }
 
-void Node::setRotation3D(const Vec3& rotation)
-{
-    if (_rotationX == rotation.x &&
-        _rotationY == rotation.y &&
-        _rotationZ_X == rotation.z)
-        return;
-    
-    _transformUpdated = _transformDirty = _inverseDirty = true;
+//void Node::setRotation3D(const Vec3& rotation)
+//{
+//    if (_rotationX == rotation.x &&
+//        _rotationY == rotation.y &&
+//        _rotationZ_X == rotation.z)
+//        return;
+//    
+//    _transformUpdated = _transformDirty = _inverseDirty = true;
+//
+//    _rotationX = rotation.x;
+//    _rotationY = rotation.y;
+//
+//    // rotation Z is decomposed in 2 to simulate Skew for Flash animations
+//    _rotationZ_Y = _rotationZ_X = rotation.z;
+//    
+//    updateRotationQuat();
+//}
 
-    _rotationX = rotation.x;
-    _rotationY = rotation.y;
-
-    // rotation Z is decomposed in 2 to simulate Skew for Flash animations
-    _rotationZ_Y = _rotationZ_X = rotation.z;
-    
-    updateRotationQuat();
-}
-
-Vec3 Node::getRotation3D() const
-{
-    // rotation Z is decomposed in 2 to simulate Skew for Flash animations
-    CCASSERT(_rotationZ_X == _rotationZ_Y, "_rotationZ_X != _rotationZ_Y");
-
-    return Vec3(_rotationX,_rotationY,_rotationZ_X);
-}
+//Vec3 Node::getRotation3D() const
+//{
+//    // rotation Z is decomposed in 2 to simulate Skew for Flash animations
+//    CCASSERT(_rotationZ_X == _rotationZ_Y, "_rotationZ_X != _rotationZ_Y");
+//
+//    return Vec3(_rotationX,_rotationY,_rotationZ_X);
+//}
 
 void Node::updateRotationQuat()
 {
@@ -352,17 +352,17 @@ void Node::updateRotation3D()
     _rotationZ_X = _rotationZ_Y = -CC_RADIANS_TO_DEGREES(_rotationZ_X);
 }
 
-void Node::setRotationQuat(const Quaternion& quat)
-{
-    _rotationQuat = quat;
-    updateRotation3D();
-    _transformUpdated = _transformDirty = _inverseDirty = true;
-}
+//void Node::setRotationQuat(const Quaternion& quat)
+//{
+//    _rotationQuat = quat;
+//    updateRotation3D();
+//    _transformUpdated = _transformDirty = _inverseDirty = true;
+//}
 
-Quaternion Node::getRotationQuat() const
-{
-    return _rotationQuat;
-}
+//Quaternion Node::getRotationQuat() const
+//{
+//    return _rotationQuat;
+//}
 
 void Node::setRotationSkewX(float rotationX)
 {
