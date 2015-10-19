@@ -2884,18 +2884,3 @@ cc.ComponentJS = function (filename) {
 cc.ComponentJS.extend = function (prop) {
     return cc._ComponentJS.extend(prop);
 };
-
-
-//
-// 3D module rename to jsb namespace
-//
-jsb.BaseLight = cc.BaseLight;
-delete cc.BaseLight;
-jsb.DirectionLight = cc.DirectionLight;
-delete cc.DirectionLight;
-jsb.PointLight = cc.PointLight;
-delete cc.PointLight;
-jsb.SpotLight = cc.SpotLight;
-delete cc.SpotLight;
-jsb.AmbientLight = cc.AmbientLight;
-delete cc.AmbientLight;
