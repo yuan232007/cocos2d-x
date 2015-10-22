@@ -83,3 +83,6 @@ require("script/jsb_audioengine.js");
 require('script/jsb_loaders.js');
 require('script/jsb_pool.js');
 require('script/jsb_deprecated.js');
+
+require('script/runtime/jsb_runtime.js');
+require('script/runtime/jsb_runtime_md5.js');
