@@ -32,12 +32,11 @@
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "jsb_cocos2dx_experimental_webView_auto.hpp"
 #include "experimental/jsb_cocos2dx_experimental_webView_manual.h"
-#endif
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "jsb_cocos2dx_experimental_video_auto.hpp"
 #include "experimental/jsb_cocos2dx_experimental_video_manual.h"
 #endif
+
+#include "jsb_cocosruntime.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -113,16 +112,14 @@ bool CocosAppDelegate::applicationDidFinishLaunching()
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     sc->addRegisterCallback(register_all_cocos2dx_experimental_webView);
     sc->addRegisterCallback(register_all_cocos2dx_experimental_webView_manual);
-#endif
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     sc->addRegisterCallback(register_all_cocos2dx_experimental_video);
     sc->addRegisterCallback(register_all_cocos2dx_experimental_video_manual);
 #endif
     
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     sc->addRegisterCallback(register_all_cocos2dx_audioengine);
-#endif
+    
+    //cocos runtime
+    sc->addRegisterCallback(jsb_register_cocosruntime);
     
     sc->start();
     
@@ -134,6 +131,7 @@ bool CocosAppDelegate::applicationDidFinishLaunching()
     auto pEngine = ScriptingCore::getInstance();
     ScriptEngineManager::getInstance()->setScriptEngine(pEngine);
     
+    //todo：游戏入口由服务器获取的配置确定
     ScriptingCore::getInstance()->runScript("main.js");
     
     return true;

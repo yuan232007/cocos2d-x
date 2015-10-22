@@ -317,8 +317,9 @@ cc.LoaderLayer = cc.Layer.extend({
             self._callback.call(this._target, !status.isFailed);
         });
     },
-    _preload_native: function (status) {
-        cc.log(JSON.stringify(status));
+    _preload_native: function (statusJsonText) {
+        cc.log(statusJsonText);
+        var status = eval("(" + statusJsonText + ")");
         var config = this._finalConfig;
         if (status.percent) {
             this._setProgress(status.percent / 100);
@@ -370,7 +371,7 @@ cc.LoaderLayer = cc.Layer.extend({
                 cc.log("isLargeThanResource is " + isLargeThanResource);
                 cc.view.setDesignResolutionSize(isLargeThanResource ? config.width : isLandscape ? 720 : 480, isLargeThanResource ? config.height : isLandscape ? 480 : 720, cc.ResolutionPolicy["FIXED_HEIGHT"]);
             }
-            cc.director.getRunningScene().addChild(this, cc.INT_MAX - 1);//cc.INT_MAX - 1 是防止dialog先弹出来被loaderlayer遮住
+            cc.director.getRunningScene().addChild(this, 999999);//防止dialog先弹出来把loaderlayer遮住
         }
         this._preloadCount++;
     }
