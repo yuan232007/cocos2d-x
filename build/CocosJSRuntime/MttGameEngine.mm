@@ -16,6 +16,11 @@ static CocosAppDelegate s_application;
 - (void)game_engine_init:(NSString*)jsonStr
 {
     NSLog(@"game_engine_init");
+    //jsonStr::游戏名称、下载地址
+    
+    //todo:获取游戏配置:入口文件。。。
+    
+    //todo:下载第一个分组
 }
 
 //得到用于显示的view
@@ -56,14 +61,14 @@ static CocosAppDelegate s_application;
 //暂停游戏
 - (void)game_engine_onPause
 {
-    printf("game_engine_onPause\n");
+    NSLog(@"game_engine_onPause");
     cocos2d::Application::getInstance()->applicationDidEnterBackground();
 }
 
 //恢复游戏
 - (void)game_engine_onResume
 {
-    printf("game_engine_onResume\n");
+    NSLog(@"game_engine_onResume");
     cocos2d::Application::getInstance()->applicationWillEnterForeground();
 }
 
@@ -71,6 +76,7 @@ static CocosAppDelegate s_application;
 - (void)game_engine_onStop
 {
     NSLog(@"game_engine_onStop");
+    cocos2d::Director::getInstance()->end();
 }
 
 //设置GameEngineRuntimeProxy对象

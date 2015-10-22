@@ -351,6 +351,7 @@ cc.loader = {
     _register : {},//register of loaders
     cache : {},//cache for data loaded
     _langPathCache : {},//cache for lang path
+    _imageArray:[],
     
     /**
      * Get XMLHttpRequest.
@@ -447,28 +448,115 @@ cc.loader = {
      */
     loadImg : function(url, option, cb){
         var l = arguments.length;
-        if(l == 2) cb = option;
+        if (l == 2) cb = option;
+        if (url.match(jsb.urlRegExp)) {
+            var picName;
+            var picSuffix = [".png", ".jpg", ".jpeg", ".gif", ".bmp"];
+            var hasSuffix = false;
+            var suffix;
 
-        var cachedTex = cc.textureCache.getTextureForKey(url);
-        if (cachedTex) {
-            cb && cb(null, cachedTex);
-        }
-        else if (url.match(jsb.urlRegExp)) {
-            jsb.loadRemoteImg(url, function(succeed, tex) {
-                if (succeed) {
-                    cb && cb(null, tex);
+            for (var i = 0; i < picSuffix.length; i++) {
+                var item = picSuffix[i];
+                if (url.indexOf(item) != -1) {
+                    hasSuffix = true;
+                    suffix = item;
+                    break;
                 }
-                else {
-                    cb && cb("Load image failed");
+            }
+            var conf = l == 2 ? null : option;
+            if (conf) {
+                picName = cc.md5Encode(url + "cocos" + conf.width + "_" + conf.height);
+            } else {
+                cc.log("download default image");
+                picName = cc.md5Encode(url);
+            }
+            cc.log("picName is " + picName);
+            var imageConfig = conf;
+            var cachedTex = cc.textureCache._addImage(picName);
+            if (cachedTex instanceof cc.Texture2D) {
+                cc.log("loadImg find texture from cache");
+                cb && cb(null, cachedTex);
+            } else {
+                var listItem = this._getDownloadItem(picName);
+                if (listItem) {
+                    cc.log("the same picture is downloading");
+                    listItem.cb.push(cb);
+                    return;
+                } else {
+                    listItem = this._addDownloadList(url, picName, suffix, imageConfig, cb);
                 }
-            });
+                var self = this;
+                jsb.loadRemoteImg(JSON.stringify(listItem.info), function (config) {
+                    cc.log("callback from loadRemoteImg config is " + JSON.stringify(config));
+                    var item = self._getDownloadItem(config.picName);
+                    if (!item && cb) {
+                        cb("Load image failed", null);
+                        return;
+                    }
+                    if (item.cb) {
+                        for (var i = 0; i < item.cb.length; i++) {
+                            cc.log("in callback list now i is " + i);
+                            var texture = null;
+                            var error = null;
+                            if (config.isSuccess) {
+                                cc.log("begin load texture picName is " + item.info.picName);
+                                texture = cc.textureCache._addImage(item.info.picName);
+                                if(!texture instanceof cc.Texture2D){
+                                    texture = null;
+                                    error = "add image fail";
+                                }
+                            } else {
+                                error = "download image fail";
+                            }
+                            var cbItem = item.cb[i];
+                            if (cbItem) {
+                                cbItem(error, texture);
+                            } else {
+                                cc.log("ERROR:callback is null");
+                            }
+                        }
+                    }
+                    self._delDownloadList(item);
+                });
+            }
+        } else {
+            var tex = cc.textureCache._addImage(url);
+            if (tex instanceof cc.Texture2D)
+                cb && cb(null, tex);
+            else cb && cb("Load image failed");
         }
-        else {
-            cc.textureCache._addImageAsync(url, function (tex){
-                if (tex instanceof cc.Texture2D)
-                    cb && cb(null, tex);
-                else cb && cb("Load image failed");
-            });
+    },
+    _addDownloadList: function (url,picName,suffix,option,cb) {
+        var item = {
+            info: {
+                url: url,
+                suffix:suffix,
+                picName:picName,
+                option: option
+            },
+            cb: [cb]
+        };
+        this._imageArray.push(item);
+        return item;
+    },
+    _getDownloadItem: function (picName) {
+        var imgArray = this._imageArray;
+        for (var i = 0, l = imgArray.length; i < l; i++) {
+            var item = imgArray[i];
+            if (item.info.picName == picName) {
+                return item;
+            }
+        }
+        return null;
+    },
+    _delDownloadList: function (picName) {
+        var imgArray = this._imageArray;
+        for (var i = 0, l = imgArray.length; i < l; i++) {
+            var item = imgArray[i];
+            if (item.info.picName == picName) {
+                this._imageArray.splice(i,1);
+                break;
+            }
         }
     },
     /**
@@ -1343,10 +1431,7 @@ cc._initSys = function(config, CONFIG_KEY){
     platform = locSys.platform;
     locSys.isMobile = ( platform === locSys.ANDROID || 
                         platform === locSys.IPAD || 
-                        platform === locSys.IPHONE || 
-                        platform === locSys.WP8 || 
-                        platform === locSys.TIZEN ||
-                        platform === locSys.BLACKBERRY ) ? true : false;
+                        platform === locSys.IPHONE ) ? true : false;
 
     locSys.language = (function(){
         var language = cc.Application.getInstance().getCurrentLanguage();
@@ -1387,19 +1472,10 @@ cc._initSys = function(config, CONFIG_KEY){
     if( locSys.isMobile ) {
         capabilities["accelerometer"] = true;
         capabilities["touches"] = true;
-        if (platform === locSys.WINRT || platform === locSys.WP8) {
-            capabilities["keyboard"] = true;
-        }
     } else {
         // desktop
         capabilities["keyboard"] = true;
         capabilities["mouse"] = true;
-        // winrt can't suppot mouse in current version
-        if (platform === locSys.WINRT || platform === locSys.WP8)
-        {
-            capabilities["touches"] = true;
-            capabilities["mouse"] = false;
-        }
     }
 
     /**
