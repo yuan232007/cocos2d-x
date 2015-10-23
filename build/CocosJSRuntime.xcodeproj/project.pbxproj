@@ -12,7 +12,7 @@
 		ED4AB78B1BD0F923004C4091 /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB78A1BD0F923004C4091 /* zip.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED4AB78C1BD0F926004C4091 /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB78A1BD0F923004C4091 /* zip.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.cpp */; settings = {ASSET_TAGS = (); }; };
-		EDAF7CC11BCCAAB30032B305 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
+		EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		EDAF7CC61BCCABF40032B305 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CAB1BCCA9DC0032B305 /* libcocos2d iOS.a */; };
 		EDAF7CC71BCCABF70032B305 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */; };
 		EDAF7CCA1BCCB4BC0032B305 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CC81BCCB4340032B305 /* libiconv.tbd */; };
@@ -29,7 +29,7 @@
 		EDAF7CE51BCCD1450032B305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */; };
 		EDAF7CE71BCCD1E50032B305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
 		EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
-		EDCA00F41BD09BF3006842D7 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
+		EDCA00F41BD09BF3006842D7 /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		EDCA00F51BD09BF3006842D7 /* MttGameEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */; settings = {ASSET_TAGS = (); }; };
 		EDCA00F61BD09BF3006842D7 /* MttGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDC1BCCB6B90032B305 /* MttGameEngineFactory.mm */; settings = {ASSET_TAGS = (); }; };
 		EDCA01041BD09BF3006842D7 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */; };
@@ -132,8 +132,8 @@
 		ED4AB7A31BD4FD5E004C4091 /* jsb_cocosruntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocosruntime.h; sourceTree = "<group>"; };
 		EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_js_bindings.xcodeproj; path = "../cocos/scripting/js-bindings/proj.ios_mac/cocos2d_js_bindings.xcodeproj"; sourceTree = "<group>"; };
-		EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
-		EDAF7CC01BCCAAB30032B305 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CocosDelegate.cpp; sourceTree = "<group>"; };
+		EDAF7CC01BCCAAB30032B305 /* CocosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosDelegate.h; sourceTree = "<group>"; };
 		EDAF7CC81BCCB4340032B305 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		EDAF7CCB1BCCB4CB0032B305 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EDAF7CCD1BCCB4D90032B305 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -215,8 +215,8 @@
 				ED4AB7811BD0F6EA004C4091 /* zip.h */,
 				ED4AB7711BD0E6B7004C4091 /* ZipHelper.h */,
 				ED4AB7721BD0E6B7004C4091 /* ZipHelper.mm */,
-				EDAF7CBF1BCCAAB30032B305 /* AppDelegate.cpp */,
-				EDAF7CC01BCCAAB30032B305 /* AppDelegate.h */,
+				EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */,
+				EDAF7CC01BCCAAB30032B305 /* CocosDelegate.h */,
 				D50C68411BC64F9F00655E6E /* MttGameEngine.h */,
 				EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */,
 				D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */,
@@ -393,7 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDAF7CC11BCCAAB30032B305 /* AppDelegate.cpp in Sources */,
+				EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */,
 				EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */,
 				EDAF7CDE1BCCB6B90032B305 /* MttGameEngineFactory.mm in Sources */,
 				ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.cpp in Sources */,
@@ -407,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED4AB7741BD0E906004C4091 /* ZipHelper.mm in Sources */,
-				EDCA00F41BD09BF3006842D7 /* AppDelegate.cpp in Sources */,
+				EDCA00F41BD09BF3006842D7 /* CocosDelegate.cpp in Sources */,
 				EDCA00F51BD09BF3006842D7 /* MttGameEngine.mm in Sources */,
 				ED4AB78C1BD0F926004C4091 /* zip.cpp in Sources */,
 				EDCAD0F41BD8D86C005901AE /* jsb_cocosruntime.cpp in Sources */,
