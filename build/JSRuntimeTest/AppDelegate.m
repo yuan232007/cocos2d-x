@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  JSRuntimeTest
+//  RuntimeTest
 //
-//  Created by cocos on 15/10/16.
-//  Copyright © 2015年 cocos. All rights reserved.
+//  Created by cocos on 15/10/23.
+//  Copyright © 2015年 kinglong huang. All rights reserved.
 //
 
 #import "AppDelegate.h"
