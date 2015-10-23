@@ -2,7 +2,7 @@
 
 #include "ScriptingCore.h"
 #import "cocos2d.h"
-#import "AppDelegate.h"
+#import "CocosDelegate.h"
 #import "platform/ios/CCEAGLView-ios.h"
 #include "audio/include/SimpleAudioEngine.h"
 #include "audio/include/AudioEngine.h"

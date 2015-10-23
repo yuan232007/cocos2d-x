@@ -1,7 +1,7 @@
-#include "AppDelegate.h"
+#include "CocosDelegate.h"
 
 #include "cocos2d.h"
-#include "SimpleAudioEngine.h"
+#include "audio/include/SimpleAudioEngine.h"
 #include "ScriptingCore.h"
 #include "jsb_cocos2dx_auto.hpp"
 #include "jsb_cocos2dx_extension_auto.hpp"
@@ -39,7 +39,6 @@
 #include "jsb_cocosruntime.h"
 
 USING_NS_CC;
-USING_NS_CC_EXT;
 using namespace CocosDenshion;
 
 extern void registerDefaultClasses(JSContext* cx, JS::HandleObject global);
