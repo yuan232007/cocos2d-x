@@ -21,7 +21,9 @@
 		80C8730C1BBA3B32007D6E2F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C8730B1BBA3B32007D6E2F /* libz.dylib */; };
 		D50C684D1BC6507400655E6E /* MttGameEngineFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D50C684C1BC6507400655E6E /* MttGameEngineFramework.m */; settings = {ASSET_TAGS = (); }; };
 		ED8C51961BCE307300BD72CA /* gameResources.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8C51951BCE307300BD72CA /* gameResources.zip */; settings = {ASSET_TAGS = (); }; };
-		EDCA00841BCF8E55006842D7 /* CocosJSRuntime.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = EDCA00831BCF8E55006842D7 /* CocosJSRuntime.dylib.zip */; settings = {ASSET_TAGS = (); }; };
+		ED8FF7D11BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D01BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip */; settings = {ASSET_TAGS = (); }; };
+		ED8FF7D31BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D21BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip */; settings = {ASSET_TAGS = (); }; };
+		ED8FF7D51BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D41BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +54,9 @@
 		D50C684B1BC6507400655E6E /* MttGameEngineFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFramework.h; sourceTree = "<group>"; };
 		D50C684C1BC6507400655E6E /* MttGameEngineFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MttGameEngineFramework.m; sourceTree = "<group>"; };
 		ED8C51951BCE307300BD72CA /* gameResources.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = gameResources.zip; path = Resources/gameResources.zip; sourceTree = "<group>"; };
-		EDCA00831BCF8E55006842D7 /* CocosJSRuntime.dylib.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = CocosJSRuntime.dylib.zip; path = Resources/CocosJSRuntime.dylib.zip; sourceTree = "<group>"; };
+		ED8FF7D01BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = CocosJSRuntimeARM64.dylib.zip; path = Resources/CocosJSRuntimeARM64.dylib.zip; sourceTree = "<group>"; };
+		ED8FF7D21BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = CocosJSRuntimeARMV7.dylib.zip; path = Resources/CocosJSRuntimeARMV7.dylib.zip; sourceTree = "<group>"; };
+		ED8FF7D41BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = CocosJSRuntimeI386.dylib.zip; path = Resources/CocosJSRuntimeI386.dylib.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +147,9 @@
 		D50C68321BC610B700655E6E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EDCA00831BCF8E55006842D7 /* CocosJSRuntime.dylib.zip */,
+				ED8FF7D41BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip */,
+				ED8FF7D21BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip */,
+				ED8FF7D01BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip */,
 				ED8C51951BCE307300BD72CA /* gameResources.zip */,
 			);
 			name = Resources;
@@ -208,9 +214,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				80C872DF1BBA39DF007D6E2F /* Main.storyboard in Resources */,
+				ED8FF7D51BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip in Resources */,
+				ED8FF7D31BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip in Resources */,
 				80C872E41BBA39DF007D6E2F /* LaunchScreen.xib in Resources */,
 				ED8C51961BCE307300BD72CA /* gameResources.zip in Resources */,
-				EDCA00841BCF8E55006842D7 /* CocosJSRuntime.dylib.zip in Resources */,
+				ED8FF7D11BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip in Resources */,
 				80C872E11BBA39DF007D6E2F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

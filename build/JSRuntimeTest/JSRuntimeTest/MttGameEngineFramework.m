@@ -35,12 +35,12 @@
         return;
     }
     
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
-        [self.engineGame game_engine_init:nil];
-    }
-    
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_set_runtime_proxy:)]) {
         [self.engineGame game_engine_set_runtime_proxy:self];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
+        [self.engineGame game_engine_init:nil];
     }
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_view)]) {
@@ -68,10 +68,6 @@
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_value:)]) {
         [self.engineGame game_engine_get_value:nil];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
-        [self.engineGame game_engine_init:nil];
     }
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_send_msg:)]) {

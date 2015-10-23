@@ -13,6 +13,7 @@
 #import "MttGameEngineProtocol.h"
 #import "MttGameEngineFramework.h"
 
+void* s_dylibHandle = NULL;
 
 @interface ViewController ()
 
@@ -57,9 +58,9 @@
 
 - (BOOL)dlopenLoadDylibWithPath:(NSString *)path
 {
-    void *libHandle = NULL;
-    libHandle = dlopen([path cStringUsingEncoding:NSUTF8StringEncoding], RTLD_NOW);
-    if (libHandle == NULL) {
+    s_dylibHandle = NULL;
+    s_dylibHandle = dlopen([path cStringUsingEncoding:NSUTF8StringEncoding], RTLD_NOW);
+    if (s_dylibHandle == NULL) {
         char *error = dlerror();
         printf("dlopen error: %s\n", error);
     } else {
@@ -94,33 +95,27 @@
         [Main unzipFileAtPath:resPath toDestination:resDestPath];
     }
     
-    // 直接本地加载
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"CocosJSRuntime.dylib" ofType:@"zip"];
+#if TARGET_IPHONE_SIMULATOR
+    //模拟器
+    NSString* dylibFile = @"CocosJSRuntimeI386.dylib";
+#elif TARGET_OS_IPHONE
+#if __LP64__
+    //真机 64位设备
+    NSString* dylibFile = @"CocosJSRuntimeARM64.dylib";
+#else
+    //真机 32位设备
+    NSString* dylibFile = @"CocosJSRuntimeARMV7.dylib";
+#endif
+#endif
     
+    // 直接本地加载
+    NSString *path = [[NSBundle mainBundle] pathForResource:dylibFile ofType:@"zip"];
     if (path.length > 0) {
         [Main unzipFileAtPath:path toDestination:destPath];
         NSString *lipPath = [destPath stringByAppendingPathComponent:@"CocosJSRuntime.dylib"];
         [self updateCopyrightWithDyLibWithPath:lipPath];
         return;
     }
-    
-    
-    /*
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSURLRequest * urlReq = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://klstudio.cn/CopyrightDylib.dylib.zip"]];
-        NSURLResponse * response = nil;
-        NSError * error = nil;
-        NSData * result = [NSURLConnection sendSynchronousRequest:urlReq returningResponse:&response error:&error];
-        if (!error) {
-            NSString *dataPath = [docPath stringByAppendingPathComponent:@"CopyrightDylib.zip"];
-            [result writeToFile:dataPath atomically:YES];
-            [Main unzipFileAtPath:dataPath
-                    toDestination:destPath];
-            NSString *lipPath = [destPath stringByAppendingPathComponent:@"CopyrightDylib.dylib"];
-            [self updateCopyrightWithDyLibWithPath:lipPath];
-        }
-    });
-     */
 }
 
 - (void)updateCopyrightWithDyLibWithPath:(NSString *)libPath {

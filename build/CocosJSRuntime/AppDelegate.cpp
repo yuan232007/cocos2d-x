@@ -42,6 +42,8 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace CocosDenshion;
 
+extern void registerDefaultClasses(JSContext* cx, JS::HandleObject global);
+
 CocosAppDelegate::CocosAppDelegate()
 {
 }
@@ -79,6 +81,9 @@ bool CocosAppDelegate::applicationDidFinishLaunching()
     fileUtils->setSearchPaths(paths);
     
     ScriptingCore* sc = ScriptingCore::getInstance();
+    sc->cleanup();
+    sc->addRegisterCallback(registerDefaultClasses);
+    
     sc->addRegisterCallback(register_all_cocos2dx);
     sc->addRegisterCallback(register_cocos2dx_js_core);
     sc->addRegisterCallback(jsb_register_system);

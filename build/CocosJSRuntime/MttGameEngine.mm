@@ -1,8 +1,13 @@
 #import "MttGameEngine.h"
 
+#include "ScriptingCore.h"
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "platform/ios/CCEAGLView-ios.h"
+#include "audio/include/SimpleAudioEngine.h"
+#include "audio/include/AudioEngine.h"
+
+using namespace CocosDenshion;
 
 static CocosAppDelegate s_application;
 
@@ -30,12 +35,10 @@ static CocosAppDelegate s_application;
     auto screenSize = [UIScreen mainScreen].bounds.size;
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        printf("landscape \n\n");
-        //screenSize = CGSizeMake(,
+        NSLog(@"Interface orientation is landscape");
     } else {
-        printf("portrait\n\n");
+        NSLog(@"Interface orientation is portrait");
     }
-    
     
     CCEAGLView *eaglView = [CCEAGLView viewWithFrame: CGRectMake(0, 0, screenSize.width, screenSize.height)//[window bounds]
                                          pixelFormat: kEAGLColorFormatRGBA8
@@ -44,11 +47,9 @@ static CocosAppDelegate s_application;
                                           sharegroup: nil
                                        multiSampling: NO
                                      numberOfSamples: 0 ];
-    
-    eaglView.backgroundColor = [UIColor redColor];
     [eaglView setMultipleTouchEnabled:YES];
     
-    cocos2d::GLView *glview = cocos2d::GLViewImpl::createWithEAGLView((__bridge void*)eaglView);
+    auto glview = cocos2d::GLViewImpl::createWithEAGLView((__bridge void*)eaglView);
     if(glview != nullptr)
     {
         cocos2d::Director::getInstance()->setOpenGLView(glview);
@@ -76,6 +77,11 @@ static CocosAppDelegate s_application;
 - (void)game_engine_onStop
 {
     NSLog(@"game_engine_onStop");
+    
+    SimpleAudioEngine::getInstance()->stopAllEffects();
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    SimpleAudioEngine::end();
+    
     cocos2d::Director::getInstance()->end();
 }
 
@@ -86,7 +92,7 @@ static CocosAppDelegate s_application;
     NSLog(@"game_engine_set_runtime_proxy");
     
     if (self.delegate) {
-        [self testEngineProxy];
+        //[self testEngineProxy];
     } else {
         NSLog(@"game_engine_set_runtime_proxy error, nil");
     }
@@ -119,10 +125,6 @@ static CocosAppDelegate s_application;
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(x5GamePlayer_set_value:value:)]) {
         [self.delegate x5GamePlayer_set_value:nil value:nil];
-    }
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(x5GamePlayer_stop_game_engine)]) {
-        [self.delegate x5GamePlayer_stop_game_engine];
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(x5GamePlayer_invoke_Method:bundle:)]) {
@@ -171,6 +173,10 @@ static CocosAppDelegate s_application;
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(x5GamePlayer_send_msg:)]) {
         [self.delegate x5GamePlayer_send_msg:nil];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(x5GamePlayer_stop_game_engine)]) {
+        [self.delegate x5GamePlayer_stop_game_engine];
     }
 }
 
