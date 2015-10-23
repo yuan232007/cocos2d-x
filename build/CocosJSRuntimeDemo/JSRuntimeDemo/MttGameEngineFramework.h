@@ -12,10 +12,18 @@
 
 @interface MttGameEngineFramework : NSObject<MttGameEngineDelegate>
 
+@property (strong, nonatomic) UIView *navigationView;
+
 + (MttGameEngineFramework *)sharedInstance;
 
 - (void)updateRuntimeEngine:(id<MttGameEngineProtocol>)engine;
 
 - (void)testEngineFunction:(UIView*)rootView;
+
+- (UIView*)getNavigationView;
+
+- (void)testQuitEngine;
+- (void)testPauseEngine;
+- (void)testResumeEngine;
 
 @end

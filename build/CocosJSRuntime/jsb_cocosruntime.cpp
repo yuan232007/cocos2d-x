@@ -77,7 +77,7 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
     if (downloadCallback != nullptr) {
         std::thread([downloadCallback](){
             for (int index = 1; index <= 100; ++index) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                std::this_thread::sleep_for(std::chrono::milliseconds(20));
                 downloadCallback(index, false);
             }
         }).detach();
