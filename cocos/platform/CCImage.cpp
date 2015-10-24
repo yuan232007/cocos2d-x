@@ -1101,6 +1101,10 @@ bool Image::initWithPVRv3Data(const unsigned char * data, ssize_t dataLen)
     {
         _hasPremultipliedAlpha = true;
     }
+    else
+    {
+        _hasPremultipliedAlpha = false;
+    }
     
     // sizing
     int width = CC_SWAP_INT32_LITTLE_TO_HOST(header->width);
