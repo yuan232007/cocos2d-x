@@ -7,6 +7,8 @@
 #include "audio/include/SimpleAudioEngine.h"
 #include "audio/include/AudioEngine.h"
 
+#import "CocosJSRuntime-swift.h"
+
 using namespace CocosDenshion;
 
 static CocosAppDelegate s_application;
@@ -21,11 +23,15 @@ static CocosAppDelegate s_application;
 - (void)game_engine_init:(NSString*)jsonStr
 {
     NSLog(@"game_engine_init");
-    //jsonStr::游戏名称、下载地址
+    // todo
+    NSString* gameDownloadUrl = @"http://192.168.31.236:8888/";
+    NSString* gameKey = @"Ryeeeeee";
+    NSString* gameName = @"TestGameDemo";
+    NSString* gameVersionName = @"1.0";
+    NSInteger gameVersionCode = 1;
     
-    //todo:获取游戏配置:入口文件。。。
-    
-    //todo:下载第一个分组
+    GameInfo* gameInfo = [[GameInfo alloc] initWithGameKey:gameKey downloadUrl:gameDownloadUrl gameName:gameName gameVersionName:gameVersionName gameVersionCode:gameVersionCode];
+    //[CocosRuntime.sharedInstance startPreRunGame:gameInfo];
 }
 
 //得到用于显示的view
