@@ -1,3 +1,9 @@
+//
+//  MttGameEngine.mm
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #import "MttGameEngine.h"
 
 #include "ScriptingCore.h"

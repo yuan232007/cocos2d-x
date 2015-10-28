@@ -1,3 +1,9 @@
+//
+//  CocosDelegate.mm
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #include "CocosDelegate.h"
 
 #include "cocos2d.h"

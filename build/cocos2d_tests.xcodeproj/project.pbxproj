@@ -173,7 +173,6 @@
 		18FC4D5F1B4257CD00B76F95 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC4D5E1B4257CD00B76F95 /* libsqlite3.dylib */; };
 		1A0EE2A218CDF6DA004CD58F /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FB01807A4F9005B8026 /* libcocos2d Mac.a */; };
 		1A0EE2A518CDF6DA004CD58F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC747E17C455FD007B692C /* IOKit.framework */; };
-		1A0EE2A718CDF6DA004CD58F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482E165F399D007D4F18 /* libz.dylib */; };
 		1A0EE2A818CDF6DA004CD58F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C64832165F3AFD007D4F18 /* Foundation.framework */; };
 		1A0EE2A918CDF6DA004CD58F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482C165F3988007D4F18 /* AudioToolbox.framework */; };
 		1A0EE2AA18CDF6DA004CD58F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482A165F3979007D4F18 /* ApplicationServices.framework */; };
@@ -905,7 +904,6 @@
 		D0FD03651A3B546400825BB5 /* AllocatorTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0FD03621A3B546400825BB5 /* AllocatorTest.cpp */; };
 		D60AE43417F7FFE100757E4B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60AE43317F7FFE100757E4B /* CoreMotion.framework */; };
 		ED545A6D1B68A18300C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A6C1B68A18300C3958E /* libiconv.dylib */; };
-		ED545A6E1B68A18B00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A6C1B68A18300C3958E /* libiconv.dylib */; };
 		ED545A6F1B68A18C00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A6C1B68A18300C3958E /* libiconv.dylib */; };
 		ED545A701B68A18F00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A6C1B68A18300C3958E /* libiconv.dylib */; };
 		ED545A711B68A19000C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A6C1B68A18300C3958E /* libiconv.dylib */; };
@@ -916,6 +914,8 @@
 		ED545A771B68A1B600C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A721B68A1AC00C3958E /* libiconv.dylib */; };
 		ED545A781B68A1B800C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A721B68A1AC00C3958E /* libiconv.dylib */; };
 		ED545A791B68A1B900C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A721B68A1AC00C3958E /* libiconv.dylib */; };
+		EDC9C4FC1BE076DE000C45FE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC9C4FB1BE076DE000C45FE /* libz.tbd */; };
+		EDC9C4FE1BE076E5000C45FE /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC9C4FD1BE076E5000C45FE /* libiconv.tbd */; };
 		EDCC747F17C455FD007B692C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC747E17C455FD007B692C /* IOKit.framework */; };
 		FA94B0A31B8EF69A0074B261 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A721B68A1AC00C3958E /* libiconv.dylib */; };
 		FA94B0A41B8EF69A0074B261 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A331A534B2B004E4C60 /* Security.framework */; };
@@ -2058,6 +2058,9 @@
 		D60AE43317F7FFE100757E4B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A6C1B68A18300C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		ED545A721B68A1AC00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		EDC9C4FB1BE076DE000C45FE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		EDC9C4FD1BE076E5000C45FE /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		EDC9C4FF1BE076F6000C45FE /* libssl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libssl.tbd; path = usr/lib/libssl.tbd; sourceTree = SDKROOT; };
 		EDCC747E17C455FD007B692C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		FA94B0B41B8EF69A0074B261 /* performance-tests iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "performance-tests iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA94B1C71B8EF76D0074B261 /* performance-tests Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "performance-tests Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2210,10 +2213,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC9C4FE1BE076E5000C45FE /* libiconv.tbd in Frameworks */,
+				EDC9C4FC1BE076DE000C45FE /* libz.tbd in Frameworks */,
 				1A0EE2A218CDF6DA004CD58F /* libcocos2d Mac.a in Frameworks */,
 				1A0EE2A518CDF6DA004CD58F /* IOKit.framework in Frameworks */,
-				ED545A6E1B68A18B00C3958E /* libiconv.dylib in Frameworks */,
-				1A0EE2A718CDF6DA004CD58F /* libz.dylib in Frameworks */,
 				1A0EE2A818CDF6DA004CD58F /* Foundation.framework in Frameworks */,
 				1A0EE2A918CDF6DA004CD58F /* AudioToolbox.framework in Frameworks */,
 				1A0EE2AA18CDF6DA004CD58F /* ApplicationServices.framework in Frameworks */,
@@ -4247,6 +4250,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDC9C4FF1BE076F6000C45FE /* libssl.tbd */,
+				EDC9C4FD1BE076E5000C45FE /* libiconv.tbd */,
+				EDC9C4FB1BE076DE000C45FE /* libz.tbd */,
 				ED545A721B68A1AC00C3958E /* libiconv.dylib */,
 				ED545A6C1B68A18300C3958E /* libiconv.dylib */,
 				18FC4D5E1B4257CD00B76F95 /* libsqlite3.dylib */,
@@ -6686,6 +6692,7 @@
 					"$(inherited)",
 					CC_TARGET_OS_MAC,
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/../tests/cpp-empty-test/proj.mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocos2d-x.${PRODUCT_NAME:rfc1034identifier}";
@@ -6701,6 +6708,7 @@
 					"$(inherited)",
 					CC_TARGET_OS_MAC,
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/../tests/cpp-empty-test/proj.mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocos2d-x.${PRODUCT_NAME:rfc1034identifier}";

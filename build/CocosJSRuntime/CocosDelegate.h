@@ -1,3 +1,9 @@
+//
+//  CocosDelegate.h
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #ifndef  _APP_DELEGATE_H_
 #define  _APP_DELEGATE_H_
 

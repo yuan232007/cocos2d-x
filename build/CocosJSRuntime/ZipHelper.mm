@@ -1,3 +1,9 @@
+//
+//  ZipHelper.mm
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #import "ZipHelper.h"
 #import "zip.h"
 #import "zlib.h"
