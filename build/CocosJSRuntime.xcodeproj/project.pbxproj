@@ -27,36 +27,6 @@
 		EDAF7CE51BCCD1450032B305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */; };
 		EDAF7CE71BCCD1E50032B305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
 		EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
-		EDEFF3C51BDE0C0500042063 /* ChannelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B31BDE0C0500042063 /* ChannelConfig.swift */; };
-		EDEFF3C61BDE0C0500042063 /* CocosRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B41BDE0C0500042063 /* CocosRuntime.swift */; };
-		EDEFF3C71BDE0C0500042063 /* CocosRuntimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B51BDE0C0500042063 /* CocosRuntimeGroup.swift */; };
-		EDEFF3C81BDE0C0500042063 /* FileDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B61BDE0C0500042063 /* FileDownload.swift */; };
-		EDEFF3C91BDE0C0500042063 /* FileDownloadAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B71BDE0C0500042063 /* FileDownloadAdapter.swift */; };
-		EDEFF3CA1BDE0C0500042063 /* FileDownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B81BDE0C0500042063 /* FileDownloadDelegate.swift */; };
-		EDEFF3CB1BDE0C0500042063 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B91BDE0C0500042063 /* FileError.swift */; };
-		EDEFF3CC1BDE0C0500042063 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BA1BDE0C0500042063 /* FileUtil.swift */; };
-		EDEFF3CD1BDE0C0500042063 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BB1BDE0C0500042063 /* GameConfig.swift */; };
-		EDEFF3CE1BDE0C0500042063 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BC1BDE0C0500042063 /* GameInfo.swift */; };
-		EDEFF3CF1BDE0C0500042063 /* GameManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BD1BDE0C0500042063 /* GameManifest.swift */; };
-		EDEFF3D21BDE0C0500042063 /* PreRunGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C01BDE0C0500042063 /* PreRunGame.swift */; };
-		EDEFF3D41BDE0C0500042063 /* ResGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C21BDE0C0500042063 /* ResGroup.swift */; };
-		EDEFF3D51BDE0C0500042063 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C31BDE0C0500042063 /* StringExtension.swift */; };
-		EDEFF3D61BDE0C0500042063 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C41BDE0C0500042063 /* SwiftyJSON.swift */; };
-		EDEFF3D71BDE0C0900042063 /* ChannelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B31BDE0C0500042063 /* ChannelConfig.swift */; };
-		EDEFF3D81BDE0C0C00042063 /* CocosRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B41BDE0C0500042063 /* CocosRuntime.swift */; };
-		EDEFF3D91BDE0C1000042063 /* CocosRuntimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B51BDE0C0500042063 /* CocosRuntimeGroup.swift */; };
-		EDEFF3DA1BDE0C1400042063 /* FileDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B61BDE0C0500042063 /* FileDownload.swift */; };
-		EDEFF3DB1BDE0C1700042063 /* FileDownloadAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B71BDE0C0500042063 /* FileDownloadAdapter.swift */; };
-		EDEFF3DC1BDE0C1B00042063 /* FileDownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B81BDE0C0500042063 /* FileDownloadDelegate.swift */; };
-		EDEFF3DD1BDE0C1E00042063 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3B91BDE0C0500042063 /* FileError.swift */; };
-		EDEFF3DE1BDE0C2100042063 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BA1BDE0C0500042063 /* FileUtil.swift */; };
-		EDEFF3DF1BDE0C2400042063 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BB1BDE0C0500042063 /* GameConfig.swift */; };
-		EDEFF3E01BDE0C2700042063 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BC1BDE0C0500042063 /* GameInfo.swift */; };
-		EDEFF3E11BDE0C2B00042063 /* GameManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3BD1BDE0C0500042063 /* GameManifest.swift */; };
-		EDEFF3E41BDE0C3500042063 /* PreRunGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C01BDE0C0500042063 /* PreRunGame.swift */; };
-		EDEFF3E61BDE0C3B00042063 /* ResGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C21BDE0C0500042063 /* ResGroup.swift */; };
-		EDEFF3E71BDE0C3E00042063 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C31BDE0C0500042063 /* StringExtension.swift */; };
-		EDEFF3E81BDE0C4300042063 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3C41BDE0C0500042063 /* SwiftyJSON.swift */; };
 		EDEFF3EE1BDE234D00042063 /* MD5Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */; };
 		EDF396B81BDA2833000885AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396B71BDA2833000885AB /* main.m */; };
 		EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396BA1BDA2833000885AB /* AppDelegate.m */; };
@@ -191,24 +161,8 @@
 		EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EDAF7CE61BCCD1E50032B305 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		EDEFF3B31BDE0C0500042063 /* ChannelConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelConfig.swift; path = sdk/ChannelConfig.swift; sourceTree = "<group>"; };
-		EDEFF3B41BDE0C0500042063 /* CocosRuntime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocosRuntime.swift; path = sdk/CocosRuntime.swift; sourceTree = "<group>"; };
-		EDEFF3B51BDE0C0500042063 /* CocosRuntimeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocosRuntimeGroup.swift; path = sdk/CocosRuntimeGroup.swift; sourceTree = "<group>"; };
-		EDEFF3B61BDE0C0500042063 /* FileDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileDownload.swift; path = sdk/FileDownload.swift; sourceTree = "<group>"; };
-		EDEFF3B71BDE0C0500042063 /* FileDownloadAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileDownloadAdapter.swift; path = sdk/FileDownloadAdapter.swift; sourceTree = "<group>"; };
-		EDEFF3B81BDE0C0500042063 /* FileDownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileDownloadDelegate.swift; path = sdk/FileDownloadDelegate.swift; sourceTree = "<group>"; };
-		EDEFF3B91BDE0C0500042063 /* FileError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileError.swift; path = sdk/FileError.swift; sourceTree = "<group>"; };
-		EDEFF3BA1BDE0C0500042063 /* FileUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileUtil.swift; path = sdk/FileUtil.swift; sourceTree = "<group>"; };
-		EDEFF3BB1BDE0C0500042063 /* GameConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameConfig.swift; path = sdk/GameConfig.swift; sourceTree = "<group>"; };
-		EDEFF3BC1BDE0C0500042063 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameInfo.swift; path = sdk/GameInfo.swift; sourceTree = "<group>"; };
-		EDEFF3BD1BDE0C0500042063 /* GameManifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManifest.swift; path = sdk/GameManifest.swift; sourceTree = "<group>"; };
-		EDEFF3C01BDE0C0500042063 /* PreRunGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreRunGame.swift; path = sdk/PreRunGame.swift; sourceTree = "<group>"; };
-		EDEFF3C21BDE0C0500042063 /* ResGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResGroup.swift; path = sdk/ResGroup.swift; sourceTree = "<group>"; };
-		EDEFF3C31BDE0C0500042063 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = sdk/StringExtension.swift; sourceTree = "<group>"; };
-		EDEFF3C41BDE0C0500042063 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = sdk/SwiftyJSON.swift; sourceTree = "<group>"; };
 		EDEFF3EC1BDE234D00042063 /* MD5Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Calculator.h; sourceTree = "<group>"; };
 		EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Calculator.m; sourceTree = "<group>"; };
-		EDEFF3F91BDE2C5E00042063 /* CocosJSRuntime-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CocosJSRuntime-Bridging-Header.h"; sourceTree = "<group>"; };
 		EDF396B41BDA2832000885AB /* JSRuntimeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSRuntimeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF396B71BDA2833000885AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EDF396B91BDA2833000885AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -296,10 +250,8 @@
 		802BF5261B945662008C45C2 /* CocosJSRuntime */ = {
 			isa = PBXGroup;
 			children = (
-				EDEFF3F91BDE2C5E00042063 /* CocosJSRuntime-Bridging-Header.h */,
 				EDEFF3EC1BDE234D00042063 /* MD5Calculator.h */,
 				EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */,
-				EDEFF3B21BDE0BF700042063 /* sdk */,
 				ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.cpp */,
 				ED4AB7A31BD4FD5E004C4091 /* jsb_cocosruntime.h */,
 				ED4AB78A1BD0F923004C4091 /* zip.cpp */,
@@ -361,28 +313,6 @@
 				EDAF7CC81BCCB4340032B305 /* libiconv.tbd */,
 			);
 			name = DependentLibs;
-			sourceTree = "<group>";
-		};
-		EDEFF3B21BDE0BF700042063 /* sdk */ = {
-			isa = PBXGroup;
-			children = (
-				EDEFF3B31BDE0C0500042063 /* ChannelConfig.swift */,
-				EDEFF3B41BDE0C0500042063 /* CocosRuntime.swift */,
-				EDEFF3B51BDE0C0500042063 /* CocosRuntimeGroup.swift */,
-				EDEFF3B61BDE0C0500042063 /* FileDownload.swift */,
-				EDEFF3B71BDE0C0500042063 /* FileDownloadAdapter.swift */,
-				EDEFF3B81BDE0C0500042063 /* FileDownloadDelegate.swift */,
-				EDEFF3B91BDE0C0500042063 /* FileError.swift */,
-				EDEFF3BA1BDE0C0500042063 /* FileUtil.swift */,
-				EDEFF3BB1BDE0C0500042063 /* GameConfig.swift */,
-				EDEFF3BC1BDE0C0500042063 /* GameInfo.swift */,
-				EDEFF3BD1BDE0C0500042063 /* GameManifest.swift */,
-				EDEFF3C01BDE0C0500042063 /* PreRunGame.swift */,
-				EDEFF3C21BDE0C0500042063 /* ResGroup.swift */,
-				EDEFF3C31BDE0C0500042063 /* StringExtension.swift */,
-				EDEFF3C41BDE0C0500042063 /* SwiftyJSON.swift */,
-			);
-			name = sdk;
 			sourceTree = "<group>";
 		};
 		EDF396B51BDA2833000885AB /* JSRuntimeTest */ = {
@@ -551,28 +481,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEFF3CA1BDE0C0500042063 /* FileDownloadDelegate.swift in Sources */,
-				EDEFF3CD1BDE0C0500042063 /* GameConfig.swift in Sources */,
-				EDEFF3CC1BDE0C0500042063 /* FileUtil.swift in Sources */,
-				EDEFF3D61BDE0C0500042063 /* SwiftyJSON.swift in Sources */,
-				EDEFF3CB1BDE0C0500042063 /* FileError.swift in Sources */,
-				EDEFF3C71BDE0C0500042063 /* CocosRuntimeGroup.swift in Sources */,
-				EDEFF3C61BDE0C0500042063 /* CocosRuntime.swift in Sources */,
 				EDEFF3EE1BDE234D00042063 /* MD5Calculator.m in Sources */,
 				EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */,
-				EDEFF3CF1BDE0C0500042063 /* GameManifest.swift in Sources */,
-				EDEFF3D21BDE0C0500042063 /* PreRunGame.swift in Sources */,
 				EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */,
 				EDAF7CDE1BCCB6B90032B305 /* MttGameEngineFactory.mm in Sources */,
 				ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.cpp in Sources */,
-				EDEFF3C51BDE0C0500042063 /* ChannelConfig.swift in Sources */,
-				EDEFF3C81BDE0C0500042063 /* FileDownload.swift in Sources */,
-				EDEFF3C91BDE0C0500042063 /* FileDownloadAdapter.swift in Sources */,
 				ED4AB78B1BD0F923004C4091 /* zip.cpp in Sources */,
 				ED4AB7731BD0E6B7004C4091 /* ZipHelper.mm in Sources */,
-				EDEFF3D41BDE0C0500042063 /* ResGroup.swift in Sources */,
-				EDEFF3D51BDE0C0500042063 /* StringExtension.swift in Sources */,
-				EDEFF3CE1BDE0C0500042063 /* GameInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,31 +495,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEFF3D81BDE0C0C00042063 /* CocosRuntime.swift in Sources */,
-				EDEFF3DF1BDE0C2400042063 /* GameConfig.swift in Sources */,
-				EDEFF3E61BDE0C3B00042063 /* ResGroup.swift in Sources */,
 				EDF396D71BDA293A000885AB /* MttGameEngineFactory.mm in Sources */,
 				EDF396D41BDA292A000885AB /* ZipHelper.mm in Sources */,
-				EDEFF3E71BDE0C3E00042063 /* StringExtension.swift in Sources */,
 				EDF396BE1BDA2833000885AB /* ViewController.m in Sources */,
-				EDEFF3D91BDE0C1000042063 /* CocosRuntimeGroup.swift in Sources */,
 				EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */,
 				EDF396D11BDA28EC000885AB /* MttGameEngineFramework.m in Sources */,
 				EDF396D51BDA292E000885AB /* CocosDelegate.cpp in Sources */,
-				EDEFF3DD1BDE0C1E00042063 /* FileError.swift in Sources */,
-				EDEFF3DC1BDE0C1B00042063 /* FileDownloadDelegate.swift in Sources */,
-				EDEFF3E01BDE0C2700042063 /* GameInfo.swift in Sources */,
 				EDF396D31BDA2926000885AB /* zip.cpp in Sources */,
 				EDF396B81BDA2833000885AB /* main.m in Sources */,
 				EDF396D21BDA2922000885AB /* jsb_cocosruntime.cpp in Sources */,
-				EDEFF3E81BDE0C4300042063 /* SwiftyJSON.swift in Sources */,
-				EDEFF3E41BDE0C3500042063 /* PreRunGame.swift in Sources */,
-				EDEFF3D71BDE0C0900042063 /* ChannelConfig.swift in Sources */,
 				EDF396D61BDA2933000885AB /* MttGameEngine.mm in Sources */,
-				EDEFF3DE1BDE0C2100042063 /* FileUtil.swift in Sources */,
-				EDEFF3E11BDE0C2B00042063 /* GameManifest.swift in Sources */,
-				EDEFF3DB1BDE0C1700042063 /* FileDownloadAdapter.swift in Sources */,
-				EDEFF3DA1BDE0C1400042063 /* FileDownload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +571,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -713,7 +613,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -735,7 +635,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -756,8 +655,6 @@
 				PRODUCT_NAME = CocosJSRuntime;
 				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "CocosJSRuntime-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 				VALID_ARCHS = "arm64 armv7 i386";
@@ -768,7 +665,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -789,8 +685,6 @@
 				PRODUCT_NAME = CocosJSRuntime;
 				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "CocosJSRuntime-Swift.h";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 				VALID_ARCHS = "arm64 armv7 i386";
 			};
@@ -816,8 +710,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocos.JSRuntimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "CocosJSRuntime-Swift.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 			};
@@ -841,8 +733,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocos.JSRuntimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "CocosJSRuntime-Swift.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 			};

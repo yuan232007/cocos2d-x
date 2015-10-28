@@ -7,14 +7,14 @@
 #include "audio/include/SimpleAudioEngine.h"
 #include "audio/include/AudioEngine.h"
 
-#import "CocosJSRuntime-swift.h"
-
 using namespace CocosDenshion;
 
 static CocosAppDelegate s_application;
 
 @interface MttGameEngine()
+
 @property (nonatomic, weak) id<MttGameEngineDelegate> delegate;
+
 @end
 
 @implementation MttGameEngine
@@ -23,6 +23,12 @@ static CocosAppDelegate s_application;
 - (void)game_engine_init:(NSString*)jsonStr
 {
     NSLog(@"game_engine_init");
+    
+    if(self.delegate) {
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
+    }
+    
     // todo
     NSString* gameDownloadUrl = @"http://192.168.31.236:8888/";
     NSString* gameKey = @"Ryeeeeee";
@@ -30,13 +36,22 @@ static CocosAppDelegate s_application;
     NSString* gameVersionName = @"1.0";
     NSInteger gameVersionCode = 1;
     
-    GameInfo* gameInfo = [[GameInfo alloc] initWithGameKey:gameKey downloadUrl:gameDownloadUrl gameName:gameName gameVersionName:gameVersionName gameVersionCode:gameVersionCode];
+    //GameInfo* gameInfo = [[GameInfo alloc] initWithGameKey:gameKey downloadUrl:gameDownloadUrl gameName:gameName gameVersionName:gameVersionName gameVersionCode:gameVersionCode];
     //[CocosRuntime.sharedInstance startPreRunGame:gameInfo];
 }
 
 //得到用于显示的view
 - (UIView*)game_engine_get_view;
 {
+    /*
+    if ([orientationConfig  isEqual: @"d"]) {
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    } else {
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    }*/
+    
     auto orientation = [UIApplication sharedApplication].statusBarOrientation;
     auto screenSize = [UIScreen mainScreen].bounds.size;
     
@@ -98,6 +113,7 @@ static CocosAppDelegate s_application;
     NSLog(@"game_engine_set_runtime_proxy");
     
     if (self.delegate) {
+        [self.delegate x5GamePlayer_set_value:@"RuntimeCall" value:@"game_engine_set_runtime_proxy"];
         //[self testEngineProxy];
     } else {
         NSLog(@"game_engine_set_runtime_proxy error, nil");

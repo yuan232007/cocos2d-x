@@ -30,7 +30,7 @@ void* s_dylibHandle = NULL;
     // Do any additional setup after loading the view, typically from a nib.
     
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setFrame:CGRectMake(10, 50, 160, 30)];
+    [btn setFrame:CGRectMake(10, 50, 160, 50)];
     [btn setBackgroundColor:[UIColor darkGrayColor]];
     [btn setTitle:@"Download and load" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(downloadDylibAndRetriveTheCopyrightInfo) forControlEvents:UIControlEventTouchUpInside];

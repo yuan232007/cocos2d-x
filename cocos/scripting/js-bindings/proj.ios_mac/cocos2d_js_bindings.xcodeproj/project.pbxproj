@@ -136,10 +136,10 @@
 		BA4095C31A6F730A005E53F6 /* jsb_cocos2dx_studio_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA4095C01A6F730A005E53F6 /* jsb_cocos2dx_studio_conversions.cpp */; };
 		BA4095C41A6F730A005E53F6 /* jsb_cocos2dx_studio_conversions.h in Headers */ = {isa = PBXBuildFile; fileRef = BA4095C11A6F730A005E53F6 /* jsb_cocos2dx_studio_conversions.h */; };
 		BA4095C51A6F730A005E53F6 /* jsb_cocos2dx_studio_conversions.h in Headers */ = {isa = PBXBuildFile; fileRef = BA4095C11A6F730A005E53F6 /* jsb_cocos2dx_studio_conversions.h */; };
-		BA9FD5D21BAC0A7600996C85 /* CCComponentJS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9FD5D01BAC0A7600996C85 /* CCComponentJS.cpp */; settings = {ASSET_TAGS = (); }; };
-		BA9FD5D31BAC0A7600996C85 /* CCComponentJS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9FD5D01BAC0A7600996C85 /* CCComponentJS.cpp */; settings = {ASSET_TAGS = (); }; };
-		BA9FD5D41BAC0A7600996C85 /* CCComponentJS.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9FD5D11BAC0A7600996C85 /* CCComponentJS.h */; settings = {ASSET_TAGS = (); }; };
-		BA9FD5D51BAC0A7600996C85 /* CCComponentJS.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9FD5D11BAC0A7600996C85 /* CCComponentJS.h */; settings = {ASSET_TAGS = (); }; };
+		BA9FD5D21BAC0A7600996C85 /* CCComponentJS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9FD5D01BAC0A7600996C85 /* CCComponentJS.cpp */; };
+		BA9FD5D31BAC0A7600996C85 /* CCComponentJS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9FD5D01BAC0A7600996C85 /* CCComponentJS.cpp */; };
+		BA9FD5D41BAC0A7600996C85 /* CCComponentJS.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9FD5D11BAC0A7600996C85 /* CCComponentJS.h */; };
+		BA9FD5D51BAC0A7600996C85 /* CCComponentJS.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9FD5D11BAC0A7600996C85 /* CCComponentJS.h */; };
 		BAF638DC1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF638DA1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp */; };
 		BAF638DD1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF638DA1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp */; };
 		BAF638DE1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BAF638DB1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp */; };
@@ -771,6 +771,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -791,6 +792,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (

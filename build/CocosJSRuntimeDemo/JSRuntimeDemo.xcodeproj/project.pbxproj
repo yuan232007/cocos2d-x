@@ -19,11 +19,11 @@
 		80C873091BBA3A74007D6E2F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 80C873021BBA3A74007D6E2F /* unzip.c */; };
 		80C8730A1BBA3A74007D6E2F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 80C873041BBA3A74007D6E2F /* zip.c */; };
 		80C8730C1BBA3B32007D6E2F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C8730B1BBA3B32007D6E2F /* libz.dylib */; };
-		D50C684D1BC6507400655E6E /* MttGameEngineFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D50C684C1BC6507400655E6E /* MttGameEngineFramework.m */; settings = {ASSET_TAGS = (); }; };
-		ED8C51961BCE307300BD72CA /* gameResources.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8C51951BCE307300BD72CA /* gameResources.zip */; settings = {ASSET_TAGS = (); }; };
-		ED8FF7D11BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D01BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip */; settings = {ASSET_TAGS = (); }; };
-		ED8FF7D31BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D21BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip */; settings = {ASSET_TAGS = (); }; };
-		ED8FF7D51BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D41BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip */; settings = {ASSET_TAGS = (); }; };
+		D50C684D1BC6507400655E6E /* MttGameEngineFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D50C684C1BC6507400655E6E /* MttGameEngineFramework.m */; };
+		ED8C51961BCE307300BD72CA /* gameResources.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8C51951BCE307300BD72CA /* gameResources.zip */; };
+		ED8FF7D11BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D01BD9F9FE00F08BC1 /* CocosJSRuntimeARM64.dylib.zip */; };
+		ED8FF7D31BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D21BD9FA0600F08BC1 /* CocosJSRuntimeARMV7.dylib.zip */; };
+		ED8FF7D51BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip in Resources */ = {isa = PBXBuildFile; fileRef = ED8FF7D41BD9FB6000F08BC1 /* CocosJSRuntimeI386.dylib.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -303,7 +303,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,13 +358,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = JSRuntimeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Resources",
 				);
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.JSRuntimeDemo;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
 			};
@@ -378,7 +378,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = JSRuntimeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Resources",
