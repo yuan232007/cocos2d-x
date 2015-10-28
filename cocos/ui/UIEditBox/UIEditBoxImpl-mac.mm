@@ -29,7 +29,7 @@
 
 #include "base/CCDirector.h"
 #include "UIEditBox.h"
-#include "deprecated/CCString.h"
+#include "base/CCString.h"
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
@@ -541,7 +541,7 @@ void EditBoxImplMac::adjustTextFieldPosition()
     Size contentSize = _editBox->getContentSize();
     Rect rect = Rect(0, 0, contentSize.width, contentSize.height);
 
-    rect = RectApplyAffineTransform(rect, _editBox->nodeToWorldTransform());
+    rect = RectApplyTransform(rect, _editBox->getNodeToWorldTransform());
     
     Vec2 designCoord = Vec2(rect.origin.x, rect.origin.y + rect.size.height);
     [_sysEdit setPosition:convertDesignCoordToScreenCoord(designCoord, _inRetinaMode)];

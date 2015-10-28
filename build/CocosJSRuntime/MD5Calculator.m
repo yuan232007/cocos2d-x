@@ -1,6 +1,6 @@
 //
 //  MD5Calculator.m
-//  iOSTest
+//  CocosJSRuntime
 //
 //  Created by Rye on 10/20/15.
 //  Copyright © 2015 Ryeeeeee. All rights reserved.

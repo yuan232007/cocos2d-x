@@ -1,5 +1,12 @@
+//
+//  jsb_cocosruntime.mm
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/23.
+//
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
+#include "network/NetworkHelper.h"
 
 USING_NS_CC;
 
@@ -92,7 +99,7 @@ static bool JSB_runtime_getNetworkType(JSContext *cx, uint32_t argc, jsval *vp) 
     JSB_PRECONDITION2( argc == 0, cx, false, "JSB_runtime_getNetworkType Invalid number of arguments" );
     
     auto args = JS::CallArgsFromVp(argc, vp);
-    int status = 0;//RTGetNetworkTypeJNI();
+    int status = [NetworkHelper getNetworkType];
     args.rval().set(INT_TO_JSVAL(status));
     
     return true;
@@ -104,5 +111,6 @@ void jsb_register_cocosruntime(JSContext* cx, JS::HandleObject global)
     get_or_create_js_obj(cx, global, "runtime", &runtimeObj);
 
     JS_DefineFunction(cx, runtimeObj, "preload", JSB_runtime_preload, 3, JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
+    
     JS_DefineFunction(cx, runtimeObj, "getNetworkType", JSB_runtime_getNetworkType, 0, JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
 }

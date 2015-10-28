@@ -1,3 +1,9 @@
+//
+//  ZipHelper.h
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #ifndef _RUNTIME_ZIP_HELPER_H
 #define _RUNTIME_ZIP_HELPER_H
 

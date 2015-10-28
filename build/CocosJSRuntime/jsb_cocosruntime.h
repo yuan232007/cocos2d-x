@@ -1,3 +1,9 @@
+//
+//  jsb_cocosruntime.h
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/23.
+//
 #ifndef __JSB_COCOSRUNTIME_H__
 #define __JSB_COCOSRUNTIME_H__
 
