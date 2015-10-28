@@ -1654,7 +1654,7 @@ cc.game = {
             cfg[CONFIG_KEY.debugMode] = cfg[CONFIG_KEY.debugMode] || 0;
             cfg[CONFIG_KEY.frameRate] = cfg[CONFIG_KEY.frameRate] || 60;
             cfg[CONFIG_KEY.renderMode] = cfg[CONFIG_KEY.renderMode] || 0;
-            cfg[CONFIG_KEY.showFPS] = cfg[CONFIG_KEY.showFPS] === false ? false : true;
+            cfg[CONFIG_KEY.showFPS] = typeof cfg[CONFIG_KEY.showFPS] === 'undefined' ? true : cfg[CONFIG_KEY.showFPS];
             return cfg;
         };
         try{
