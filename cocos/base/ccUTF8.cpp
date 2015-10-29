@@ -26,7 +26,7 @@
 #include "base/ccUTF8.h"
 #include "platform/CCCommon.h"
 #include "base/CCConsole.h"
-#include "ConvertUTF.h"
+#include "ConvertUTF/ConvertUTF.h"
 
 NS_CC_BEGIN
 

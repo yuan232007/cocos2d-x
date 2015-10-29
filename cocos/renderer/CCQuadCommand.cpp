@@ -29,7 +29,7 @@
 #include "renderer/CCGLProgram.h"
 #include "renderer/CCRenderer.h"
 
-#include "xxhash.h"
+#include "xxhash/xxhash.h"
 
 NS_CC_BEGIN
 
