@@ -67,24 +67,21 @@ void CocosAppDelegate::initGLContextAttrs()
 
 bool CocosAppDelegate::applicationDidFinishLaunching()
 {
-    // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = cocos2d::GLViewImpl::createWithRect("cocos-runtime", Rect(0,0,900,640));
         director->setOpenGLView(glview);
     }
-
-    // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0 / 60);
     
     auto fileUtils = FileUtils::getInstance();
-    auto gameResPath = fileUtils->getWritablePath() + "gameResources/";
-    fileUtils->setDefaultResourceRootPath(gameResPath);
+    auto gameResRoot = fileUtils->getWritablePath() + "engineFile/cocos-v3/games/ULY1R306MB/";
+    fileUtils->setDefaultResourceRootPath(gameResRoot);
     std::vector<std::string> paths;
     paths.push_back("");
+    paths.push_back(fileUtils->getWritablePath() + "engineFile/cocos-v3/");
     fileUtils->setSearchPaths(paths);
-    
+
     ScriptingCore* sc = ScriptingCore::getInstance();
     sc->cleanup();
     sc->addRegisterCallback(registerDefaultClasses);

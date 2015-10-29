@@ -28,22 +28,19 @@ static CocosAppDelegate s_application;
 //初始化游戏引擎
 - (void)game_engine_init:(NSString*)jsonStr
 {
-    NSLog(@"game_engine_init");
-    
     if(self.delegate) {
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
+        
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
+          @"1", @"progress",
+          @"102400", @"size",
+          nil]];
+        
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
     }
-    
-    // todo
-    NSString* gameDownloadUrl = @"http://192.168.31.236:8888/";
-    NSString* gameKey = @"Ryeeeeee";
-    NSString* gameName = @"TestGameDemo";
-    NSString* gameVersionName = @"1.0";
-    NSInteger gameVersionCode = 1;
-    
-    //GameInfo* gameInfo = [[GameInfo alloc] initWithGameKey:gameKey downloadUrl:gameDownloadUrl gameName:gameName gameVersionName:gameVersionName gameVersionCode:gameVersionCode];
-    //[CocosRuntime.sharedInstance startPreRunGame:gameInfo];
 }
 
 //得到用于显示的view
@@ -116,12 +113,8 @@ static CocosAppDelegate s_application;
 - (void)game_engine_set_runtime_proxy:(id<MttGameEngineDelegate>)proxy
 {
     self.delegate = proxy;
-    NSLog(@"game_engine_set_runtime_proxy");
     
-    if (self.delegate) {
-        [self.delegate x5GamePlayer_set_value:@"RuntimeCall" value:@"game_engine_set_runtime_proxy"];
-        //[self testEngineProxy];
-    } else {
+    if (self.delegate == nil) {
         NSLog(@"game_engine_set_runtime_proxy error, nil");
     }
 }
@@ -129,7 +122,7 @@ static CocosAppDelegate s_application;
 //调用某个方法， method为方法名， bundle存有方法所用的参数
 - (void)game_engine_invoke_method:(NSString*)method bundle:(NSDictionary*)bundle
 {
-    NSLog(@"game_engine_invoke_method");
+    NSLog(@"game_engine_invoke_method: %@  bundle:%@", method, bundle);
 }
 
 //获取游戏引擎key所对应的的值
@@ -142,7 +135,7 @@ static CocosAppDelegate s_application;
 //x5通过这个接口发送消息给game engine
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
-    NSLog(@"game_engine_send_msg");
+    NSLog(@"game_engine_send_msg:%@", jsonObj);
 }
 
 - (void)testEngineProxy
