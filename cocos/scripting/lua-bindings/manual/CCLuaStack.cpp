@@ -25,7 +25,7 @@
 
 #include "CCLuaStack.h"
 #include "tolua_fix.h"
-#include "external/xxtea/xxtea.h"
+#include "xxtea/xxtea.h"
 extern "C" {
 #include "lua.h"
 #include "tolua++.h"
