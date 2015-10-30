@@ -13,6 +13,10 @@
 #include "audio/include/SimpleAudioEngine.h"
 #include "audio/include/AudioEngine.h"
 
+#import "CocosRuntime.h"
+#import "ChannelConfig.h"
+#import "CocosRuntimeGroup.h"
+
 using namespace CocosDenshion;
 
 static CocosAppDelegate s_application;
@@ -28,6 +32,20 @@ static CocosAppDelegate s_application;
 //初始化游戏引擎
 - (void)game_engine_init:(NSString*)jsonStr
 {
+    NSLog(@"game_engine_init");
+    // todo
+    NSString* gameDownloadUrl = @"http://192.168.31.236:8888/";
+    NSString* gameKey = @"Ryeeeeee";
+    NSString* gameName = @"TestGameDemo";
+    NSString* gameVersionName = @"1.0";
+    NSInteger gameVersionCode = 1;
+    
+    NSString *channelRuntimeRootPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, true)[0] stringByAppendingString:@"/CocosRuntime"];
+    [ChannelConfig setCocosRuntimeRootPath: channelRuntimeRootPath];
+    
+    GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName withVersionName:gameVersionName withVersionCode:gameVersionCode];
+    [CocosRuntime startPreRuntime:gameInfo proxy:self];
+    
     if(self.delegate) {
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
@@ -136,6 +154,17 @@ static CocosAppDelegate s_application;
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
     NSLog(@"game_engine_send_msg:%@", jsonObj);
+}
+
+- (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
+{
+    NSLog(@"===> onLoadingProgress: progress:%ld isFailed:%d", (long)progress, isFailed);
+}
+
+- (void) onPreRunGameCompleted
+{
+    NSLog(@"===> onPreRunGameCompleted");
+    [CocosRuntimeGroup preloadResGroups:@"docs:examples:src" delegate:self];
 }
 
 - (void)testEngineProxy
