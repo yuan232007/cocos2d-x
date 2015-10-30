@@ -7,31 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB0508B01BE1BB9C00EB8FC7 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0508AF1BE1BB9C00EB8FC7 /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
-		BB0508B11BE1BB9C00EB8FC7 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0508AF1BE1BB9C00EB8FC7 /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
-		BB0508B41BE1BE4900EB8FC7 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0508B31BE1BE4900EB8FC7 /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB0508B51BE1BE4900EB8FC7 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0508B31BE1BE4900EB8FC7 /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB61121D1BE1F87400DED5D2 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB61121C1BE1F87400DED5D2 /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
-		BB61121E1BE1F87400DED5D2 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB61121C1BE1F87400DED5D2 /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
-		BB6112211BE20E1400DED5D2 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6112201BE20E1400DED5D2 /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
-		BB6112221BE20E1400DED5D2 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6112201BE20E1400DED5D2 /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC721BE063C800445760 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC711BE063C800445760 /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC731BE063C900445760 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC711BE063C800445760 /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC7A1BE068E900445760 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC791BE068E900445760 /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC7B1BE068E900445760 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC791BE068E900445760 /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC7E1BE06FB000445760 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC7D1BE06FB000445760 /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC7F1BE06FB000445760 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC7D1BE06FB000445760 /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC821BE0A73400445760 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC811BE0A73400445760 /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC831BE0A73400445760 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC811BE0A73400445760 /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC861BE0A8E700445760 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC851BE0A8E700445760 /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC871BE0A8E700445760 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC851BE0A8E700445760 /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC8A1BE0C7D000445760 /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC891BE0C7CF00445760 /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC8B1BE0C7D000445760 /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC891BE0C7CF00445760 /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC8E1BE0CE3900445760 /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC8D1BE0CE3900445760 /* FileDownload.m */; settings = {ASSET_TAGS = (); }; };
-		BB81CC8F1BE0CE3900445760 /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81CC8D1BE0CE3900445760 /* FileDownload.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1361BE355AC0091B4A3 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1371BE355AC0091B4A3 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1381BE355AC0091B4A3 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1391BE355AC0091B4A3 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B13A1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B13B1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B13C1BE355AC0091B4A3 /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1241BE355AC0091B4A3 /* FileDownload.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B13D1BE355AC0091B4A3 /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1241BE355AC0091B4A3 /* FileDownload.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B13E1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B13F1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1401BE355AC0091B4A3 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1291BE355AC0091B4A3 /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1411BE355AC0091B4A3 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1291BE355AC0091B4A3 /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1421BE355AC0091B4A3 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12B1BE355AC0091B4A3 /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1431BE355AC0091B4A3 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12B1BE355AC0091B4A3 /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1441BE355AC0091B4A3 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12D1BE355AC0091B4A3 /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1451BE355AC0091B4A3 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12D1BE355AC0091B4A3 /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1461BE355AC0091B4A3 /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12F1BE355AC0091B4A3 /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1471BE355AC0091B4A3 /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12F1BE355AC0091B4A3 /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1481BE355AC0091B4A3 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1321BE355AC0091B4A3 /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B1491BE355AC0091B4A3 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1321BE355AC0091B4A3 /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B14A1BE355AC0091B4A3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1331BE355AC0091B4A3 /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
+		BBA9B14B1BE355AC0091B4A3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1331BE355AC0091B4A3 /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
+		BBA9B14C1BE355AC0091B4A3 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1351BE355AC0091B4A3 /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BBA9B14D1BE355AC0091B4A3 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1351BE355AC0091B4A3 /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
 		ED4AB7731BD0E6B7004C4091 /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7721BD0E6B7004C4091 /* ZipHelper.mm */; };
 		ED4AB78B1BD0F923004C4091 /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB78A1BD0F923004C4091 /* zip.cpp */; };
-		ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.cpp */; };
+		ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.mm */; };
 		EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */; };
 		EDAF7CC61BCCABF40032B305 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CAB1BCCA9DC0032B305 /* libcocos2d iOS.a */; };
 		EDAF7CC71BCCABF70032B305 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CB41BCCA9FF0032B305 /* libjscocos2d iOS.a */; };
@@ -49,6 +51,10 @@
 		EDAF7CE51BCCD1450032B305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */; };
 		EDAF7CE71BCCD1E50032B305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
 		EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
+		EDC9C4E21BE06A3E000C45FE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9C4E11BE06A3E000C45FE /* Reachability.m */; };
+		EDC9C4E31BE06A42000C45FE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9C4E11BE06A3E000C45FE /* Reachability.m */; };
+		EDC9C4E51BE06C2F000C45FE /* NetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDC9C4E41BE06C2F000C45FE /* NetworkHelper.mm */; };
+		EDC9C4E61BE06C2F000C45FE /* NetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDC9C4E41BE06C2F000C45FE /* NetworkHelper.mm */; };
 		EDEFF3EE1BDE234D00042063 /* MD5Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */; };
 		EDF396B81BDA2833000885AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396B71BDA2833000885AB /* main.m */; };
 		EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396BA1BDA2833000885AB /* AppDelegate.m */; };
@@ -57,7 +63,7 @@
 		EDF396C31BDA2833000885AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF396C21BDA2833000885AB /* Assets.xcassets */; };
 		EDF396C61BDA2833000885AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF396C41BDA2833000885AB /* LaunchScreen.storyboard */; };
 		EDF396D11BDA28EC000885AB /* MttGameEngineFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396D01BDA28EC000885AB /* MttGameEngineFramework.m */; };
-		EDF396D21BDA2922000885AB /* jsb_cocosruntime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.cpp */; };
+		EDF396D21BDA2922000885AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.mm */; };
 		EDF396D31BDA2926000885AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB78A1BD0F923004C4091 /* zip.cpp */; };
 		EDF396D41BDA292A000885AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7721BD0E6B7004C4091 /* ZipHelper.mm */; };
 		EDF396D51BDA292E000885AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */; };
@@ -155,30 +161,31 @@
 /* Begin PBXFileReference section */
 		802BF5241B945662008C45C2 /* CocosJSRuntime.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = CocosJSRuntime.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8059FC971BB0F5BB009354CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		BB0508AE1BE1BB9C00EB8FC7 /* FileDownloadAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownloadAdapter.h; path = sdk/FileDownloadAdapter.h; sourceTree = "<group>"; };
-		BB0508AF1BE1BB9C00EB8FC7 /* FileDownloadAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDownloadAdapter.m; path = sdk/FileDownloadAdapter.m; sourceTree = "<group>"; };
-		BB0508B21BE1BE4900EB8FC7 /* CocosRuntimeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosRuntimeGroup.h; path = sdk/CocosRuntimeGroup.h; sourceTree = "<group>"; };
-		BB0508B31BE1BE4900EB8FC7 /* CocosRuntimeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosRuntimeGroup.m; path = sdk/CocosRuntimeGroup.m; sourceTree = "<group>"; };
-		BB61121A1BE1C8A200DED5D2 /* LoadingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingDelegate.h; path = sdk/LoadingDelegate.h; sourceTree = "<group>"; };
-		BB61121B1BE1F87400DED5D2 /* PreRunGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreRunGame.h; path = sdk/PreRunGame.h; sourceTree = "<group>"; };
-		BB61121C1BE1F87400DED5D2 /* PreRunGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreRunGame.m; path = sdk/PreRunGame.m; sourceTree = "<group>"; };
-		BB61121F1BE20E1400DED5D2 /* CocosRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosRuntime.h; path = sdk/CocosRuntime.h; sourceTree = "<group>"; };
-		BB6112201BE20E1400DED5D2 /* CocosRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosRuntime.m; path = sdk/CocosRuntime.m; sourceTree = "<group>"; };
-		BB81CC701BE063C800445760 /* ChannelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelConfig.h; path = sdk/ChannelConfig.h; sourceTree = "<group>"; };
-		BB81CC711BE063C800445760 /* ChannelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelConfig.m; path = sdk/ChannelConfig.m; sourceTree = "<group>"; };
-		BB81CC781BE068E900445760 /* GameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameInfo.h; path = sdk/GameInfo.h; sourceTree = "<group>"; };
-		BB81CC791BE068E900445760 /* GameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameInfo.m; path = sdk/GameInfo.m; sourceTree = "<group>"; };
-		BB81CC7C1BE06FB000445760 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameConfig.h; path = sdk/GameConfig.h; sourceTree = "<group>"; };
-		BB81CC7D1BE06FB000445760 /* GameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameConfig.m; path = sdk/GameConfig.m; sourceTree = "<group>"; };
-		BB81CC801BE0A73400445760 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtil.h; path = sdk/FileUtil.h; sourceTree = "<group>"; };
-		BB81CC811BE0A73400445760 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUtil.m; path = sdk/FileUtil.m; sourceTree = "<group>"; };
-		BB81CC841BE0A8E700445760 /* ResGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResGroup.h; path = sdk/ResGroup.h; sourceTree = "<group>"; };
-		BB81CC851BE0A8E700445760 /* ResGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResGroup.m; path = sdk/ResGroup.m; sourceTree = "<group>"; };
-		BB81CC881BE0C7CF00445760 /* GameManifest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManifest.h; path = sdk/GameManifest.h; sourceTree = "<group>"; };
-		BB81CC891BE0C7CF00445760 /* GameManifest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManifest.m; path = sdk/GameManifest.m; sourceTree = "<group>"; };
-		BB81CC8C1BE0CE3900445760 /* FileDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownload.h; path = sdk/FileDownload.h; sourceTree = "<group>"; };
-		BB81CC8D1BE0CE3900445760 /* FileDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDownload.m; path = sdk/FileDownload.m; sourceTree = "<group>"; };
-		BB81CC901BE0CEA900445760 /* FileDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownloadDelegate.h; path = sdk/FileDownloadDelegate.h; sourceTree = "<group>"; };
+		BBA9B11D1BE355AC0091B4A3 /* ChannelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelConfig.h; sourceTree = "<group>"; };
+		BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelConfig.m; sourceTree = "<group>"; };
+		BBA9B11F1BE355AC0091B4A3 /* CocosRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosRuntime.h; sourceTree = "<group>"; };
+		BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntime.m; sourceTree = "<group>"; };
+		BBA9B1211BE355AC0091B4A3 /* CocosRuntimeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosRuntimeGroup.h; sourceTree = "<group>"; };
+		BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntimeGroup.m; sourceTree = "<group>"; };
+		BBA9B1231BE355AC0091B4A3 /* FileDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownload.h; sourceTree = "<group>"; };
+		BBA9B1241BE355AC0091B4A3 /* FileDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownload.m; sourceTree = "<group>"; };
+		BBA9B1251BE355AC0091B4A3 /* FileDownloadAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadAdapter.h; sourceTree = "<group>"; };
+		BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadAdapter.m; sourceTree = "<group>"; };
+		BBA9B1271BE355AC0091B4A3 /* FileDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadDelegate.h; sourceTree = "<group>"; };
+		BBA9B1281BE355AC0091B4A3 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
+		BBA9B1291BE355AC0091B4A3 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
+		BBA9B12A1BE355AC0091B4A3 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		BBA9B12B1BE355AC0091B4A3 /* GameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConfig.m; sourceTree = "<group>"; };
+		BBA9B12C1BE355AC0091B4A3 /* GameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameInfo.h; sourceTree = "<group>"; };
+		BBA9B12D1BE355AC0091B4A3 /* GameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameInfo.m; sourceTree = "<group>"; };
+		BBA9B12E1BE355AC0091B4A3 /* GameManifest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManifest.h; sourceTree = "<group>"; };
+		BBA9B12F1BE355AC0091B4A3 /* GameManifest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManifest.m; sourceTree = "<group>"; };
+		BBA9B1301BE355AC0091B4A3 /* LoadingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingDelegate.h; sourceTree = "<group>"; };
+		BBA9B1311BE355AC0091B4A3 /* PreRunGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreRunGame.h; sourceTree = "<group>"; };
+		BBA9B1321BE355AC0091B4A3 /* PreRunGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreRunGame.m; sourceTree = "<group>"; };
+		BBA9B1331BE355AC0091B4A3 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BBA9B1341BE355AC0091B4A3 /* ResGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResGroup.h; sourceTree = "<group>"; };
+		BBA9B1351BE355AC0091B4A3 /* ResGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResGroup.m; sourceTree = "<group>"; };
 		D50C68411BC64F9F00655E6E /* MttGameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngine.h; sourceTree = "<group>"; };
 		D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineDelegate.h; sourceTree = "<group>"; };
 		D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFactory.h; sourceTree = "<group>"; };
@@ -187,7 +194,7 @@
 		ED4AB7721BD0E6B7004C4091 /* ZipHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipHelper.mm; sourceTree = "<group>"; };
 		ED4AB7811BD0F6EA004C4091 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		ED4AB78A1BD0F923004C4091 /* zip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zip.cpp; sourceTree = "<group>"; };
-		ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_cocosruntime.cpp; sourceTree = "<group>"; };
+		ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jsb_cocosruntime.mm; sourceTree = "<group>"; };
 		ED4AB7A31BD4FD5E004C4091 /* jsb_cocosruntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocosruntime.h; sourceTree = "<group>"; };
 		EDAF7CA31BCCA9DC0032B305 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		EDAF7CAC1BCCA9FF0032B305 /* cocos2d_js_bindings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_js_bindings.xcodeproj; path = "../cocos/scripting/js-bindings/proj.ios_mac/cocos2d_js_bindings.xcodeproj"; sourceTree = "<group>"; };
@@ -207,6 +214,11 @@
 		EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EDAF7CE61BCCD1E50032B305 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EDC9C4DD1BE0683E000C45FE /* libsystem_configuration.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsystem_configuration.tbd; path = usr/lib/system/libsystem_configuration.tbd; sourceTree = SDKROOT; };
+		EDC9C4E01BE06A3E000C45FE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = network/Reachability.h; sourceTree = "<group>"; };
+		EDC9C4E11BE06A3E000C45FE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = network/Reachability.m; sourceTree = "<group>"; };
+		EDC9C4E41BE06C2F000C45FE /* NetworkHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NetworkHelper.mm; path = network/NetworkHelper.mm; sourceTree = "<group>"; };
+		EDC9C4E71BE06C65000C45FE /* NetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkHelper.h; path = network/NetworkHelper.h; sourceTree = "<group>"; };
 		EDEFF3EC1BDE234D00042063 /* MD5Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Calculator.h; sourceTree = "<group>"; };
 		EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Calculator.m; sourceTree = "<group>"; };
 		EDF396B41BDA2832000885AB /* JSRuntimeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSRuntimeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,10 +308,11 @@
 		802BF5261B945662008C45C2 /* CocosJSRuntime */ = {
 			isa = PBXGroup;
 			children = (
+				BBA9B11C1BE355AC0091B4A3 /* sdk */,
+				EDC9C4DA1BE06785000C45FE /* network */,
 				EDEFF3EC1BDE234D00042063 /* MD5Calculator.h */,
 				EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */,
-				EDEFF3B21BDE0BF700042063 /* sdk */,
-				ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.cpp */,
+				ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.mm */,
 				ED4AB7A31BD4FD5E004C4091 /* jsb_cocosruntime.h */,
 				ED4AB78A1BD0F923004C4091 /* zip.cpp */,
 				ED4AB7811BD0F6EA004C4091 /* zip.h */,
@@ -315,6 +328,38 @@
 				D50C68461BC64F9F00655E6E /* MttGameEngineProtocol.h */,
 			);
 			path = CocosJSRuntime;
+			sourceTree = "<group>";
+		};
+		BBA9B11C1BE355AC0091B4A3 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				BBA9B11D1BE355AC0091B4A3 /* ChannelConfig.h */,
+				BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */,
+				BBA9B11F1BE355AC0091B4A3 /* CocosRuntime.h */,
+				BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */,
+				BBA9B1211BE355AC0091B4A3 /* CocosRuntimeGroup.h */,
+				BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */,
+				BBA9B1231BE355AC0091B4A3 /* FileDownload.h */,
+				BBA9B1241BE355AC0091B4A3 /* FileDownload.m */,
+				BBA9B1251BE355AC0091B4A3 /* FileDownloadAdapter.h */,
+				BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */,
+				BBA9B1271BE355AC0091B4A3 /* FileDownloadDelegate.h */,
+				BBA9B1281BE355AC0091B4A3 /* FileUtil.h */,
+				BBA9B1291BE355AC0091B4A3 /* FileUtil.m */,
+				BBA9B12A1BE355AC0091B4A3 /* GameConfig.h */,
+				BBA9B12B1BE355AC0091B4A3 /* GameConfig.m */,
+				BBA9B12C1BE355AC0091B4A3 /* GameInfo.h */,
+				BBA9B12D1BE355AC0091B4A3 /* GameInfo.m */,
+				BBA9B12E1BE355AC0091B4A3 /* GameManifest.h */,
+				BBA9B12F1BE355AC0091B4A3 /* GameManifest.m */,
+				BBA9B1301BE355AC0091B4A3 /* LoadingDelegate.h */,
+				BBA9B1311BE355AC0091B4A3 /* PreRunGame.h */,
+				BBA9B1321BE355AC0091B4A3 /* PreRunGame.m */,
+				BBA9B1331BE355AC0091B4A3 /* Reachability.swift */,
+				BBA9B1341BE355AC0091B4A3 /* ResGroup.h */,
+				BBA9B1351BE355AC0091B4A3 /* ResGroup.m */,
+			);
+			path = sdk;
 			sourceTree = "<group>";
 		};
 		EDAF7CA41BCCA9DC0032B305 /* Products */ = {
@@ -335,9 +380,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EDC9C4DA1BE06785000C45FE /* network */ = {
+			isa = PBXGroup;
+			children = (
+				EDC9C4E71BE06C65000C45FE /* NetworkHelper.h */,
+				EDC9C4E41BE06C2F000C45FE /* NetworkHelper.mm */,
+				EDC9C4E01BE06A3E000C45FE /* Reachability.h */,
+				EDC9C4E11BE06A3E000C45FE /* Reachability.m */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
 		EDCA007D1BCF87C0006842D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDC9C4DD1BE0683E000C45FE /* libsystem_configuration.tbd */,
 				8059FC971BB0F5BB009354CE /* Foundation.framework */,
 				EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */,
 				EDAF7CE61BCCD1E50032B305 /* UIKit.framework */,
@@ -360,37 +417,6 @@
 				EDAF7CC81BCCB4340032B305 /* libiconv.tbd */,
 			);
 			name = DependentLibs;
-			sourceTree = "<group>";
-		};
-		EDEFF3B21BDE0BF700042063 /* sdk */ = {
-			isa = PBXGroup;
-			children = (
-				BB61121A1BE1C8A200DED5D2 /* LoadingDelegate.h */,
-				BB81CC781BE068E900445760 /* GameInfo.h */,
-				BB81CC791BE068E900445760 /* GameInfo.m */,
-				BB81CC701BE063C800445760 /* ChannelConfig.h */,
-				BB81CC711BE063C800445760 /* ChannelConfig.m */,
-				BB81CC7C1BE06FB000445760 /* GameConfig.h */,
-				BB81CC7D1BE06FB000445760 /* GameConfig.m */,
-				BB81CC801BE0A73400445760 /* FileUtil.h */,
-				BB81CC811BE0A73400445760 /* FileUtil.m */,
-				BB81CC841BE0A8E700445760 /* ResGroup.h */,
-				BB81CC851BE0A8E700445760 /* ResGroup.m */,
-				BB81CC881BE0C7CF00445760 /* GameManifest.h */,
-				BB81CC891BE0C7CF00445760 /* GameManifest.m */,
-				BB81CC8C1BE0CE3900445760 /* FileDownload.h */,
-				BB81CC8D1BE0CE3900445760 /* FileDownload.m */,
-				BB81CC901BE0CEA900445760 /* FileDownloadDelegate.h */,
-				BB0508AE1BE1BB9C00EB8FC7 /* FileDownloadAdapter.h */,
-				BB0508AF1BE1BB9C00EB8FC7 /* FileDownloadAdapter.m */,
-				BB0508B21BE1BE4900EB8FC7 /* CocosRuntimeGroup.h */,
-				BB0508B31BE1BE4900EB8FC7 /* CocosRuntimeGroup.m */,
-				BB61121B1BE1F87400DED5D2 /* PreRunGame.h */,
-				BB61121C1BE1F87400DED5D2 /* PreRunGame.m */,
-				BB61121F1BE20E1400DED5D2 /* CocosRuntime.h */,
-				BB6112201BE20E1400DED5D2 /* CocosRuntime.m */,
-			);
-			name = sdk;
 			sourceTree = "<group>";
 		};
 		EDF396B51BDA2833000885AB /* JSRuntimeTest */ = {
@@ -559,24 +585,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB81CC861BE0A8E700445760 /* ResGroup.m in Sources */,
-				BB81CC821BE0A73400445760 /* FileUtil.m in Sources */,
-				BB61121D1BE1F87400DED5D2 /* PreRunGame.m in Sources */,
-				BB81CC8A1BE0C7D000445760 /* GameManifest.m in Sources */,
+				BBA9B1401BE355AC0091B4A3 /* FileUtil.m in Sources */,
 				EDEFF3EE1BDE234D00042063 /* MD5Calculator.m in Sources */,
+				BBA9B13E1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */,
+				BBA9B1481BE355AC0091B4A3 /* PreRunGame.m in Sources */,
 				EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */,
-				BB81CC7E1BE06FB000445760 /* GameConfig.m in Sources */,
+				BBA9B13A1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */,
+				EDC9C4E21BE06A3E000C45FE /* Reachability.m in Sources */,
+				BBA9B1461BE355AC0091B4A3 /* GameManifest.m in Sources */,
+				BBA9B1381BE355AC0091B4A3 /* CocosRuntime.m in Sources */,
+				BBA9B1441BE355AC0091B4A3 /* GameInfo.m in Sources */,
+				BBA9B1421BE355AC0091B4A3 /* GameConfig.m in Sources */,
+				BBA9B14C1BE355AC0091B4A3 /* ResGroup.m in Sources */,
+				BBA9B13C1BE355AC0091B4A3 /* FileDownload.m in Sources */,
+				BBA9B1361BE355AC0091B4A3 /* ChannelConfig.m in Sources */,
 				EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */,
 				EDAF7CDE1BCCB6B90032B305 /* MttGameEngineFactory.mm in Sources */,
-				ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.cpp in Sources */,
-				BB81CC8E1BE0CE3900445760 /* FileDownload.m in Sources */,
-				BB6112211BE20E1400DED5D2 /* CocosRuntime.m in Sources */,
+				ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.mm in Sources */,
 				ED4AB78B1BD0F923004C4091 /* zip.cpp in Sources */,
 				ED4AB7731BD0E6B7004C4091 /* ZipHelper.mm in Sources */,
-				BB0508B01BE1BB9C00EB8FC7 /* FileDownloadAdapter.m in Sources */,
-				BB81CC7A1BE068E900445760 /* GameInfo.m in Sources */,
-				BB0508B41BE1BE4900EB8FC7 /* CocosRuntimeGroup.m in Sources */,
-				BB81CC721BE063C800445760 /* ChannelConfig.m in Sources */,
+				BBA9B14A1BE355AC0091B4A3 /* Reachability.swift in Sources */,
+				EDC9C4E51BE06C2F000C45FE /* NetworkHelper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,27 +613,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB81CC871BE0A8E700445760 /* ResGroup.m in Sources */,
 				EDF396D71BDA293A000885AB /* MttGameEngineFactory.mm in Sources */,
+				BBA9B13F1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */,
+				BBA9B13D1BE355AC0091B4A3 /* FileDownload.m in Sources */,
 				EDF396D41BDA292A000885AB /* ZipHelper.mm in Sources */,
-				BB81CC8F1BE0CE3900445760 /* FileDownload.m in Sources */,
-				BB81CC7F1BE06FB000445760 /* GameConfig.m in Sources */,
+				BBA9B13B1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */,
+				BBA9B1371BE355AC0091B4A3 /* ChannelConfig.m in Sources */,
 				EDF396BE1BDA2833000885AB /* ViewController.m in Sources */,
-				BB81CC731BE063C900445760 /* ChannelConfig.m in Sources */,
-				BB0508B11BE1BB9C00EB8FC7 /* FileDownloadAdapter.m in Sources */,
-				BB0508B51BE1BE4900EB8FC7 /* CocosRuntimeGroup.m in Sources */,
+				EDC9C4E31BE06A42000C45FE /* Reachability.m in Sources */,
 				EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */,
+				BBA9B1491BE355AC0091B4A3 /* PreRunGame.m in Sources */,
+				BBA9B1391BE355AC0091B4A3 /* CocosRuntime.m in Sources */,
+				BBA9B1431BE355AC0091B4A3 /* GameConfig.m in Sources */,
+				BBA9B1451BE355AC0091B4A3 /* GameInfo.m in Sources */,
 				EDF396D11BDA28EC000885AB /* MttGameEngineFramework.m in Sources */,
 				EDF396D51BDA292E000885AB /* CocosDelegate.cpp in Sources */,
+				BBA9B14B1BE355AC0091B4A3 /* Reachability.swift in Sources */,
 				EDF396D31BDA2926000885AB /* zip.cpp in Sources */,
+				BBA9B1471BE355AC0091B4A3 /* GameManifest.m in Sources */,
+				EDC9C4E61BE06C2F000C45FE /* NetworkHelper.mm in Sources */,
 				EDF396B81BDA2833000885AB /* main.m in Sources */,
-				EDF396D21BDA2922000885AB /* jsb_cocosruntime.cpp in Sources */,
-				BB6112221BE20E1400DED5D2 /* CocosRuntime.m in Sources */,
-				BB81CC7B1BE068E900445760 /* GameInfo.m in Sources */,
-				BB81CC831BE0A73400445760 /* FileUtil.m in Sources */,
-				BB81CC8B1BE0C7D000445760 /* GameManifest.m in Sources */,
+				BBA9B14D1BE355AC0091B4A3 /* ResGroup.m in Sources */,
+				BBA9B1411BE355AC0091B4A3 /* FileUtil.m in Sources */,
+				EDF396D21BDA2922000885AB /* jsb_cocosruntime.mm in Sources */,
 				EDF396D61BDA2933000885AB /* MttGameEngine.mm in Sources */,
-				BB61121E1BE1F87400DED5D2 /* PreRunGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +703,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -713,7 +745,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -735,7 +767,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -750,14 +781,16 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.runtime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.JSRuntime;
 				PRODUCT_NAME = CocosJSRuntime;
 				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "CocosJSRuntime-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 				VALID_ARCHS = "arm64 armv7 i386";
@@ -768,7 +801,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -783,14 +815,16 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.runtime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.JSRuntime;
 				PRODUCT_NAME = CocosJSRuntime;
 				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "CocosJSRuntime-Swift.h";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 				VALID_ARCHS = "arm64 armv7 i386";
 			};
@@ -814,10 +848,12 @@
 				INFOPLIST_FILE = JSRuntimeTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocos.JSRuntimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "./CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "./CocosJSRuntime-Swift.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 			};
@@ -839,10 +875,12 @@
 				INFOPLIST_FILE = JSRuntimeTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocos.JSRuntimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "./CocosJSRuntime/CocosJSRuntime-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "./CocosJSRuntime-Swift.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/base $(SRCROOT)/../cocos/2d $(SRCROOT)/../cocos/gui $(SRCROOT)/../cocos/network $(SRCROOT)/../cocos/audio/include $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../cocos/scripting/js-bindings/auto $(SRCROOT)/../cocos/scripting/js-bindings/manual $(SRCROOT)/../cocos/platform/ios $(SRCROOT)/../external/spidermonkey/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../cocos/platform";
 			};

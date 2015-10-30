@@ -15,8 +15,6 @@
 
 - (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
 - (void) onPreRunGameCompleted;
-- (void) onGroupPreloadCompleted;
-
 @end
 
 #endif

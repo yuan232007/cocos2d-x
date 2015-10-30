@@ -1,11 +1,3 @@
-//
-//  MttGameRuntimeBase.h
-//  mtt
-//
-//  Created by stevencai on 15/9/29.
-//  Copyright (c) 2015年 Tencent. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MttGameEngineDelegate.h"
@@ -19,7 +11,7 @@
 
 /**
  * 游戏开始加载的时候发的消息
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_LOAD_GAME_START
  * }
@@ -28,7 +20,7 @@
 
 /**
  * 游戏加载结束的时候发的消息
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_LOAD_GAME_END
  * }
@@ -37,7 +29,7 @@
 
 /**
  * 游戏加载过程中发的消息
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_GAME_LOADING_PROGRESS,
  * "progress" : 下载的进度的百分比, String类型
@@ -48,7 +40,7 @@
 
 /**
  * 网络出错,收到这个消息是,x5会弹出是否重新加载的对话框
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_NETWORK_ERR
  * }
@@ -57,7 +49,7 @@
 
 /**
  * 存储空间满，收到这个消息是,x5会弹框，提示用户
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_STORAGE_FULL
  * }
@@ -67,7 +59,7 @@
 /**
  * runtime校验失败
  * 用过可能会修改runtime文件，导致校验失败。
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_RUNTIME_CHECK_FAIL
  * }
@@ -77,7 +69,7 @@
 /**
  * 游戏资源校验失败
  * 下载游戏资源是出现问题，runtime这时会重新下在游戏资源
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_GAME_RES_CHECK_FAIL
  * }
@@ -87,7 +79,7 @@
 /**
  * 需要更新runtime
  * 可能出现游戏需要特定版本的runtime, runtime通过这个消息去通知浏览器更新最新的runtime
- * 调用x5_send_msg(JSONObject jsonObj), JSONObject包括如下信息
+ * 调用x5GamePlayer_send_msg(JSONObject jsonObj), JSONObject包括如下信息
  * {
  * "type" : MSG_ON_NEED_UPDATE_GE
  * }

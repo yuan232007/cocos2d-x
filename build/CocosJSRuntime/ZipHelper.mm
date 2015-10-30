@@ -1,3 +1,9 @@
+//
+//  ZipHelper.mm
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #import "ZipHelper.h"
 #import "zip.h"
 #import "zlib.h"
@@ -61,21 +67,21 @@
 }
 
 #pragma mark - Unzipping
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination {
     
-    return [self unzipFileAtPath:path
+    return [self unzipFileAtPath:zipFilePath
                    toDestination:destination
                         delegate:nil];
 }
 
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination
               overwrite:(BOOL)overwrite
                password:(NSString *)password
                   error:(NSError *)error {
     
-    return [self unzipFileAtPath:path
+    return [self unzipFileAtPath:zipFilePath
                    toDestination:destination
                        overwrite:overwrite
                         password:password
@@ -85,11 +91,11 @@
                completionHandler:nil];
 }
 
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination
                delegate:(id<ZipArchiveDelegate>)delegate {
     
-    return [self unzipFileAtPath:path
+    return [self unzipFileAtPath:zipFilePath
                    toDestination:destination
                        overwrite:YES
                         password:nil
@@ -99,14 +105,14 @@
                completionHandler:nil];
 }
 
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination
               overwrite:(BOOL)overwrite
                password:(NSString *)password
                   error:(NSError *)error
                delegate:(id<ZipArchiveDelegate>)delegate {
     
-    return [self unzipFileAtPath:path
+    return [self unzipFileAtPath:zipFilePath
                    toDestination:destination
                        overwrite:overwrite
                         password:password
@@ -116,14 +122,14 @@
                completionHandler:nil];
 }
 
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination
               overwrite:(BOOL)overwrite
                password:(NSString *)password
         progressHandler:(void (^)(NSString *entry, unz_file_info zipInfo, long entryNumber, long total))progressHandler
-      completionHandler:(void (^)(NSString *path, BOOL succeeded, NSError *error))completionHandler {
+      completionHandler:(void (^)(NSString *zipFilePath, BOOL succeeded, NSError *error))completionHandler {
     
-    return [self unzipFileAtPath:path
+    return [self unzipFileAtPath:zipFilePath
                    toDestination:destination
                        overwrite:overwrite
                         password:password
@@ -133,22 +139,24 @@
                completionHandler:completionHandler];
 }
 
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination
-        progressHandler:(void (^)(NSString *entry, unz_file_info zipInfo, long entryNumber, long total))progressHandler
+        progressHandler:(void (^)(NSString *entry, long entryNumber, long total))progressHandler
       completionHandler:(void (^)(NSString *path, BOOL succeeded, NSError *error))completionHandler {
     
-    return [self unzipFileAtPath:path
+    return [self unzipFileAtPath:zipFilePath
                    toDestination:destination
                        overwrite:YES
                         password:nil
                            error:nil
                         delegate:nil
-                 progressHandler:progressHandler
+                 progressHandler:^(NSString *entry, unz_file_info zipInfo,long entryNumber, long total){
+                     progressHandler(entry, entryNumber, total);
+                 }
                completionHandler:completionHandler];
 }
 
-+ (BOOL)unzipFileAtPath:(NSString *)path
++ (BOOL)unzipFileAtPath:(NSString *)zipFilePath
           toDestination:(NSString *)destination
               overwrite:(BOOL)overwrite
                password:(NSString *)password
@@ -158,7 +166,7 @@
       completionHandler:(void (^)(NSString *path, BOOL succeeded, NSError *error))completionHandler {
     
     // Prepare Unzip Operations
-    zipFile zip = unzOpen((const char*)[path UTF8String]);
+    zipFile zip = unzOpen((const char*)[zipFilePath UTF8String]);
     
     if (NULL == zip) {
         NSDictionary *userInformation = @{NSLocalizedDescriptionKey: @"Failed to unzip file"};
@@ -175,7 +183,7 @@
         return NO;
     }
     
-    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:zipFilePath error:nil];
     unsigned long long fileSize = [fileAttributes[NSFileSize] unsignedLongLongValue];
     unsigned long long currentPosition = 0;
     
@@ -210,7 +218,7 @@
 
     // Message Delegate
     if ([delegate respondsToSelector:@selector(zipArchiveWillUnzipArchiveAtPath:zipInformation:)]) {
-        [delegate zipArchiveWillUnzipArchiveAtPath:path
+        [delegate zipArchiveWillUnzipArchiveAtPath:zipFilePath
                                     zipInformation:globalInfo];
     }
     
@@ -254,7 +262,7 @@
                 
                 if (![delegate zipArchiveShouldUnzipFileAtIndex:currentFileNumber
                                                      totalFiles:(NSInteger)globalInfo.number_entry
-                                                    archivePath:path
+                                                    archivePath:zipFilePath
                                                 fileInformation:fileInfo]) {
                     success = NO;
                     canceled = YES;
@@ -264,7 +272,7 @@
             if ([delegate respondsToSelector:@selector(zipArchiveWillUnzipFileAtIndex:totalFiles:archivePath:fileInformation:)]) {
                 [delegate zipArchiveWillUnzipFileAtIndex:currentFileNumber
                                               totalFiles:(NSInteger)globalInfo.number_entry
-                                             archivePath:path
+                                             archivePath:zipFilePath
                                          fileInformation:fileInfo];
             }
             
@@ -423,13 +431,13 @@
             if ([delegate respondsToSelector:@selector(zipArchiveDidUnzipFileAtIndex:totalFiles:archivePath:fileInformation:)]) {
                 [delegate zipArchiveDidUnzipFileAtIndex:currentFileNumber
                                              totalFiles:(NSInteger)globalInfo.number_entry
-                                            archivePath:path
+                                            archivePath:zipFilePath
                                         fileInformation:fileInfo];
                 
             } else if ([delegate respondsToSelector: @selector(zipArchiveDidUnzipFileAtIndex:totalFiles:archivePath:unzippedFilePath:)]) {
                 [delegate zipArchiveDidUnzipFileAtIndex:currentFileNumber
                                              totalFiles:(NSInteger)globalInfo.number_entry
-                                            archivePath:path
+                                            archivePath:zipFilePath
                                        unzippedFilePath:fullPath];
             }
             
@@ -463,7 +471,7 @@
     
     // Message Delegate
     if (success && [delegate respondsToSelector:@selector(zipArchiveDidUnzipArchiveAtPath:zipInformation:unzippedPath:)]) {
-        [delegate zipArchiveDidUnzipArchiveAtPath:path zipInformation:globalInfo unzippedPath:destination];
+        [delegate zipArchiveDidUnzipArchiveAtPath:zipFilePath zipInformation:globalInfo unzippedPath:destination];
     }
     
     // final progress event = 100%
@@ -472,7 +480,7 @@
     }
     
     if (completionHandler) {
-        completionHandler(path, YES, nil);
+        completionHandler(zipFilePath, YES, nil);
     }
     
     return success;

@@ -1,3 +1,9 @@
+//
+//  MttGameEngine.mm
+//  CocosJSRuntime
+//
+//  Created by WenhaiLin on 15/10/19.
+//
 #import "MttGameEngine.h"
 
 #include "ScriptingCore.h"
@@ -16,7 +22,9 @@ using namespace CocosDenshion;
 static CocosAppDelegate s_application;
 
 @interface MttGameEngine()
+
 @property (nonatomic, weak) id<MttGameEngineDelegate> delegate;
+
 @end
 
 @implementation MttGameEngine
@@ -36,13 +44,35 @@ static CocosAppDelegate s_application;
     [ChannelConfig setCocosRuntimeRootPath: channelRuntimeRootPath];
     
     GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName withVersionName:gameVersionName withVersionCode:gameVersionCode];
-    MttGameEngine* a = self;
-    [CocosRuntime startPreRuntime:gameInfo proxy:a];
+    [CocosRuntime startPreRuntime:gameInfo proxy:self];
+    
+    if(self.delegate) {
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
+        
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
+          @"1", @"progress",
+          @"102400", @"size",
+          nil]];
+        
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
+    }
 }
 
 //得到用于显示的view
 - (UIView*)game_engine_get_view;
 {
+    /*
+    if ([orientationConfig  isEqual: @"d"]) {
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    } else {
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    }*/
+    
     auto orientation = [UIApplication sharedApplication].statusBarOrientation;
     auto screenSize = [UIScreen mainScreen].bounds.size;
     
@@ -101,11 +131,8 @@ static CocosAppDelegate s_application;
 - (void)game_engine_set_runtime_proxy:(id<MttGameEngineDelegate>)proxy
 {
     self.delegate = proxy;
-    NSLog(@"game_engine_set_runtime_proxy");
     
-    if (self.delegate) {
-        //[self testEngineProxy];
-    } else {
+    if (self.delegate == nil) {
         NSLog(@"game_engine_set_runtime_proxy error, nil");
     }
 }
@@ -113,7 +140,7 @@ static CocosAppDelegate s_application;
 //调用某个方法， method为方法名， bundle存有方法所用的参数
 - (void)game_engine_invoke_method:(NSString*)method bundle:(NSDictionary*)bundle
 {
-    NSLog(@"game_engine_invoke_method");
+    NSLog(@"game_engine_invoke_method: %@  bundle:%@", method, bundle);
 }
 
 //获取游戏引擎key所对应的的值
@@ -126,7 +153,7 @@ static CocosAppDelegate s_application;
 //x5通过这个接口发送消息给game engine
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
-    NSLog(@"game_engine_send_msg");
+    NSLog(@"game_engine_send_msg:%@", jsonObj);
 }
 
 - (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
