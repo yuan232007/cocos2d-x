@@ -37,13 +37,11 @@ static CocosAppDelegate s_application;
     NSString* gameDownloadUrl = @"http://192.168.31.236:8888/";
     NSString* gameKey = @"Ryeeeeee";
     NSString* gameName = @"TestGameDemo";
-    NSString* gameVersionName = @"1.0";
-    NSInteger gameVersionCode = 1;
     
     NSString *channelRuntimeRootPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, true)[0] stringByAppendingString:@"/CocosRuntime"];
     [ChannelConfig setCocosRuntimeRootPath: channelRuntimeRootPath];
     
-    GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName withVersionName:gameVersionName withVersionCode:gameVersionCode];
+    GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
     [CocosRuntime startPreRuntime:gameInfo proxy:self];
     
     if(self.delegate) {

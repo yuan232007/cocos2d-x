@@ -10,19 +10,17 @@
 
 @implementation GameInfo
 
-- (GameInfo*) initWithKey:(NSString *)key withUrl:(NSString *)url withName:(NSString *)name withVersionName:(NSString *)versionName withVersionCode:(NSInteger)versionCode
+- (GameInfo*) initWithKey:(NSString *)key withUrl:(NSString *)url withName:(NSString *)name
 {
     if (self = [super init]) {
         gameKey = key;
         downloadUrl = url;
         gameName = name;
-        gameVersionName = versionName;
-        gameVersionCode = versionCode;
     }
     
     return self;
 }
 
-@synthesize gameKey, gameName, gameVersionCode, gameVersionName, downloadUrl;
+@synthesize gameKey, gameName, downloadUrl;
 
 @end

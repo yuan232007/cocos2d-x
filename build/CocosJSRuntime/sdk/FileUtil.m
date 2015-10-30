@@ -67,7 +67,7 @@
 
 + (NSString*) getLocalBootGroupPath:(GameInfo *)info group:(GameConfig *)config
 {
-    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString:[config bootGroupName]];
+    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString:@"boot.cpk"];
 }
 
 + (void) ensureDirectory:(NSString *)path

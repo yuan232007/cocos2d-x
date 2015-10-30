@@ -10,10 +10,10 @@
 
 @implementation GameConfig
 
-@synthesize bootGroupMD5, bootGroupName, descript, designResolutionPolicy, entryMD5, entryName, gameName, gameType, manifestMD5, manifestName, orientation, packageName, projectMD5, projectName, runtimeVersion, security, versionName;
+@synthesize descript, designResolutionPolicy, entryMD5, entryName, gameName, gameType, manifestMD5, manifestName, orientation, packageName, projectMD5, projectName, security, versionName, engine, engineVersion;
 
-@synthesize bootGroupSize, designResolutionHeight, designResolutionWidth, entrySize, manifestSize, projectSize,
-versionCode;
+@synthesize designResolutionHeight, designResolutionWidth, entrySize, manifestSize, projectSize,
+versionCode, toolVersion;
 
 + (GameConfig*) parseFromFile:(NSString *)path
 {
@@ -22,18 +22,15 @@ versionCode;
     NSData *data = [fileManager contentsAtPath: path];
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
-    NSDictionary *bootGroup = [jsonDict objectForKey:@"boot_group"];
-    gameConfig.bootGroupMD5 = [bootGroup objectForKey:@"md5"];
-    
-    gameConfig.bootGroupName = [bootGroup objectForKey:@"name"];
-    gameConfig.bootGroupSize = [[bootGroup objectForKey:@"size"] integerValue];
-    
     gameConfig.descript = [jsonDict objectForKey:@"description"];
     
     NSDictionary *resolution = [jsonDict objectForKey:@"design_resolution"];
     gameConfig.designResolutionHeight = [[resolution objectForKey:@"height"] integerValue];
     gameConfig.designResolutionWidth = [[resolution objectForKey:@"width"] integerValue];
     gameConfig.designResolutionPolicy = [resolution objectForKey:@"policy"];
+    
+    gameConfig.engine = [jsonDict objectForKey:@"engine"];
+    gameConfig.engineVersion = [jsonDict objectForKey:@"engine_version"];
     
     NSDictionary *entry = [jsonDict objectForKey:@"entry_file"];
     gameConfig.entryMD5 = [entry objectForKey:@"md5"];
@@ -56,8 +53,8 @@ versionCode;
     gameConfig.projectName = [project objectForKey:@"name"];
     gameConfig.projectSize = [[project objectForKey:@"size"] integerValue];
     
-    gameConfig.runtimeVersion = [jsonDict objectForKey:@"runtime_version"];
     gameConfig.security = [jsonDict objectForKey:@"security"];
+    gameConfig.toolVersion = [[jsonDict objectForKey:@"tool_version"] integerValue];
     gameConfig.versionCode = [[jsonDict objectForKey:@"version_code"] integerValue];
     gameConfig.versionName = [jsonDict objectForKey:@"verison_name"];
     
