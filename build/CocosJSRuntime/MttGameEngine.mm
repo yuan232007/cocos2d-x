@@ -7,7 +7,9 @@
 #include "audio/include/SimpleAudioEngine.h"
 #include "audio/include/AudioEngine.h"
 
-#import "CocosJSRuntime-swift.h"
+#import "CocosRuntime.h"
+#import "ChannelConfig.h"
+#import "CocosRuntimeGroup.h"
 
 using namespace CocosDenshion;
 
@@ -30,8 +32,12 @@ static CocosAppDelegate s_application;
     NSString* gameVersionName = @"1.0";
     NSInteger gameVersionCode = 1;
     
-    GameInfo* gameInfo = [[GameInfo alloc] initWithGameKey:gameKey downloadUrl:gameDownloadUrl gameName:gameName gameVersionName:gameVersionName gameVersionCode:gameVersionCode];
-    //[CocosRuntime.sharedInstance startPreRunGame:gameInfo];
+    NSString *channelRuntimeRootPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, true)[0] stringByAppendingString:@"/CocosRuntime"];
+    [ChannelConfig setCocosRuntimeRootPath: channelRuntimeRootPath];
+    
+    GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName withVersionName:gameVersionName withVersionCode:gameVersionCode];
+    MttGameEngine* a = self;
+    [CocosRuntime startPreRuntime:gameInfo proxy:a];
 }
 
 //得到用于显示的view
@@ -121,6 +127,17 @@ static CocosAppDelegate s_application;
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
     NSLog(@"game_engine_send_msg");
+}
+
+- (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
+{
+    NSLog(@"===> onLoadingProgress: progress:%ld isFailed:%d", (long)progress, isFailed);
+}
+
+- (void) onPreRunGameCompleted
+{
+    NSLog(@"===> onPreRunGameCompleted");
+    [CocosRuntimeGroup preloadResGroups:@"docs:examples:src" delegate:self];
 }
 
 - (void)testEngineProxy
