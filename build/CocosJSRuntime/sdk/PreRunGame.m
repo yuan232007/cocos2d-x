@@ -9,6 +9,7 @@
 #import "PreRunGame.h"
 #import "FileUtil.h"
 #import "CocosRuntimeGroup.h"
+#import "ZipHelper.h"
 
 #define PROGRESS_MAX 100
 #define PROGRESS_INVALID -1
@@ -77,7 +78,7 @@ static GameConfig* gameConfig = nil;
 + (void) downloadRemoteManifestFile
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:[gameConfig manifestName]];
+        NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:@"manifest.cpk"];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
         FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[ManifestDownloadDelegateImpl alloc] init]];
         [fileDownload startDownload];
@@ -268,15 +269,16 @@ static GameConfig* gameConfig = nil;
 
 - (NSString*) onTempDownloaded:(NSString *)locationPath
 {
-    NSString* targetPath = [FileUtil getLocalManifestPath:gameInfo :gameConfig];
-    NSLog(@"===> new location %@", targetPath);
     @try {
-        [FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]];
-        [FileUtil moveFileFrom:locationPath to:targetPath overwrite:true];
+        NSString* targetPath = [FileUtil getLocalManifestPath:gameInfo :gameConfig];
+        if (![ZipHelper unzipFileAtPath:locationPath toDestination:[FileUtil getGameRootPath:gameInfo]]) {
+            @throw [[NSException alloc] init];
+        }
+        NSLog(@"===> new location %@", targetPath);
         return targetPath;
     }
-    @catch (NSError *error) {
-        NSLog(@"===> move file error");
+    @catch (NSException *exception) {
+        NSLog(@"===> unzip file error");
     }
 }
 
