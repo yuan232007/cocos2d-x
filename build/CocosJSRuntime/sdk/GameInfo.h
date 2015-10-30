@@ -13,12 +13,9 @@
     NSString *gameKey;
     NSString *downloadUrl;
     NSString *gameName;
-    NSString *gameVersionName;
-    NSInteger gameVersionCode;
 }
 
-@property NSString *gameKey, *downloadUrl, *gameName, *gameVersionName;
-@property NSInteger gameVersionCode;
+@property NSString *gameKey, *downloadUrl, *gameName;
 
-- (GameInfo*) initWithKey: (NSString*) key withUrl:(NSString*) url withName:(NSString*) gameName withVersionName:(NSString*) versionName withVersionCode: (NSInteger) versionCode;
+- (GameInfo*) initWithKey: (NSString*) key withUrl:(NSString*) url withName:(NSString*) gameName;
 @end

@@ -179,10 +179,6 @@ static GameConfig* gameConfig = nil;
 
 + (BOOL) isLocalBootGroupMD5Correct
 {
-    NSString *localBootMD5 = [FileUtil getFileMD5:[FileUtil getLocalBootGroupPath:gameInfo group:gameConfig]];
-    if ([localBootMD5 isEqualToString:[gameConfig bootGroupMD5]]) {
-        return true;
-    }
     return false;
 }
 

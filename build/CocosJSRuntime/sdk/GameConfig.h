@@ -10,15 +10,14 @@
 
 @interface GameConfig : NSObject
 {
-    NSString *bootGroupMD5;
-    NSString *bootGroupName;
-    NSInteger bootGroupSize;
-    
     NSString *descript;
     
     NSInteger designResolutionHeight;
     NSString *designResolutionPolicy;
     NSInteger designResolutionWidth;
+    
+    NSString *engine;
+    NSString *engineVersion;
     
     NSString *entryMD5;
     NSString *entryName;
@@ -38,15 +37,15 @@
     NSString *projectName;
     NSInteger projectSize;
     
-    NSString *runtimeVersion;
     NSString *security;
+    NSInteger toolVersion;
     NSInteger versionCode;
     NSString *versionName;
 }
 
-@property NSString *bootGroupMD5, *bootGroupName, *descript, *designResolutionPolicy, *entryMD5, *entryName, *gameName, *gameType, *manifestMD5, *manifestName, *orientation, *packageName, *projectMD5, *projectName, *runtimeVersion, *security, *versionName;
+@property NSString *descript, *designResolutionPolicy, *entryMD5, *entryName, *gameName, *gameType, *manifestMD5, *manifestName, *orientation, *packageName, *projectMD5, *projectName, *security, *versionName, *engine, *engineVersion;
 
-@property NSInteger bootGroupSize, designResolutionHeight, designResolutionWidth, entrySize, manifestSize, projectSize, versionCode;
+@property NSInteger designResolutionHeight, designResolutionWidth, entrySize, manifestSize, projectSize, versionCode, toolVersion;
 
 + (GameConfig*) parseFromFile: (NSString*) path;
 

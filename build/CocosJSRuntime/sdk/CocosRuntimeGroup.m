@@ -38,7 +38,6 @@ static NSInteger downloadGroupSize = 0;
     NSMutableArray* allResGroups = [NSMutableArray arrayWithCapacity:20];
     for (NSDictionary* resGroupDict in gameManifest.resGroupArray) {
         ResGroup* resGroup = [[ResGroup alloc] init];
-        [resGroup setGroupInfoMD5:[resGroupDict objectForKey:@"group_info_md5"]];
         [resGroup setGroupMD5:[resGroupDict objectForKey:@"md5"]];
         [resGroup setGroupName:[resGroupDict objectForKey:@"name"]];
         [resGroup setGroupPriority:[[resGroupDict objectForKey:@"priority"] integerValue]];

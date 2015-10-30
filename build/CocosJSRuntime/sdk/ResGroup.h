@@ -10,7 +10,6 @@
 
 @interface ResGroup : NSObject
 {
-    NSString *groupInfoMD5;
     NSString *groupMD5;
     NSString *groupName;
     NSInteger groupPriority;
@@ -18,7 +17,7 @@
     NSString *groupURL;
 }
 
-@property NSString *groupInfoMD5, *groupMD5, *groupName, *groupURL;
+@property NSString *groupMD5, *groupName, *groupURL;
 @property NSInteger groupPriority, groupSize;
 
 -(ResGroup*) initWith: (NSString*)infoMD5 md5: (NSString*)md5 name: (NSString*) name priority: (NSInteger) priority size: (NSInteger) size url: (NSString*) url;
