@@ -3,8 +3,8 @@
 #ifndef __cocos2dx_experimental_webView_h__
 #define __cocos2dx_experimental_webView_h__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 extern JSClass  *jsb_cocos2d_experimental_ui_WebView_class;
 extern JSObject *jsb_cocos2d_experimental_ui_WebView_prototype;

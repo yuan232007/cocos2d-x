@@ -24,9 +24,9 @@
 #ifndef __jsb_cocos2dx_extension_manual__
 #define __jsb_cocos2dx_extension_manual__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
-#include "mozilla/Maybe.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
+#include "spidermonkey/mozilla/Maybe.h"
 #include "cocos/network/CCDownloader.h"
 #include "renderer/CCTexture2D.h"
 

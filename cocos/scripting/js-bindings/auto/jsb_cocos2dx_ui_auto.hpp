@@ -2,8 +2,8 @@
 #ifndef __cocos2dx_ui_h__
 #define __cocos2dx_ui_h__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 extern JSClass  *jsb_cocos2d_ui_LayoutParameter_class;
 extern JSObject *jsb_cocos2d_ui_LayoutParameter_prototype;

@@ -24,8 +24,8 @@
 #ifndef __jsb_websocket__
 #define __jsb_websocket__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 void register_jsb_websocket(JSContext* cx, JS::HandleObject global);
 

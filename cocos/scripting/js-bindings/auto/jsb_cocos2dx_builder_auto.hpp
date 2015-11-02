@@ -2,8 +2,8 @@
 #ifndef __cocos2dx_builder_h__
 #define __cocos2dx_builder_h__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 extern JSClass  *jsb_cocosbuilder_CCBAnimationManager_class;
 extern JSObject *jsb_cocosbuilder_CCBAnimationManager_prototype;

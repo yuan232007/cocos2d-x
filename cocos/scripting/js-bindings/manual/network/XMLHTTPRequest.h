@@ -29,8 +29,8 @@
 #ifndef __FAKE_XMLHTTPREQUEST_H__
 #define __FAKE_XMLHTTPREQUEST_H__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 #include "network/HttpClient.h"
 #include "js_bindings_config.h"
 #include "ScriptingCore.h"

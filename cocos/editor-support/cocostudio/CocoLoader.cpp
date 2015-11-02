@@ -1,5 +1,5 @@
 #include "CocoLoader.h"
-#include "zlib.h"
+#include "zlib/zlib.h"
 
 using namespace std;
 using namespace rapidjson;

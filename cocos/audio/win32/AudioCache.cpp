@@ -31,7 +31,7 @@
 #include "vorbis/codec.h"
 #include "vorbis/vorbisfile.h"
 #include "platform/CCFileUtils.h"
-#include "mpg123.h"
+#include "MP3Decoder/mpg123.h"
 #include "base/CCDirector.h"
 #include "base/CCScheduler.h"
 

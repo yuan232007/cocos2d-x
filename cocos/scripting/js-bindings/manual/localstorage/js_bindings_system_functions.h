@@ -4,7 +4,7 @@
 * Script version: v0.5
 */
 #include "js_bindings_config.h"
-#include "jsapi.h"
+#include "spidermonkey/jsapi.h"
 
 #ifdef __cplusplus
 extern "C" {
