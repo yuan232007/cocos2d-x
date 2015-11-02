@@ -14,6 +14,9 @@
 #define PROGRESS_MAX 100
 #define PROGRESS_INVALID -1
 
+// fixme: 暂时写死，由于工具为了兼容旧版本数据（js），多了一层目录
+#define COMPAT_VERSION_PATH @"33"
+
 static GameInfo* gameInfo = nil;
 static NSString* remoteConfigPath = nil;
 static NSString* localConfigPath = nil;
@@ -42,7 +45,8 @@ static GameConfig* gameConfig = nil;
 {
     NSLog(@"===> PreRunGame downloadRemoteConfigFile");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:[FileUtil getConfigFileName]];
+        NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+                                   stringByAppendingPathComponent:[FileUtil getConfigFileName]];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
         FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[ConfigDownloadDelegateImpl alloc] init]];
         NSLog(@"===> remote config file url: %@", requestString);
@@ -78,7 +82,8 @@ static GameConfig* gameConfig = nil;
 + (void) downloadRemoteManifestFile
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:@"manifest.cpk"];
+        NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+                                   stringByAppendingPathComponent:@"manifest.cpk"];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
         FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[ManifestDownloadDelegateImpl alloc] init]];
         [fileDownload startDownload];
@@ -104,7 +109,8 @@ static GameConfig* gameConfig = nil;
 {
     NSLog(@"===> downloadEntryFile");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:[gameConfig entryName]];
+        NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+                                   stringByAppendingPathComponent:[gameConfig entryName]];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
         FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[EntryDownloadDelegateImpl alloc] init]];
         [fileDownload startDownload];
@@ -216,7 +222,10 @@ static GameConfig* gameConfig = nil;
     ResGroup* resGroup = [CocosRuntimeGroup findGroupByName:@"boot"];
     if (resGroup != nil) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSURL *requestUrl = [[NSURL alloc]initWithString:[[[gameInfo downloadUrl] stringByAppendingPathComponent:@"/"] stringByAppendingPathComponent:resGroup.groupURL]];
+            NSString *requestString = [[[gameInfo downloadUrl]
+                                         stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+                                       stringByAppendingPathComponent:resGroup.groupURL];
+            NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
             
             BootGroupDownloadImpl* resDownloadImpl =  [[BootGroupDownloadImpl alloc] initWith:resGroup];
             FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:resDownloadImpl];
