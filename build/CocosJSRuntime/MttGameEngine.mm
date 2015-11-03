@@ -62,7 +62,7 @@ static CocosAppDelegate s_application;
         }
     }
     else {
-        gameDownloadUrl = @"http://192.168.54.90:8010/3/moonwarriors/";
+        gameDownloadUrl = @"http://192.168.54.90:8010/3/";
         gameKey = @"ULY1R3O6MB";
         gameName = @"打飞机游戏";
     }
@@ -186,18 +186,16 @@ static CocosAppDelegate s_application;
 
 - (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
 {
-    //NSLog(@"onLoadingProgress:%ld", (long)progress);
-    /*if (isFailed) {
+    NSLog(@"onLoadingProgress:%ld", (long)progress);
+    if (isFailed) {
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
     } else {
-        NSString* progressText = [NSString stringWithFormat:@"%ld",progress];
+        NSString* progressText = [NSString stringWithFormat:@"%ld",(long)progress];
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
-          progressText, @"progress",
-          @"102400", @"size",
-          nil]];
-    }*/
+          progressText, @"progress", @"102400", @"size", nil]];
+    }
 }
 
 - (void) onPreRunGameCompleted
