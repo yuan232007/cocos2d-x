@@ -3,6 +3,7 @@
 
 @interface MttGameEngineFramework()
 @property (nonatomic, strong) id<MttGameEngineProtocol>   engineGame;
+@property (strong, nonatomic) UIView *rootView;
 @end
 
 @implementation MttGameEngineFramework
@@ -31,49 +32,67 @@
         [self.engineGame game_engine_set_runtime_proxy:self];
     }
     
+    self.rootView = rootView;
+    
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
+        /*char tmp[300];
+        sprintf(tmp, "{gameId:\"%s\", engineName:\"%s\", localDebug:1, orientation:\"%s\", gameName:\"%s\", gameIconUrl:\"%s\", runUrl:\"%s\",gameUrl : \"%s\",ext:\"{gameKey:\"%s\", enableSilentDownload:false, packageName:\"%s\", resUrl:\"%s\", emotion:\"%s\"}\"}",
+                "2466856218",
+                "cocos-v3",
+                "portrait",
+                "打飞机游戏",
+                "http://tencent.cocosruntime.com/tencent/unittest/icon.png",
+                "http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
+                "http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
+                "ULY1R3O6MB",
+                "org.cocos2dx.moonwarriors.v3",
+                "http://192.168.54.90:8010/rt-test/moonwarriors/",
+                "emotiontest");*/
+        
+        /*NSString *gameInfo = [NSString stringWithFormat:@"{gameId: %@, engineName: %@, localDebug: 1,\
+        orientation : %@, gameName : %@, gameIconUrl : %@, runUrl: %@, gameUrl : %@,\
+        ext: { gameKey: %@, enableSilentDownload: false, packageName: %@, resUrl: %@, emotion: %@}}",
+                              @"2466856218",
+                              @"cocos-v3",
+                              @"portrait",
+                              @"打飞机游戏",
+                              @"http://tencent.cocosruntime.com/tencent/unittest/icon.png",
+                              @"http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
+                              @"http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
+                              @"ULY1R3O6MB",
+                              @"org.cocos2dx.moonwarriors.v3",
+                              @"http://192.168.54.90:8010/rt-test/moonwarriors/",
+                              @"emotiontest"];*/
+        
         [self.engineGame game_engine_init:nil];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_view)]) {
-        UIView* view = [self.engineGame game_engine_get_view];
-        if (nil == view) {
-            printf("view is nil\n");
-        } else {
-            if (rootView != nil) {
-                [rootView addSubview:view];
-            }
-        }
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onPause)]) {
-        [self.engineGame game_engine_onPause];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onResume)]) {
-        [self.engineGame game_engine_onResume];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_invoke_method:bundle:)]) {
-        [self.engineGame game_engine_invoke_method:nil bundle:nil];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_value:)]) {
-        [self.engineGame game_engine_get_value:nil];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_send_msg:)]) {
-        [self.engineGame game_engine_send_msg:nil];
-    }
-    
-    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onStop)]) {
-        [self.engineGame game_engine_onResume];
     }
 }
 
 - (id)x5GamePlayer_get_value:(NSString*)key
 {
     NSLog(@"x5GamePlayer_get_value");
+    
+    if ([key isEqualToString:@"CacheDir"]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        return [documentsDirectory stringByAppendingString:@"/engineFile/cocos-v3/cache/"];
+    }
+    
+    if ([key isEqualToString:@"LibDir"]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        return [documentsDirectory stringByAppendingString:@"/engineFile/cocos-v3/"];
+    }
+    
+    if ([key isEqualToString:@"TokenDir"]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        return [documentsDirectory stringByAppendingString:@"/engineFile/cocos-v3/token/"];
+    }
+    
     return nil;
 }
 
@@ -134,9 +153,47 @@
     NSLog(@"x5GamePlayer_getAvailableLoginType");
 }
 
+- (void)engine_init_end
+{
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_view)]) {
+        UIView* view = [self.engineGame game_engine_get_view];
+        if (nil == view) {
+            printf("view is nil\n");
+        } else {
+            if (self.rootView != nil) {
+                [self.rootView addSubview:view];
+            }
+        }
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onPause)]) {
+        [self.engineGame game_engine_onPause];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onResume)]) {
+        [self.engineGame game_engine_onResume];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_invoke_method:bundle:)]) {
+        [self.engineGame game_engine_invoke_method:nil bundle:nil];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_value:)]) {
+        [self.engineGame game_engine_get_value:nil];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_send_msg:)]) {
+        [self.engineGame game_engine_send_msg:nil];
+    }
+}
+
 - (void)x5GamePlayer_send_msg:(NSDictionary*)jsonObj
 {
-    NSLog(@"x5GamePlayer_send_msg");
+    //NSLog(@"x5GamePlayer_send_msg");
+    NSString* msg = [jsonObj objectForKey:@"type"];
+    if (msg != nil && [msg isEqualToString:MSG_ON_LOAD_GAME_END]) {
+        [self performSelectorOnMainThread:@selector(engine_init_end) withObject:self waitUntilDone:false];
+    }
 }
 
 - (void)x5GamePlayer_send_to_desktop:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback

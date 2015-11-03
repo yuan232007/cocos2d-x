@@ -40,6 +40,14 @@ public:
      @param  the pointer of the application
      */
     virtual void applicationWillEnterForeground() override;
+    
+    void setGameResRoot(const std::string& rootDir);
+    
+    void setEngineResDir(const std::string& engineResDir);
+    
+private:
+    std::string gameResRoot;
+    std::string engineResDir;
 };
 
 #endif // _APP_DELEGATE_H_

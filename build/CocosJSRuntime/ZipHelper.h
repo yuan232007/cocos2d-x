@@ -33,10 +33,6 @@
         progressHandler:(void (^)(NSString *entry, long entryNumber, long total))progressHandler
       completionHandler:(void (^)(NSString *zipFilePath, BOOL succeeded, NSError *error))completionHandler;
 
-// Zip
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL open;
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL close;
-
 @end
 
 #endif /* _RUNTIME_ZIP_HELPER_H */

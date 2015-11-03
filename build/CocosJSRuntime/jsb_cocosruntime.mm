@@ -7,6 +7,34 @@
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
 #include "network/NetworkHelper.h"
+#include "sdk/LoadingDelegate.h"
+#import "sdk/CocosRuntimeGroup.h"
+
+std::function<void (int percent, bool isFailed)> s_downloadCallback;
+
+@interface PreloadCallbackWapper : NSObject<LoadingDelegate>
+
+@end
+
+@implementation PreloadCallbackWapper
+
+- (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
+{
+    if (s_downloadCallback) {
+        s_downloadCallback((int)progress, isFailed);
+    }
+}
+
+- (void) onPreRunGameCompleted
+{
+    if (s_downloadCallback) {
+        s_downloadCallback(100, false);
+    }
+}
+
+@end
+
+static PreloadCallbackWapper* s_preloadWapper = nil;
 
 USING_NS_CC;
 
@@ -42,7 +70,6 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
 
     JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
 
-    std::function<void (int percent, bool isFailed)> downloadCallback;
     do {
         if (JS_TypeOfValue(cx, args[1]) == JSTYPE_FUNCTION) {
             JSObject* cbObject;
@@ -73,21 +100,19 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
                 });
                 
             };
-            downloadCallback = lambda;
+            s_downloadCallback = lambda;
         }
         else {
-            downloadCallback = nullptr;
+            s_downloadCallback = nullptr;
         }
     } while (false);
     
-    //todo:download
-    if (downloadCallback != nullptr) {
-        std::thread([downloadCallback](){
-            for (int index = 1; index <= 100; ++index) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(20));
-                downloadCallback(index, false);
-            }
-        }).detach();
+    if (s_downloadCallback) {
+        NSString* groups = [NSString stringWithUTF8String:arg0.c_str()];
+        if (s_preloadWapper == nil) {
+            s_preloadWapper = [[PreloadCallbackWapper alloc] init];
+        }
+        [CocosRuntimeGroup preloadResGroups:groups delegate:s_preloadWapper];
     }
     
     args.rval().setUndefined();

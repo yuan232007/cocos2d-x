@@ -21,7 +21,7 @@
 
 + (NSString*) getGamesPath
 {
-    return [[FileUtil getCocosRuntimeRootPath] stringByAppendingString: @"/Games"];
+    return [[FileUtil getCocosRuntimeRootPath] stringByAppendingString: @"Games"];
 }
 
 + (NSString*) getRemoteConfigPath:(GameInfo *)info

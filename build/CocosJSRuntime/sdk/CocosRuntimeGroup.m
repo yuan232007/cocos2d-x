@@ -61,7 +61,7 @@ static NSInteger downloadGroupSize = 0;
     if (isFailed) {
         [resDownloadDelegate onLoadingProgress:(downloadGroupSize + progressOffset) :true];
     } else {
-        NSInteger progress = (downloadGroupSize + progressOffset) / totalSize * 100;
+        NSInteger progress = 1.0 * (downloadGroupSize + progressOffset) / totalSize * 100;
         [resDownloadDelegate onLoadingProgress:progress :false];
         
         if (unzipDone) {
