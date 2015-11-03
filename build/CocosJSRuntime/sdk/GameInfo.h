@@ -10,8 +10,11 @@
 
 @interface GameInfo : NSObject
 {
+    /* 游戏唯一标识 */
     NSString *gameKey;
+    /* 游戏下载地址，为最上层目录，后续JS兼容版本必须在此地址后拼接指定文件夹 */
     NSString *downloadUrl;
+    /* 游戏名称 */
     NSString *gameName;
 }
 

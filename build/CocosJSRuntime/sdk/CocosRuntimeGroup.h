@@ -20,7 +20,6 @@
 
 @interface CocosRuntimeGroup : NSObject
 + (void) initialize: (GameInfo*) info config: (GameConfig*) config manifest: (GameManifest*) manifest;
-+ (NSMutableArray*) getAllResGroups;
 + (void) prepareWaitingDownloadGroups: (NSString*) groupsString;
 + (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed;
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate;
