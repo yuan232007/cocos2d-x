@@ -370,7 +370,7 @@ static GameConfig* gameConfig = nil;
 
 - (void) onDownloadProgress:(double)progress
 {
-    NSInteger progressOffset = resGroup.groupSize * 0.8 * progress;
+    NSInteger progressOffset = 80 * progress;
     [PreRunGame notifyProgress:progressOffset isFailed:false];
 }
 

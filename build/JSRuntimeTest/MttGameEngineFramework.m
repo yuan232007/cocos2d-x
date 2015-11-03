@@ -153,41 +153,46 @@
     NSLog(@"x5GamePlayer_getAvailableLoginType");
 }
 
+- (void)engine_init_end
+{
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_view)]) {
+        UIView* view = [self.engineGame game_engine_get_view];
+        if (nil == view) {
+            printf("view is nil\n");
+        } else {
+            if (self.rootView != nil) {
+                [self.rootView addSubview:view];
+            }
+        }
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onPause)]) {
+        [self.engineGame game_engine_onPause];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onResume)]) {
+        [self.engineGame game_engine_onResume];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_invoke_method:bundle:)]) {
+        [self.engineGame game_engine_invoke_method:nil bundle:nil];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_value:)]) {
+        [self.engineGame game_engine_get_value:nil];
+    }
+    
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_send_msg:)]) {
+        [self.engineGame game_engine_send_msg:nil];
+    }
+}
+
 - (void)x5GamePlayer_send_msg:(NSDictionary*)jsonObj
 {
     //NSLog(@"x5GamePlayer_send_msg");
     NSString* msg = [jsonObj objectForKey:@"type"];
     if (msg != nil && [msg isEqualToString:MSG_ON_LOAD_GAME_END]) {
-        if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_view)]) {
-            UIView* view = [self.engineGame game_engine_get_view];
-            if (nil == view) {
-                printf("view is nil\n");
-            } else {
-                if (self.rootView != nil) {
-                    [self.rootView addSubview:view];
-                }
-            }
-        }
-        
-        if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onPause)]) {
-            [self.engineGame game_engine_onPause];
-        }
-        
-        if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onResume)]) {
-            [self.engineGame game_engine_onResume];
-        }
-        
-        if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_invoke_method:bundle:)]) {
-            [self.engineGame game_engine_invoke_method:nil bundle:nil];
-        }
-        
-        if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_value:)]) {
-            [self.engineGame game_engine_get_value:nil];
-        }
-        
-        if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_send_msg:)]) {
-            [self.engineGame game_engine_send_msg:nil];
-        }
+        [self performSelectorOnMainThread:@selector(engine_init_end) withObject:self waitUntilDone:false];
     }
 }
 
