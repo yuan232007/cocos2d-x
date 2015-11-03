@@ -50,16 +50,16 @@
     }
     
     //解压本地游戏资源
-    NSString *resPath = [[NSBundle mainBundle] pathForResource:@"gameResources" ofType:@"zip"];
+    /*NSString *resPath = [[NSBundle mainBundle] pathForResource:@"gameResources" ofType:@"zip"];
     if (resPath.length > 0) {
-        NSString * resDestPath = [docPath stringByAppendingPathComponent:@"gameResources"];
+        NSString * resDestPath = [docPath stringByAppendingPathComponent:@"engineFile/cocos-v3/cache/games/ULY1R306MB"];
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:resDestPath]) {
             [[NSFileManager defaultManager] removeItemAtPath:resDestPath error:nil];
         }
         
         [ZipHelper unzipFileAtPath:resPath toDestination:resDestPath];
-    }
+    }*/
     
     
     self.engineGame = [MttGameEngineFactory CreateGameRuntimeEngine];

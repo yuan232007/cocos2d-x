@@ -154,7 +154,7 @@ static GameConfig* gameConfig = nil;
 + (void) notifyProgress: (NSInteger) progress isFailed: (BOOL) isFailed
 {
     if (mttGameEngine != nil) {
-//        [mttGameEngine onLoadingProgress:progress :isFailed];
+        [mttGameEngine onLoadingProgress:progress :isFailed];
     }
 }
 
@@ -169,7 +169,7 @@ static GameConfig* gameConfig = nil;
 {
     NSLog(@"===> start game.");
     if (mttGameEngine != nil) {
-        [mttGameEngine onLoadingProgress:PROGRESS_INVALID :true];
+        [mttGameEngine onLoadingProgress:100 :false];
         [mttGameEngine onPreRunGameCompleted];
     }
 }
