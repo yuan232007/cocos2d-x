@@ -65,6 +65,19 @@ void CocosAppDelegate::initGLContextAttrs()
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
+void CocosAppDelegate::setGameResRoot(const std::string &rootDir)
+{
+    if(rootDir[rootDir.length() - 1] != '/')
+        gameResRoot = rootDir + "/";
+    else
+        gameResRoot = rootDir;
+}
+
+void CocosAppDelegate::setEngineResDir(const std::string &resDir)
+{
+    engineResDir = resDir;
+}
+
 bool CocosAppDelegate::applicationDidFinishLaunching()
 {
     auto director = Director::getInstance();
@@ -75,12 +88,9 @@ bool CocosAppDelegate::applicationDidFinishLaunching()
     }
     
     auto fileUtils = FileUtils::getInstance();
-    auto gameResRoot = fileUtils->getWritablePath() + "engineFile/cocos-v3/games/ULY1R306MB/";
     fileUtils->setDefaultResourceRootPath(gameResRoot);
-    std::vector<std::string> paths;
-    paths.push_back("");
-    paths.push_back(fileUtils->getWritablePath() + "engineFile/cocos-v3/");
-    fileUtils->setSearchPaths(paths);
+    fileUtils->addSearchPath("");
+    fileUtils->addSearchPath(engineResDir);
 
     ScriptingCore* sc = ScriptingCore::getInstance();
     sc->cleanup();

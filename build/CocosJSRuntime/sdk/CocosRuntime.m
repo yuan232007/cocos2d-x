@@ -9,8 +9,6 @@
 #import "CocosRuntime.h"
 #import "PreRunGame.h"
 
-static GameInfo* gameInfo = nil;
-
 @implementation CocosRuntime
 + (void) startPreRuntime: (GameInfo*) info proxy: (MttGameEngine*) proxy
 {
