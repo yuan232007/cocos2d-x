@@ -4,6 +4,9 @@
 @interface MttGameEngineFramework()
 @property (nonatomic, strong) id<MttGameEngineProtocol>   engineGame;
 @property (strong, nonatomic) UIView *rootView;
+@property (strong, nonatomic) UIView *navigationView;
+@property (strong, nonatomic) UIView *gameView;
+@property (strong, nonatomic) UIView *gameRootView;
 @end
 
 @implementation MttGameEngineFramework
@@ -35,35 +38,6 @@
     self.rootView = rootView;
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
-        /*char tmp[300];
-        sprintf(tmp, "{gameId:\"%s\", engineName:\"%s\", localDebug:1, orientation:\"%s\", gameName:\"%s\", gameIconUrl:\"%s\", runUrl:\"%s\",gameUrl : \"%s\",ext:\"{gameKey:\"%s\", enableSilentDownload:false, packageName:\"%s\", resUrl:\"%s\", emotion:\"%s\"}\"}",
-                "2466856218",
-                "cocos-v3",
-                "portrait",
-                "打飞机游戏",
-                "http://tencent.cocosruntime.com/tencent/unittest/icon.png",
-                "http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
-                "http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
-                "ULY1R3O6MB",
-                "org.cocos2dx.moonwarriors.v3",
-                "http://192.168.54.90:8010/rt-test/moonwarriors/",
-                "emotiontest");*/
-        
-        /*NSString *gameInfo = [NSString stringWithFormat:@"{gameId: %@, engineName: %@, localDebug: 1,\
-        orientation : %@, gameName : %@, gameIconUrl : %@, runUrl: %@, gameUrl : %@,\
-        ext: { gameKey: %@, enableSilentDownload: false, packageName: %@, resUrl: %@, emotion: %@}}",
-                              @"2466856218",
-                              @"cocos-v3",
-                              @"portrait",
-                              @"打飞机游戏",
-                              @"http://tencent.cocosruntime.com/tencent/unittest/icon.png",
-                              @"http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
-                              @"http://tencent.cocosruntime.com/tencent/unittest/gameshare.html",
-                              @"ULY1R3O6MB",
-                              @"org.cocos2dx.moonwarriors.v3",
-                              @"http://192.168.54.90:8010/rt-test/moonwarriors/",
-                              @"emotiontest"];*/
-        
         [self.engineGame game_engine_init:nil];
     }
 }
@@ -156,13 +130,15 @@
 - (void)engine_init_end
 {
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_get_view)]) {
-        UIView* view = [self.engineGame game_engine_get_view];
-        if (nil == view) {
-            printf("view is nil\n");
-        } else {
-            if (self.rootView != nil) {
-                [self.rootView addSubview:view];
-            }
+        self.gameView = [self.engineGame game_engine_get_view];
+        if (nil == self.gameView) {
+            printf("game view is nil\n");
+        } else if(self.rootView != nil){
+            CGSize screenSize = [UIScreen mainScreen].bounds.size;
+            self.gameRootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
+            [self.rootView addSubview:self.gameRootView];
+            [self.gameRootView addSubview:self.gameView];
+            [self.gameRootView addSubview:[self getNavigationView]];
         }
     }
     
@@ -193,6 +169,69 @@
     NSString* msg = [jsonObj objectForKey:@"type"];
     if (msg != nil && [msg isEqualToString:MSG_ON_LOAD_GAME_END]) {
         [self performSelectorOnMainThread:@selector(engine_init_end) withObject:self waitUntilDone:false];
+    }
+}
+
+- (UIView*)getNavigationView
+{
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    
+    UIView* navigationView = [[UIView alloc] initWithFrame:CGRectMake(screenSize.width - 110, 100, 100, 200)];
+    
+    UIButton * quitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [quitButton setFrame:CGRectMake(0, 0, 100, 30)];
+    [quitButton setBackgroundColor:[UIColor darkGrayColor]];
+    [quitButton setTitle:@"quit" forState:UIControlStateNormal];
+    [quitButton addTarget:self action:@selector(testQuitEngine) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:quitButton];
+    
+    UIButton * pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pauseButton setFrame:CGRectMake(0, 40, 100, 30)];
+    [pauseButton setBackgroundColor:[UIColor darkGrayColor]];
+    [pauseButton setTitle:@"pause" forState:UIControlStateNormal];
+    [pauseButton addTarget:self action:@selector(testPauseEngine) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:pauseButton];
+    
+    UIButton * resumeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [resumeButton setFrame:CGRectMake(0, 80, 100, 30)];
+    [resumeButton setBackgroundColor:[UIColor darkGrayColor]];
+    [resumeButton setTitle:@"resume" forState:UIControlStateNormal];
+    [resumeButton addTarget:self action:@selector(testResumeEngine) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:resumeButton];
+    
+    self.navigationView = navigationView;
+    
+    return navigationView;
+}
+
+- (void)testQuitEngine
+{
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onStop)]) {
+        [self.engineGame game_engine_onStop];
+        
+        /*if (self.navigationView != nil) {
+            [self.navigationView removeFromSuperview];
+            self.navigationView = nil;
+        }*/
+        
+        [self.gameRootView removeFromSuperview];
+        self.gameRootView = nil;
+        self.navigationView = nil;
+        self.gameView = nil;
+    }
+}
+
+- (void)testPauseEngine
+{
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onPause)]) {
+        [self.engineGame game_engine_onPause];
+    }
+}
+
+- (void)testResumeEngine
+{
+    if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onResume)]) {
+        [self.engineGame game_engine_onResume];
     }
 }
 

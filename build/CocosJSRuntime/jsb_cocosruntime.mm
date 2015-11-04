@@ -20,6 +20,8 @@ std::function<void (int percent, bool isFailed)> s_downloadCallback;
 
 - (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
 {
+    CCLOG("preload progress:%d isFailed:%d",(int)progress, isFailed);
+    
     if (s_downloadCallback) {
         s_downloadCallback((int)progress, isFailed);
     }
@@ -27,6 +29,7 @@ std::function<void (int percent, bool isFailed)> s_downloadCallback;
 
 - (void) onPreRunGameCompleted
 {
+    CCLOG("preload completed");
     if (s_downloadCallback) {
         s_downloadCallback(100, false);
     }

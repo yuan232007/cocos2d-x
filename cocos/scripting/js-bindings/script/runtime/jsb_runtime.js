@@ -318,7 +318,6 @@ cc.LoaderLayer = cc.Layer.extend({
         });
     },
     _preload_native: function (statusJsonText) {
-        cc.log(statusJsonText);
         var status = eval("(" + statusJsonText + ")");
         var config = this._finalConfig;
         if (status.percent) {

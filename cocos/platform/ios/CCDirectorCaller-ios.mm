@@ -36,6 +36,8 @@
 
 static id s_sharedDirectorCaller;
 
+extern cocos2d::DisplayLinkDirector *s_sharedCocosDirector;
+
 @interface NSObject(CADisplayLink)
 +(id) displayLinkWithTarget: (id)arg1 selector:(SEL)arg2;
 -(void) addToRunLoop: (id)arg1 forMode: (id)arg2;
@@ -77,7 +79,7 @@ static id s_sharedDirectorCaller;
 
 -(void) startMainLoop
 {
-        // Director::setAnimationInterval() is called, we should invalidate it first
+    // Director::setAnimationInterval() is called, we should invalidate it first
     [self stopMainLoop];
     
     displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(doCaller:)];
@@ -105,9 +107,11 @@ static id s_sharedDirectorCaller;
                       
 -(void) doCaller: (id) sender
 {
-    cocos2d::Director* director = cocos2d::Director::getInstance();
-    [EAGLContext setCurrentContext: [(CCEAGLView*)director->getOpenGLView()->getEAGLView() context]];
-    director->mainLoop();
+    //引擎是在下一帧才做结束的清理，而runtime版本在下一帧时EAGLView已经从superview移除
+    if (!s_sharedCocosDirector->isPurgeDirectorInNextLoop()) {
+        [EAGLContext setCurrentContext: [(CCEAGLView*)s_sharedCocosDirector->getOpenGLView()->getEAGLView() context]];
+    }
+    s_sharedCocosDirector->mainLoop();
 }
 
 @end
