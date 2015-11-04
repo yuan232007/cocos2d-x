@@ -62,7 +62,7 @@ static CocosAppDelegate s_application;
         }
     }
     else {
-        gameDownloadUrl = @"http://192.168.54.90:8010/3/";
+        gameDownloadUrl = @"http://182.254.241.97/ios-runtime-test/moonwarriors";
         gameKey = @"ULY1R3O6MB";
         gameName = @"打飞机游戏";
     }
@@ -75,18 +75,11 @@ static CocosAppDelegate s_application;
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
     }
     
-    
     NSString* libDir = [self.delegate x5GamePlayer_get_value:@"LibDir"];
     s_application.setEngineResDir([libDir cStringUsingEncoding:NSUTF8StringEncoding]);
     
     auto gameResRoot = [[FileUtil getGameRootPath:gameInfo] cStringUsingEncoding:NSUTF8StringEncoding];
     s_application.setGameResRoot(gameResRoot);
-    
-    NSString* infoLog = [NSString stringWithFormat:@"name:%@\nkey:%@\nurl:%@\ngameResRoot:%@\nlibDir:%@\n", gameName, gameKey, gameDownloadUrl, [FileUtil getGameRootPath:gameInfo], libDir];
-    if (infoLog != nil) {
-        auto fu = cocos2d::FileUtils::getInstance();
-        fu->writeStringToFile([infoLog cStringUsingEncoding:NSUTF8StringEncoding], fu->getWritablePath() + "/gameInfo.txt");
-    }
 }
 
 //得到用于显示的view
@@ -168,20 +161,17 @@ static CocosAppDelegate s_application;
 //调用某个方法， method为方法名， bundle存有方法所用的参数
 - (void)game_engine_invoke_method:(NSString*)method bundle:(NSDictionary*)bundle
 {
-    NSLog(@"game_engine_invoke_method: %@  bundle:%@", method, bundle);
 }
 
 //获取游戏引擎key所对应的的值
 - (id)game_engine_get_value:(NSString*)key
 {
-    NSLog(@"game_engine_get_value key : %@", key);
     return nil;
 }
 
 //x5通过这个接口发送消息给game engine
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
-    //NSLog(@"game_engine_send_msg:%@", jsonObj);
 }
 
 - (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
@@ -203,8 +193,6 @@ static CocosAppDelegate s_application;
     NSLog(@"onPreRunGameCompleted");
     [self.delegate x5GamePlayer_send_msg:
      [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
-    
-    //[CocosRuntimeGroup preloadResGroups:@"docs:examples:src" delegate:self];
 }
 
 @end
