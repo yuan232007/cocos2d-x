@@ -29,9 +29,7 @@
 		BBA9B1491BE355AC0091B4A3 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1321BE355AC0091B4A3 /* PreRunGame.m */; };
 		BBA9B14C1BE355AC0091B4A3 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1351BE355AC0091B4A3 /* ResGroup.m */; };
 		BBA9B14D1BE355AC0091B4A3 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1351BE355AC0091B4A3 /* ResGroup.m */; };
-		ED464A5A1BE8B1D9005D120E /* MD5Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */; };
 		ED464A641BE8B2EB005D120E /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1291BE355AC0091B4A3 /* FileUtil.m */; };
-		ED464A651BE8B2EB005D120E /* MD5Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */; };
 		ED464A661BE8B2EB005D120E /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */; };
 		ED464A671BE8B2EB005D120E /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1321BE355AC0091B4A3 /* PreRunGame.m */; };
 		ED464A681BE8B2EB005D120E /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CBF1BCCAAB30032B305 /* CocosDelegate.cpp */; };
@@ -86,7 +84,6 @@
 		EDC9C4E51BE06C2F000C45FE /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDC9C4E41BE06C2F000C45FE /* RTNetworkHelper.mm */; };
 		EDC9C4E61BE06C2F000C45FE /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDC9C4E41BE06C2F000C45FE /* RTNetworkHelper.mm */; };
 		EDC9C5161BE76C1D000C45FE /* script in Resources */ = {isa = PBXBuildFile; fileRef = EDC9C5151BE76C1D000C45FE /* script */; };
-		EDEFF3EE1BDE234D00042063 /* MD5Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */; };
 		EDF396B81BDA2833000885AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396B71BDA2833000885AB /* main.m */; };
 		EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396BA1BDA2833000885AB /* AppDelegate.m */; };
 		EDF396BE1BDA2833000885AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF396BD1BDA2833000885AB /* ViewController.m */; };
@@ -115,7 +112,6 @@
 		EDF396E81BDA2BA1000885AB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CCD1BCCB4D90032B305 /* libsqlite3.tbd */; };
 		EDF396E91BDA2BA4000885AB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CCB1BCCB4CB0032B305 /* libz.tbd */; };
 		EDF396EA1BDA2BA8000885AB /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CC81BCCB4340032B305 /* libiconv.tbd */; };
-		EDF396EC1BDA2C18000885AB /* gameResources.zip in Resources */ = {isa = PBXBuildFile; fileRef = EDF396EB1BDA2C18000885AB /* gameResources.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,8 +272,6 @@
 		EDC9C4E41BE06C2F000C45FE /* RTNetworkHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RTNetworkHelper.mm; path = network/RTNetworkHelper.mm; sourceTree = "<group>"; };
 		EDC9C4E71BE06C65000C45FE /* RTNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTNetworkHelper.h; path = network/RTNetworkHelper.h; sourceTree = "<group>"; };
 		EDC9C5151BE76C1D000C45FE /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = script; path = "../../cocos/scripting/js-bindings/script"; sourceTree = "<group>"; };
-		EDEFF3EC1BDE234D00042063 /* MD5Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Calculator.h; sourceTree = "<group>"; };
-		EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Calculator.m; sourceTree = "<group>"; };
 		EDF396B41BDA2832000885AB /* JSRuntimeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSRuntimeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF396B71BDA2833000885AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EDF396B91BDA2833000885AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -290,7 +284,6 @@
 		EDF396C71BDA2833000885AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDF396CF1BDA28EC000885AB /* MttGameEngineFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFramework.h; sourceTree = "<group>"; };
 		EDF396D01BDA28EC000885AB /* MttGameEngineFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MttGameEngineFramework.m; sourceTree = "<group>"; };
-		EDF396EB1BDA2C18000885AB /* gameResources.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = gameResources.zip; path = CocosJSRuntimeDemo/Resources/gameResources.zip; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,8 +380,6 @@
 			children = (
 				BBA9B11C1BE355AC0091B4A3 /* sdk */,
 				EDC9C4DA1BE06785000C45FE /* network */,
-				EDEFF3EC1BDE234D00042063 /* MD5Calculator.h */,
-				EDEFF3ED1BDE234D00042063 /* MD5Calculator.m */,
 				ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.mm */,
 				ED4AB7A31BD4FD5E004C4091 /* jsb_cocosruntime.h */,
 				ED4AB78A1BD0F923004C4091 /* zip.cpp */,
@@ -508,7 +499,6 @@
 			isa = PBXGroup;
 			children = (
 				EDC9C5151BE76C1D000C45FE /* script */,
-				EDF396EB1BDA2C18000885AB /* gameResources.zip */,
 				EDF396CF1BDA28EC000885AB /* MttGameEngineFramework.h */,
 				EDF396D01BDA28EC000885AB /* MttGameEngineFramework.m */,
 				EDF396B91BDA2833000885AB /* AppDelegate.h */,
@@ -681,7 +671,6 @@
 				EDF396C61BDA2833000885AB /* LaunchScreen.storyboard in Resources */,
 				EDF396C31BDA2833000885AB /* Assets.xcassets in Resources */,
 				EDF396C11BDA2833000885AB /* Main.storyboard in Resources */,
-				EDF396EC1BDA2C18000885AB /* gameResources.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,7 +682,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBA9B1401BE355AC0091B4A3 /* FileUtil.m in Sources */,
-				EDEFF3EE1BDE234D00042063 /* MD5Calculator.m in Sources */,
 				BBA9B13E1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */,
 				BBA9B1481BE355AC0091B4A3 /* PreRunGame.m in Sources */,
 				EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */,
@@ -720,7 +708,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED464A641BE8B2EB005D120E /* FileUtil.m in Sources */,
-				ED464A651BE8B2EB005D120E /* MD5Calculator.m in Sources */,
 				ED464A661BE8B2EB005D120E /* FileDownloadAdapter.m in Sources */,
 				ED464A671BE8B2EB005D120E /* PreRunGame.m in Sources */,
 				ED464A681BE8B2EB005D120E /* CocosDelegate.cpp in Sources */,
@@ -756,7 +743,6 @@
 				EDC9C4E31BE06A42000C45FE /* RTReachability.m in Sources */,
 				EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */,
 				BBA9B1491BE355AC0091B4A3 /* PreRunGame.m in Sources */,
-				ED464A5A1BE8B1D9005D120E /* MD5Calculator.m in Sources */,
 				BBA9B1391BE355AC0091B4A3 /* CocosRuntime.m in Sources */,
 				BBA9B1431BE355AC0091B4A3 /* GameConfig.m in Sources */,
 				BBA9B1451BE355AC0091B4A3 /* GameInfo.m in Sources */,
@@ -910,7 +896,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -946,7 +932,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;

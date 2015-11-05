@@ -7,10 +7,9 @@
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
 #include "network/RTNetworkHelper.h"
-#include "sdk/LoadingDelegate.h"
 #import "sdk/CocosRuntimeGroup.h"
 
-std::function<void (int percent, bool isFailed)> s_downloadCallback;
+static std::function<void (int percent, bool isFailed)> s_downloadCallback;
 
 class JSPreloadCallbackWrapper: public JSCallbackWrapper {
 public:

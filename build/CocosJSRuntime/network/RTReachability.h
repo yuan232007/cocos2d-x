@@ -56,7 +56,7 @@ typedef enum : NSInteger {
 	RTReachableViaWWAN
 } RTNetworkStatus;
 
-extern NSString *kReachabilityChangedNotification;
+extern NSString *RTNetworkChangedNotification;
 
 @interface RTReachability : NSObject
 

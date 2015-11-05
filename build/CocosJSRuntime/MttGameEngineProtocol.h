@@ -118,9 +118,3 @@
 //x5通过这个接口发送消息给game engine
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj;
 @end
-
-/*
- @interface MttGameEngineFactory : NSObject
- + (id<MttGameEngineProtocol>)CreateGameRunTimeDelegate;
- @end
-*/

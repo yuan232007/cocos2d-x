@@ -22,7 +22,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:RTNetworkChangedNotification object:nil];
     }
     
     return self;
@@ -30,7 +30,7 @@
 
 -(void) dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RTNetworkChangedNotification object:nil];
 }
 
 -(void)reachabilityChanged:(NSNotification *)note
