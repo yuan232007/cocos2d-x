@@ -6,7 +6,7 @@
 //
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
-#include "network/NetworkHelper.h"
+#include "network/RTNetworkHelper.h"
 #include "sdk/LoadingDelegate.h"
 #import "sdk/CocosRuntimeGroup.h"
 
@@ -135,7 +135,7 @@ static bool JSB_runtime_getNetworkType(JSContext *cx, uint32_t argc, jsval *vp) 
     JSB_PRECONDITION2( argc == 0, cx, false, "JSB_runtime_getNetworkType Invalid number of arguments" );
     
     auto args = JS::CallArgsFromVp(argc, vp);
-    int status = [NetworkHelper getNetworkType];
+    int status = [RTNetworkHelper getNetworkType];
     args.rval().set(INT_TO_JSVAL(status));
     
     return true;

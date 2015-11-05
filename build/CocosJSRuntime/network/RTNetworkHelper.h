@@ -10,14 +10,14 @@ typedef enum : NSInteger {
     NetworkType_NotReachable = -1,
     NetworkType_Mobile,
     NetworkType_WiFi
-} NetworkType;
+} RTNetworkType;
 
-@interface NetworkHelper : NSObject
+@interface RTNetworkHelper : NSObject
 
-@property (nonatomic, weak) void(^networkChangeBlock)(NetworkType);
+@property (nonatomic, weak) void(^networkChangeBlock)(RTNetworkType);
 
-+ (NetworkType)getNetworkType;
++ (RTNetworkType)getNetworkType;
 
-- (void)setListener:(void(^)(NetworkType networkType))callback;
+- (void)setListener:(void(^)(RTNetworkType networkType))callback;
 
 @end
