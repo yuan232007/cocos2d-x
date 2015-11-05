@@ -21,6 +21,9 @@ versionCode, toolVersion;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSData *data = [fileManager contentsAtPath: path];
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    if (jsonDict == nil) {
+        return nil;
+    }
     
     gameConfig.descript = [jsonDict objectForKey:@"description"];
     

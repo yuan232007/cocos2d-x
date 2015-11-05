@@ -11,10 +11,10 @@
 
 @interface GameManifest : NSObject
 {
-    NSMutableArray* resGroupArray;
+    NSMutableArray* allResGroups;
 }
 
-@property NSMutableArray* resGroupArray;
+@property NSMutableArray* allResGroups;
 
 +(GameManifest*) readFromFile: (NSString*) path;
 @end
