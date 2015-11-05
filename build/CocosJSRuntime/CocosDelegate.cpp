@@ -93,8 +93,6 @@ bool CocosAppDelegate::applicationDidFinishLaunching()
     fileUtils->addSearchPath(engineResDir);
 
     ScriptingCore* sc = ScriptingCore::getInstance();
-    sc->cleanup();
-    sc->addRegisterCallback(registerDefaultClasses);
     
     sc->addRegisterCallback(register_all_cocos2dx);
     sc->addRegisterCallback(register_cocos2dx_js_core);

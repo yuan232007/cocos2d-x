@@ -11,6 +11,9 @@
 #import "FileUtil.h"
 #import "ZipHelper.h"
 
+
+static RTPreloadCallback sRTPreloadCallback;
+
 static GameInfo *gameInfo = nil;
 static GameConfig *gameConfig = nil;
 static GameManifest *gameManifest = nil;
@@ -18,7 +21,6 @@ static NSMutableArray *resGroup = nil;
 static NSMutableDictionary *resGroupDict = nil;
 static NSMutableArray *waitingDownloadGroups = nil;
 static NSString* currentDownloadName = nil;
-static id<LoadingDelegate> resDownloadDelegate = nil;
 static NSInteger totalSize = 0;
 static NSInteger downloadGroupSize = 0;
 
@@ -58,11 +60,11 @@ static NSInteger downloadGroupSize = 0;
 
 + (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed
 {
+    int progress = 1.0 * (downloadGroupSize + progressOffset) / totalSize * 100;
     if (isFailed) {
-        [resDownloadDelegate onLoadingProgress:(downloadGroupSize + progressOffset) :true];
+        sRTPreloadCallback(progress, true);
     } else {
-        NSInteger progress = 1.0 * (downloadGroupSize + progressOffset) / totalSize * 100;
-        [resDownloadDelegate onLoadingProgress:progress :false];
+        sRTPreloadCallback(progress, false);
         
         if (unzipDone) {
             downloadGroupSize += progressOffset;
@@ -70,10 +72,10 @@ static NSInteger downloadGroupSize = 0;
     }
 }
 
-+ (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate
++ (void) preloadResGroups: (NSString*) groupsString delegate: (RTPreloadCallback) callback
 {
     NSLog(@"===> preload resource groups: %@", groupsString);
-    resDownloadDelegate = delegate;
+    sRTPreloadCallback = callback;
     [CocosRuntimeGroup prepareWaitingDownloadGroups:groupsString];
     [CocosRuntimeGroup preloadNextGroup];
 }
@@ -82,7 +84,7 @@ static NSInteger downloadGroupSize = 0;
 {
     NSLog(@"===> preload Next group");
     if (waitingDownloadGroups == nil || waitingDownloadGroups.count == 0) {
-        [resDownloadDelegate onLoadingProgress:PROGRESS_MAX :false];
+        sRTPreloadCallback(100, false);
         return;
     }
     

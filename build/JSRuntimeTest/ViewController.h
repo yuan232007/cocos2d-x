@@ -10,13 +10,5 @@
 
 @interface ViewController : UIViewController
 
-@property (strong, nonatomic) UIView *navigationView;
-
-- (UIView*)getNavigationView;
-
-- (void)testQuitEngine;
-- (void)testPauseEngine;
-- (void)testResumeEngine;
-
 @end
 
