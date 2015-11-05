@@ -28,24 +28,9 @@ static NSInteger downloadGroupSize = 0;
     gameInfo = info;
     gameConfig = config;
     gameManifest = manifest;
-    resGroup = [CocosRuntimeGroup getAllResGroups];
+    resGroup = [manifest allResGroups];
     resGroupDict = [CocosRuntimeGroup getAllResGroupDict:resGroup];
     waitingDownloadGroups = [NSMutableArray arrayWithCapacity:20];
-}
-
-+ (NSMutableArray*) getAllResGroups
-{
-    NSMutableArray* allResGroups = [NSMutableArray arrayWithCapacity:20];
-    for (NSDictionary* resGroupDict in gameManifest.resGroupArray) {
-        ResGroup* resGroup = [[ResGroup alloc] init];
-        [resGroup setGroupMD5:[resGroupDict objectForKey:@"md5"]];
-        [resGroup setGroupName:[resGroupDict objectForKey:@"name"]];
-        [resGroup setGroupPriority:[[resGroupDict objectForKey:@"priority"] integerValue]];
-        [resGroup setGroupSize:[[resGroupDict objectForKey:@"size"] integerValue]];
-        [resGroup setGroupURL:[resGroupDict objectForKey:@"url"]];
-        [allResGroups addObject:resGroup];
-    }
-    return allResGroups;
 }
 
 + (void) prepareWaitingDownloadGroups: (NSString*) groupsString

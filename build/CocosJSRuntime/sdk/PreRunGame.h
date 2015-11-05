@@ -41,7 +41,7 @@
 /**
  * 解析游戏配置文件
  */
-+ (void) parseGameConfigFile: (NSString*) path;
++ (GameConfig*) parseGameConfigFile: (NSString*) path;
 
 /**
  * 检查 main.jsc
