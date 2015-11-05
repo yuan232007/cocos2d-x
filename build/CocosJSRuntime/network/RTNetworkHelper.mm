@@ -5,19 +5,19 @@
 //  Created by WenhaiLin on 15/10/28.
 //
 
-#import "NetworkHelper.h"
-#import "Reachability.h"
+#import "RTNetworkHelper.h"
+#import "RTReachability.h"
 
-@interface NetworkHelper()
+@interface RTNetworkHelper()
 
-@property Reachability* reachability;
+@property RTReachability* reachability;
 
 -(id) init;
 - (void)reachabilityChanged:(NSNotification *)note;
 
 @end
 
-@implementation NetworkHelper
+@implementation RTNetworkHelper
 
 - (id)init
 {
@@ -35,18 +35,18 @@
 
 -(void)reachabilityChanged:(NSNotification *)note
 {
-    NetworkType networkType = NetworkType_NotReachable;
+    RTNetworkType networkType = NetworkType_NotReachable;
     
-    Reachability* curReach = [note object];
-    if ([curReach isKindOfClass:[Reachability class]]) {
-        NetworkStatus status = [curReach currentReachabilityStatus];
+    RTReachability* curReach = [note object];
+    if ([curReach isKindOfClass:[RTReachability class]]) {
+        RTNetworkStatus status = [curReach currentReachabilityStatus];
         switch (status) {
-            case NotReachable:
+            case RTNotReachable:
                 break;
-            case ReachableViaWWAN:
+            case RTReachableViaWWAN:
                 networkType = NetworkType_Mobile;
                 break;
-            case ReachableViaWiFi:
+            case RTReachableViaWiFi:
                 networkType = NetworkType_WiFi;
                 break;
             default:
@@ -59,29 +59,29 @@
     }
 }
 
-- (void)setListener:(void (^)(NetworkType))callback
+- (void)setListener:(void (^)(RTNetworkType))callback
 {
     if (self.reachability == nil) {
-        self.reachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+        self.reachability = [RTReachability reachabilityWithHostName:@"www.baidu.com"];
     }
     self.networkChangeBlock = callback;
     
     [self.reachability startNotifier];
 }
 
-+ (NetworkType)getNetworkType
++ (RTNetworkType)getNetworkType
 {
-    NetworkType networkType = NetworkType_NotReachable;
+    RTNetworkType networkType = NetworkType_NotReachable;
     
-    auto hostReach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    auto hostReach = [RTReachability reachabilityWithHostName:@"www.baidu.com"];
     
     switch ([hostReach currentReachabilityStatus]) {
-        case NotReachable:
+        case RTNotReachable:
             break;
-        case ReachableViaWWAN:
+        case RTReachableViaWWAN:
             networkType = NetworkType_Mobile;
             break;
-        case ReachableViaWiFi:
+        case RTReachableViaWiFi:
             networkType = NetworkType_WiFi;
             break;
         default:
