@@ -31,7 +31,7 @@
 #include "tolua_fix.h"
 #include "LuaBasicConversions.h"
 #include "CCLuaEngine.h"
-#include "AudioEngine.h"
+#include "audio/include/AudioEngine.h"
 
 static int lua_get_AudioProfile_name(lua_State* L)
 {

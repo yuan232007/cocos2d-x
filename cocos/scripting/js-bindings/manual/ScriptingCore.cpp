@@ -29,7 +29,7 @@
 #include "js/OldDebugAPI.h"
 
 #include "cocos2d.h"
-#include "local-storage/LocalStorage.h"
+#include "storage/local-storage/LocalStorage.h"
 #include "cocos2d_specifics.hpp"
 #include "jsb_cocos2dx_auto.hpp"
 #include "js_bindings_config.h"

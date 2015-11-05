@@ -1,6 +1,6 @@
 #include "jsb_cocos2dx_extension_auto.hpp"
 #include "cocos2d_specifics.hpp"
-#include "cocos-ext.h"
+#include "extensions/cocos-ext.h"
 
 template<class T>
 static bool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {

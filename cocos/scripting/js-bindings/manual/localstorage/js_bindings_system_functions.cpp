@@ -8,7 +8,7 @@
 #include "js_bindings_core.h"
 #include "js_manual_conversions.h"
 #include "ScriptingCore.h"
-#include "local-storage/LocalStorage.h"
+#include "storage/local-storage/LocalStorage.h"
 
 USING_NS_CC;
 

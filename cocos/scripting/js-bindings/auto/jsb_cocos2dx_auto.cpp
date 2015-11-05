@@ -1,9 +1,9 @@
 #include "jsb_cocos2dx_auto.hpp"
 #include "cocos2d_specifics.hpp"
 #include "cocos2d.h"
-#include "SimpleAudioEngine.h"
-#include "CCProtectedNode.h"
-#include "CCAsyncTaskPool.h"
+#include "audio/include/SimpleAudioEngine.h"
+#include "2d/CCProtectedNode.h"
+#include "base/CCAsyncTaskPool.h"
 #include "component/CCComponentJS.h"
 
 template<class T>

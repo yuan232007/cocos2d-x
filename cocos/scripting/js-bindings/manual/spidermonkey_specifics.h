@@ -25,7 +25,7 @@
 
 #include "spidermonkey/jsapi.h"
 #include "spidermonkey/jsfriendapi.h"
-#include "uthash.h"
+#include "base/uthash.h"
 #include <unordered_map>
 
 typedef struct js_proxy {
