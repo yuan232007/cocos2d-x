@@ -20,7 +20,7 @@
 
 using namespace CocosDenshion;
 
-static CocosAppDelegate s_application;
+static CocosAppDelegate* s_application = nullptr;
 
 @interface MttGameEngine()
 
@@ -37,12 +37,16 @@ static CocosAppDelegate s_application;
         return;
     }
     
+    if (s_application == nullptr) {
+        s_application = new (std::nothrow) CocosAppDelegate;
+    }
+    
     //从浏览器配置的CacheDir、LibDir，获取失败直接返回
     NSString* cacheDir = [self.delegate x5GamePlayer_get_value:@"CacheDir"];
     NSString* libDir = [self.delegate x5GamePlayer_get_value:@"LibDir"];
     if (cacheDir != nil && libDir != nil) {
         [ChannelConfig setCocosRuntimeRootPath:cacheDir];
-        s_application.setEngineResDir([libDir cStringUsingEncoding:NSUTF8StringEncoding]);
+        s_application->setEngineResDir([libDir cStringUsingEncoding:NSUTF8StringEncoding]);
     }
     else {
         NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get value failed! CacheDir:%@, LibDir:%@", cacheDir, libDir];
@@ -93,7 +97,7 @@ static CocosAppDelegate s_application;
      [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
     
     auto gameResRoot = [[FileUtil getGameRootPath:gameInfo] cStringUsingEncoding:NSUTF8StringEncoding];
-    s_application.setGameResRoot(gameResRoot);
+    s_application->setGameResRoot(gameResRoot);
 }
 
 //得到用于显示的view
@@ -160,6 +164,8 @@ static CocosAppDelegate s_application;
     SimpleAudioEngine::end();
     
     cocos2d::Director::getInstance()->end();
+    
+    s_application = nullptr;
 }
 
 //设置GameEngineRuntimeProxy对象
@@ -195,7 +201,11 @@ static CocosAppDelegate s_application;
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
     } else {
-        NSString* progressText = [NSString stringWithFormat:@"%ld",(long)progress];
+        long fixProgress = (long)progress;
+        if (fixProgress > 100) {
+            fixProgress = 100;
+        }
+        NSString* progressText = [NSString stringWithFormat:@"%ld",fixProgress];
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
           progressText, @"progress", @"102400", @"size", nil]];

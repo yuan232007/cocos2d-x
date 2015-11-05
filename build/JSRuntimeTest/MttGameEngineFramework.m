@@ -209,11 +209,6 @@
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_onStop)]) {
         [self.engineGame game_engine_onStop];
         
-        /*if (self.navigationView != nil) {
-            [self.navigationView removeFromSuperview];
-            self.navigationView = nil;
-        }*/
-        
         [self.gameRootView removeFromSuperview];
         self.gameRootView = nil;
         self.navigationView = nil;

@@ -12,32 +12,52 @@
 
 std::function<void (int percent, bool isFailed)> s_downloadCallback;
 
-@interface PreloadCallbackWapper : NSObject<LoadingDelegate>
+class JSPreloadCallbackWrapper: public JSCallbackWrapper {
+public:
+    void eventCallbackFunc(int percent, bool isFailed)
+    {
+        cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]{
+            CCLOG("preload percent:%d,isFailed:%d", percent, isFailed);
+            
+            if (s_downloadCallback == nullptr) {
+                return;
+            }
+            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+            JS::RootedObject thisObj(cx, getJSCallbackThis().toObjectOrNull());
+            JS::RootedValue callback(cx, getJSCallbackFunc());
+            JS::RootedValue retval(cx);
+            
+            if (!callback.isNullOrUndefined())
+            {
+                char statusText[60];
+                sprintf(statusText, "{percent:%d, isCompleted:%s, isFailed:%s}", percent,
+                        (percent >= 100 && !isFailed) ? "true" : "false",
+                        isFailed ? "true" : "false");
+                jsval status = c_string_to_jsval(cx, statusText);
+                
+                JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+                
+                JS_CallFunctionValue(cx, thisObj, callback, JS::HandleValueArray::fromMarkedLocation(1, &status), &retval);
+            }
+        });
+    }
+};
 
-@end
-
-@implementation PreloadCallbackWapper
-
-- (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
-{
-    CCLOG("preload progress:%d isFailed:%d",(int)progress, isFailed);
+class RTCallbacksComponent: public cocos2d::Component {
+public:
+    RTCallbacksComponent() {
+        setName(NAME);
+    }
     
-    if (s_downloadCallback) {
-        s_downloadCallback((int)progress, isFailed);
+    virtual ~RTCallbacksComponent() {
+        s_downloadCallback = nullptr;
     }
-}
+    
+    JSBinding::Dictionary callbacks;
+    static const std::string NAME;
+};
 
-- (void) onPreRunGameCompleted
-{
-    CCLOG("preload completed");
-    if (s_downloadCallback) {
-        s_downloadCallback(100, false);
-    }
-}
-
-@end
-
-static PreloadCallbackWapper* s_preloadWapper = nil;
+const std::string RTCallbacksComponent::NAME = "JSB_RTCallback";
 
 USING_NS_CC;
 
@@ -48,60 +68,47 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
     auto args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
 
-    std::string arg0 = "";
+    std::string resGroups = "";
     auto arg0Handle = args.get(0);
 
-    if (JS_IsArrayObject(cx, arg0Handle))
-    {
-        // It's a group array
+    if (JS_IsArrayObject(cx, arg0Handle)) {
         ValueVector arrVal;
         ok = jsval_to_ccvaluevector(cx, arg0Handle, &arrVal);
 
         for (size_t i = 0; i < arrVal.size(); i++) {
-            if (! arg0.empty()) {
-                arg0 += ":";
+            if (! resGroups.empty()) {
+                resGroups += ":";
             }
-
-            arg0 += arrVal[i].asString();
+            resGroups += arrVal[i].asString();
         }
     }
-    else
-    {
-        // only one group
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+    else {
+        ok &= jsval_to_std_string(cx, args.get(0), &resGroups);
     }
 
     JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
 
     do {
         if (JS_TypeOfValue(cx, args[1]) == JSTYPE_FUNCTION) {
-            JSObject* cbObject;
-            if (args.get(2).isObject()) {
-                cbObject = args.get(2).toObjectOrNull();
-            } else {
-                
+            auto cbObject= args.get(2).toObjectOrNull();;
+            
+            auto proxy = jsb_get_js_proxy(cbObject);
+            auto loadLayer = (cocos2d::Layer*)(proxy ? proxy->ptr : nullptr);
+            auto callbackComp = static_cast<RTCallbacksComponent*>(loadLayer->getComponent(RTCallbacksComponent::NAME));
+            if (callbackComp == nullptr) {
+                callbackComp = new (std::nothrow) RTCallbacksComponent;
+                callbackComp->autorelease();
+                loadLayer->addComponent(callbackComp);
             }
             
-            std::shared_ptr<JSFunctionWrapper> func (new JSFunctionWrapper(cx, cbObject, args[1]));
-            auto lambda = [=](int percent, bool isFailed) -> void {
-                Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]{
-                    jsval largv[1];
-                    do {
-                        char statusText[60];
-                        sprintf(statusText, "{percent:%d, isCompleted:%s, isFailed:%s}", percent,
-                                (percent >= 100 && !isFailed) ? "true" : "false",
-                                isFailed ? "true" : "false");
-                            
-                        largv[0] = c_string_to_jsval(cx, statusText);
-                    } while (false);
-                    
-                    JS::RootedValue rval(cx);
-                    auto invoke_ok = func->invoke(1, &largv[0], &rval);
-                    if (!invoke_ok && JS_IsExceptionPending(cx)) {
-                        JS_ReportPendingException(cx);
-                    }
-                });
-                
+            auto cbWapper = new (std::nothrow) JSPreloadCallbackWrapper;
+            cbWapper->autorelease();
+            cbWapper->setJSCallbackFunc(args.get(1));
+            cbWapper->setJSCallbackThis(args.get(2));
+            callbackComp->callbacks.insert("JSPreloadCallbackWrapper", cbWapper);
+            
+            auto lambda = [cbWapper](int percent, bool isFailed){
+                cbWapper->eventCallbackFunc(percent, isFailed);
             };
             s_downloadCallback = lambda;
         }
@@ -111,11 +118,12 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
     } while (false);
     
     if (s_downloadCallback) {
-        NSString* groups = [NSString stringWithUTF8String:arg0.c_str()];
-        if (s_preloadWapper == nil) {
-            s_preloadWapper = [[PreloadCallbackWapper alloc] init];
-        }
-        [CocosRuntimeGroup preloadResGroups:groups delegate:s_preloadWapper];
+        NSString* groups = [NSString stringWithUTF8String:resGroups.c_str()];
+        [CocosRuntimeGroup preloadResGroups:groups delegate:^(int progress, bool isFailed){
+            if (s_downloadCallback) {
+                s_downloadCallback(progress, isFailed);
+            }
+        }];
     }
     
     args.rval().setUndefined();

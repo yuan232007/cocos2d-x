@@ -18,11 +18,13 @@
 #define PROGRESS_MAX 100
 #define PROGRESS_INVALID -1
 
+typedef void(^RTPreloadCallback)(int progress, bool isFailed);
+
 @interface CocosRuntimeGroup : NSObject
 + (void) initialize: (GameInfo*) info config: (GameConfig*) config manifest: (GameManifest*) manifest;
 + (void) prepareWaitingDownloadGroups: (NSString*) groupsString;
 + (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed;
-+ (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate;
++ (void) preloadResGroups: (NSString*) groupsString delegate: (RTPreloadCallback) callback;
 + (void) preloadNextGroup;
 + (NSString*) getCurrentGroupNameFromWaitingGroups;
 + (BOOL) isGroupUpdated: (NSString*) name;

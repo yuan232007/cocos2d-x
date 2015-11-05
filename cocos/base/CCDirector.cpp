@@ -1318,6 +1318,7 @@ void DisplayLinkDirector::mainLoop()
     {
         _purgeDirectorInNextLoop = false;
         purgeDirector();
+        Application::destroyInstance();
     }
     else if (_restartDirectorInNextLoop)
     {
