@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "FileDownloadDelegate.h"
 
-@interface FileDownload : NSObject <NSURLSessionDownloadDelegate>
+@interface FileDownloader : NSObject <NSURLSessionDownloadDelegate>
 {
     NSURL* requestURL;
     id<FileDownloadDelegate> fileDownloadDelegate;
 }
 
-- (FileDownload*) initWithURL: (NSURL*) url delegate: (id<FileDownloadDelegate>) delegate;
+- (FileDownloader*) initWithURL: (NSURL*) url delegate: (id<FileDownloadDelegate>) delegate;
 -(void) startDownload;
 -(NSURLSession*) getCurrentSession;
 -(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location;

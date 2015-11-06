@@ -6,11 +6,11 @@
 //  Copyright © 2015 kinglong huang. All rights reserved.
 //
 
-#import "FileDownload.h"
+#import "FileDownloader.h"
 
-@implementation FileDownload
+@implementation FileDownloader
 
--(FileDownload*) initWithURL:(NSURL *)url delegate:(id<FileDownloadDelegate>)delegate
+-(FileDownloader*) initWithURL:(NSURL *)url delegate:(id<FileDownloadDelegate>)delegate
 {
     if (self = [super init]) {
         requestURL = url;
