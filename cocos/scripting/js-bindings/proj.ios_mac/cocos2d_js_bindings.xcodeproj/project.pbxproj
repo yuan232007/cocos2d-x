@@ -10,8 +10,6 @@
 		0541A74F1973876100E45470 /* JavaScriptObjCBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 0541A74D1973876100E45470 /* JavaScriptObjCBridge.h */; };
 		0541A7501973876100E45470 /* JavaScriptObjCBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0541A74E1973876100E45470 /* JavaScriptObjCBridge.mm */; };
 		0541A75B19738AD200E45470 /* JavaScriptObjCBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0541A74E1973876100E45470 /* JavaScriptObjCBridge.mm */; };
-		185664961B4253C7009EF2AE /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A119F0D18BDF1FF00352BAA /* libjs_static.a */; };
-		185664971B4253CB009EF2AE /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A119F0F18BDF20900352BAA /* libjs_static.a */; };
 		1A119E8318BDF19200352BAA /* jsb_cocos2dx_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A119E2F18BDF19200352BAA /* jsb_cocos2dx_auto.cpp */; };
 		1A119E8418BDF19200352BAA /* jsb_cocos2dx_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A119E2F18BDF19200352BAA /* jsb_cocos2dx_auto.cpp */; };
 		1A119E8518BDF19200352BAA /* jsb_cocos2dx_auto.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1A119E3018BDF19200352BAA /* jsb_cocos2dx_auto.hpp */; };
@@ -144,6 +142,8 @@
 		BAF638DD1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF638DA1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp */; };
 		BAF638DE1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BAF638DB1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp */; };
 		BAF638DF1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BAF638DB1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp */; };
+		ED0F39461BEC3E8E00E70AD4 /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0F39451BEC3E8E00E70AD4 /* libjs_static.a */; };
+		ED3057C71BEC7C8C0083C3ED /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3057C61BEC7C8C0083C3ED /* libjs_static.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +226,8 @@
 		BA9FD5D11BAC0A7600996C85 /* CCComponentJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCComponentJS.h; path = component/CCComponentJS.h; sourceTree = "<group>"; };
 		BAF638DA1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_cocos2dx_audioengine_auto.cpp; sourceTree = "<group>"; };
 		BAF638DB1B5F5DC900CDB43A /* jsb_cocos2dx_audioengine_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_cocos2dx_audioengine_auto.hpp; sourceTree = "<group>"; };
+		ED0F39451BEC3E8E00E70AD4 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = ../../../../external/ios/libs/libjs_static.a; sourceTree = "<group>"; };
+		ED3057C61BEC7C8C0083C3ED /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = ../../../../external/mac/libs/libjs_static.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185664971B4253CB009EF2AE /* libjs_static.a in Frameworks */,
+				ED3057C71BEC7C8C0083C3ED /* libjs_static.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185664961B4253C7009EF2AE /* libjs_static.a in Frameworks */,
+				ED0F39461BEC3E8E00E70AD4 /* libjs_static.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +263,8 @@
 		1551A334158F2AB200E66CFE = {
 			isa = PBXGroup;
 			children = (
+				ED3057C61BEC7C8C0083C3ED /* libjs_static.a */,
+				ED0F39451BEC3E8E00E70AD4 /* libjs_static.a */,
 				1A119E2E18BDF19200352BAA /* auto */,
 				1A119F0918BDF1D400352BAA /* external */,
 				1A5410A518B785A10016A3AF /* libjscocos2d iOS.a */,
@@ -781,10 +785,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../../external/spidermonkey/prebuilt/mac",
-					"$(SRCROOT)/../../../../external/curl/include/mac",
+					"$(SRCROOT)/../../../../external/mac/libs",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/spidermonkey/include/mac $(SRCROOT)/../../../../cocos/platform/mac $(SRCROOT)/../../../../external/glfw3/include/mac $(SRCROOT)/../../../../external/curl/include/mac";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/mac/include $(SRCROOT)/../../../../external/sources $(SRCROOT)/../../../../cocos/platform/mac $(SRCROOT)/../../../../external/mac/include/spidermonkey";
 			};
 			name = Debug;
 		};
@@ -803,10 +806,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../../external/spidermonkey/prebuilt/mac",
-					"$(SRCROOT)/../../../../external/curl/include/mac",
+					"$(SRCROOT)/../../../../external/mac/libs",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/spidermonkey/include/mac $(SRCROOT)/../../../../cocos/platform/mac $(SRCROOT)/../../../../external/glfw3/include/mac $(SRCROOT)/../../../../external/curl/include/mac";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/mac/include $(SRCROOT)/../../../../external/sources $(SRCROOT)/../../../../cocos/platform/mac $(SRCROOT)/../../../../external/mac/include/spidermonkey";
 			};
 			name = Release;
 		};
@@ -824,11 +826,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../../external/spidermonkey/prebuilt/ios",
+					"$(SRCROOT)/../../../../external/ios/libs",
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/spidermonkey/include/ios $(SRCROOT)/../../../../cocos/platform/ios $(SRCROOT)/../../../../plugin/protocols/include $(SRCROOT)/../../../../external/curl/include/ios";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/sources $(SRCROOT)/../../../../external/ios/include $(SRCROOT)/../../../../external/ios/include/spidermonkey $(SRCROOT)/../../../../cocos/platform/ios";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -837,6 +839,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_PREFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -848,11 +851,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../../external/spidermonkey/prebuilt/ios",
+					"$(SRCROOT)/../../../../external/ios/libs",
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/spidermonkey/include/ios $(SRCROOT)/../../../../cocos/platform/ios $(SRCROOT)/../../../../plugin/protocols/include $(SRCROOT)/../../../../external/curl/include/ios";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../external/sources $(SRCROOT)/../../../../external/ios/include $(SRCROOT)/../../../../external/ios/include/spidermonkey $(SRCROOT)/../../../../cocos/platform/ios";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;

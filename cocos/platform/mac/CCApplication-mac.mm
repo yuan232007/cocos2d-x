@@ -128,6 +128,15 @@ Application* Application::getInstance()
     return sm_pSharedApplication;
 }
 
+void Application::destroyInstance()
+{
+    if (sm_pSharedApplication) {
+        delete  sm_pSharedApplication;
+    }
+    
+    sm_pSharedApplication = nullptr;
+}
+
 // @deprecated Use getInstance() instead
 Application* Application::sharedApplication()
 {

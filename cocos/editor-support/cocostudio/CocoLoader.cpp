@@ -1,5 +1,9 @@
 #include "CocoLoader.h"
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#include <zlib.h>
+#else
 #include "zlib/zlib.h"
+#endif
 
 using namespace std;
 using namespace rapidjson;

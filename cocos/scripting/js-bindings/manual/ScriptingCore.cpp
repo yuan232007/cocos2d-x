@@ -44,8 +44,6 @@
 #include <netdb.h>
 #endif
 
-#include <thread>
-#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>

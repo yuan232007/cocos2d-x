@@ -48,7 +48,7 @@ THE SOFTWARE.
 #ifndef GLFW_EXPOSE_NATIVE_COCOA
 #define GLFW_EXPOSE_NATIVE_COCOA
 #endif
-#include "glfw3native.h"
+#include "glfw3/glfw3native.h"
 #endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 
 NS_CC_BEGIN
