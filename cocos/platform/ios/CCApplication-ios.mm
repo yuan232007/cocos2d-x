@@ -72,10 +72,13 @@ Application* Application::getInstance()
     return sm_pSharedApplication;
 }
 
-// @deprecated Use getInstance() instead
-Application* Application::sharedApplication()
+void Application::destroyInstance()
 {
-    return Application::getInstance();
+    if (sm_pSharedApplication) {
+        delete  sm_pSharedApplication;
+    }
+    
+    sm_pSharedApplication = nullptr;
 }
 
 const char * Application::getCurrentLanguageCode()

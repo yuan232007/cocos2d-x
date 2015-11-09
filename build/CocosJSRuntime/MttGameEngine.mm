@@ -20,7 +20,7 @@
 
 using namespace CocosDenshion;
 
-static CocosAppDelegate s_application;
+static CocosAppDelegate* s_application = nullptr;
 
 @interface MttGameEngine()
 
@@ -31,34 +31,55 @@ static CocosAppDelegate s_application;
 @implementation MttGameEngine
 
 //初始化游戏引擎
-- (void)game_engine_init:(NSString*)jsonStr
+- (void)game_engine_init:(NSString*)gameInfoJson
 {
-    if (self.delegate != nil) {
-        NSString* cacheDir = [self.delegate x5GamePlayer_get_value:@"CacheDir"];
-        if (cacheDir != nil) {
-            [ChannelConfig setCocosRuntimeRootPath:cacheDir];
-        }
-        else {
-            NSString *channelRuntimeRootPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, true)[0] stringByAppendingString:@"/CocosRuntime"];
-            [ChannelConfig setCocosRuntimeRootPath: channelRuntimeRootPath];
-        }
+    if (self.delegate == nil) {
+        return;
     }
     
+    if (s_application == nullptr) {
+        s_application = new (std::nothrow) CocosAppDelegate;
+    }
+    
+    //从浏览器配置的CacheDir、LibDir，获取失败直接返回
+    NSString* cacheDir = [self.delegate x5GamePlayer_get_value:@"CacheDir"];
+    NSString* libDir = [self.delegate x5GamePlayer_get_value:@"LibDir"];
+    if (cacheDir != nil && libDir != nil) {
+        [ChannelConfig setCocosRuntimeRootPath:cacheDir];
+        s_application->setEngineResDir([libDir cStringUsingEncoding:NSUTF8StringEncoding]);
+    }
+    else {
+        NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get value failed! CacheDir:%@, LibDir:%@", cacheDir, libDir];
+        [self.delegate x5GamePlayer_send_msg:
+         [NSDictionary dictionaryWithObjectsAndKeys:errorMsg, @"error", nil]];
+        return;
+    }
+    
+    //解析game info取得game name、game key、game download url
     NSString* gameKey,*gameDownloadUrl,*gameName;
-    if (jsonStr != nil) {
-        NSDictionary * gameInfoDirt = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-        if(gameInfoDirt != nil) {
-            gameName = [gameInfoDirt objectForKey:@"gameName"];
-            NSString* gameExt = [gameInfoDirt objectForKey:@"ext"];
+    if (gameInfoJson != nil) {
+        bool gameInfoInitFlag = false;
+        do {
+            NSDictionary * gameInfo = [NSJSONSerialization JSONObjectWithData:[gameInfoJson dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
             
-            if (gameExt != nil) {
-                NSDictionary* gameExtInfo = [NSJSONSerialization JSONObjectWithData:[gameExt dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                
-                if (gameExtInfo != nil) {
-                    gameKey = [gameExtInfo objectForKey:@"gameKey"];
-                    gameDownloadUrl = [gameExtInfo objectForKey:@"resUrl"];
-                }
-            }
+            if (gameInfo == nil) { break;}
+            gameName = [gameInfo objectForKey:@"gameName"];
+            
+            NSString* gameExt = [gameInfo objectForKey:@"ext"];
+            if (gameExt == nil) { break;}
+            
+            NSDictionary* gameExtInfo = [NSJSONSerialization JSONObjectWithData:[gameExt dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+            if (gameExtInfo == nil) { break;}
+            
+            gameKey = [gameExtInfo objectForKey:@"gameKey"];
+            gameDownloadUrl = [gameExtInfo objectForKey:@"resUrl"];
+            gameInfoInitFlag = true;
+        } while (false);
+        
+        if (gameInfoInitFlag == false) {
+            [self.delegate x5GamePlayer_send_msg:
+             [NSDictionary dictionaryWithObjectsAndKeys:@"game_engine_init:get 'CacheDir' value failed!",@"error", nil]];
+            return;
         }
     }
     else {
@@ -67,19 +88,16 @@ static CocosAppDelegate s_application;
         gameName = @"打飞机游戏";
     }
     
+    //从服务器获取游戏配置并下载第一个boot分组
     GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
     [CocosRuntime startPreRuntime:gameInfo proxy:self];
     
-    if(self.delegate) {
-        [self.delegate x5GamePlayer_send_msg:
-         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
-    }
-    
-    NSString* libDir = [self.delegate x5GamePlayer_get_value:@"LibDir"];
-    s_application.setEngineResDir([libDir cStringUsingEncoding:NSUTF8StringEncoding]);
+    //通知浏览器已经开始下载
+    [self.delegate x5GamePlayer_send_msg:
+     [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
     
     auto gameResRoot = [[FileUtil getGameRootPath:gameInfo] cStringUsingEncoding:NSUTF8StringEncoding];
-    s_application.setGameResRoot(gameResRoot);
+    s_application->setGameResRoot(gameResRoot);
 }
 
 //得到用于显示的view
@@ -98,9 +116,9 @@ static CocosAppDelegate s_application;
     auto screenSize = [UIScreen mainScreen].bounds.size;
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        NSLog(@"Interface orientation is landscape");
+        CCLOG("Interface orientation is landscape");
     } else {
-        NSLog(@"Interface orientation is portrait");
+        CCLOG("Interface orientation is portrait");
     }
     
     CCEAGLView *eaglView = [CCEAGLView viewWithFrame: CGRectMake(0, 0, screenSize.width, screenSize.height)//[window bounds]
@@ -125,27 +143,29 @@ static CocosAppDelegate s_application;
 //暂停游戏
 - (void)game_engine_onPause
 {
-    NSLog(@"game_engine_onPause");
+    CCLOG("game_engine_onPause");
     cocos2d::Application::getInstance()->applicationDidEnterBackground();
 }
 
 //恢复游戏
 - (void)game_engine_onResume
 {
-    NSLog(@"game_engine_onResume");
+    CCLOG("game_engine_onResume");
     cocos2d::Application::getInstance()->applicationWillEnterForeground();
 }
 
 //退出游戏
 - (void)game_engine_onStop
 {
-    NSLog(@"game_engine_onStop");
+    CCLOG("game_engine_onStop");
     
     SimpleAudioEngine::getInstance()->stopAllEffects();
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     SimpleAudioEngine::end();
     
     cocos2d::Director::getInstance()->end();
+    
+    s_application = nullptr;
 }
 
 //设置GameEngineRuntimeProxy对象
@@ -154,7 +174,7 @@ static CocosAppDelegate s_application;
     self.delegate = proxy;
     
     if (self.delegate == nil) {
-        NSLog(@"game_engine_set_runtime_proxy error, nil");
+        CCLOG("game_engine_set_runtime_proxy error, nil");
     }
 }
 
@@ -176,23 +196,34 @@ static CocosAppDelegate s_application;
 
 - (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
 {
-    NSLog(@"onLoadingProgress:%ld", (long)progress);
+    CCLOG("onLoadingProgress:%ld", (long)progress);
     if (isFailed) {
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
     } else {
-        NSString* progressText = [NSString stringWithFormat:@"%ld",(long)progress];
+        long fixProgress = (long)progress;
+        if (fixProgress > 100) {
+            fixProgress = 100;
+        }
+        NSString* progressText = [NSString stringWithFormat:@"%ld",fixProgress];
         [self.delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
           progressText, @"progress", @"102400", @"size", nil]];
     }
 }
 
-- (void) onPreRunGameCompleted
+- (void) onLoadingCompleted
 {
-    NSLog(@"onPreRunGameCompleted");
+    CCLOG("onPreRunGameCompleted");
     [self.delegate x5GamePlayer_send_msg:
      [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
+}
+
+- (void) onLoadingError
+{
+    CCLOG("onLoadingError");
+    [self.delegate x5GamePlayer_send_msg:
+     [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
 }
 
 @end

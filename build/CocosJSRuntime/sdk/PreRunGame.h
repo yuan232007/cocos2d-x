@@ -10,7 +10,7 @@
 #import "GameInfo.h"
 #import "GameConfig.h"
 #import "GameManifest.h"
-#import "FileDownload.h"
+#import "FileDownloader.h"
 #import "MttGameEngine.h"
 #import "FileDownloadAdapter.h"
 

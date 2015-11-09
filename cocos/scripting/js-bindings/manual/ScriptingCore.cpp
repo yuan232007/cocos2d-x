@@ -453,13 +453,14 @@ static const JSClass global_class = {
     JS_GlobalObjectTraceHook
 };
 
+static ScriptingCore* s_scriptCodeInstance = nullptr;
+
 ScriptingCore* ScriptingCore::getInstance()
 {
-    static ScriptingCore* instance = nullptr;
-    if (instance == nullptr)
-        instance = new ScriptingCore();
+    if (s_scriptCodeInstance == nullptr)
+        s_scriptCodeInstance = new (std::nothrow) ScriptingCore();
 
-    return instance;
+    return s_scriptCodeInstance;
 }
 
 ScriptingCore::ScriptingCore()
@@ -809,14 +810,16 @@ void ScriptingCore::restartVM()
 ScriptingCore::~ScriptingCore()
 {
     cleanup();
+    s_scriptCodeInstance = nullptr;
 }
 
 void ScriptingCore::cleanup()
 {
     localStorageFree();
-    removeAllRoots(_cx);
+    
     if (_cx)
     {
+        removeAllRoots(_cx);
         JS_DestroyContext(_cx);
         _cx = NULL;
     }

@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol onGroupUpdateDelegate
+@protocol OnGroupUpdateDelegate
 - (void) onProgressOfDownload: (long) written total:(long) total;
 - (void) onSuccessOfDownload: (long) total;
 - (void) onFailureOfDownload: (NSString*) errorMsg;
 - (void) onSuccessOfUnzip: (long)total;
 - (void) onFailureOfUnzip: (NSString*) errorMsg;
-- (void) onProgressOfUnzip: (float) precent;
+- (void) onProgressOfUnzip: (float) percent;
 @end

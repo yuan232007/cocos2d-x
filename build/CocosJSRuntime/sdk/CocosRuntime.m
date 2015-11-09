@@ -13,7 +13,6 @@
 
 /**/
 static GameInfo *gameInfo = nil;
-
 static LoadingProgressController *loadingProgressController;
 
 @implementation CocosRuntime
@@ -33,9 +32,15 @@ static LoadingProgressController *loadingProgressController;
     [PreRunGame start:info proxy:proxy];
 }
 
-+ (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate
++ (void) preloadResGroups: (NSString*) groupsString delegate: (RTPreloadCallback) callback
 {
-    [CocosRuntimeGroup preloadResGroups:groupsString delegate:delegate];
+    sRTPreloadCallback = callback;
+    [CocosRuntimeGroup preloadResGroups:groupsString delegate:callback];
+}
+
++ (void) preloadResGroupsInternal:(NSString *)groupsString delegate:(id<LoadingDelegate>)delegate
+{
+    
 }
 
 + (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed
@@ -54,7 +59,7 @@ static LoadingProgressController *loadingProgressController;
     }*/
 }
 
-- (LoadingProgressController*) getLoadingProgressController
++ (LoadingProgressController*) getLoadingProgressController
 {
     return loadingProgressController;
 }
@@ -65,12 +70,18 @@ static LoadingProgressController *loadingProgressController;
 
 - (void) onUpdateOfLoadingInfo: (LoadingInfo*) currentLoadingInfo
 {
-    
+    // 不是静默下载就回调通知给宿主
+    if (![CocosRuntimeGroup isInSilentDownloadState] && sRTPreloadCallback != nil) {
+//        sRTPreloadCallback(11, FALSE);
+    }
 }
 
 - (void) onAllLoaingFinish
 {
-    
+    // 不是静默下载就回调通知给宿主
+    if (![CocosRuntimeGroup isInSilentDownloadState] && sRTPreloadCallback != nil) {
+        sRTPreloadCallback(100, FALSE);
+    }
 }
 
 @end

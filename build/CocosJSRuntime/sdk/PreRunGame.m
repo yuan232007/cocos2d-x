@@ -21,7 +21,7 @@ static GameInfo* gameInfo = nil;
 static NSString* remoteConfigPath = nil;
 static NSString* localConfigPath = nil;
 static GameManifest* gameManifest = nil;
-static FileDownload* fileDownload = nil;
+static FileDownloader* fileDownload = nil;
 static MttGameEngine* mttGameEngine = nil;
 static GameConfig* gameConfig = nil;
 
@@ -49,7 +49,7 @@ static GameConfig* gameConfig = nil;
         NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
                                    stringByAppendingPathComponent:[FileUtil getConfigFileName]];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[ConfigDownloadDelegateImpl alloc] init]];
+        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[ConfigDownloadDelegateImpl alloc] init]];
         NSLog(@"===> remote config file url: %@", requestString);
         [fileDownload startDownload];
     });
@@ -86,7 +86,7 @@ static GameConfig* gameConfig = nil;
         NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
                                    stringByAppendingPathComponent:@"manifest.cpk"];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[ManifestDownloadDelegateImpl alloc] init]];
+        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[ManifestDownloadDelegateImpl alloc] init]];
         [fileDownload startDownload];
 //    });
 }
@@ -113,7 +113,7 @@ static GameConfig* gameConfig = nil;
         NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
                                    stringByAppendingPathComponent:[gameConfig entryName]];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[EntryDownloadDelegateImpl alloc] init]];
+        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[EntryDownloadDelegateImpl alloc] init]];
         [fileDownload startDownload];
 //    });
 }
@@ -132,7 +132,7 @@ static GameConfig* gameConfig = nil;
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:[gameConfig projectName]];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:[[ProjectDownloadDelegateImpl alloc] init]];
+        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[ProjectDownloadDelegateImpl alloc] init]];
         [fileDownload startDownload];
 //    });
 }
@@ -236,7 +236,7 @@ static GameConfig* gameConfig = nil;
             NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
             
             BootGroupDownloadImpl* resDownloadImpl =  [[BootGroupDownloadImpl alloc] initWith:resGroup];
-            FileDownload *fileDownload = [[FileDownload alloc] initWithURL:requestUrl delegate:resDownloadImpl];
+            FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:resDownloadImpl];
             [fileDownload startDownload];
         });
     } else {

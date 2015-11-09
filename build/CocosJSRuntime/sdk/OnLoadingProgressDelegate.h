@@ -6,8 +6,12 @@
 //  Copyright © 2015 kinglong huang. All rights reserved.
 //
 
-#ifndef OnLoadingProgressDelegate_h
-#define OnLoadingProgressDelegate_h
+#import <Foundation/Foundation.h>
+#import "LoadingInfo.h"
 
+@protocol OnLoadingProgressDelegate
 
-#endif /* OnLoadingProgressDelegate_h */
+- (void) onUpdateOfLoadingInfo: (LoadingInfo*) currentLoadingInfo;
+- (void) onAllLoaingFinish;
+
+@end

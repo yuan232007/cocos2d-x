@@ -195,11 +195,10 @@ void GLViewImpl::end()
 {
     [CCDirectorCaller destroy];
 
-    // destroy EAGLView
-    CCEAGLView *eaglview = (CCEAGLView*) _eaglview;
-
-    [eaglview removeFromSuperview];
-    //[eaglview release];
+    //runtime版本由宿主（eg：QQ浏览器）负责移除EAGLView
+    //CCEAGLView *eaglview = (CCEAGLView*) _eaglview;
+    //[eaglview removeFromSuperview];
+    
     release();
 }
 

@@ -12,8 +12,11 @@
 @interface FileDownloader : NSObject <NSURLSessionDownloadDelegate>
 {
     NSURL* requestURL;
+    NSURLSessionDownloadTask *downloadTask;
     id<FileDownloadDelegate> fileDownloadDelegate;
 }
+
+@property NSURLSessionDownloadTask *downloadTask;
 
 - (FileDownloader*) initWithURL: (NSURL*) url delegate: (id<FileDownloadDelegate>) delegate;
 -(void) startDownload;

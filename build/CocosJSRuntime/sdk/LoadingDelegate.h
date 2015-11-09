@@ -13,8 +13,9 @@
 
 @protocol LoadingDelegate <NSObject>
 
-- (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
-- (void) onPreRunGameCompleted;
+- (void) onLoadingProgress:(float)progress max:(float)max;
+- (void) onLoadingCompleted;
+- (void) onLoadingError;
 @end
 
 #endif

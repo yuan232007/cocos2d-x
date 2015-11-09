@@ -31,53 +31,17 @@ using namespace cocos2d::ui;
 
 class JSStudioEventListenerWrapper: public JSCallbackWrapper {
 public:
-    JSStudioEventListenerWrapper();
-    virtual ~JSStudioEventListenerWrapper();
-
-    virtual void setJSCallbackThis(jsval thisObj);
-
     virtual void eventCallbackFunc(Ref*,int);
-
-private:
-    bool m_bNeedUnroot;
 };
-
-JSStudioEventListenerWrapper::JSStudioEventListenerWrapper()
-    : m_bNeedUnroot(false)
-{
-
-}
-
-JSStudioEventListenerWrapper::~JSStudioEventListenerWrapper()
-{
-    if (m_bNeedUnroot)
-    {
-        JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-        JS::RemoveValueRoot(cx, &_jsThisObj);
-    }
-}
-
-void JSStudioEventListenerWrapper::setJSCallbackThis(jsval jsThisObj)
-{
-    JSCallbackWrapper::setJSCallbackThis(jsThisObj);
-
-    JSObject *thisObj = jsThisObj.toObjectOrNull();
-    js_proxy *p = jsb_get_js_proxy(thisObj);
-    if (!p)
-    {
-        JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-        m_bNeedUnroot = true;
-        m_bNeedUnroot &= JS::AddValueRoot(cx, &_jsThisObj);
-    }
-}
 
 void JSStudioEventListenerWrapper::eventCallbackFunc(Ref* sender,int eventType)
 {
     JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject thisObj(cx, _jsThisObj.isNullOrUndefined() ? NULL : _jsThisObj.toObjectOrNull());
+    JS::RootedObject thisObj(cx, getJSCallbackThis().toObjectOrNull());
+    JS::RootedValue callback(cx, getJSCallbackFunc());
     js_proxy_t *proxy = js_get_or_create_proxy(cx, sender);
     JS::RootedValue retval(cx);
-    if (!_jsCallback.isNullOrUndefined())
+    if (!callback.isNullOrUndefined())
     {
         jsval touchVal = INT_TO_JSVAL(eventType);
 
@@ -85,12 +49,9 @@ void JSStudioEventListenerWrapper::eventCallbackFunc(Ref* sender,int eventType)
         valArr[0] = OBJECT_TO_JSVAL(proxy->obj);
         valArr[1] = touchVal;
 
-        //JS::AddValueRoot(cx, valArr);
-
         JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
 
-        JS_CallFunctionValue(cx, thisObj, JS::RootedValue(cx, _jsCallback), JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
-        //JS::RemoveValueRoot(cx, valArr);
+        JS_CallFunctionValue(cx, thisObj, callback, JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
     }
 }
 
@@ -99,7 +60,7 @@ public:
     CallbacksComponent();
     virtual ~CallbacksComponent();
     
-    JSBinding::Dictionary callbacks;
+    JSBinding::Dictionary* callbacks;
     static const std::string NAME;
 };
 
@@ -108,10 +69,13 @@ const std::string CallbacksComponent::NAME = "JSB_Callbacks";
 CallbacksComponent::CallbacksComponent()
 {
     setName(NAME);
+    callbacks = new (std::nothrow) JSBinding::Dictionary;
 }
 
 CallbacksComponent::~CallbacksComponent()
 {
+    delete callbacks;
+    callbacks = nullptr;
 }
 
 static bool js_cocos2dx_UIWidget_addTouchEventListener(JSContext *cx, uint32_t argc, jsval *vp)
@@ -134,8 +98,8 @@ static bool js_cocos2dx_UIWidget_addTouchEventListener(JSContext *cx, uint32_t a
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("widgetTouchEvent", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("widgetTouchEvent", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
@@ -190,8 +154,8 @@ static bool js_cocos2dx_UICheckBox_addEventListener(JSContext *cx, uint32_t argc
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("checkBoxEventListener", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("checkBoxEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
@@ -246,8 +210,8 @@ static bool js_cocos2dx_UISlider_addEventListener(JSContext *cx, uint32_t argc, 
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("sliderEventListener", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("sliderEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
@@ -302,8 +266,8 @@ static bool js_cocos2dx_UITextField_addEventListener(JSContext *cx, uint32_t arg
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("textfieldEventListener", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("textfieldEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
@@ -358,8 +322,8 @@ static bool js_cocos2dx_UIPageView_addEventListener(JSContext *cx, uint32_t argc
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("pageViewEventListener", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("pageViewEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
@@ -414,8 +378,8 @@ static bool js_cocos2dx_UIScrollView_addEventListener(JSContext *cx, uint32_t ar
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("scrollViewEventListener", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("scrollViewEventListener", tmpObj);
         
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));
@@ -469,8 +433,8 @@ static bool js_cocos2dx_UIListView_addEventListener(JSContext *cx, uint32_t argc
             comp->autorelease();
             cobj->addComponent(comp);
         }
-        auto& dict = comp->callbacks;
-        dict.insert("listViewEventListener", tmpObj);
+        auto dict = comp->callbacks;
+        dict->insert("listViewEventListener", tmpObj);
 
         tmpObj->setJSCallbackFunc(args.get(0));
         tmpObj->setJSCallbackThis(args.get(1));

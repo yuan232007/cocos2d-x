@@ -10,6 +10,8 @@
 
 @implementation FileDownloader
 
+@synthesize downloadTask;
+
 -(FileDownloader*) initWithURL:(NSURL *)url delegate:(id<FileDownloadDelegate>)delegate
 {
     if (self = [super init]) {
@@ -23,7 +25,8 @@
 {
     NSLog(@"===> FileDownload startDownload");
     [fileDownloadDelegate onDownloadStart];
-    [[[self getCurrentSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:requestURL]] resume];
+    downloadTask = [[self getCurrentSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:requestURL]];
+    [downloadTask resume];
 }
 
 -(NSURLSession*) getCurrentSession

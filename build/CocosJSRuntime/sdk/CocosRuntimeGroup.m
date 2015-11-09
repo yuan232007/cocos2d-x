@@ -19,8 +19,6 @@ static NSMutableArray *resGroups = nil;
 static NSMutableDictionary *resGroupDict = nil;
 
 /**/
-static NSInteger totalSize = 0;
-/**/
 static NSInteger downloadGroupSize = 0;
 
 /* 当前正在下载的组名 */

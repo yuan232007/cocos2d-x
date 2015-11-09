@@ -10,4 +10,17 @@
 
 @implementation LoadingInfo
 
+@synthesize loadingName, loadingTip, loadingType, percentOfTotal;
+
+- (LoadingInfo*) initWith:(NSString *)name percent:(NSInteger)percent type:(enum LoadingType)type tip:(NSString *)tip
+{
+    self = [super init];
+    if (self != nil) {
+        self.loadingName = name;
+        self.loadingTip = tip;
+        self.percentOfTotal = percent;
+        self.loadingType = type;
+    }
+    return self;
+}
 @end

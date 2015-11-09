@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OnLoadingProgressDelegate.h"
 
 @interface LoadingProgressController : NSObject
+{
+    NSMutableArray *LoadingInfoList;
+    NSMutableDictionary *LoadingInfoDict;
+    id<OnLoadingProgressDelegate> onLoadingProgressDelegate;
+}
 
+@property NSMutableArray *LoadingInfoList;
+@property NSMutableDictionary *LoadingInfoDict;
+@property id<OnLoadingProgressDelegate> onLoadingProgressDelegate;
+
+
+- (LoadingProgressController*) init;
+- (void) reset;
 @end

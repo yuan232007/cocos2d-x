@@ -10,4 +10,18 @@
 
 @implementation LoadingProgressController
 
+@synthesize LoadingInfoList, LoadingInfoDict,onLoadingProgressDelegate;
+
+- (LoadingProgressController*) init
+{
+    self = [super init];
+//    self.LoadingInfoList = [NSMutableArray arrayWithCapacity:10];
+//    self.LoadingInfoDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    return self;
+}
+
+- (void) reset
+{
+    
+}
 @end

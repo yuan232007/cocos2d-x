@@ -8,6 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LoadingInfo : NSObject
+enum LoadingType
+{
+    PROGRESS,
+    WAIT
+};
 
+@interface LoadingInfo : NSObject
+{
+    NSString *loadingName;
+    NSString *loadingTip;
+    NSInteger percentOfTotal; // 0 ~ 100
+    enum LoadingType loadingType;
+}
+
+@property NSString *loadingName, *loadingTip;
+@property NSInteger percentOfTotal;
+@property enum LoadingType loadingType;
+
+- (LoadingInfo*) initWith: (NSString*)name percent:(NSInteger)percent type:(enum LoadingType)type tip:(NSString*)tip;
 @end
+
+

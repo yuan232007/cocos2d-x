@@ -60,8 +60,7 @@ public:
     */
     static Application* getInstance();
     
-    /** @deprecated Use getInstance() instead */
-    CC_DEPRECATED_ATTRIBUTE static Application* sharedApplication();
+    static void destroyInstance();
     
     /**
      @brief    Callback by Director for limit FPS.
