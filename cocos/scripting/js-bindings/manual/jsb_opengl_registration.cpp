@@ -23,7 +23,7 @@
 
 #include "js_bindings_config.h"
 #include "js_bindings_core.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsfriendapi.h"
 #include "cocos2d_specifics.hpp"
 #include "jsb_opengl_manual.h"
 #include "js_bindings_opengl.h"

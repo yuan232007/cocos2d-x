@@ -1,7 +1,6 @@
 #include "jsb_cocos2dx_audioengine_auto.hpp"
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #include "cocos2d_specifics.hpp"
-#include "AudioEngine.h"
+#include "audio/include/AudioEngine.h"
 
 template<class T>
 static bool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
@@ -853,4 +852,3 @@ void register_all_cocos2dx_audioengine(JSContext* cx, JS::HandleObject obj) {
     js_register_cocos2dx_audioengine_AudioEngine(cx, ns);
 }
 
-#endif //#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)

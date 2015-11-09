@@ -3,8 +3,8 @@
 #ifndef __cocos2dx_experimental_video_h__
 #define __cocos2dx_experimental_video_h__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 extern JSClass  *jsb_cocos2d_experimental_ui_VideoPlayer_class;
 extern JSObject *jsb_cocos2d_experimental_ui_VideoPlayer_prototype;

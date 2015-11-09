@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
-#include "SimpleAudioEngine.h"
+#include "audio/include/SimpleAudioEngine.h"
 #include "ScriptingCore.h"
 #include "jsb_cocos2dx_auto.hpp"
 #include "jsb_cocos2dx_extension_auto.hpp"
@@ -75,9 +75,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 #endif
         director->setOpenGLView(glview);
     }
-
-    // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0 / 60);
 
     ScriptingCore* sc = ScriptingCore::getInstance();
     sc->addRegisterCallback(register_all_cocos2dx);

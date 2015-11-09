@@ -2,8 +2,8 @@
 #ifndef __cocos2dx_spine_h__
 #define __cocos2dx_spine_h__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 extern JSClass  *jsb_spine_SkeletonRenderer_class;
 extern JSObject *jsb_spine_SkeletonRenderer_prototype;

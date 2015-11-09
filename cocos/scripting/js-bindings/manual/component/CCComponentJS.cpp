@@ -22,8 +22,8 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "jsapi.h"
-#include "mozilla/Maybe.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/mozilla/Maybe.h"
 #include "CCComponentJS.h"
 #include "base/CCScriptSupport.h"
 #include "ScriptingCore.h"

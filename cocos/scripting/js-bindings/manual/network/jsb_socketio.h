@@ -24,8 +24,8 @@
 #ifndef __jsb_socketio__
 #define __jsb_socketio__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 void register_jsb_socketio(JSContext* cx, JS::HandleObject global);
 

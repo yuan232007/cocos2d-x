@@ -27,8 +27,6 @@ THE SOFTWARE.
 #include "CCActionTimeline.h"
 #include "2d/CCSpriteFrameCache.h"
 #include "2d/CCSpriteFrame.h"
-#include <exception>
-#include <iostream>
 
 USING_NS_CC;
 

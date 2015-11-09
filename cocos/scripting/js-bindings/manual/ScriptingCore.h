@@ -26,15 +26,15 @@
 #define __SCRIPTING_CORE_H__
 
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "js_bindings_config.h"
 #include "js_bindings_core.h"
 #include "spidermonkey_specifics.h"
 #include "js_manual_conversions.h"
-#include "mozilla/Maybe.h"
+#include "spidermonkey/mozilla/Maybe.h"
 
 #include <assert.h>
 #include <memory>

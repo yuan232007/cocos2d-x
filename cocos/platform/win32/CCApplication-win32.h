@@ -60,6 +60,8 @@ public:
     @return Current application instance pointer.
     */
     static Application* getInstance();
+
+    static void destroyInstance();
     
     /* override functions */
     virtual void setAnimationInterval(float interval);
