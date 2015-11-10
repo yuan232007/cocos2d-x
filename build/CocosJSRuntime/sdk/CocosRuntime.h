@@ -8,23 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "GameInfo.h"
-#import "MttGameEngine.h"
 #import "FileDownloadAdapter.h"
 #import "ResGroup.h"
 #import "OnLoadingProgressDelegate.h"
 #import "LoadingProgressController.h"
+#import "LoadingAdapter4Tencent.h"
 
 
 @interface CocosRuntime : NSObject
 + (void) initialize;
-+ (void) startPreRuntime: (GameInfo*) info proxy: (MttGameEngine*) proxy;
++ (void) startPreRuntime: (GameInfo*) info delegate: (id<LoadingDelegate>) delegate;
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate;
-+ (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed;
 + (LoadingProgressController*) getLoadingProgressController;
 @end
 
-@interface OnLoadingProgressDelegateImpl : NSObject <OnLoadingProgressDelegate>
-
-- (void) onUpdateOfLoadingInfo: (LoadingInfo*) currentLoadingInfo;
-- (void) onAllLoaingFinish;
-@end

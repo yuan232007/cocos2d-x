@@ -13,35 +13,35 @@
 /**
  * 下载开始前
  */
--(void) onDownloadStart;
+- (void) onDownloadStart;
 
 /**
  * 下载进度通知
  */
--(void) onDownloadProgress: (double) progress;
+- (void) onDownloadProgress: (long) progress max:(long)max;
 
 /**
  * 下载完成后的临时存放文件, 需要将此文件另存并返回地址，否则临时文件可能会被删除
  */
--(NSString*) onTempDownloaded: (NSString*) locationPath;
+- (NSString*) onTempDownloaded: (NSString*) locationPath;
 
 /**
  * 下载成功, 参数为另存之后的文件地址
  */
--(void) onDownloadSuccess: (NSString*) path;
+- (void) onDownloadSuccess: (NSString*) path;
 
 /**
  * 下载失败
  */
--(void) onDownloadFailed;
+- (void) onDownloadFailed;
 
 /**
  * 下载取消
  */
--(void) onDownloadCancel;
+- (void) onDownloadCancel;
 
 /**
  * 重试下载
  */
--(void) onDownloadRetry;
+- (void) onDownloadRetry;
 @end

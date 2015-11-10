@@ -17,6 +17,7 @@
 #import "ChannelConfig.h"
 #import "CocosRuntimeGroup.h"
 #import "FileUtil.h"
+#import "LoadingAdapter4Tencent.h"
 
 using namespace CocosDenshion;
 
@@ -90,7 +91,24 @@ static CocosAppDelegate* s_application = nullptr;
     
     //从服务器获取游戏配置并下载第一个boot分组
     GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
-    [CocosRuntime startPreRuntime:gameInfo proxy:self];
+    [CocosRuntime startPreRuntime:gameInfo proxy:[[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed) {
+        if (isFailed) {
+            [self.delegate x5GamePlayer_send_msg:
+             [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
+        } else {
+            long fixProgress = (long)progress;
+            fixProgress = fixProgress > 100 ? 100 : fixProgress;
+            NSString* progressText = [NSString stringWithFormat:@"%ld",fixProgress];
+            [self.delegate x5GamePlayer_send_msg:
+             [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
+              progressText, @"progress", @"102400", @"size", nil]];
+            
+            if (fixProgress >= 100) {
+                [self.delegate x5GamePlayer_send_msg:
+                 [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
+            }
+        }
+    }]];
     
     //通知浏览器已经开始下载
     [self.delegate x5GamePlayer_send_msg:
@@ -193,37 +211,4 @@ static CocosAppDelegate* s_application = nullptr;
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
 }
-
-- (void) onLoadingProgress:(NSInteger)progress :(bool) isFailed;
-{
-    CCLOG("onLoadingProgress:%ld", (long)progress);
-    if (isFailed) {
-        [self.delegate x5GamePlayer_send_msg:
-         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
-    } else {
-        long fixProgress = (long)progress;
-        if (fixProgress > 100) {
-            fixProgress = 100;
-        }
-        NSString* progressText = [NSString stringWithFormat:@"%ld",fixProgress];
-        [self.delegate x5GamePlayer_send_msg:
-         [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
-          progressText, @"progress", @"102400", @"size", nil]];
-    }
-}
-
-- (void) onLoadingCompleted
-{
-    CCLOG("onPreRunGameCompleted");
-    [self.delegate x5GamePlayer_send_msg:
-     [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
-}
-
-- (void) onLoadingError
-{
-    CCLOG("onLoadingError");
-    [self.delegate x5GamePlayer_send_msg:
-     [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
-}
-
 @end

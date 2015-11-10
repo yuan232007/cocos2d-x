@@ -19,44 +19,27 @@ static LoadingProgressController *loadingProgressController;
 + (void) initialize
 {
     loadingProgressController = [[LoadingProgressController alloc] init];
-    [loadingProgressController setOnLoadingProgressDelegate: [[OnLoadingProgressDelegateImpl alloc]init]];
+    [loadingProgressController setOnLoadingProgressDelegate: [[OnLoadingProgressDelegateImpl alloc] init]];
 }
 
-+ (void) startPreRuntime: (GameInfo*) info proxy: (MttGameEngine*) proxy
++ (void) startPreRuntime: (GameInfo*) info delegate: (id<LoadingDelegate>) delegate
 {
-    if (proxy == nil) {
+    if (delegate == nil) {
         NSLog(@"===> ERROR: Proxy is empty.");
         return;
     }
     NSLog(@"===> CocosRuntime startPreRuntime");
-    [PreRunGame start:info proxy:proxy];
+    [PreRunGame start:info delegate:delegate];
 }
 
-+ (void) preloadResGroups: (NSString*) groupsString delegate: (RTPreloadCallback) callback
++ (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate
 {
-    sRTPreloadCallback = callback;
-    [CocosRuntimeGroup preloadResGroups:groupsString delegate:callback];
+    [CocosRuntimeGroup preloadResGroups:groupsString delegate:delegate];
 }
 
 + (void) preloadResGroupsInternal:(NSString *)groupsString delegate:(id<LoadingDelegate>)delegate
 {
     
-}
-
-+ (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed
-{
-    // todo 用于通知回调
-    /*
-    if (isFailed) {
-        [resDownloadDelegate onLoadingProgress:(downloadGroupSize + progressOffset) :true];
-    } else {
-        NSInteger progress = 1.0 * (downloadGroupSize + progressOffset) / totalSize * 100;
-        [resDownloadDelegate onLoadingProgress:progress :false];
-        
-        if (unzipDone) {
-            downloadGroupSize += progressOffset;
-        }
-    }*/
 }
 
 + (LoadingProgressController*) getLoadingProgressController
@@ -66,24 +49,6 @@ static LoadingProgressController *loadingProgressController;
 
 @end
 
-@implementation OnLoadingProgressDelegateImpl
 
-- (void) onUpdateOfLoadingInfo: (LoadingInfo*) currentLoadingInfo
-{
-    // 不是静默下载就回调通知给宿主
-    if (![CocosRuntimeGroup isInSilentDownloadState] && sRTPreloadCallback != nil) {
-//        sRTPreloadCallback(11, FALSE);
-    }
-}
-
-- (void) onAllLoaingFinish
-{
-    // 不是静默下载就回调通知给宿主
-    if (![CocosRuntimeGroup isInSilentDownloadState] && sRTPreloadCallback != nil) {
-        sRTPreloadCallback(100, FALSE);
-    }
-}
-
-@end
 
 

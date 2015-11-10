@@ -59,11 +59,7 @@
 
 -(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
-    // 下载过程中会回调，可以用于监听下载进度
-    double written = (double) totalBytesWritten;
-    double total = (double) totalBytesExpectedToWrite;
-    double progress = written / total;
-    [fileDownloadDelegate onDownloadProgress:progress];
+    [fileDownloadDelegate onDownloadProgress:bytesWritten max:totalBytesExpectedToWrite];
 }
 
 /* Sent when a download has been resumed. If a download failed with an

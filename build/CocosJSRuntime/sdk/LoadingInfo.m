@@ -10,7 +10,7 @@
 
 @implementation LoadingInfo
 
-@synthesize loadingName, loadingTip, loadingType, percentOfTotal;
+@synthesize loadingName, loadingTip, loadingType, percentOfTotal, startPercent, index;
 
 - (LoadingInfo*) initWith:(NSString *)name percent:(NSInteger)percent type:(enum LoadingType)type tip:(NSString *)tip
 {

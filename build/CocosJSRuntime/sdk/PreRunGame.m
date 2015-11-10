@@ -22,17 +22,17 @@ static NSString* remoteConfigPath = nil;
 static NSString* localConfigPath = nil;
 static GameManifest* gameManifest = nil;
 static FileDownloader* fileDownload = nil;
-static MttGameEngine* mttGameEngine = nil;
+static id<LoadingDelegate> loadingDelegate = nil;
 static GameConfig* gameConfig = nil;
 
 @implementation PreRunGame
-+ (void) start: (GameInfo*) info proxy: (MttGameEngine*) proxy
++ (void) start: (GameInfo*) info delegate:(id<LoadingDelegate>)delegate
 {
     NSLog(@"===> PreRunGame start");
     gameInfo = info;
     remoteConfigPath = [FileUtil getRemoteConfigPath:gameInfo];
     localConfigPath = [FileUtil getLocalConfigPath:gameInfo];
-    mttGameEngine = proxy;
+    loadingDelegate = delegate;
     [PreRunGame downloadRemoteConfigFile];
 }
 
@@ -152,26 +152,25 @@ static GameConfig* gameConfig = nil;
     }
 }
 
-+ (void) notifyProgress: (NSInteger) progress isFailed: (BOOL) isFailed
++ (void) notifyProgress: (float) progress max:(float)max
 {
-    if (mttGameEngine != nil) {
-        [mttGameEngine onLoadingProgress:progress :isFailed];
+    if (loadingDelegate != nil) {
+        [loadingDelegate onLoadingProgress:progress max:max];
     }
 }
 
-+ (void) notifyGameInitEnd
++ (void) notifyPreRunGameError
 {
-    if (mttGameEngine != nil) {
-        [mttGameEngine onPreRunGameCompleted];
+    if (loadingDelegate != nil) {
+        [loadingDelegate onLoadingError];
     }
 }
 
 + (void) startGame
 {
     NSLog(@"===> start game.");
-    if (mttGameEngine != nil) {
-        [mttGameEngine onLoadingProgress:100 :false];
-        [mttGameEngine onPreRunGameCompleted];
+    if (loadingDelegate != nil) {
+        [loadingDelegate onLoadingCompleted];
     }
 }
 
@@ -284,7 +283,7 @@ static GameConfig* gameConfig = nil;
 - (void) onDownloadFailed
 {
     NSLog(@"===> onDownloadFailed config.json");
-    [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
+    [PreRunGame notifyPreRunGameError];
 }
 
 @end
@@ -317,14 +316,13 @@ static GameConfig* gameConfig = nil;
         [PreRunGame checkEntryFile];
     } else {
         // todo 重新下载
-        [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
-
+        [PreRunGame notifyPreRunGameError];
     }
 }
 
 - (void) onDownloadFailed
 {
-    [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
+    [PreRunGame notifyPreRunGameError];
 }
 
 @end
@@ -351,14 +349,14 @@ static GameConfig* gameConfig = nil;
     if ([FileUtil fileExists:path] && [PreRunGame isLocalEntryMD5Correct]) {
         [PreRunGame checkProjectJsonFile];
     } else {
-        [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
+        [PreRunGame notifyPreRunGameError];
     }
 
 }
 
 - (void) onDownloadFailed
 {
-    [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
+    [PreRunGame notifyPreRunGameError];
 }
 @end
 
@@ -383,13 +381,13 @@ static GameConfig* gameConfig = nil;
     if ([FileUtil fileExists:[FileUtil getLocalProjectPath:gameInfo :gameConfig]] && [PreRunGame isLocalProjectMD5Correct]) {
         [PreRunGame checkBootGroup];
     } else {
-        [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
+        [PreRunGame notifyPreRunGameError];
     }
 }
 
 - (void) onDownloadFailed
 {
-    [PreRunGame notifyProgress:PROGRESS_INVALID isFailed:true];
+    [PreRunGame notifyPreRunGameError];
 }
 @end
 
@@ -406,7 +404,7 @@ static GameConfig* gameConfig = nil;
 - (void) onDownloadProgress:(double)progress
 {
     NSInteger progressOffset = 80 * progress;
-    [PreRunGame notifyProgress:progressOffset isFailed:false];
+    [PreRunGame notifyProgress: progressOffset max:100.0l];
 }
 
 - (NSString*) onTempDownloaded:(NSString *)locationPath
@@ -431,18 +429,18 @@ static GameConfig* gameConfig = nil;
             @throw [[NSException alloc]init];
         }
         
-        [PreRunGame notifyProgress: resGroup.groupSize isFailed: false];
+        [PreRunGame notifyProgress: resGroup.groupSize max:100.0l];
         [PreRunGame startGame];
     }
     @catch (NSException *exception) {
         NSLog(@"move file error");
-        [PreRunGame notifyProgress: PROGRESS_INVALID isFailed: true];
+        [PreRunGame notifyPreRunGameError];
     }
 }
 
 - (void) onDownloadFailed
 {
-    [PreRunGame notifyProgress: PROGRESS_INVALID isFailed: true];
+    [PreRunGame notifyPreRunGameError];
     NSLog(@"===> BootGroupDownloadDelegateImpl onDownloadFailed");
 }
 @end

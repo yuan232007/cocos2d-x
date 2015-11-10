@@ -10,11 +10,11 @@
 #import "FileDownloadDelegate.h"
 
 @interface FileDownloadAdapter : NSObject <FileDownloadDelegate>
--(void) onDownloadStart;
--(void) onDownloadProgress: (double) progress;
--(NSString*) onTempDownloaded: (NSString*) locationPath;
--(void) onDownloadSuccess: (NSString*) path;
--(void) onDownloadFailed;
--(void) onDownloadCancel;
--(void) onDownloadRetry;
+- (void) onDownloadStart;
+- (void) onDownloadProgress: (long) progress max:(long)max;
+- (NSString*) onTempDownloaded: (NSString*) locationPath;
+- (void) onDownloadSuccess: (NSString*) path;
+- (void) onDownloadFailed;
+- (void) onDownloadCancel;
+- (void) onDownloadRetry;
 @end

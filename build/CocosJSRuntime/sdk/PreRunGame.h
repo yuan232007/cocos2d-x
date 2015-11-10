@@ -13,9 +13,10 @@
 #import "FileDownloader.h"
 #import "MttGameEngine.h"
 #import "FileDownloadAdapter.h"
+#import "LoadingDelegate.h"
 
 @interface PreRunGame : NSObject
-+ (void) start: (GameInfo*) info proxy: (MttGameEngine*) proxy;
++ (void) start: (GameInfo*) info delegate: (id<LoadingDelegate>) delegate;
 + (void) reset;
 
 /**
@@ -72,8 +73,8 @@
  * 检查首场景资源
  */
 + (void) checkBootGroup;
-+ (void) notifyProgress: (NSInteger) progress isFailed: (BOOL) isFailed;
-+ (void) notifyGameInitEnd;
++ (void) notifyProgress: (float)progress max:(float)max;
++ (void) notifyPreRunGameError;
 
 /**
  * 开始游戏

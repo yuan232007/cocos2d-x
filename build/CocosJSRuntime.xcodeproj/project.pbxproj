@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB016BC61BF08366003A7BE4 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BBF1BF08366003A7BE4 /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BC71BF08366003A7BE4 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BBF1BF08366003A7BE4 /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BC81BF08366003A7BE4 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BBF1BF08366003A7BE4 /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BC91BF08366003A7BE4 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BC11BF08366003A7BE4 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BCA1BF08366003A7BE4 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BC11BF08366003A7BE4 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BCB1BF08366003A7BE4 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BC11BF08366003A7BE4 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BCC1BF08366003A7BE4 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BC31BF08366003A7BE4 /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BCD1BF08366003A7BE4 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BC31BF08366003A7BE4 /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
+		BB016BCE1BF08366003A7BE4 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB016BC31BF08366003A7BE4 /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
 		BB6C992D1BECB2B1006DA145 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6C992C1BECB2B1006DA145 /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
 		BB6C992E1BECB2B1006DA145 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6C992C1BECB2B1006DA145 /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
 		BB6C992F1BECB2B1006DA145 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6C992C1BECB2B1006DA145 /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
@@ -16,8 +25,6 @@
 		BBA9B1391BE355AC0091B4A3 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */; };
 		BBA9B13A1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */; };
 		BBA9B13B1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */; };
-		BBA9B13C1BE355AC0091B4A3 /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1241BE355AC0091B4A3 /* FileDownload.m */; };
-		BBA9B13D1BE355AC0091B4A3 /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1241BE355AC0091B4A3 /* FileDownload.m */; };
 		BBA9B13E1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */; };
 		BBA9B13F1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */; };
 		BBA9B1401BE355AC0091B4A3 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1291BE355AC0091B4A3 /* FileUtil.m */; };
@@ -43,7 +50,6 @@
 		ED464A6D1BE8B2EB005D120E /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12D1BE355AC0091B4A3 /* GameInfo.m */; };
 		ED464A6E1BE8B2EB005D120E /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B12B1BE355AC0091B4A3 /* GameConfig.m */; };
 		ED464A6F1BE8B2EB005D120E /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1351BE355AC0091B4A3 /* ResGroup.m */; };
-		ED464A701BE8B2EB005D120E /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1241BE355AC0091B4A3 /* FileDownload.m */; };
 		ED464A711BE8B2EB005D120E /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */; };
 		ED464A721BE8B2EB005D120E /* MttGameEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */; };
 		ED464A741BE8B2EB005D120E /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED4AB7A21BD4FD5E004C4091 /* jsb_cocosruntime.mm */; };
@@ -214,6 +220,14 @@
 /* Begin PBXFileReference section */
 		802BF5241B945662008C45C2 /* CocosJSRuntime.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = CocosJSRuntime.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8059FC971BB0F5BB009354CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BB016BBE1BF08366003A7BE4 /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloader.h; sourceTree = "<group>"; };
+		BB016BBF1BF08366003A7BE4 /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
+		BB016BC01BF08366003A7BE4 /* LoadingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingInfo.h; sourceTree = "<group>"; };
+		BB016BC11BF08366003A7BE4 /* LoadingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingInfo.m; sourceTree = "<group>"; };
+		BB016BC21BF08366003A7BE4 /* LoadingProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingProgressController.h; sourceTree = "<group>"; };
+		BB016BC31BF08366003A7BE4 /* LoadingProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingProgressController.m; sourceTree = "<group>"; };
+		BB016BC41BF08366003A7BE4 /* OnGroupUpdateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnGroupUpdateDelegate.h; sourceTree = "<group>"; };
+		BB016BC51BF08366003A7BE4 /* OnLoadingProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnLoadingProgressDelegate.h; sourceTree = "<group>"; };
 		BB6C992B1BECB2B1006DA145 /* LoadingAdapter4Tencent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAdapter4Tencent.h; sourceTree = "<group>"; };
 		BB6C992C1BECB2B1006DA145 /* LoadingAdapter4Tencent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAdapter4Tencent.m; sourceTree = "<group>"; };
 		BBA9B11D1BE355AC0091B4A3 /* ChannelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelConfig.h; sourceTree = "<group>"; };
@@ -222,8 +236,6 @@
 		BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntime.m; sourceTree = "<group>"; };
 		BBA9B1211BE355AC0091B4A3 /* CocosRuntimeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosRuntimeGroup.h; sourceTree = "<group>"; };
 		BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntimeGroup.m; sourceTree = "<group>"; };
-		BBA9B1231BE355AC0091B4A3 /* FileDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownload.h; sourceTree = "<group>"; };
-		BBA9B1241BE355AC0091B4A3 /* FileDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownload.m; sourceTree = "<group>"; };
 		BBA9B1251BE355AC0091B4A3 /* FileDownloadAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadAdapter.h; sourceTree = "<group>"; };
 		BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadAdapter.m; sourceTree = "<group>"; };
 		BBA9B1271BE355AC0091B4A3 /* FileDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadDelegate.h; sourceTree = "<group>"; };
@@ -406,14 +418,20 @@
 		BBA9B11C1BE355AC0091B4A3 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				BB016BBE1BF08366003A7BE4 /* FileDownloader.h */,
+				BB016BBF1BF08366003A7BE4 /* FileDownloader.m */,
+				BB016BC01BF08366003A7BE4 /* LoadingInfo.h */,
+				BB016BC11BF08366003A7BE4 /* LoadingInfo.m */,
+				BB016BC21BF08366003A7BE4 /* LoadingProgressController.h */,
+				BB016BC31BF08366003A7BE4 /* LoadingProgressController.m */,
+				BB016BC41BF08366003A7BE4 /* OnGroupUpdateDelegate.h */,
+				BB016BC51BF08366003A7BE4 /* OnLoadingProgressDelegate.h */,
 				BBA9B11D1BE355AC0091B4A3 /* ChannelConfig.h */,
 				BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */,
 				BBA9B11F1BE355AC0091B4A3 /* CocosRuntime.h */,
 				BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */,
 				BBA9B1211BE355AC0091B4A3 /* CocosRuntimeGroup.h */,
 				BBA9B1221BE355AC0091B4A3 /* CocosRuntimeGroup.m */,
-				BBA9B1231BE355AC0091B4A3 /* FileDownload.h */,
-				BBA9B1241BE355AC0091B4A3 /* FileDownload.m */,
 				BBA9B1251BE355AC0091B4A3 /* FileDownloadAdapter.h */,
 				BBA9B1261BE355AC0091B4A3 /* FileDownloadAdapter.m */,
 				BBA9B1271BE355AC0091B4A3 /* FileDownloadDelegate.h */,
@@ -689,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBA9B1401BE355AC0091B4A3 /* FileUtil.m in Sources */,
+				BB016BC91BF08366003A7BE4 /* LoadingInfo.m in Sources */,
 				BBA9B13E1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */,
 				BBA9B1481BE355AC0091B4A3 /* PreRunGame.m in Sources */,
 				EDAF7CC11BCCAAB30032B305 /* CocosDelegate.cpp in Sources */,
@@ -700,13 +719,14 @@
 				BBA9B1421BE355AC0091B4A3 /* GameConfig.m in Sources */,
 				BBA9B14C1BE355AC0091B4A3 /* ResGroup.m in Sources */,
 				BB6C992D1BECB2B1006DA145 /* LoadingAdapter4Tencent.m in Sources */,
-				BBA9B13C1BE355AC0091B4A3 /* FileDownload.m in Sources */,
 				BBA9B1361BE355AC0091B4A3 /* ChannelConfig.m in Sources */,
 				EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */,
+				BB016BCC1BF08366003A7BE4 /* LoadingProgressController.m in Sources */,
 				EDAF7CDE1BCCB6B90032B305 /* MttGameEngineFactory.mm in Sources */,
 				ED4AB7A51BD4FD5E004C4091 /* jsb_cocosruntime.mm in Sources */,
 				ED4AB78B1BD0F923004C4091 /* zip.cpp in Sources */,
 				ED4AB7731BD0E6B7004C4091 /* ZipHelper.mm in Sources */,
+				BB016BC61BF08366003A7BE4 /* FileDownloader.m in Sources */,
 				EDC9C4E51BE06C2F000C45FE /* RTNetworkHelper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,6 +736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED464A641BE8B2EB005D120E /* FileUtil.m in Sources */,
+				BB016BCB1BF08366003A7BE4 /* LoadingInfo.m in Sources */,
 				ED464A661BE8B2EB005D120E /* FileDownloadAdapter.m in Sources */,
 				ED464A671BE8B2EB005D120E /* PreRunGame.m in Sources */,
 				ED464A681BE8B2EB005D120E /* CocosDelegate.cpp in Sources */,
@@ -728,12 +749,13 @@
 				ED464A8C1BE8B382005D120E /* Cocosv3GameEngineFactory.mm in Sources */,
 				BB6C992F1BECB2B1006DA145 /* LoadingAdapter4Tencent.m in Sources */,
 				ED464A6F1BE8B2EB005D120E /* ResGroup.m in Sources */,
-				ED464A701BE8B2EB005D120E /* FileDownload.m in Sources */,
 				ED464A711BE8B2EB005D120E /* ChannelConfig.m in Sources */,
+				BB016BCE1BF08366003A7BE4 /* LoadingProgressController.m in Sources */,
 				ED464A721BE8B2EB005D120E /* MttGameEngine.mm in Sources */,
 				ED464A741BE8B2EB005D120E /* jsb_cocosruntime.mm in Sources */,
 				ED464A751BE8B2EB005D120E /* zip.cpp in Sources */,
 				ED464A761BE8B2EB005D120E /* ZipHelper.mm in Sources */,
+				BB016BC81BF08366003A7BE4 /* FileDownloader.m in Sources */,
 				ED464A771BE8B2EB005D120E /* RTNetworkHelper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,14 +766,15 @@
 			files = (
 				EDF396D71BDA293A000885AB /* MttGameEngineFactory.mm in Sources */,
 				BBA9B13F1BE355AC0091B4A3 /* FileDownloadAdapter.m in Sources */,
-				BBA9B13D1BE355AC0091B4A3 /* FileDownload.m in Sources */,
 				EDF396D41BDA292A000885AB /* ZipHelper.mm in Sources */,
+				BB016BCD1BF08366003A7BE4 /* LoadingProgressController.m in Sources */,
 				BBA9B13B1BE355AC0091B4A3 /* CocosRuntimeGroup.m in Sources */,
 				BBA9B1371BE355AC0091B4A3 /* ChannelConfig.m in Sources */,
 				EDF396BE1BDA2833000885AB /* ViewController.m in Sources */,
 				EDC9C4E31BE06A42000C45FE /* RTReachability.m in Sources */,
 				EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */,
 				BBA9B1491BE355AC0091B4A3 /* PreRunGame.m in Sources */,
+				BB016BCA1BF08366003A7BE4 /* LoadingInfo.m in Sources */,
 				BBA9B1391BE355AC0091B4A3 /* CocosRuntime.m in Sources */,
 				BBA9B1431BE355AC0091B4A3 /* GameConfig.m in Sources */,
 				BBA9B1451BE355AC0091B4A3 /* GameInfo.m in Sources */,
@@ -761,6 +784,7 @@
 				BBA9B1471BE355AC0091B4A3 /* GameManifest.m in Sources */,
 				EDC9C4E61BE06C2F000C45FE /* RTNetworkHelper.mm in Sources */,
 				EDF396B81BDA2833000885AB /* main.m in Sources */,
+				BB016BC71BF08366003A7BE4 /* FileDownloader.m in Sources */,
 				BBA9B14D1BE355AC0091B4A3 /* ResGroup.m in Sources */,
 				BBA9B1411BE355AC0091B4A3 /* FileUtil.m in Sources */,
 				EDF396D21BDA2922000885AB /* jsb_cocosruntime.mm in Sources */,

@@ -15,17 +15,15 @@
 #import "MttGameEngineProtocol.h"
 #import "FileDownloadAdapter.h"
 #import "OnGroupUpdateDelegate.h"
+#import "OnLoadingProgressDelegate.h"
 
 #define PROGRESS_MAX 100
 #define PROGRESS_INVALID -1
-
+#define GROUP_UNZIP @"unzip"
+#define GROUP_DOWNLOAD @"download"
 
 @interface CocosRuntimeGroup : NSObject
 + (void) initialize: (GameInfo*) info config: (GameConfig*) config manifest: (GameManifest*) manifest;
-+ (void) prepareWaitingDownloadGroups: (NSString*) groupsString;
-+ (void) notifyProgress: (NSInteger) progressOffset unzipDone: (BOOL) unzipDone isFailed: (BOOL) isFailed;
-+ (void) preloadResGroups: (NSString*) groupsString delegate: (RTPreloadCallback) callback;
-+ (void) preloadNextGroup;
 + (NSString*) getCurrentGroupNameFromWaitingGroups;
 + (BOOL) isGroupUpdated: (NSString*) name;
 + (NSMutableDictionary*) getAllResGroupDict: (NSMutableArray*) resGroupArray;
@@ -36,10 +34,10 @@
 + (void) removeFirstGroupFromWaitingDownload;
 + (void) removeGroupFromWaitingDownload: (NSString*)groupName;
 + (NSString*) getFirstGroupFromWaitingDownload;
-+ (NSString*) getCurrentGroupNameFromWaitingGroups;
 + (void) reset;
-+ (BOOL) isGroupUpdated: (NSString*) name;
 + (BOOL) needToDownloadGroup: (NSString*)groupString;
+
++ (id<LoadingDelegate>) getLoadingDelegate;
 
 /**
  * 开始下载等待队列里的第一个分组，没有则通知下载结束
@@ -70,12 +68,6 @@
  * 解压指定分组
  */
 + (BOOL) unzipGroupFrom: (NSString*) fromPath to: (NSString*) toPath overwrite: (BOOL) overwrite;
-+ (void) updateResGroup: (GameInfo*) gameInfo group: (ResGroup*) resGroup;
-
-/**
- * 检查本地 cpk 是否存在, 如果不存在活着 MD5 值不同，则重新下载
- */
-+ (void) checkResGroup: (GameInfo*) gameInfo group: (ResGroup*) resGroup;
 
 + (BOOL) isInCancelDownloadState;
 
@@ -135,8 +127,8 @@
     ResGroup* resGroup;
     id<OnGroupUpdateDelegate> onGroupUpdateDelegate;
 }
-- (ResourceGroupDownloadImpl*) initWith: (ResGroup*) resGroup;
-- (void) onDownloadProgress:(double)progress;
+- (ResourceGroupDownloadImpl*) initWith: (ResGroup*) resGroup groupDelegate: (id<OnGroupUpdateDelegate>)delegate;
+- (void) onDownloadProgress:(long)progress max:(long)max;
 - (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
@@ -157,4 +149,13 @@
 - (void) onFailureOfUnzip: (NSString*) errorMsg;
 - (void) onProgressOfUnzip: (float) percent;
 @end
+
+/**
+ * 抽象的进度监听
+ */
+@interface OnLoadingProgressDelegateImpl : NSObject <OnLoadingProgressDelegate>
+- (void) onUpdateOfLoadingInfo: (LoadingInfo*) currentLoadingInfo;
+- (void) onAllLoaingFinish;
+@end
+
 
