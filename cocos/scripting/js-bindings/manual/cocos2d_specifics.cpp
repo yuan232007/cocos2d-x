@@ -2812,9 +2812,8 @@ bool js_cocos2dx_ActionInterval_easing(JSContext *cx, uint32_t argc, jsval *vp)
     double tag;
     double parameter;
 
-    for (int i = 0; i < argc; i++)
+    for (uint32_t i = 0; i < argc; i++)
     {
-//        jsval vpi = argv[i];
         JS::RootedValue vpi(cx, args.get(i));
         bool ok = vpi.isObject() &&
             JS_ValueToObject(cx, vpi, &tmp) &&

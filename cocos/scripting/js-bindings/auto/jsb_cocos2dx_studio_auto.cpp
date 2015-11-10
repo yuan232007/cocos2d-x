@@ -1,8 +1,8 @@
 #include "jsb_cocos2dx_studio_auto.hpp"
 #include "cocos2d_specifics.hpp"
-#include "CocoStudio.h"
-#include "CCComExtensionData.h"
-#include "jsb_cocos2dx_studio_conversions.h"
+#include "cocostudio/CocoStudio.h"
+#include "cocostudio/CCComExtensionData.h"
+#include "cocostudio/jsb_cocos2dx_studio_conversions.h"
 
 template<class T>
 static bool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {

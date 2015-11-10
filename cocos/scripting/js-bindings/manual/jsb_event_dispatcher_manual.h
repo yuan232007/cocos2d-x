@@ -23,8 +23,8 @@
 #ifndef __cocos2d_js_bindings__jsb_event_dispatcher__
 #define __cocos2d_js_bindings__jsb_event_dispatcher__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 
 bool js_EventListenerTouchOneByOne_create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_EventListenerTouchAllAtOnce_create(JSContext *cx, uint32_t argc, jsval *vp);

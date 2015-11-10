@@ -84,9 +84,15 @@ static CocosAppDelegate* s_application = nullptr;
         }
     }
     else {
-        gameDownloadUrl = @"http://182.254.241.97/ios-runtime-test/moonwarriors";
-        gameKey = @"ULY1R3O6MB";
-        gameName = @"打飞机游戏";
+        //包含新版本资源的游戏
+        //gameDownloadUrl = @"http://182.254.241.97/ios-runtime-test/moonwarriors";
+        //gameKey = @"ULY1R3O6MB";
+        //gameName = @"打飞机游戏";
+        
+        //只包含3.3版本的游戏
+        gameDownloadUrl = @"http://h5res.kx7p.com/ttgcqrt";
+        gameKey = @"442290958";
+        gameName = @"天天挂传奇";
     }
     
     //从服务器获取游戏配置并下载第一个boot分组

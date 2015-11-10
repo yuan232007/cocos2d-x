@@ -58,15 +58,15 @@ extern "C"
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS)
 
 #if CC_USE_PNG
-#include "png.h"
+#include "png/png.h"
 #endif //CC_USE_PNG
 
 #if CC_USE_TIFF
-#include "tiffio.h"
+#include "tiff/tiffio.h"
 #endif //CC_USE_TIFF
     
 #if CC_USE_JPEG
-#include "jpeglib.h"
+#include "jpeg/jpeglib.h"
 #endif // CC_USE_JPEG
     
 #endif // (CC_TARGET_PLATFORM != CC_PLATFORM_IOS)

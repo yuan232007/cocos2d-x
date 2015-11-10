@@ -25,8 +25,8 @@
 #ifndef __JS_MANUAL_CONVERSIONS_H__
 #define __JS_MANUAL_CONVERSIONS_H__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
 #include "js_bindings_core.h"
 #include "js_bindings_config.h"
 #include "cocos2d.h"
@@ -105,8 +105,6 @@ bool jsval_cccolor_to_opacity(JSContext *cx, JS::HandleValue v, int32_t* ret);
 bool jsval_to_ccarray_of_CCPoint(JSContext* cx, JS::HandleValue v, cocos2d::Point **points, int *numPoints);
 bool jsval_to_ccacceleration(JSContext* cx, JS::HandleValue v, cocos2d::Acceleration* ret);
 bool jsval_to_quaternion(JSContext *cx, JS::HandleValue vp, cocos2d::Quaternion* ret);
-//bool jsval_to_obb(JSContext *cx, JS::HandleValue vp, cocos2d::OBB* ret);
-//bool jsval_to_ray(JSContext *cx, JS::HandleValue vp, cocos2d::Ray* ret);
 
 // forward declaration
 js_proxy_t* jsb_get_js_proxy(JSObject* jsObj);
@@ -116,7 +114,7 @@ bool jsvals_variadic_to_ccvector( JSContext *cx, /*jsval *vp, int argc,*/const J
 {
     bool ok = true;
 
-    for (int i = 0; i < args.length(); i++)
+    for (unsigned i = 0; i < args.length(); i++)
     {
         js_proxy_t* p;
         JSObject* obj = JS::RootedValue(cx, args.get(i)).toObjectOrNull();

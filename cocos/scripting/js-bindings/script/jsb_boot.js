@@ -1659,6 +1659,9 @@ cc.game = {
         };
         try{
             var txt = jsb.fileUtils.getStringFromFile("project-runtime.json");
+            if(txt.length == 0) {
+                txt = jsb.fileUtils.getStringFromFile("project.json");
+            }
             var data = JSON.parse(txt);
             this.config = _init(data || {});
         }catch(e){

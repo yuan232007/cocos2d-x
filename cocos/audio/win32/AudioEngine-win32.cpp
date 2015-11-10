@@ -31,14 +31,14 @@
 #include "alc.h"
 #include "alext.h"
 #else
-#include "AL/alc.h"
-#include "AL/alext.h"
+#include "OpenalSoft/alc.h"
+#include "OpenalSoft/alext.h"
 #endif
 #include "audio/include/AudioEngine.h"
 #include "base/CCDirector.h"
 #include "base/CCScheduler.h"
 #include "platform/CCFileUtils.h"
-#include "mpg123.h"
+#include "MP3Decoder/mpg123.h"
 
 using namespace cocos2d;
 using namespace cocos2d::experimental;

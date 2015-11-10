@@ -70,6 +70,8 @@ public:
     @return Current application instance pointer.
     */
     static Application* getInstance();
+    
+    static void destroyInstance();
 
     /** @deprecated Use getInstance() instead */
     CC_DEPRECATED_ATTRIBUTE static Application* sharedApplication();

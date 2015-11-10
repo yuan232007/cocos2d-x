@@ -23,9 +23,9 @@
 #ifndef __SPIDERMONKEY_SPECIFICS_H__
 #define __SPIDERMONKEY_SPECIFICS_H__
 
-#include "jsapi.h"
-#include "jsfriendapi.h"
-#include "uthash.h"
+#include "spidermonkey/jsapi.h"
+#include "spidermonkey/jsfriendapi.h"
+#include "base/uthash.h"
 #include <unordered_map>
 
 typedef struct js_proxy {
