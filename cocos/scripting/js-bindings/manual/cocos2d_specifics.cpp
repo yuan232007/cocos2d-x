@@ -36,16 +36,18 @@ schedTarget_proxy_t *_schedObj_target_ht = NULL;
 JSTouchDelegate::TouchDelegateMap JSTouchDelegate::sTouchDelegateMap;
 
 JSTouchDelegate::JSTouchDelegate()
-: _obj(nullptr)
-, _needUnroot(false)
+: _needUnroot(false)
 , _touchListenerAllAtOnce(nullptr)
 , _touchListenerOneByOne(nullptr)
 {
+    auto cx = ScriptingCore::getInstance()->getGlobalContext();
+    _obj.construct(cx);
 }
 
 JSTouchDelegate::~JSTouchDelegate()
 {
     CCLOGINFO("In the destructor of JSTouchDelegate.");
+    _obj.destroyIfConstructed();
 }
 
 void JSTouchDelegate::setDelegateForJSObject(JSObject* pJSObj, JSTouchDelegate* pDelegate)
@@ -73,17 +75,9 @@ void JSTouchDelegate::removeDelegateForJSObject(JSObject* pJSObj)
     sTouchDelegateMap.erase(pJSObj);
 }
 
-void JSTouchDelegate::setJSObject(JSObject *obj)
+void JSTouchDelegate::setJSObject(JS::HandleObject obj)
 {
-    _obj = obj;
-    
-    js_proxy_t *p = jsb_get_js_proxy(_obj);
-    if (!p)
-    {
-        JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-        JS::AddNamedObjectRoot(cx, &_obj, "JSB_TouchDelegateTarget, target");
-        _needUnroot = true;
-    }
+    _obj.ref() = obj;
 }
 
 void JSTouchDelegate::registerStandardDelegate(int priority)
@@ -122,12 +116,6 @@ void JSTouchDelegate::registerTargetedDelegate(int priority, bool swallowsTouche
 
 void JSTouchDelegate::unregisterTouchDelegate()
 {
-    if (_needUnroot)
-    {
-        JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-        JS::RemoveObjectRoot(cx, &_obj);
-    }
-    
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     dispatcher->removeEventListener(_touchListenerAllAtOnce);
     dispatcher->removeEventListener(_touchListenerOneByOne);
@@ -143,7 +131,7 @@ bool JSTouchDelegate::onTouchBegan(Touch *touch, Event *event)
     bool bRet = false;
     
     ScriptingCore::getInstance()->executeCustomTouchEvent(EventTouch::EventCode::BEGAN,
-        touch, _obj.get(), &retval);
+        touch, _obj.ref(), &retval);
     
     if(retval.isBoolean())
     {
@@ -159,7 +147,7 @@ void JSTouchDelegate::onTouchMoved(Touch *touch, Event *event)
     CC_UNUSED_PARAM(event);
 
     ScriptingCore::getInstance()->executeCustomTouchEvent(EventTouch::EventCode::MOVED,
-        touch, _obj);
+        touch, _obj.ref());
 }
 
 void JSTouchDelegate::onTouchEnded(Touch *touch, Event *event)
@@ -167,39 +155,39 @@ void JSTouchDelegate::onTouchEnded(Touch *touch, Event *event)
     CC_UNUSED_PARAM(event);
 
     ScriptingCore::getInstance()->executeCustomTouchEvent(EventTouch::EventCode::ENDED,
-        touch, _obj);
+        touch, _obj.ref());
 }
 
 void JSTouchDelegate::onTouchCancelled(Touch *touch, Event *event)
 {
     CC_UNUSED_PARAM(event);
     ScriptingCore::getInstance()->executeCustomTouchEvent(EventTouch::EventCode::CANCELLED,
-        touch, _obj);
+        touch, _obj.ref());
 }
 
 // optional
 void JSTouchDelegate::onTouchesBegan(const std::vector<Touch*>& touches, Event *event)
 {
     CC_UNUSED_PARAM(event);
-    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::BEGAN, touches, _obj);
+    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::BEGAN, touches, _obj.ref());
 }
 
 void JSTouchDelegate::onTouchesMoved(const std::vector<Touch*>& touches, Event *event)
 {
     CC_UNUSED_PARAM(event);
-    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::MOVED, touches, _obj);
+    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::MOVED, touches, _obj.ref());
 }
 
 void JSTouchDelegate::onTouchesEnded(const std::vector<Touch*>& touches, Event *event)
 {
     CC_UNUSED_PARAM(event);
-    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::ENDED, touches, _obj);
+    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::ENDED, touches, _obj.ref());
 }
 
 void JSTouchDelegate::onTouchesCancelled(const std::vector<Touch*>& touches, Event *event)
 {
     CC_UNUSED_PARAM(event);
-    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::CANCELLED, touches, _obj);
+    ScriptingCore::getInstance()->executeCustomTouchesEvent(EventTouch::EventCode::CANCELLED, touches, _obj.ref());
 }
 
 // cc.EventTouch#getTouches
@@ -797,8 +785,6 @@ bool js_cocos2dx_JSTouchDelegate_registerStandardDelegate(JSContext *cx, uint32_
     if (argc == 1 || argc == 2)
     {
         JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-        JSObject* jsobj = NULL;
-
         JSTouchDelegate *touch = new JSTouchDelegate();
         
         int priority = 1;
@@ -809,7 +795,7 @@ bool js_cocos2dx_JSTouchDelegate_registerStandardDelegate(JSContext *cx, uint32_
         
         touch->registerStandardDelegate(priority);
         
-        jsobj = args.get(0).toObjectOrNull();
+        JS::RootedObject jsobj(cx, args.get(0).toObjectOrNull());
         touch->setJSObject(jsobj);
         JSTouchDelegate::setDelegateForJSObject(jsobj, touch);
         return true;
@@ -823,12 +809,11 @@ bool js_cocos2dx_JSTouchDelegate_registerTargetedDelegate(JSContext *cx, uint32_
     if (argc == 3)
     {
         JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-        JSObject* jsobj = NULL;
 
         JSTouchDelegate *touch = new JSTouchDelegate();
         touch->registerTargetedDelegate(args.get(0).toInt32(), args.get(1).toBoolean());
         
-        jsobj = args.get(2).toObjectOrNull();
+        JS::RootedObject jsobj(cx, args.get(2).toObjectOrNull());
         touch->setJSObject(jsobj);
         JSTouchDelegate::setDelegateForJSObject(jsobj, touch);
 
@@ -2055,30 +2040,39 @@ bool js_CCScheduler_schedule(JSContext *cx, uint32_t argc, jsval *vp)
         js_proxy_t *proxy = jsb_get_js_proxy(obj);
         cocos2d::Scheduler *sched = (cocos2d::Scheduler *)(proxy ? proxy->ptr : NULL);
         
-        JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
-        
         std::function<void (float)> callback;
+        JS::RootedObject targetObj(cx);
         do {
-            if(JS_TypeOfValue(cx, args.get(0)) == JSTYPE_FUNCTION)
+            JS::RootedValue callbackVal(cx);
+            if (JS_TypeOfValue(cx, args.get(0)) == JSTYPE_FUNCTION)
             {
-                std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, tmpObj, args.get(0)));
-                auto lambda = [=](float larg0) -> void {
-                    JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-                    jsval largv[1];
-                    largv[0] = DOUBLE_TO_JSVAL(larg0);
-                    JS::RootedValue rval(cx);
-                    bool invokeOk = func->invoke(1, &largv[0], &rval);
-                    if (!invokeOk && JS_IsExceptionPending(cx)) {
-                        JS_ReportPendingException(cx);
-                    }
-                };
-                callback = lambda;
+                callbackVal.set(args.get(0));
+                targetObj.set(args.get(1).toObjectOrNull());
+            }
+            else if (JS_TypeOfValue(cx, args.get(1)) == JSTYPE_FUNCTION)
+            {
+                targetObj.set(args.get(0).toObjectOrNull());
+                callbackVal.set(args.get(1));
             }
             else
             {
                 ok = false;
                 callback = nullptr;
+                break;
             }
+
+            std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, targetObj, callbackVal));
+            auto lambda = [=](float larg0) -> void {
+                JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+                    jsval largv[1];
+                largv[0] = DOUBLE_TO_JSVAL(larg0);
+                JS::RootedValue rval(cx);
+                bool invokeOk = func->invoke(1, &largv[0], &rval);
+                if (!invokeOk && JS_IsExceptionPending(cx)) {
+                    JS_ReportPendingException(cx);
+                }
+            };
+            callback = lambda;
         } while(0);
         
         double interval = 0;
@@ -2103,20 +2097,18 @@ bool js_CCScheduler_schedule(JSContext *cx, uint32_t argc, jsval *vp)
         }
         
         bool paused = false;
-        
         if( argc >= 6 ) {
             paused = JS::ToBoolean(JS::RootedValue(cx,  args.get(5)));
         }
         
-        std::string key;
-        
+        std::string key; 
         if( argc >= 7 ) {
-            ok &= jsval_to_std_string(cx, args.get(6), &key);
+            jsval_to_std_string(cx, args.get(6), &key);
         }
         
         JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
         
-        sched->schedule(callback, tmpObj, interval, repeat, delay, paused, key);
+        sched->schedule(callback, targetObj, interval, repeat, delay, paused, key);
                 
         args.rval().setUndefined();
         return true;
@@ -5663,7 +5655,7 @@ bool js_cocos2dx_PolygonInfo_constructor(JSContext *cx, uint32_t argc, jsval *vp
     CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
     typeClass = typeMapIter->second;
     CCASSERT(typeClass, "The value is null.");
-    // JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
+    
     JS::RootedObject proto(cx, typeClass->proto.get());
     JS::RootedObject parent(cx, typeClass->parentProto.get());
     JS::RootedObject obj(cx, JS_NewObject(cx, typeClass->jsclass, proto, parent));
