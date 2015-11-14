@@ -188,47 +188,6 @@ public:
     static const char* SHADER_NAME_LABEL_DISTANCEFIELD_NORMAL;
     static const char* SHADER_NAME_LABEL_DISTANCEFIELD_GLOW;
 
-    /**Built in shader used for 3D, support Position vertex attribute, with color specified by a uniform.*/
-    static const char* SHADER_3D_POSITION;
-    /**Built in shader used for 3D, support Position and Texture vertex attribute, with color specified by a uniform.*/
-    static const char* SHADER_3D_POSITION_TEXTURE;
-    /**
-    Built in shader used for 3D, support Position (Skeletal animation by hardware skin) and Texture vertex attribute,
-    with color specified by a uniform.
-    */
-    static const char* SHADER_3D_SKINPOSITION_TEXTURE;
-    /**
-    Built in shader used for 3D, support Position and Normal vertex attribute, used in lighting. with color specified by a uniform.
-    */
-    static const char* SHADER_3D_POSITION_NORMAL;
-    /**
-    Built in shader used for 3D, support Position, Normal, Texture vertex attribute, used in lighting. with color specified by a uniform.
-    */
-    static const char* SHADER_3D_POSITION_NORMAL_TEXTURE;
-    /**
-    Built in shader used for 3D, support Position(skeletal animation by hardware skin), Normal, Texture vertex attribute,
-    used in lighting. with color specified by a uniform.
-    */
-    static const char* SHADER_3D_SKINPOSITION_NORMAL_TEXTURE;
-    /**
-    Built in shader for particles, support Position and Texture, with a color specified by a uniform.
-    */
-    static const char* SHADER_3D_PARTICLE_TEXTURE;
-    /**
-    Built in shader for particles, support Position, with a color specified by a uniform.
-    */
-    static const char* SHADER_3D_PARTICLE_COLOR;
-
-    /**
-     Built in shader for skybox
-     */
-    static const char* SHADER_3D_SKYBOX;
-
-    /**
-     Built in shader for terrain
-     */
-    static const char* SHADER_3D_TERRAIN;
-    
     /**
      Built in shader for camera clear
      */

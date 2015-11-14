@@ -78,16 +78,6 @@ const char* GLProgram::SHADER_NAME_LABEL_DISTANCEFIELD_GLOW = "ShaderLabelDFGlow
 const char* GLProgram::SHADER_NAME_LABEL_NORMAL = "ShaderLabelNormal";
 const char* GLProgram::SHADER_NAME_LABEL_OUTLINE = "ShaderLabelOutline";
 
-const char* GLProgram::SHADER_3D_POSITION = "Shader3DPosition";
-const char* GLProgram::SHADER_3D_POSITION_TEXTURE = "Shader3DPositionTexture";
-const char* GLProgram::SHADER_3D_SKINPOSITION_TEXTURE = "Shader3DSkinPositionTexture";
-const char* GLProgram::SHADER_3D_POSITION_NORMAL = "Shader3DPositionNormal";
-const char* GLProgram::SHADER_3D_POSITION_NORMAL_TEXTURE = "Shader3DPositionNormalTexture";
-const char* GLProgram::SHADER_3D_SKINPOSITION_NORMAL_TEXTURE = "Shader3DSkinPositionNormalTexture";
-const char* GLProgram::SHADER_3D_PARTICLE_COLOR = "Shader3DParticleColor";
-const char* GLProgram::SHADER_3D_PARTICLE_TEXTURE = "Shader3DParticleTexture";
-const char* GLProgram::SHADER_3D_SKYBOX = "Shader3DSkybox";
-const char* GLProgram::SHADER_3D_TERRAIN = "Shader3DTerrain";
 const char* GLProgram::SHADER_CAMERA_CLEAR = "ShaderCameraClear";
 
 
