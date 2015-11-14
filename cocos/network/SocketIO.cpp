@@ -1193,6 +1193,23 @@ SIOClient* SocketIO::connect(const std::string& uri, SocketIO::SIODelegate& dele
 
             socket->connectToEndpoint(path);
         }
+        else
+        {
+            CCLOG("SocketIO: disconnect previous client");
+            c->disconnect();
+
+            CCLOG("SocketIO: recreate a new socket, new client, connect");
+            SIOClientImpl* newSocket = nullptr;
+            SIOClient *newC = nullptr;
+
+            newSocket = SIOClientImpl::create(host, port);
+            newC = new (std::nothrow) SIOClient(host, port, path, newSocket, delegate);
+
+            newSocket->addClient(path, newC);
+            newSocket->connect();
+
+            return newC;
+        }
     }
 
     return c;

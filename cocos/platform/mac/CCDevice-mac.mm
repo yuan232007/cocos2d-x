@@ -247,8 +247,8 @@ Data Device::getTextureDataForText(const char * text, const FontDefinition& text
         {
             break;
         }
-        height = (short)info.height;
-        width = (short)info.width;
+        height = info.height;
+        width = info.width;
         ret.fastSet(info.data,width * height * 4);
         hasPremultipliedAlpha = true;
     } while (0);

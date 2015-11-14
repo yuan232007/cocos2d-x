@@ -504,7 +504,10 @@ void AnchorPointFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
     {
 	    return;
     }
-
+    if (_tween)
+    {
+        _betweenAnchorPoint = static_cast<AnchorPointFrame*>(nextFrame)->_anchorPoint - _anchorPoint;
+    }
     _node->setAnchorPoint(_anchorPoint);
 }
 
@@ -519,7 +522,14 @@ Frame* AnchorPointFrame::clone()
     return frame;
 }
 
-
+void AnchorPointFrame::onApply(float percent)
+{
+    if ((nullptr != _node) && (_betweenAnchorPoint.x != 0 || _betweenAnchorPoint.y != 0))
+    {
+        auto applyAnchorP = _betweenAnchorPoint * percent + _anchorPoint;
+        _node->setAnchorPoint(applyAnchorP);
+    }
+}
 
 // InnerActionFrame
 const std::string InnerActionFrame::AnimationAllName = "-- ALL --";
