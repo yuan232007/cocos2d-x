@@ -35,7 +35,11 @@
 - (void) onLoadingProgress:(float)progress max:(float)max
 {
     NSLog(@"===> LoadingAdapter4Tencent onLoadingProgress progress: %f max: %f", progress, max);
-    reloadCallback(((progress / max) * 100), FALSE);
+    // 
+    if (progress == max) {
+        return;
+    }
+    reloadCallback(((progress / max) * PROGRESS_MAX), FALSE);
 }
 
 @end

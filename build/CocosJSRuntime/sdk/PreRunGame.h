@@ -16,8 +16,13 @@
 #import "LoadingDelegate.h"
 
 @interface PreRunGame : NSObject
-+ (void) start: (GameInfo*) info delegate: (id<LoadingDelegate>) delegate;
++ (void) start: (NSString*) gameKey delegate: (id<LoadingDelegate>) delegate;
 + (void) reset;
+
+/**
+ * 在下载游戏前先验证游戏
+ */
++ (void) checkStatusBeforeRunGame: (NSString*)gameKey;
 
 /**
  * 下载 config.json
@@ -109,7 +114,6 @@
  * 下载 config.json
  */
 @interface ConfigDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -118,7 +122,6 @@
  * 下载 mainifest.json
  */
 @interface ManifestDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -127,7 +130,6 @@
  * 下载 main.jsc
  */
 @interface EntryDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -136,7 +138,6 @@
  * 下载 project-runtime.json
  */
 @interface ProjectDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -150,7 +151,6 @@
 }
 - (BootGroupDownloadImpl*) initWith: (ResGroup*) resGroup;
 - (void) onDownloadProgress:(double)progress;
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end

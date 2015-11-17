@@ -22,14 +22,14 @@ static LoadingProgressController *loadingProgressController;
     [loadingProgressController setOnLoadingProgressDelegate: [[OnLoadingProgressDelegateImpl alloc] init]];
 }
 
-+ (void) startPreRuntime: (GameInfo*) info delegate: (id<LoadingDelegate>) delegate
++ (void) startPreRuntime: (NSString*) gameKey delegate: (id<LoadingDelegate>) delegate
 {
     if (delegate == nil) {
         NSLog(@"===> ERROR: Proxy is empty.");
         return;
     }
     NSLog(@"===> CocosRuntime startPreRuntime");
-    [PreRunGame start:info delegate:delegate];
+    [PreRunGame start:gameKey delegate:delegate];
 }
 
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate
@@ -37,14 +37,15 @@ static LoadingProgressController *loadingProgressController;
     [CocosRuntimeGroup preloadResGroups:groupsString delegate:delegate];
 }
 
-+ (void) preloadResGroupsInternal:(NSString *)groupsString delegate:(id<LoadingDelegate>)delegate
-{
-    
-}
-
 + (LoadingProgressController*) getLoadingProgressController
 {
     return loadingProgressController;
+}
+
++ (void) reset
+{
+    [PreRunGame reset];
+    [CocosRuntimeGroup reset];
 }
 
 @end

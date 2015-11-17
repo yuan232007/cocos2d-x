@@ -17,8 +17,6 @@
 #import "OnGroupUpdateDelegate.h"
 #import "OnLoadingProgressDelegate.h"
 
-#define PROGRESS_MAX 100
-#define PROGRESS_INVALID -1
 #define GROUP_UNZIP @"unzip"
 #define GROUP_DOWNLOAD @"download"
 
@@ -35,6 +33,19 @@
 + (void) removeGroupFromWaitingDownload: (NSString*)groupName;
 + (NSString*) getFirstGroupFromWaitingDownload;
 + (void) reset;
++ (GameConfig*) getGameConfig;
++ (void) initNetworkHelper;
+
+/**
+ * 删除某个分组，包括分组的json文件和所有资源
+ */
++ (void) deleteGroup: (NSString*)groupName;
+
+/**
+ * 判断是否需要下载这些分组
+ * 依次检查其中每个分组的文件完整性，只有每个分组都处于已更新状态才返回 FALSE,
+ * 反之，返回 TRUE
+ */
 + (BOOL) needToDownloadGroup: (NSString*)groupString;
 
 + (id<LoadingDelegate>) getLoadingDelegate;
@@ -65,16 +76,19 @@
 + (void) downloadResGroup: (GameInfo*) gameInfo group: (ResGroup*) resGroup delegate: (id<OnGroupUpdateDelegate>) delegate;
 
 /**
- * 解压指定分组
+ * 判断是否处于取消下载的状态
  */
-+ (BOOL) unzipGroupFrom: (NSString*) fromPath to: (NSString*) toPath overwrite: (BOOL) overwrite;
-
 + (BOOL) isInCancelDownloadState;
 
 /**
  * 取消当前正在下载的任务
  */
 + (void) cancelCurrentDownload;
+
+/**
+ * 直接解压已经存在的分组(cpk)
+ */
++ (void) unzipGroup: (ResGroup*)group delegate:(id<OnGroupUpdateDelegate>)delegate;
 
 /*************************************** Silent Download **********************************/
 
@@ -129,7 +143,6 @@
 }
 - (ResourceGroupDownloadImpl*) initWith: (ResGroup*) resGroup groupDelegate: (id<OnGroupUpdateDelegate>)delegate;
 - (void) onDownloadProgress:(long)progress max:(long)max;
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end

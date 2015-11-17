@@ -25,7 +25,7 @@
 - (void) reset;
 - (void) setLoadingInfoList: (NSMutableArray*) list;
 - (void) setCurrentLoadingIndex: (NSInteger) index;
-- (void) setCUrrentLoadingIndexByName: (NSString*) name;
+- (void) setCurrentLoadingIndexByName: (NSString*) name;
 
 /**
  * 通知所有的载入操作都完成

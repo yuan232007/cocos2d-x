@@ -21,4 +21,5 @@
 @property NSString *gameKey, *downloadUrl, *gameName;
 
 - (GameInfo*) initWithKey: (NSString*) key withUrl:(NSString*) url withName:(NSString*) gameName;
+- (GameInfo*) initWithDictionary: (NSDictionary*)dictonary;
 @end

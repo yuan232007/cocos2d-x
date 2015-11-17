@@ -26,45 +26,76 @@
 
 + (NSString*) getRemoteConfigPath:(GameInfo *)info
 {
-    return [[[[[FileUtil getGamesPath] stringByAppendingString:@"/"]
-              stringByAppendingString:remoteConfigFileNamePrefix]
+    return [[[[FileUtil getGamesPath]
+              stringByAppendingPathComponent:remoteConfigFileNamePrefix]
              stringByAppendingString:@"."]
             stringByAppendingString:[info gameKey]];
 }
 
 + (NSString*) getGameRootPath:(GameInfo *)info
 {
-    return [[[FileUtil getGamesPath] stringByAppendingString:@"/"] stringByAppendingString: [info gameKey]];
+    return [FileUtil getGameRootPathByGameKey: [info gameKey]];
+}
+
++ (NSString*) getGameRootPathByGameKey:(NSString*)gameKey
+{
+    return [[FileUtil getGamesPath] stringByAppendingPathComponent: gameKey];
+}
+
++ (NSString*) getGroupJsonFilePath: (GameInfo*) info groupName:(NSString*)name
+{
+    NSString* fileName = [[@"cc-group-" stringByAppendingString:name] stringByAppendingString:@".json"];
+    return [[FileUtil getLocalGameGroupRootPath: info] stringByAppendingPathComponent:fileName];
 }
 
 + (NSString*) getLocalConfigPath:(GameInfo *)info
 {
-    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString:configFileName];
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:configFileName];
+}
+
++ (NSString*) getManifestCpkPath: (GameInfo*)info :(GameConfig*)config
+{
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent: @"manifest.cpk"];
 }
 
 + (NSString*) getLocalManifestPath:(GameInfo *)info :(GameConfig *)config
 {
-    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString: [config manifestName]];
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent: [config manifestName]];
 }
 
 + (NSString*) getLocalProjectPath:(GameInfo *)info :(GameConfig *)config
 {
-    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString:[config projectName]];
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:[config projectName]];
 }
 
 + (NSString*) getLocalEntryPath:(GameInfo *)info :(GameConfig *)config
 {
-    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString:[config entryName]];
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:[config entryName]];
 }
 
 + (NSString*) getLocalGameGroupRootPath:(GameInfo *)info
 {
-    return [[FileUtil getGameRootPath:info] stringByAppendingString:@"/group"];
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:@"group"];
+}
+
++ (NSString*) getLocalGroupPatchRootPath: (GameInfo*) info
+{
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:@"patch"];
+}
+
++ (NSString*) getGroupPatchPackagePath: (GameInfo*) info groupName:(NSString*)groupName version:(NSString*)version
+{
+    return [[FileUtil getLocalGroupPatchRootPath:info] stringByAppendingPathComponent:[[@"patch_" stringByAppendingString:version] stringByAppendingString:@".cpk"]];
+}
+
++ (NSString*) getLocalGroupPatchPath: (GameInfo*) info groupName:(NSString*)name
+{
+    return [[FileUtil getLocalGameGroupRootPath:info] stringByAppendingPathComponent:name];
 }
 
 + (NSString*) getLocalGroupPath:(GameInfo *)info group:(ResGroup *)group
 {
-    return [[[FileUtil getGameRootPath:info] stringByAppendingString:@"/"] stringByAppendingString:[group groupURL]];
+    return [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:[group groupURL]];
 }
 
 + (NSString*) getLocalBootGroupPath:(GameInfo *)info group:(GameConfig *)config
@@ -72,17 +103,23 @@
     return [[[FileUtil getGameRootPath:info] stringByAppendingPathComponent:@"group"] stringByAppendingPathComponent:@"boot.cpk"];
 }
 
-+ (void) ensureDirectory:(NSString *)path
++ (BOOL) ensureDirectory:(NSString *)path
 {
     NSError* error;
     if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories: TRUE attributes: Nil error: &error]) {
-        @throw error;
+        return FALSE;
     }
+    return TRUE;
 }
 
 + (NSString*) getParentDirectory:(NSString *)path
 {
     return [path stringByDeletingLastPathComponent];
+}
+
++ (NSString*) getGroupDeletedFilePath: (GameInfo*) info groupName:(NSString*)groupName
+{
+    return [[[[FileUtil getLocalGameGroupRootPath:info] stringByAppendingPathComponent:@"cc-deleted-files"] stringByAppendingString:groupName] stringByAppendingString:@".json"];
 }
 
 + (NSString*) getBaseName:(NSString *)path
@@ -102,14 +139,20 @@
     return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
-+ (void) writeJsonToFile:(NSJSONSerialization *)json
-{
-    
-}
-
-+ (void) moveFileFrom:(NSString *)fromPath to:(NSString*)toPath overwrite:(BOOL)overwrite
++ (BOOL) writeJsonToFile:(NSString*)path json:(id<NSObject>)json
 {
     NSError *error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:json options:NSJSONWritingPrettyPrinted error:&error];
+    [jsonData writeToFile:path atomically:FALSE];
+    if (error != nil) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
++ (BOOL) moveFileFrom:(NSString *)fromPath to:(NSString*)toPath overwrite:(BOOL)overwrite
+{
+    NSError *error = nil;
     [FileUtil ensureDirectory: [FileUtil getParentDirectory:toPath]];
     BOOL ret = false;
     if (overwrite) {
@@ -121,9 +164,26 @@
         ret = [[NSFileManager defaultManager] moveItemAtPath:fromPath toPath:toPath error:&error];
     }
     
-    if (!ret) {
-        @throw [[NSException alloc] init];
+    return ret;
+}
+
++ (BOOL) removeFile:(NSString *)path
+{
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    if (error != nil) {
+        return FALSE;
     }
+    return TRUE;
+}
+
++ (long long) getFileSize:(NSString *)path
+{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:path]){
+        return [[manager attributesOfItemAtPath:path error:nil] fileSize];
+    }
+    return 0;
 }
 
 + (NSString*) getFileMD5:(NSString *)path

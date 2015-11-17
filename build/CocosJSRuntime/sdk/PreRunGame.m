@@ -10,6 +10,8 @@
 #import "FileUtil.h"
 #import "CocosRuntimeGroup.h"
 #import "ZipHelper.h"
+#import "NetworkController.h"
+#import "RTNetworkHelper.h"
 
 #define PROGRESS_MAX 100
 #define PROGRESS_INVALID -1
@@ -18,22 +20,17 @@
 #define COMPAT_VERSION_PATH @"33"
 
 static GameInfo* gameInfo = nil;
-static NSString* remoteConfigPath = nil;
-static NSString* localConfigPath = nil;
 static GameManifest* gameManifest = nil;
 static FileDownloader* fileDownload = nil;
 static id<LoadingDelegate> loadingDelegate = nil;
 static GameConfig* gameConfig = nil;
 
 @implementation PreRunGame
-+ (void) start: (GameInfo*) info delegate:(id<LoadingDelegate>)delegate
++ (void) start: (NSString*) gameKey delegate:(id<LoadingDelegate>)delegate
 {
     NSLog(@"===> PreRunGame start");
-    gameInfo = info;
-    remoteConfigPath = [FileUtil getRemoteConfigPath:gameInfo];
-    localConfigPath = [FileUtil getLocalConfigPath:gameInfo];
     loadingDelegate = delegate;
-    [PreRunGame downloadRemoteConfigFile];
+    [PreRunGame checkStatusBeforeRunGame: gameKey];
 }
 
 + (void) reset
@@ -41,18 +38,41 @@ static GameConfig* gameConfig = nil;
     
 }
 
++ (void) checkStatusBeforeRunGame: (NSString*)gameKey
+{
+    NSLog(@"===> PreRunGame checkStatusBeforeRunGame: %@", gameKey);
+    [NetworkController requestGameInfoByGameKey:gameKey callback:^(GameInfo *info, BOOL isFailed) {
+        NSLog(@"===> PreRunGame checkStatusBeforeRunGame: GameInfo: %@", gameInfo);
+        if (isFailed) {
+            [loadingDelegate onLoadingError];
+        } else {
+            gameInfo = info;
+            
+            //************** for debug ************
+            
+            NSString *gameDownloadUrl = @"http://192.168.31.236:63342/4/";
+            NSString *gameKey = @"Ryeeeeee";
+            NSString *gameName = @"天天挂传奇";
+            gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
+             
+            //**************************************
+            [PreRunGame downloadRemoteConfigFile];
+        }
+    }];
+}
+
 + (void) downloadRemoteConfigFile
 {
     NSLog(@"===> LocalConfig %@", [FileUtil getLocalConfigPath:gameInfo]);
     NSLog(@"===> PreRunGame downloadRemoteConfigFile");
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
                                    stringByAppendingPathComponent:[FileUtil getConfigFileName]];
         NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[ConfigDownloadDelegateImpl alloc] init]];
+        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getRemoteConfigPath:gameInfo] delegate:[[ConfigDownloadDelegateImpl alloc] init]];
         NSLog(@"===> remote config file url: %@", requestString);
-        [fileDownload startDownload];
-    });
+        [fileDownload start];
+//    });
 }
 
 + (void) updateLocalConfigFile: (NSString*) path
@@ -82,13 +102,11 @@ static GameConfig* gameConfig = nil;
 
 + (void) downloadRemoteManifestFile
 {
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+    NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
                                    stringByAppendingPathComponent:@"manifest.cpk"];
-        NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[ManifestDownloadDelegateImpl alloc] init]];
-        [fileDownload startDownload];
-//    });
+    NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
+    FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getManifestCpkPath:gameInfo :gameConfig] delegate:[[ManifestDownloadDelegateImpl alloc] init]];
+    [fileDownload start];
 }
 
 + (GameConfig*) parseGameConfigFile: (NSString*) path
@@ -109,13 +127,11 @@ static GameConfig* gameConfig = nil;
 + (void) downloadEntryFile
 {
     NSLog(@"===> downloadEntryFile");
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+    NSString *requestString = [[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH]
                                    stringByAppendingPathComponent:[gameConfig entryName]];
-        NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[EntryDownloadDelegateImpl alloc] init]];
-        [fileDownload startDownload];
-//    });
+    NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
+    FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getLocalEntryPath:gameInfo :gameConfig] delegate:[[EntryDownloadDelegateImpl alloc] init]];
+    [fileDownload start];
 }
 
 + (void) checkProjectJsonFile
@@ -129,12 +145,10 @@ static GameConfig* gameConfig = nil;
 
 + (void) downloadProjectJsonFile
 {
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:[gameConfig projectName]];
-        NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:[[ProjectDownloadDelegateImpl alloc] init]];
-        [fileDownload startDownload];
-//    });
+    NSString *requestString = [[gameInfo downloadUrl] stringByAppendingPathComponent:[gameConfig projectName]];
+    NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
+    FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getLocalProjectPath:gameInfo :gameConfig] delegate:[[ProjectDownloadDelegateImpl alloc] init]];
+    [fileDownload start];
 }
 
 + (void) deleteNoRefGroups
@@ -154,6 +168,7 @@ static GameConfig* gameConfig = nil;
 
 + (void) notifyProgress: (float) progress max:(float)max
 {
+    NSLog(@"PreRunGame notifyProgress progress:%f max: %f", progress, max);
     if (loadingDelegate != nil) {
         [loadingDelegate onLoadingProgress:progress max:max];
     }
@@ -172,6 +187,14 @@ static GameConfig* gameConfig = nil;
     if (loadingDelegate != nil) {
         [loadingDelegate onLoadingCompleted];
     }
+    
+    // 只有在 Wi-Fi 环境下才开启静默下载
+    if (NetworkType_WiFi == [RTNetworkHelper getNetworkType]) {
+        [CocosRuntimeGroup setSilentDownloadEnabled:TRUE];
+    } else {
+        [CocosRuntimeGroup setSilentDownloadEnabled:FALSE];
+    }
+    [CocosRuntimeGroup silentDownloadNextGroup];
 }
 
 + (BOOL) isLocalConfigMD5Correct
@@ -215,7 +238,7 @@ static GameConfig* gameConfig = nil;
 
 + (BOOL) isLocalEntryMD5Correct
 {
-    NSLog(@"ENtry md5:%@", [FileUtil getLocalEntryPath:gameInfo :gameConfig]);
+    NSLog(@"===> Entry md5:%@", [FileUtil getLocalEntryPath:gameInfo :gameConfig]);
     NSString *localEntryMD5 = [FileUtil getFileMD5:[FileUtil getLocalEntryPath:gameInfo :gameConfig]];
     if ([localEntryMD5 isEqualToString:[gameConfig entryMD5]]) {
         return true;
@@ -228,16 +251,16 @@ static GameConfig* gameConfig = nil;
     NSLog(@"===> preload boot group");
     ResGroup* resGroup = [CocosRuntimeGroup findGroupByName:@"boot"];
     if (resGroup != nil) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString *requestString = [[[gameInfo downloadUrl]
-                                         stringByAppendingPathComponent:COMPAT_VERSION_PATH]
-                                       stringByAppendingPathComponent:resGroup.groupURL];
-            NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-            
-            BootGroupDownloadImpl* resDownloadImpl =  [[BootGroupDownloadImpl alloc] initWith:resGroup];
-            FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl delegate:resDownloadImpl];
-            [fileDownload startDownload];
-        });
+        NSString *requestString = [[[gameInfo downloadUrl]
+                                    stringByAppendingPathComponent:COMPAT_VERSION_PATH]
+                                   stringByAppendingPathComponent:resGroup.groupURL];
+        NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
+        NSLog(@"===> Boot URL: %@", requestUrl);
+        
+        
+        BootGroupDownloadImpl* resDownloadImpl =  [[BootGroupDownloadImpl alloc] initWith:resGroup];
+        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getLocalGroupPath:gameInfo group: resGroup] delegate:resDownloadImpl];
+        [fileDownload start];
     } else {
         NSLog(@"===> Couldn't find boot group");
     }
@@ -247,36 +270,16 @@ static GameConfig* gameConfig = nil;
 
 @implementation ConfigDownloadDelegateImpl : FileDownloadAdapter
 
-- (NSString*) onTempDownloaded:(NSString *)locationPath
-{
-    NSLog(@"===> Config Download location: %@", locationPath);
-    NSString* targetPath = [FileUtil getRemoteConfigPath:gameInfo];
-    NSLog(@"===> new location %@", targetPath);
-    @try {
-        NSLog(@"===> parent directory of target: %@", [FileUtil getParentDirectory:targetPath]);
-        [FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]];
-        [FileUtil moveFileFrom:locationPath to:targetPath overwrite:true];
-        GameConfig *config = [PreRunGame parseGameConfigFile:targetPath];
-        if (config == nil) {
-            return nil;
-        } else {
-            gameConfig = config;
-        }
-        return targetPath;
-    }
-    @catch (NSError *error) {
-        NSLog(@"===> move config file error %@", [error description]);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"===> move config file exception %@", [exception description]);
-    }
-    
-    return nil;
-}
-
 - (void) onDownloadSuccess:(NSString *)path
 {
     NSLog(@"===> onDownloadSuccess %@", path);
+    GameConfig *config = [PreRunGame parseGameConfigFile:path];
+    if (config != nil) {
+        gameConfig = config;
+    } else {
+        [PreRunGame notifyPreRunGameError];
+    }
+    
     [PreRunGame updateLocalConfigFile:path];
 }
 
@@ -290,28 +293,20 @@ static GameConfig* gameConfig = nil;
 
 @implementation ManifestDownloadDelegateImpl : FileDownloadAdapter
 
-- (NSString*) onTempDownloaded:(NSString *)locationPath
-{
-    @try {
-        NSString* targetPath = [FileUtil getLocalManifestPath:gameInfo :gameConfig];
-        if (![ZipHelper unzipFileAtPath:locationPath toDestination:[FileUtil getGameRootPath:gameInfo]]) {
-            @throw [[NSException alloc] init];
-        }
-        NSLog(@"===> new location %@", targetPath);
-        return targetPath;
-    }
-    @catch (NSException *exception) {
-        NSLog(@"===> unzip file error");
-    }
-    
-    return nil;
-}
-
 - (void) onDownloadSuccess:(NSString *)path
 {
     NSLog(@"===> onManifestDownloadSuccess");
-    if ([FileUtil fileExists:path] && [PreRunGame isLocalManifestMD5Correct]) {
-        gameManifest = [GameManifest readFromFile:path];
+    NSString* targetPath = [FileUtil getLocalManifestPath:gameInfo :gameConfig];
+    
+    if (![FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]]
+        || ![ZipHelper unzipFileAtPath:path toDestination:[FileUtil getGameRootPath:gameInfo]]) {
+        [PreRunGame notifyPreRunGameError];
+        return;
+    }
+    [FileUtil removeFile:path];
+    
+    if ([FileUtil fileExists:targetPath] && [PreRunGame isLocalManifestMD5Correct]) {
+        gameManifest = [GameManifest readFromFile:targetPath];
         [CocosRuntimeGroup initialize:gameInfo config:gameConfig manifest:gameManifest];
         [PreRunGame checkEntryFile];
     } else {
@@ -328,20 +323,6 @@ static GameConfig* gameConfig = nil;
 @end
 
 @implementation EntryDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath
-{
-    NSString* targetPath = [FileUtil getLocalEntryPath:gameInfo :gameConfig];
-    @try {
-        [FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]];
-        [FileUtil moveFileFrom:locationPath to:targetPath overwrite:true];
-        NSLog(@"===> new Entry location %@", targetPath);
-        return targetPath;
-    }
-    @catch (NSError *error) {
-        NSLog(@"===> move Entry file error");
-    }
-    return nil;
-}
 
 - (void) onDownloadSuccess:(NSString *)path
 {
@@ -361,24 +342,10 @@ static GameConfig* gameConfig = nil;
 @end
 
 @implementation ProjectDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath
-{
-    @try {
-        NSString* targetPath = [FileUtil getLocalProjectPath:gameInfo :gameConfig];
-        NSLog(@"===> new location %@", targetPath);
-        [FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]];
-        [FileUtil moveFileFrom:locationPath to:targetPath overwrite:true];
-        return targetPath;
-    }
-    @catch (NSError *error) {
-        NSLog(@"===> move file error");
-    }
-    return nil;
-}
 
 - (void) onDownloadSuccess:(NSString *)path
 {
-    if ([FileUtil fileExists:[FileUtil getLocalProjectPath:gameInfo :gameConfig]] && [PreRunGame isLocalProjectMD5Correct]) {
+    if ([FileUtil fileExists:path] && [PreRunGame isLocalProjectMD5Correct]) {
         [PreRunGame checkBootGroup];
     } else {
         [PreRunGame notifyPreRunGameError];
@@ -407,35 +374,20 @@ static GameConfig* gameConfig = nil;
     [PreRunGame notifyProgress: progressOffset max:100.0l];
 }
 
-- (NSString*) onTempDownloaded:(NSString *)locationPath
-{
-    return locationPath;
-}
-
 - (void) onDownloadSuccess:(NSString *)path
 {
     NSLog(@"===> BootGroupDownloadDelegateImpl Success");
-    
-    NSString *targetPath = [FileUtil getLocalGroupPath:gameInfo group: resGroup];
-    @try {
-        [FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]];
-        [FileUtil moveFileFrom:path to:targetPath overwrite:true];
-        if (![FileUtil fileExists:[FileUtil getLocalBootGroupPath:gameInfo group:gameConfig]] || ![PreRunGame isLocalBootGroupMD5Correct]) {
-            @throw [[NSException alloc]init];
-        }
-        NSLog(@"===> download %@", resGroup.groupURL);
-        
-        if (![CocosRuntimeGroup unzipGroupFrom: targetPath to: [FileUtil getGameRootPath:gameInfo] overwrite: true]) {
-            @throw [[NSException alloc]init];
-        }
-        
-        [PreRunGame notifyProgress: resGroup.groupSize max:100.0l];
-        [PreRunGame startGame];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"move file error");
+    if (![FileUtil fileExists:path] || ![PreRunGame isLocalBootGroupMD5Correct]) {
         [PreRunGame notifyPreRunGameError];
+        return;
     }
+    NSLog(@"===> download %@", resGroup.groupURL);
+        
+    if (![ZipHelper unzipFileAtPath:path toDestination:[FileUtil getGameRootPath:gameInfo]]) {
+        [PreRunGame notifyPreRunGameError];
+        return;
+    }
+    [PreRunGame startGame];
 }
 
 - (void) onDownloadFailed

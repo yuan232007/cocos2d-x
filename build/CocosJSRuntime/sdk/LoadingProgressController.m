@@ -29,7 +29,7 @@
 
 - (void) reset
 {
-    // todo
+    // todo 清楚状态
 }
 
 - (void) notifyAllLoadingFinish
@@ -85,7 +85,7 @@
     }
 }
 
-- (void) setCUrrentLoadingIndexByName: (NSString*) name
+- (void) setCurrentLoadingIndexByName: (NSString*) name
 {
     if (loadingInfoList != nil && loadingInfoDict != nil) {
         LoadingInfo *info = [loadingInfoDict objectForKey:name];

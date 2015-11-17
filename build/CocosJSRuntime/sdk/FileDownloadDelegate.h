@@ -21,11 +21,6 @@
 - (void) onDownloadProgress: (long) progress max:(long)max;
 
 /**
- * 下载完成后的临时存放文件, 需要将此文件另存并返回地址，否则临时文件可能会被删除
- */
-- (NSString*) onTempDownloaded: (NSString*) locationPath;
-
-/**
  * 下载成功, 参数为另存之后的文件地址
  */
 - (void) onDownloadSuccess: (NSString*) path;

@@ -11,7 +11,6 @@
 @implementation FileDownloadAdapter
 - (void) onDownloadStart {}
 - (void) onDownloadProgress: (long) progress max:(long)max{}
-- (NSString*) onTempDownloaded: (NSString*) locationPath {return nil;}
 - (void) onDownloadSuccess: (NSString*) path {}
 - (void) onDownloadFailed {}
 - (void) onDownloadCancel {}

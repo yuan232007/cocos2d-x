@@ -42,7 +42,9 @@ static CocosAppDelegate* s_application = nullptr;
         s_application = new (std::nothrow) CocosAppDelegate;
     }
     
-    //从浏览器配置的CacheDir、LibDir，获取失败直接返回
+    [ChannelConfig setChannelID:@"100115"];
+    
+    // 从浏览器配置的CacheDir、LibDir，获取失败直接返回
     NSString* cacheDir = [self.delegate x5GamePlayer_get_value:@"CacheDir"];
     NSString* libDir = [self.delegate x5GamePlayer_get_value:@"LibDir"];
     if (cacheDir != nil && libDir != nil) {
@@ -75,6 +77,9 @@ static CocosAppDelegate* s_application = nullptr;
             gameKey = [gameExtInfo objectForKey:@"gameKey"];
             gameDownloadUrl = [gameExtInfo objectForKey:@"resUrl"];
             gameInfoInitFlag = true;
+            
+            NSString *channel = [gameExtInfo objectForKey:@"channel"];
+            if (channel == nil) { break;}
         } while (false);
         
         if (gameInfoInitFlag == false) {
@@ -84,20 +89,11 @@ static CocosAppDelegate* s_application = nullptr;
         }
     }
     else {
-        //包含新版本资源的游戏
-        //gameDownloadUrl = @"http://182.254.241.97/ios-runtime-test/moonwarriors";
-        //gameKey = @"ULY1R3O6MB";
-        //gameName = @"打飞机游戏";
-        
-        //只包含3.3版本的游戏
-        gameDownloadUrl = @"http://h5res.kx7p.com/ttgcqrt";
         gameKey = @"442290958";
-        gameName = @"天天挂传奇";
     }
     
     //从服务器获取游戏配置并下载第一个boot分组
-    GameInfo* gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
-    [CocosRuntime startPreRuntime:gameInfo proxy:[[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed) {
+    [CocosRuntime startPreRuntime:gameKey delegate:[[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed) {
         if (isFailed) {
             [self.delegate x5GamePlayer_send_msg:
              [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
@@ -118,9 +114,9 @@ static CocosAppDelegate* s_application = nullptr;
     
     //通知浏览器已经开始下载
     [self.delegate x5GamePlayer_send_msg:
-     [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
+    [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
     
-    auto gameResRoot = [[FileUtil getGameRootPath:gameInfo] cStringUsingEncoding:NSUTF8StringEncoding];
+    auto gameResRoot = [[FileUtil getGameRootPathByGameKey:gameKey] cStringUsingEncoding:NSUTF8StringEncoding];
     s_application->setGameResRoot(gameResRoot);
 }
 

@@ -9,21 +9,33 @@
 #import <Foundation/Foundation.h>
 #import "FileDownloadDelegate.h"
 
-@interface FileDownloader : NSObject <NSURLSessionDownloadDelegate>
+@interface FileDownloader : NSObject <NSURLSessionTaskDelegate>
 {
     NSURL* requestURL;
-    NSURLSessionDownloadTask *downloadTask;
+    NSString *tempPath;
+    NSString *targetPath;
+    NSURLSessionDataTask *downloadTask;
     id<FileDownloadDelegate> fileDownloadDelegate;
+    long long receivedSize;
+    long long totalSize;
 }
 
-@property NSURLSessionDownloadTask *downloadTask;
+- (FileDownloader*) initWithURL: (NSURL*) url targetPath:(NSString*)path delegate: (id<FileDownloadDelegate>) delegate;
 
-- (FileDownloader*) initWithURL: (NSURL*) url delegate: (id<FileDownloadDelegate>) delegate;
--(void) startDownload;
--(NSURLSession*) getCurrentSession;
--(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location;
--(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite;
--(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes;
--(void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error;
+/**
+ * 开始下载
+ */
+- (void) start;
 
+/**
+ * 取消下载
+ */
+- (void) cancel;
+
+- (void) URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data;
+
+- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error;
+
+- (void) onTempFileDownloaded;
 @end

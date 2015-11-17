@@ -8,12 +8,13 @@
 
 #import "ResGroup.h"
 #import "FileUtil.h"
+#import "GameManifest.h"
 
 @implementation ResGroup
 
-@synthesize groupMD5, groupName, groupURL, groupPriority, groupSize, fileList, isUpdated;
+@synthesize groupMD5, groupName, groupURL, groupPriority, groupSize, fileList, isUpdated, groupPatches;
 
--(ResGroup*) initWith:(NSString *)infoMD5 md5:(NSString *)md5 name:(NSString *)name priority:(NSInteger)priority size:(NSInteger)size url:(NSString *)url files:(NSMutableArray *)files
+-(ResGroup*) initWith:(NSString *)infoMD5 md5:(NSString *)md5 name:(NSString *)name priority:(NSInteger)priority size:(NSInteger)size url:(NSString *)url files:(NSMutableArray *)files patches:(NSMutableDictionary *)patches
 {
     if (self = [super init]) {
         self.groupMD5 = md5;
@@ -39,18 +40,17 @@
 - (BOOL) isAllFilesMD5Correct: (GameInfo*) info
 {
     for (File *file in [self fileList]) {
-        NSString *localMD5 = [[FileUtil getFileMD5:[FileUtil getGameRootPath:info]] stringByAppendingPathComponent:[file name]];
-        if (![localMD5 isEqualToString:localMD5]) {
+        NSString *path = [[FileUtil getGameRootPath:info] stringByAppendingPathComponent:[file fileName]];
+        NSString *localMD5 = [FileUtil getFileMD5:path];
+        if (![[file fileMD5] isEqualToString:localMD5]) {
             return FALSE;
         }
     }
     return TRUE;
 }
 
-@end
-
-@implementation File
-
-@synthesize md5, name;
-
+- (GroupPatch*) getPatch:(NSString *)patchName
+{
+    return [groupPatches objectForKey:patchName];
+}
 @end

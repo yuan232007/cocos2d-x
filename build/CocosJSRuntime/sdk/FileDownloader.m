@@ -7,78 +7,124 @@
 //
 
 #import "FileDownloader.h"
+#import "NetworkController.h"
+#import "FileUtil.h"
 
 @implementation FileDownloader
 
-@synthesize downloadTask;
-
--(FileDownloader*) initWithURL:(NSURL *)url delegate:(id<FileDownloadDelegate>)delegate
+-(FileDownloader*) initWithURL:(NSURL *)url targetPath:(NSString*)path delegate:(id<FileDownloadDelegate>)delegate
 {
     if (self = [super init]) {
         requestURL = url;
+        targetPath = path;
+        tempPath = [path stringByAppendingString:@".tmp"];
         fileDownloadDelegate = delegate;
+        receivedSize = 0;
+        totalSize = 0;
     }
     return self;
 }
 
--(void) startDownload
+- (void) start
 {
     NSLog(@"===> FileDownload startDownload");
     [fileDownloadDelegate onDownloadStart];
-    downloadTask = [[self getCurrentSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:requestURL]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
+    
+    if ([FileUtil fileExists:tempPath] && (receivedSize = [FileUtil getFileSize:tempPath]) > 0) {
+        NSString *requestRange = [NSString stringWithFormat:@"bytes=%llu-", receivedSize];
+        [request setValue:requestRange forHTTPHeaderField:@"Range"];
+        
+        NSLog(@"===> Broken-Point Continuely-Transfer %@ from %lld bytes", tempPath, receivedSize);
+    } else {
+        int fileDescriptor = open([tempPath UTF8String], O_CREAT | O_EXCL | O_RDWR, 0666);
+        if (fileDescriptor > 0) {
+            close(fileDescriptor);
+        }
+    }
+    
+    downloadTask = [[NetworkController getCurrentSession: self] dataTaskWithRequest:request];
     [downloadTask resume];
 }
 
--(NSURLSession*) getCurrentSession
+- (void) cancel
 {
-    dispatch_once_t predicate = 0;
-    __block NSURLSession *currentSession;
-    // 使用 dispatch_once 创建单例
-    dispatch_once(&predicate, ^{
-        NSURLSessionConfiguration* config =  [NSURLSessionConfiguration defaultSessionConfiguration];
-        currentSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue: nil];
-    });
-    return currentSession;
-}
-
-/* Sent when a download task that has completed a download.  The delegate should
- * copy or move the file at the given location to a new location as it will be
- * removed when the delegate message returns. URLSession:task:didCompleteWithError: will
- * still be called.
- */
--(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
-{
-    NSLog(@"===> location: %@", location.path);
-    NSString *movedPath = [fileDownloadDelegate onTempDownloaded:location.path];
-    if (movedPath != nil) {
-        [fileDownloadDelegate onDownloadSuccess:movedPath];
-    } else {
-        [fileDownloadDelegate onDownloadFailed];
+    if (downloadTask != nil) {
+        [downloadTask cancel];
     }
 }
 
--(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
+- (void) URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+     didReceiveData:(NSData *)data
 {
-    [fileDownloadDelegate onDownloadProgress:bytesWritten max:totalBytesExpectedToWrite];
-}
-
-/* Sent when a download has been resumed. If a download failed with an
- * error, the -userInfo dictionary of the error will contain an
- * NSURLSessionDownloadTaskResumeData key, whose value is the resume
- * data.
- */
--(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
-{
-    // 下载偏移，主要用于暂停续传
-    NSLog(@"download pause and resume");
+    NSHTTPURLResponse *response = (NSHTTPURLResponse*)dataTask.response;
+    if (200 == response.statusCode) {
+        totalSize = dataTask.countOfBytesExpectedToReceive;
+    } else if (206 == response.statusCode) {
+        NSString *contentRange = [response.allHeaderFields valueForKey:@"Content-Range"];
+        if ([contentRange hasPrefix:@"bytes"]) {
+            NSArray *bytes = [contentRange componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/"]];
+            if (4 == [bytes count]) {
+                totalSize = [[bytes objectAtIndex:3] longLongValue];
+            }
+        }
+    } else if (416 == response.statusCode) {
+        NSLog(@"===> Download 416 HTTP Status code Error");
+        NSString *contentRange = [response.allHeaderFields valueForKey:@"Content-Range"];
+        if ([contentRange hasPrefix:@"bytes"]) {
+            NSArray *bytes = [contentRange componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/"]];
+            if (3 == [bytes count]) {
+                totalSize = [[bytes objectAtIndex:2] longLongValue];
+                if (receivedSize == totalSize) {
+                    // 下载完成
+                    [self onTempFileDownloaded];
+                } else {
+                    // 出错
+                    NSLog(@"===> Download 416 HTTP Status code Error, Delete temp file.");
+                    [FileUtil removeFile:tempPath];
+                    [fileDownloadDelegate onDownloadFailed];
+                }
+            }
+        }
+        return;
+    } else {
+        //其他情况还没发现
+        return;
+    }
+    
+    NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:tempPath];
+    [fileHandler seekToEndOfFile];
+    [fileHandler writeData:data];
+    [fileHandler closeFile];
+    
+    receivedSize += data.length;
+    
+    // 更新进度
+    [fileDownloadDelegate onDownloadProgress:receivedSize max:totalSize];
 }
 
 /**
  * 无论是否下载成功都会回调
  */
--(void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
     if (error != nil) {
+        [fileDownloadDelegate onDownloadFailed];
+    } else {
+        [self onTempFileDownloaded];
+    }
+}
+
+/**
+ * 断点下载完毕之后，移动临时文件到目标路径并删除临时文件
+ */
+- (void) onTempFileDownloaded
+{
+    if ([FileUtil moveFileFrom:tempPath to:targetPath overwrite:TRUE]) {
+        [fileDownloadDelegate onDownloadSuccess:targetPath];
+    } else {
+        [FileUtil removeFile:tempPath];
         [fileDownloadDelegate onDownloadFailed];
     }
 }

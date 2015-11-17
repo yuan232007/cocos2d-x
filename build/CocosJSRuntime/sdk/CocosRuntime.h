@@ -17,8 +17,9 @@
 
 @interface CocosRuntime : NSObject
 + (void) initialize;
-+ (void) startPreRuntime: (GameInfo*) info delegate: (id<LoadingDelegate>) delegate;
++ (void) startPreRuntime: (NSString*) gameKey delegate: (id<LoadingDelegate>) delegate;
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate;
 + (LoadingProgressController*) getLoadingProgressController;
++ (void) reset;
 @end
 

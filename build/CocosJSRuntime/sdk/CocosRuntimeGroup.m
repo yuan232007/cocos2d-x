@@ -12,15 +12,15 @@
 #import "ZipHelper.h"
 #import "CocosRuntime.h"
 #import "LoadingProgressController.h"
+#import "GroupVersionManager.h"
+#import "CocosRuntimeGroupPatch.h"
+#import "RTNetworkHelper.h"
 
 static GameInfo *gameInfo = nil;
 static GameConfig *gameConfig = nil;
 static GameManifest *gameManifest = nil;
 static NSMutableArray *resGroups = nil;
 static NSMutableDictionary *resGroupDict = nil;
-
-/**/
-static NSInteger downloadGroupSize = 0;
 
 /* 当前正在下载的组名 */
 static NSString *currentDownloadName = nil;
@@ -58,19 +58,58 @@ static id<LoadingDelegate> loadingDelegate = nil;
 /**/
 static LoadingProgressController *loadingController = nil;
 
+static GroupVersionManager *groupVersionManager = nil;
+
+static CocosRuntimeGroupPatch *cocosRuntimeGroupPatch;
+
+static RTNetworkHelper *networkHelper = nil;
+
 @implementation CocosRuntimeGroup
 + (void) initialize: (GameInfo*) info config: (GameConfig*) config manifest: (GameManifest*) manifest
 {
+    NSLog(@"CocosRuntimeGroup initialize");
+    waitingDownloadGroups = [NSMutableArray arrayWithCapacity:20];
     gameInfo = info;
     gameConfig = config;
     gameManifest = manifest;
     resGroups = [manifest allResGroups];
     resGroupDict = [CocosRuntimeGroup getAllResGroupDict:resGroups];
     loadingController = [[LoadingProgressController alloc] initWith:[[OnLoadingProgressDelegateImpl alloc] init]];
+    groupVersionManager = [[GroupVersionManager alloc] init];
+    cocosRuntimeGroupPatch = [[CocosRuntimeGroupPatch alloc] init];
+    [CocosRuntimeGroup initNetworkHelper];
+}
+
++ (void) initNetworkHelper
+{
+    networkHelper = [[RTNetworkHelper alloc] init];
+    [networkHelper setListener:^(RTNetworkType networkType) {
+        switch (networkType) {
+            case NetworkType_WiFi:
+                [CocosRuntimeGroup setSilentDownloadEnabled:TRUE];
+                if (FALSE == isGroupDownloading) {
+                    [CocosRuntimeGroup silentDownloadNextGroup];
+                }
+                break;
+            
+            case NetworkType_Mobile:
+                [CocosRuntimeGroup setSilentDownloadEnabled:FALSE];
+                break;
+                
+            case NetworkType_NotReachable:
+                [CocosRuntimeGroup setSilentDownloadEnabled:FALSE];
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate
 {
+    NSLog(@"CocosRuntimeGroup initialize: %@", groupsString);
+
     loadingDelegate = delegate;
 
     if (![CocosRuntimeGroup needToDownloadGroup:groupsString]) {
@@ -78,7 +117,7 @@ static LoadingProgressController *loadingController = nil;
         return;
     }
     
-    isInSilentDownloadState = FALSE;
+    [CocosRuntimeGroup setInSilentDownloadState:FALSE];
     
     if (currentDownloadGroup == nil || ![waitingDownloadGroups containsObject:currentDownloadGroup.groupName]) {
         isInCancelDownloadState = TRUE;
@@ -98,8 +137,14 @@ static LoadingProgressController *loadingController = nil;
 
 + (void) reset
 {
+    [CocosRuntimeGroup setInSilentDownloadState:FALSE];
     waitingDownloadGroups = [NSMutableArray arrayWithCapacity:20];
     currentDownloadIndex = 0;
+    currentFileDownloader = nil;
+    prevPreloadGroupName = @"";
+    [CocosRuntimeGroup cancelCurrentDownload];
+    loadingController = nil;
+    [CocosRuntimeGroup clearDownloadState];
 }
 
 + (void) clearDownloadState
@@ -112,21 +157,75 @@ static LoadingProgressController *loadingController = nil;
 {
     ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:groupName];
     if (resGroup == nil) {
-        NSLog(@"Can't find (%@) section in 'res_groups' of 'manifest.json'", groupName);
+        NSLog(@"===> Can't find (%@) section in 'res_groups' of 'manifest.json'", groupName);
         return;
     }
 
     if ([resGroup isUpdated:gameInfo]) {
-        NSLog(@"(%@) was updated, don't need to update it again!", groupName);
+        NSLog(@"===> (%@) was updated, don't need to update it again!", groupName);
         // 如果检测到资源分组已经是最新的，则通知分组下载完毕和解压完毕
         [delegate onSuccessOfDownload:resGroup.groupSize];
         [delegate onSuccessOfUnzip:resGroup.groupSize];
         
     } else {
-        // todo patch
-        // todo 检查本地的zip包
-        [CocosRuntimeGroup downloadResGroup:gameInfo group:resGroup delegate:delegate];
+        // Whether the patch which version is correct was included by the group.
+        // Fetch the patch from remote server
+        // According to patch's MD5. Checking the patch is correct.
+        // Using these patch.
         
+        NSInteger versionCode = [groupVersionManager getVersionCode:groupName];
+        NSString *versionString = [NSString stringWithFormat: @"%ld", (long)versionCode];
+        GroupPatch *patch = [cocosRuntimeGroupPatch findPatch:groupName versionCode: versionString];
+        
+        if (patch == nil) {
+            NSString *groupPath = [FileUtil getLocalGroupPath:gameInfo group:resGroup];
+            if ([FileUtil fileExists:groupPath]) {
+                if ([[resGroup groupMD5] isEqualToString:[FileUtil getFileMD5:groupPath]]) {
+                    NSLog(@"===> The group (%@) exists, unzip it ...", [resGroup groupURL]);
+                    [delegate onSuccessOfDownload:[resGroup groupSize]];
+                    [CocosRuntimeGroup unzipGroup:resGroup delegate:delegate];
+                } else {
+                    [FileUtil removeFile:groupPath];
+                }
+            }
+            
+            [CocosRuntimeGroup deleteGroup:groupName];
+            
+            [CocosRuntimeGroup downloadResGroup:gameInfo group:resGroup delegate:delegate];
+        } else {
+            NSString *patchPath = [FileUtil getGroupPatchPackagePath:gameInfo groupName:groupName version:versionString];
+            if ([FileUtil fileExists:patchPath]) {
+                if ([cocosRuntimeGroupPatch isPatchPackageMD5Correct:groupName version:versionString path:patchPath]) {
+                    [delegate onSuccessOfDownload:[patch patchSize]];
+                    [cocosRuntimeGroupPatch unzipPatch:groupName version:versionString delegate:delegate];
+                    return;
+                } else {
+                    [FileUtil removeFile:patchPath];
+                }
+            }
+            
+            [cocosRuntimeGroupPatch updatePatch:[patch patchURL] groupName:groupName version:versionString delegate:delegate];
+        }
+    }
+}
+
++ (GameConfig*) getGameConfig
+{
+    return gameConfig;
+}
+
++ (void) unzipGroup: (ResGroup*)group delegate:(id<OnGroupUpdateDelegate>)delegate
+{
+    NSString *groupPath = [FileUtil getLocalGroupPath:gameInfo group: group];
+    
+    if (![ZipHelper unzipFileAtPath:groupPath toDestination:[FileUtil getGameRootPath:gameInfo]]) {
+        // fixme: 不要写死
+        [delegate onFailureOfUnzip:@"解压错误"];
+        NSLog(@"===> unzip error");
+    } else {
+        NSLog(@"===> unzip (%@) success", [group groupURL]);
+        [FileUtil removeFile:groupPath];
+        [delegate onSuccessOfUnzip:group.groupSize];
     }
 }
 
@@ -166,10 +265,11 @@ static LoadingProgressController *loadingController = nil;
         for (NSString *groupName in waitingDownloadGroups) {
             ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:groupName];
             if (resGroup != nil) {
+                // 先计算每一个分组占所有待下载分组的百分比，而每一个分组中，下载占80%，解压占20%
                 float percent = (float)(resGroup.groupSize / totalSize) * 100;
                 
-                LoadingInfo* downloadInfo = [[LoadingInfo alloc]initWith:[@"download" stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.8) type:PROGRESS tip:resGroup.groupName];
-                LoadingInfo* unzipInfo = [[LoadingInfo alloc]initWith:[@"unzip" stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.2) type:PROGRESS tip:resGroup.groupName];
+                LoadingInfo* downloadInfo = [[LoadingInfo alloc] initWith:[GROUP_DOWNLOAD stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.8) type:PROGRESS tip:resGroup.groupName];
+                LoadingInfo* unzipInfo = [[LoadingInfo alloc] initWith:[GROUP_UNZIP stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.2) type:PROGRESS tip:resGroup.groupName];
                 [loadingInfos addObject: downloadInfo];
                 [loadingInfos addObject: unzipInfo];
             }
@@ -221,11 +321,6 @@ static LoadingProgressController *loadingController = nil;
         return true;
     }
     return false;
-}
-
-+ (BOOL) unzipGroupFrom: (NSString*) fromPath to: (NSString*) toPath overwrite: (BOOL) overwrite
-{
-    return [ZipHelper unzipFileAtPath:fromPath toDestination:toPath];
 }
 
 + (bool) isDownloadIndexValid: (NSInteger)index
@@ -300,14 +395,14 @@ static LoadingProgressController *loadingController = nil;
     isGroupDownloading = TRUE;
     prevPreloadGroupName = groupName;
     
-    // todo将前台下载和后台下载的进度分开
+    [loadingController setCurrentLoadingIndexByName:[GROUP_DOWNLOAD stringByAppendingString:[resGroup groupName]]];
     
     
     NSURL *requestUrl = [[NSURL alloc]initWithString:[[[gameInfo downloadUrl] stringByAppendingPathComponent:@"/"] stringByAppendingPathComponent:resGroup.groupURL]];
     
     ResourceGroupDownloadImpl* resDownloadImpl =  [[ResourceGroupDownloadImpl alloc] initWith:resGroup groupDelegate:delegate];
-    currentFileDownloader = [[FileDownloader alloc] initWithURL:requestUrl delegate:resDownloadImpl];
-    [currentFileDownloader startDownload];
+    currentFileDownloader = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getLocalGroupPath:gameInfo group: resGroup] delegate:resDownloadImpl];
+    [currentFileDownloader start];
 }
 
 + (void) startDownloadGroups
@@ -318,8 +413,11 @@ static LoadingProgressController *loadingController = nil;
         return;
     }
     currentDownloadName = [CocosRuntimeGroup getFirstGroupFromWaitingDownload];
+    ResGroup* resGroup = [CocosRuntimeGroup findGroupByName:currentDownloadName];
     
-    OnGroupUpdateDelegateImpl* groupUpdateDelegate = [[OnGroupUpdateDelegateImpl alloc]init];
+    [loadingController setCurrentLoadingIndexByName:[GROUP_DOWNLOAD stringByAppendingString:currentDownloadName]];
+    
+    OnGroupUpdateDelegateImpl* groupUpdateDelegate = [[OnGroupUpdateDelegateImpl alloc]initWith:resGroup];
     [CocosRuntimeGroup updateGroup:currentDownloadName delegate:groupUpdateDelegate];
 }
 
@@ -328,9 +426,37 @@ static LoadingProgressController *loadingController = nil;
     // todo 添加取消通知
     currentDownloadName = nil;
     if (currentFileDownloader != nil) {
-        [[currentFileDownloader downloadTask] cancel];
+        [currentFileDownloader cancel];
         currentFileDownloader = nil;
     }
+    
+    isInCancelDownloadState = FALSE;
+}
+
++ (void) deleteGroup: (NSString*)groupName
+{
+    [groupVersionManager deleteGroupVersionCode:groupName];
+    NSString *groupJsonFilePath = [FileUtil getGroupJsonFilePath:gameInfo groupName:groupName];
+    if (![FileUtil fileExists:groupJsonFilePath]) {
+        return;
+    }
+    
+    NSDictionary *dict = (NSDictionary*)[FileUtil readJsonFromFile:groupJsonFilePath];
+    if (dict == nil) {
+        return;
+    }
+    
+    NSArray *files = [dict objectForKey:@"files"];
+    if (files != nil) {
+        for (NSDictionary *file in files) {
+            NSString *path = [[FileUtil getGameRootPath:gameInfo] stringByAppendingPathComponent:[file objectForKey:@"name"]];
+            if ([FileUtil fileExists:path]) {
+                [FileUtil removeFile:path];
+            }
+        }
+    }
+    
+    [FileUtil removeFile:groupJsonFilePath];
 }
 
 /************************************ SilentDownload ********************************/
@@ -430,38 +556,20 @@ static LoadingProgressController *loadingController = nil;
     [onGroupUpdateDelegate onProgressOfDownload:progress total:max];
 }
 
-- (NSString*) onTempDownloaded:(NSString *)locationPath
-{
-    return locationPath;
-}
-
 - (void) onDownloadSuccess:(NSString *)path
 {
-    NSLog(@"===> BootGroupDownloadDelegateImpl Success");
+    NSLog(@"===> GroupDownloadDelegateImpl Success");
     
-    NSString *targetPath = [FileUtil getLocalGroupPath:gameInfo group: resGroup];
-    @try {
-        if (![resGroup.groupMD5 isEqualToString:[FileUtil getFileMD5:path]]) {
-            // fixme: 不要写死
-            [onGroupUpdateDelegate onFailureOfDownload:@"下载错误"];
-            return;
-        }
-        [FileUtil ensureDirectory:[FileUtil getParentDirectory:targetPath]];
-        [FileUtil moveFileFrom:path to:targetPath overwrite:true];
-        
-        [onGroupUpdateDelegate onSuccessOfDownload:resGroup.groupSize];
-        
-        NSLog(@"===> download %@", resGroup.groupURL);
-        
-        if (![CocosRuntimeGroup unzipGroupFrom: targetPath to: [FileUtil getGameRootPath:gameInfo] overwrite: true]) {
-            // fixme: 不要写死
-            [onGroupUpdateDelegate onFailureOfUnzip:@"解压错误"];
-            NSLog(@"===> unzip error");
-        }
+    if (![resGroup.groupMD5 isEqualToString:[FileUtil getFileMD5:path]]) {
+        // fixme: 不要写死
+        [onGroupUpdateDelegate onFailureOfDownload:@"下载错误"];
+        return;
     }
-    @catch (NSException *exception) {
-        NSLog(@"move file error");
-    }
+
+    [onGroupUpdateDelegate onSuccessOfDownload:resGroup.groupSize];
+        
+    NSLog(@"===> download %@", resGroup.groupURL);
+    [CocosRuntimeGroup unzipGroup:resGroup delegate:onGroupUpdateDelegate];
 }
 
 - (void) onDownloadFailed
@@ -485,15 +593,16 @@ static LoadingProgressController *loadingController = nil;
 
 - (void) onProgressOfDownload: (long) written total:(long) total
 {
-    float progress = [loadingController percentFromSingleToGlobal:100.0f * written / total];
+    NSLog(@"OnGroupUpdateDelegateImpl onProgressOfDownload written: %ld total:%ld", written, total);
+    float percent = [loadingController percentFromSingleToGlobal:(100.0f * written / total)];
     if (!isInSilentDownloadState) {
-        [loadingDelegate onLoadingProgress:progress max:100];
+        [loadingDelegate onLoadingProgress:percent max:PROGRESS_MAX];
     }
 }
 
 - (void) onSuccessOfDownload: (long) total
 {
-    // todo 通知下载成功进度
+    [loadingController setCurrentLoadingIndexByName:[GROUP_UNZIP stringByAppendingString:resGroup.groupName]];
 }
 
 - (void) onFailureOfDownload: (NSString*) errorMsg
@@ -522,7 +631,8 @@ static LoadingProgressController *loadingController = nil;
     
     [CocosRuntimeGroup clearDownloadState];
     
-    // If there are another group needs to be downloaded, don't make silent download works.
+    // 如果还有其他分组需要下载，则先不进行静默下载
+    // 如果没有待下载分组，则会直接返回，执行下方逻辑
     [CocosRuntimeGroup startDownloadGroups];
     
     if (waitingDownloadGroups.count == 0 && [CocosRuntimeGroup isSilentDownloadEnabled] && ![CocosRuntimeGroup isInCancelDownloadState]) {
@@ -540,8 +650,8 @@ static LoadingProgressController *loadingController = nil;
         [CocosRuntimeGroup decreaseIndexOfSilentDownload];
         [CocosRuntimeGroup silentDownloadNextGroup];
     } else {
-        // todo 通知返回下载失败
         NSLog(@"===> onFailureOfUnzip");
+        [loadingDelegate onLoadingError];
     }
 }
 
@@ -549,8 +659,9 @@ static LoadingProgressController *loadingController = nil;
 {
     // 如果是不是静默下载，则发送更新界面的通知
     if (![CocosRuntimeGroup isInSilentDownloadState]) {
-        // todo 发送通知更新进度
         NSLog(@"===> onProgressOfUnzip: %f", percent);
+        NSInteger globalPercent = [loadingController percentFromSingleToGlobal:percent];
+        [loadingDelegate onLoadingProgress:globalPercent max:100.0f];
     }
 }
 @end
