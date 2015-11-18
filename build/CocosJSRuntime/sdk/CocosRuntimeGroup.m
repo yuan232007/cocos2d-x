@@ -404,8 +404,14 @@ static RTNetworkHelper *networkHelper = nil;
     
     [loadingController setCurrentLoadingIndexByName:[GROUP_DOWNLOAD stringByAppendingString:[resGroup groupName]]];
     
+    // 如果是 Boot 分组，由于其中包含了所有的JS脚本，为了兼容JS编译版本的改变，Boot分组必须累加一个新版本兼容目录，从这个目录下下载
+    NSURL *requestUrl = nil;
+    if ([@"boot" isEqualToString:groupName]) {
+        requestUrl = [[NSURL alloc]initWithString:[[[gameInfo downloadUrl] stringByAppendingPathComponent:COMPAT_VERSION_PATH] stringByAppendingPathComponent:resGroup.groupURL]];
+    } else {
+        requestUrl = [[NSURL alloc]initWithString:[[gameInfo downloadUrl] stringByAppendingPathComponent:resGroup.groupURL]];
+    }
     
-    NSURL *requestUrl = [[NSURL alloc]initWithString:[[[gameInfo downloadUrl] stringByAppendingPathComponent:@"/"] stringByAppendingPathComponent:resGroup.groupURL]];
     
     ResourceGroupDownloadImpl* resDownloadImpl =  [[ResourceGroupDownloadImpl alloc] initWith:resGroup groupDelegate:delegate];
     currentFileDownloader = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getLocalGroupPath:gameInfo group: resGroup] delegate:resDownloadImpl];
@@ -581,7 +587,7 @@ static RTNetworkHelper *networkHelper = nil;
 
 - (void) onDownloadFailed
 {
-    NSLog(@"===> BootGroupDownloadDelegateImpl onDownloadFailed");
+    NSLog(@"===> GroupDownloadDelegateImpl onDownloadFailed");
     [onGroupUpdateDelegate onFailureOfDownload:@"下载错误"];
 }
 @end

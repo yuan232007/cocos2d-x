@@ -20,6 +20,8 @@
 
 #define GROUP_UNZIP @"unzip"
 #define GROUP_DOWNLOAD @"download"
+// fixme: 暂时写死，由于工具为了兼容旧版本数据（js），多了一层目录
+#define COMPAT_VERSION_PATH @"33"
 
 @interface CocosRuntimeGroup : NSObject
 + (void) initialize: (GameInfo*) info config: (GameConfig*) config manifest: (GameManifest*) manifest;

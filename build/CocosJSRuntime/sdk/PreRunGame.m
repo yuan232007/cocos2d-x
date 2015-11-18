@@ -16,9 +16,6 @@
 #define PROGRESS_MAX 100
 #define PROGRESS_INVALID -1
 
-// fixme: 暂时写死，由于工具为了兼容旧版本数据（js），多了一层目录
-#define COMPAT_VERSION_PATH @"33"
-
 static GameInfo* gameInfo = nil;
 static GameManifest* gameManifest = nil;
 static FileDownloader* fileDownload = nil;
@@ -151,12 +148,8 @@ static GameConfig* gameConfig = nil;
 
 + (void) checkBootGroup
 {
-    if ([FileUtil fileExists:[FileUtil getLocalBootGroupPath:gameInfo group:gameConfig]] && [PreRunGame isLocalBootGroupMD5Correct]) {
-        [PreRunGame startGame];
-    } else {
-        NSLog(@"===> preloading bootgroup");
-        [PreRunGame preloadBootGroup];
-    }
+    ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:@"boot"];
+    [CocosRuntimeGroup updateGroup:@"boot" delegate:[[OnBootGroupUpdateDelegateImpl alloc] initWith:resGroup]];
 }
 
 + (void) notifyProgress: (float) progress max:(float)max
@@ -200,17 +193,6 @@ static GameConfig* gameConfig = nil;
     return false;
 }
 
-+ (BOOL) isLocalBootGroupMD5Correct
-{
-    NSLog(@"boot cpk md5:%@", [FileUtil getLocalBootGroupPath:gameInfo group:gameConfig]);
-    NSString *localBootMD5 = [FileUtil getFileMD5:[FileUtil getLocalBootGroupPath:gameInfo group:gameConfig]];
-    ResGroup* resGroup = [CocosRuntimeGroup findGroupByName:@"boot"];
-    if ([localBootMD5 isEqualToString:resGroup.groupMD5]) {
-        return true;
-    }
-    return false;
-}
-
 + (BOOL) isLocalManifestMD5Correct
 {
     NSString *localManifestMD5 = [FileUtil getFileMD5:[FileUtil getLocalManifestPath:gameInfo :gameConfig]];
@@ -237,26 +219,6 @@ static GameConfig* gameConfig = nil;
         return true;
     }
     return false;
-}
-
-+ (void) preloadBootGroup
-{
-    NSLog(@"===> preload boot group");
-    ResGroup* resGroup = [CocosRuntimeGroup findGroupByName:@"boot"];
-    if (resGroup != nil) {
-        NSString *requestString = [[[gameInfo downloadUrl]
-                                    stringByAppendingPathComponent:COMPAT_VERSION_PATH]
-                                   stringByAppendingPathComponent:resGroup.groupURL];
-        NSURL *requestUrl = [[NSURL alloc] initWithString:requestString];
-        NSLog(@"===> Boot URL: %@", requestUrl);
-        
-        
-        BootGroupDownloadImpl* resDownloadImpl =  [[BootGroupDownloadImpl alloc] initWith:resGroup];
-        FileDownloader *fileDownload = [[FileDownloader alloc] initWithURL:requestUrl targetPath:[FileUtil getLocalGroupPath:gameInfo group: resGroup] delegate:resDownloadImpl];
-        [fileDownload start];
-    } else {
-        NSLog(@"===> Couldn't find boot group");
-    }
 }
 
 @end
@@ -351,9 +313,9 @@ static GameConfig* gameConfig = nil;
 }
 @end
 
-@implementation BootGroupDownloadImpl
+@implementation OnBootGroupUpdateDelegateImpl
 
-- (BootGroupDownloadImpl*) initWith:(ResGroup *)group
+- (OnBootGroupUpdateDelegateImpl*) initWith: (ResGroup*) group
 {
     if (self = [super init]) {
         resGroup = group;
@@ -361,33 +323,37 @@ static GameConfig* gameConfig = nil;
     return self;
 }
 
-- (void) onDownloadProgress:(double)progress
+- (void) onProgressOfDownload: (long) written total:(long) total
 {
-    NSInteger progressOffset = 80 * progress;
+    NSInteger progressOffset = 80 * (float)(written / total);
     [PreRunGame notifyProgress: progressOffset max:100.0l];
 }
 
-- (void) onDownloadSuccess:(NSString *)path
+- (void) onSuccessOfDownload: (long) total
 {
-    NSLog(@"===> BootGroupDownloadDelegateImpl Success");
-    if (![FileUtil fileExists:path] || ![PreRunGame isLocalBootGroupMD5Correct]) {
-        [PreRunGame notifyPreRunGameError];
-        return;
-    }
-    NSLog(@"===> download %@", resGroup.groupURL);
-        
-    if (![ZipHelper unzipFileAtPath:path toDestination:[FileUtil getGameRootPath:gameInfo]]) {
-        [PreRunGame notifyPreRunGameError];
-        return;
-    }
-    
-    [[CocosRuntimeGroup getGroupVersionManager] setGroupVersionCode:resGroup.groupName versionCode:[gameConfig versionCode]];
-    [PreRunGame startGame];
+    return;
 }
 
-- (void) onDownloadFailed
+- (void) onFailureOfDownload: (NSString*) errorMsg
 {
     [PreRunGame notifyPreRunGameError];
     NSLog(@"===> BootGroupDownloadDelegateImpl onDownloadFailed");
 }
+
+- (void) onSuccessOfUnzip: (long)total
+{
+    [PreRunGame startGame];
+}
+
+- (void) onFailureOfUnzip: (NSString*) errorMsg
+{
+    [PreRunGame notifyPreRunGameError];
+    NSLog(@"===> BootGroupDownloadDelegateImpl onDownloadFailed");
+}
+
+- (void) onProgressOfUnzip: (float) percent
+{
+    return;
+}
+
 @end

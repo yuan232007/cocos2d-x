@@ -14,13 +14,15 @@
 #import "MttGameEngine.h"
 #import "FileDownloadAdapter.h"
 #import "LoadingDelegate.h"
+#import "OnGroupUpdateDelegate.h"
 
 @interface PreRunGame : NSObject
+
 + (void) start: (NSString*) gameKey delegate: (id<LoadingDelegate>) delegate;
 + (void) reset;
 
 /**
- * 在下载游戏前先验证游戏
+ * 在下载游戏前先验证游戏，根据 GameKey 去服务端获取游戏信息
  */
 + (void) checkStatusBeforeRunGame: (NSString*)gameKey;
 
@@ -78,7 +80,15 @@
  * 检查首场景资源
  */
 + (void) checkBootGroup;
+
+/**
+ * 通知进度
+ */
 + (void) notifyProgress: (float)progress max:(float)max;
+
+/**
+ * 通知 PreRunGame 出错
+ */
 + (void) notifyPreRunGameError;
 
 /**
@@ -90,7 +100,6 @@
  * 检查本地 config.json 的 md5 值是否正确
  */
 + (BOOL) isLocalConfigMD5Correct;
-+ (BOOL) isLocalBootGroupMD5Correct;
 
 /**
  * 检查本地 manifest.json 的 md5 值是否正确
@@ -106,8 +115,6 @@
  * 检查本地 main.jsc 的 md5 值是否正确
  */
 + (BOOL) isLocalEntryMD5Correct;
-
-+ (void) preloadBootGroup;
 @end
 
 /*
@@ -140,6 +147,22 @@
 @interface ProjectDownloadDelegateImpl : FileDownloadAdapter
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
+@end
+
+/**
+ * Boot 分组更新监听
+ */
+@interface OnBootGroupUpdateDelegateImpl : NSObject <OnGroupUpdateDelegate>
+{
+    ResGroup* resGroup;
+}
+- (OnBootGroupUpdateDelegateImpl*) initWith: (ResGroup*) group;
+- (void) onProgressOfDownload: (long) written total:(long) total;
+- (void) onSuccessOfDownload: (long) total;
+- (void) onFailureOfDownload: (NSString*) errorMsg;
+- (void) onSuccessOfUnzip: (long)total;
+- (void) onFailureOfUnzip: (NSString*) errorMsg;
+- (void) onProgressOfUnzip: (float) percent;
 @end
 
 /**
