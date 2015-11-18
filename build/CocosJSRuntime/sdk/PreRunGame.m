@@ -46,9 +46,15 @@ static GameConfig* gameConfig = nil;
             gameInfo = info;
             
             //************** for debug ************
-            NSString *gameDownloadUrl = @"http://192.168.31.236:63342/4/";
-            NSString *gameKey = @"Ryeeeeee";
+            
+//            NSString *gameDownloadUrl = @"http://192.168.31.236:63342/4/";
+//            NSString *gameKey = @"Ryeeeeee";
+//            NSString *gameName = @"天天挂传奇";
+            
+            NSString *gameDownloadUrl = @"http://testxsg.sy599.com/ttgcqh5/iosruntime/";
+            NSString *gameKey = @"442290958";
             NSString *gameName = @"天天挂传奇";
+            
             gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
             //**************************************
             [PreRunGame downloadRemoteConfigFile];

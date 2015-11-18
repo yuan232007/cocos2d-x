@@ -241,6 +241,16 @@ extern GameConfig* s_cocosRTGameConfig;
 {
 }
 
+- (id<MttGameEngineDelegate>)getX5Delegate
+{
+    return self.delegate;
+}
+
++ (id<MttGameEngineDelegate>)getEngineDelegate
+{
+    return [s_gameEngineProtocol getX5Delegate];
+}
+
 //获取游戏引擎key所对应的的值
 - (id)game_engine_get_value:(NSString*)key
 {

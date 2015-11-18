@@ -8,28 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		BB5DD8851BFC596C0032D240 /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8841BFC596C0032D240 /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD8861BFC596C0032D240 /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8841BFC596C0032D240 /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8871BFC596C0032D240 /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8841BFC596C0032D240 /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8951BFC59990032D240 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8891BFC59990032D240 /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD8961BFC59990032D240 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8891BFC59990032D240 /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8971BFC59990032D240 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8891BFC59990032D240 /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8981BFC59990032D240 /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88B1BFC59990032D240 /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD8991BFC59990032D240 /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88B1BFC59990032D240 /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD89A1BFC59990032D240 /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88B1BFC59990032D240 /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD89B1BFC59990032D240 /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88D1BFC59990032D240 /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD89C1BFC59990032D240 /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88D1BFC59990032D240 /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD89D1BFC59990032D240 /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88D1BFC59990032D240 /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD89E1BFC59990032D240 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88F1BFC59990032D240 /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD89F1BFC59990032D240 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88F1BFC59990032D240 /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8A01BFC59990032D240 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD88F1BFC59990032D240 /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8A11BFC59990032D240 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8911BFC59990032D240 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD8A21BFC59990032D240 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8911BFC59990032D240 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8A31BFC59990032D240 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8911BFC59990032D240 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8A41BFC59990032D240 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8931BFC59990032D240 /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD8A51BFC59990032D240 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8931BFC59990032D240 /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8A61BFC59990032D240 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8931BFC59990032D240 /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8AA1BFC59A60032D240 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8A71BFC59A60032D240 /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
-		BB5DD8AB1BFC59A60032D240 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8A71BFC59A60032D240 /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
 		BB5DD8AC1BFC59A60032D240 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DD8A71BFC59A60032D240 /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
 		BBA9B1361BE355AC0091B4A3 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B11E1BE355AC0091B4A3 /* ChannelConfig.m */; };
 		BBA9B1381BE355AC0091B4A3 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA9B1201BE355AC0091B4A3 /* CocosRuntime.m */; };
@@ -861,18 +853,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB5DD8A21BFC59990032D240 /* LoadingInfo.m in Sources */,
-				BB5DD8A51BFC59990032D240 /* LoadingProgressController.m in Sources */,
-				BB5DD8961BFC59990032D240 /* FileDownloader.m in Sources */,
-				BB5DD89F1BFC59990032D240 /* LoadingAdapter4Tencent.m in Sources */,
-				BB5DD89C1BFC59990032D240 /* GroupVersionManager.m in Sources */,
 				EDBD735B1BF48AF20005FED4 /* MttGameEngineFactory.mm in Sources */,
 				EDF396BE1BDA2833000885AB /* ViewController.m in Sources */,
 				EDF396BB1BDA2833000885AB /* AppDelegate.m in Sources */,
-				BB5DD8991BFC59990032D240 /* GroupPatch.m in Sources */,
-				BB5DD8861BFC596C0032D240 /* CocosRuntimeGroupPatch.m in Sources */,
 				EDF396D11BDA28EC000885AB /* MttGameEngineFramework.m in Sources */,
-				BB5DD8AB1BFC59A60032D240 /* NetworkController.m in Sources */,
 				EDF396B81BDA2833000885AB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

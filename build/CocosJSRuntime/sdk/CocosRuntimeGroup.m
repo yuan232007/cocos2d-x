@@ -242,7 +242,7 @@ static RTNetworkHelper *networkHelper = nil;
     NSLog(@"===> prepareWaitingDownloadGroups:%@", groupsNameArray);
     
     currentDownloadName = [groupsNameArray objectAtIndex:0];
-    long totalSize = 0;
+    long totalSize = -1;
     for (NSString *groupName in groupsNameArray) {
         if ([self isGroupUpdated:groupName]) {
             continue;
