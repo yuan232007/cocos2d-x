@@ -20,7 +20,7 @@
         tempPath = [path stringByAppendingString:@".tmp"];
         fileDownloadDelegate = delegate;
         receivedSize = 0;
-        totalSize = 0;
+        totalSize = -1;
     }
     return self;
 }
@@ -61,7 +61,7 @@
 {
     NSHTTPURLResponse *response = (NSHTTPURLResponse*)dataTask.response;
     if (200 == response.statusCode) {
-        totalSize = dataTask.countOfBytesExpectedToReceive;
+        totalSize = [[response.allHeaderFields valueForKey:@"Content-Length"] longLongValue];
     } else if (206 == response.statusCode) {
         NSString *contentRange = [response.allHeaderFields valueForKey:@"Content-Range"];
         if ([contentRange hasPrefix:@"bytes"]) {
@@ -102,6 +102,7 @@
     receivedSize += data.length;
     
     // 更新进度
+    NSLog(@"===> FileDownloader receive data: %lld/%lld", receivedSize, totalSize);
     [fileDownloadDelegate onDownloadProgress:receivedSize max:totalSize];
 }
 

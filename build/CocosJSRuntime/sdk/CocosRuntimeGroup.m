@@ -606,8 +606,7 @@ static RTNetworkHelper *networkHelper = nil;
 
 - (void) onProgressOfDownload: (long) written total:(long) total
 {
-    NSLog(@"OnGroupUpdateDelegateImpl onProgressOfDownload written: %ld total:%ld", written, total);
-    float percent = [loadingController percentFromSingleToGlobal:(100.0f * written / total)];
+    float percent = [loadingController percentFromSingleToGlobal:(100.0f * written / resGroup.groupSize)];
     if (!isInSilentDownloadState) {
         [loadingDelegate onLoadingProgress:percent max:PROGRESS_MAX];
     }

@@ -331,7 +331,7 @@ static GameConfig* gameConfig = nil;
 
 - (void) onProgressOfDownload: (long) written total:(long) total
 {
-    NSInteger progressOffset = 80 * (float)(written / total);
+    NSInteger progressOffset = 80 * (float)(written / resGroup.groupSize);
     [PreRunGame notifyProgress: progressOffset max:100.0l];
 }
 
