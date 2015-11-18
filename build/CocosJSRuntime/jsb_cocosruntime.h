@@ -7,7 +7,7 @@
 #ifndef __JSB_COCOSRUNTIME_H__
 #define __JSB_COCOSRUNTIME_H__
 
-#include "jsapi.h"
+#include "spidermonkey/jsapi.h"
 
 void jsb_register_cocosruntime(JSContext *_cx, JS::HandleObject object);
 
