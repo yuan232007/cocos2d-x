@@ -13,13 +13,16 @@
 
 @implementation GroupVersionManager
 
-- (void) init: (NSString*) currentGameRootPath 
+- (GroupVersionManager*) initWith: (NSString*) currentGameRootPath
 {
-    groupVersionFilePath = [currentGameRootPath stringByAppendingPathComponent:GROUP_VERSION_CODE_FILE_NAME];
-    groupVersionCodeJson = (NSMutableDictionary*)[FileUtil readJsonFromFile:groupVersionFilePath];
-    if (groupVersionCodeJson == nil) {
-        groupVersionCodeJson = [NSMutableDictionary dictionaryWithCapacity:20];
+    if (self = [super init]) {
+        groupVersionFilePath = [currentGameRootPath stringByAppendingPathComponent:GROUP_VERSION_CODE_FILE_NAME];
+        groupVersionCodeJson = (NSMutableDictionary*)[FileUtil readJsonFromFile:groupVersionFilePath];
+        if (groupVersionCodeJson == nil) {
+            groupVersionCodeJson = [NSMutableDictionary dictionaryWithCapacity:20];
+        }
     }
+    return self;
 }
 
 - (void) destory

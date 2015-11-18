@@ -49,12 +49,10 @@ static GameConfig* gameConfig = nil;
             gameInfo = info;
             
             //************** for debug ************
-            
             NSString *gameDownloadUrl = @"http://192.168.31.236:63342/4/";
             NSString *gameKey = @"Ryeeeeee";
             NSString *gameName = @"天天挂传奇";
             gameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
-             
             //**************************************
             [PreRunGame downloadRemoteConfigFile];
         }
@@ -78,13 +76,8 @@ static GameConfig* gameConfig = nil;
 + (void) updateLocalConfigFile: (NSString*) path
 {
     NSLog(@"updateLocalConfigFile %@", path);
-    @try {
-        [FileUtil moveFileFrom:path to:[FileUtil getLocalConfigPath:gameInfo] overwrite:true];
-        [PreRunGame checkLocalManifestFile];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"updateLocalConfigFile Error");
-    }
+    [FileUtil moveFileFrom:path to:[FileUtil getLocalConfigPath:gameInfo] overwrite:true];
+    [PreRunGame checkLocalManifestFile];
 }
 
 + (void) checkLocalManifestFile
@@ -387,6 +380,8 @@ static GameConfig* gameConfig = nil;
         [PreRunGame notifyPreRunGameError];
         return;
     }
+    
+    [[CocosRuntimeGroup getGroupVersionManager] setGroupVersionCode:resGroup.groupName versionCode:[gameConfig versionCode]];
     [PreRunGame startGame];
 }
 

@@ -14,7 +14,7 @@
     NSMutableDictionary *groupVersionCodeJson;
 }
 
-- (void) init: (NSString*) currentGameRootPath;
+- (GroupVersionManager*) initWith: (NSString*) currentGameRootPath;
 - (void) destory;
 - (void) deleteGroupVersionCode: (NSString*)groupName;
 - (void) deleteGroupVersionCode:(NSString *)groupName toCommit:(BOOL)toCommit;

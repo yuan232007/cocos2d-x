@@ -75,9 +75,14 @@ static RTNetworkHelper *networkHelper = nil;
     resGroups = [manifest allResGroups];
     resGroupDict = [CocosRuntimeGroup getAllResGroupDict:resGroups];
     loadingController = [[LoadingProgressController alloc] initWith:[[OnLoadingProgressDelegateImpl alloc] init]];
-    groupVersionManager = [[GroupVersionManager alloc] init];
+    groupVersionManager = [[GroupVersionManager alloc] initWith:[FileUtil getGameRootPath:gameInfo]];
     cocosRuntimeGroupPatch = [[CocosRuntimeGroupPatch alloc] init];
     [CocosRuntimeGroup initNetworkHelper];
+}
+
++ (GroupVersionManager*) getGroupVersionManager
+{
+    return groupVersionManager;
 }
 
 + (void) initNetworkHelper
@@ -164,6 +169,7 @@ static RTNetworkHelper *networkHelper = nil;
     if ([resGroup isUpdated:gameInfo]) {
         NSLog(@"===> (%@) was updated, don't need to update it again!", groupName);
         // 如果检测到资源分组已经是最新的，则通知分组下载完毕和解压完毕
+        [groupVersionManager setGroupVersionCode:groupName versionCode:[gameConfig versionCode]];
         [delegate onSuccessOfDownload:resGroup.groupSize];
         [delegate onSuccessOfUnzip:resGroup.groupSize];
         
@@ -224,6 +230,7 @@ static RTNetworkHelper *networkHelper = nil;
         NSLog(@"===> unzip error");
     } else {
         NSLog(@"===> unzip (%@) success", [group groupURL]);
+        [groupVersionManager setGroupVersionCode:group.groupName versionCode:[gameConfig versionCode]];
         [FileUtil removeFile:groupPath];
         [delegate onSuccessOfUnzip:group.groupSize];
     }

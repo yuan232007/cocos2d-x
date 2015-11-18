@@ -16,6 +16,7 @@
 #import "FileDownloadAdapter.h"
 #import "OnGroupUpdateDelegate.h"
 #import "OnLoadingProgressDelegate.h"
+#import "GroupVersionManager.h"
 
 #define GROUP_UNZIP @"unzip"
 #define GROUP_DOWNLOAD @"download"
@@ -35,6 +36,7 @@
 + (void) reset;
 + (GameConfig*) getGameConfig;
 + (void) initNetworkHelper;
++ (GroupVersionManager*) getGroupVersionManager;
 
 /**
  * 删除某个分组，包括分组的json文件和所有资源

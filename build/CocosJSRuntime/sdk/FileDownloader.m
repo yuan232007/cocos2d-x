@@ -30,6 +30,7 @@
     NSLog(@"===> FileDownload startDownload");
     [fileDownloadDelegate onDownloadStart];
     
+    [FileUtil ensureDirectory:[FileUtil getParentDirectory:tempPath]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
     
     if ([FileUtil fileExists:tempPath] && (receivedSize = [FileUtil getFileSize:tempPath]) > 0) {

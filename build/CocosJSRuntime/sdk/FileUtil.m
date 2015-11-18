@@ -136,6 +136,9 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSData *data = [fileManager contentsAtPath: path];
+    if (data == nil) {
+        return nil;
+    }
     return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
