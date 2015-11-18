@@ -27,6 +27,7 @@
 #include "CCComponentJS.h"
 #include "base/CCScriptSupport.h"
 #include "ScriptingCore.h"
+#include "cocos2d_specifics.hpp"
 #include "js_manual_conversions.h"
 
 NS_CC_BEGIN
@@ -93,7 +94,7 @@ ComponentJS::ComponentJS(const std::string& scriptFileName)
 ComponentJS::~ComponentJS()
 {
     mozilla::Maybe<JS::PersistentRootedObject>* jsObj = static_cast<mozilla::Maybe<JS::PersistentRootedObject>*>(_jsObj);
-    if (jsObj == nullptr)
+    if (jsObj != nullptr)
     {
         delete jsObj;
     }

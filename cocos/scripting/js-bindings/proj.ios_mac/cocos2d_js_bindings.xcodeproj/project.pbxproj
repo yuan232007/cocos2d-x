@@ -823,7 +823,7 @@
 					COCOS2D_JAVASCRIPT,
 					CC_TARGET_OS_IPHONE,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../../external/ios/libs",
@@ -848,7 +848,7 @@
 					COCOS2D_JAVASCRIPT,
 					CC_TARGET_OS_IPHONE,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../../external/ios/libs",

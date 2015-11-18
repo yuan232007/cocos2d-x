@@ -754,7 +754,8 @@ bool Texture2D::initWithImage(Image *image, PixelFormat format)
         }
 
         initWithMipmaps(image->getMipmaps(), image->getNumberOfMipmaps(), image->getRenderFormat(), imageWidth, imageHeight);
-        
+        _hasPremultipliedAlpha = image->hasPremultipliedAlpha();
+
         return true;
     }
     else if (image->isCompressed())
@@ -765,6 +766,8 @@ bool Texture2D::initWithImage(Image *image, PixelFormat format)
         }
 
         initWithData(tempData, tempDataLen, image->getRenderFormat(), imageWidth, imageHeight, imageSize);
+        _hasPremultipliedAlpha = image->hasPremultipliedAlpha();
+
         return true;
     }
     else
@@ -776,10 +779,8 @@ bool Texture2D::initWithImage(Image *image, PixelFormat format)
 
         initWithData(outTempData, outTempDataLen, pixelFormat, imageWidth, imageHeight, imageSize);
 
-
         if (outTempData != nullptr && outTempData != tempData)
         {
-
             free(outTempData);
         }
 

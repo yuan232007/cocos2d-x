@@ -238,7 +238,10 @@ void SpriteBatchNode::removeAllChildrenWithCleanup(bool doCleanup)
     Node::removeAllChildrenWithCleanup(doCleanup);
 
     _descendants.clear();
-    _textureAtlas->removeAllQuads();
+    if (_textureAtlas)
+    {
+        _textureAtlas->removeAllQuads();
+    }
 }
 
 //override sortAllChildren

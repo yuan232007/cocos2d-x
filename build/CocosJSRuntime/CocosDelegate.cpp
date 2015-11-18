@@ -29,6 +29,9 @@
 #include "cocosbuilder/js_bindings_ccbreader.h"
 #include "jsb_cocos2dx_audioengine_auto.hpp"
 
+#include "jsb_anysdk_protocols_auto.hpp"
+#include "manualanysdkbindings.hpp"
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/CCJavascriptJavaBridge.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
@@ -56,6 +59,7 @@ CocosAppDelegate::CocosAppDelegate()
 CocosAppDelegate::~CocosAppDelegate()
 {
     ScriptEngineManager::destroyInstance();
+    SimpleAudioEngine::end();
 }
 
 void CocosAppDelegate::initGLContextAttrs()
@@ -135,6 +139,9 @@ bool CocosAppDelegate::applicationDidFinishLaunching()
     
     //cocos runtime
     sc->addRegisterCallback(jsb_register_cocosruntime);
+    
+    sc->addRegisterCallback(register_all_anysdk_framework);
+    sc->addRegisterCallback(register_all_anysdk_manual);
     
     sc->start();
     

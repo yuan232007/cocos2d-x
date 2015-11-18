@@ -311,7 +311,11 @@ THE SOFTWARE.
  * protected by default.
  */
 #ifndef CC_CONSTRUCTOR_ACCESS
+#ifdef CC_ENABLE_SCRIPT_BINDING
 #define CC_CONSTRUCTOR_ACCESS public
+#else
+#define CC_CONSTRUCTOR_ACCESS protected
+#endif
 #endif
 
 #endif // __CCCONFIG_H__

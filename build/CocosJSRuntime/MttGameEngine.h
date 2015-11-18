@@ -8,5 +8,6 @@
 #import "MttGameEngineProtocol.h"
 @interface MttGameEngine : NSObject<MttGameEngineProtocol>
 
++ (id<MttGameEngineDelegate>)getEngineDelegate;
 
 @end

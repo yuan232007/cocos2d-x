@@ -244,6 +244,15 @@ public:
         _pCallback = callback;
     }
     
+    CC_DEPRECATED_ATTRIBUTE inline void setResponseCallback(Ref* target ,const ccHttpRequestCallback& callback)
+    {
+        _pTarget = target;
+        if (_pTarget) {
+            _pTarget->retain();
+        }
+        _pCallback = callback;
+    }
+    
     /** 
      * Get the target of callback selector funtion, mainly used by HttpClient.
      *

@@ -19,9 +19,40 @@
 #import "FileUtil.h"
 #import "LoadingAdapter4Tencent.h"
 
+#import "Wrapper.h"
+
 using namespace CocosDenshion;
 
 static CocosAppDelegate* s_application = nullptr;
+static id s_gameEngineProtocol;
+
+extern GameConfig* s_cocosRTGameConfig;
+
+@interface CocosRuntimeBridge : NSObject<CocosRuntimeSDKDelegate>
+
+@end
+
+@implementation CocosRuntimeBridge
+
+- (NSMutableArray*)getSupportForPlugins
+{
+    NSMutableArray* plugins = [NSMutableArray array];
+    [plugins addObject:@"UserQQBrowser"];
+    [plugins addObject:@"IAPQQBrowser"];
+    [plugins addObject:@"SocialQQBrowser"];
+    [plugins addObject:@"ShareQQBrowser"];
+    
+    return plugins;
+}
+
+- (NSMutableDictionary*)getPluginParams
+{
+    NSMutableDictionary* pluginParams = [NSMutableDictionary dictionary];
+    
+    return pluginParams;
+}
+
+@end
 
 @interface MttGameEngine()
 
@@ -83,14 +114,19 @@ static CocosAppDelegate* s_application = nullptr;
         } while (false);
         
         if (gameInfoInitFlag == false) {
+            NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get game info fail! gameName:%@,gameKey:%@,gameDownloadUrl:%@",gameName, gameKey, gameDownloadUrl];
+            
             [self.delegate x5GamePlayer_send_msg:
-             [NSDictionary dictionaryWithObjectsAndKeys:@"game_engine_init:get 'CacheDir' value failed!",@"error", nil]];
+             [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_RUNTIME_CHECK_FAIL,@"type",errorMsg,@"error", nil]];
             return;
         }
     }
     else {
         gameKey = @"442290958";
     }
+    
+    [Wrapper setCocosRuntimeSDKVersionCode:1];
+    [Wrapper setCocosRuntimeSDKProxy:[[CocosRuntimeBridge alloc] init]];
     
     //从服务器获取游戏配置并下载第一个boot分组
     [CocosRuntime startPreRuntime:gameKey delegate:[[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed) {
@@ -179,18 +215,20 @@ static CocosAppDelegate* s_application = nullptr;
 {
     CCLOG("game_engine_onStop");
     
-    SimpleAudioEngine::getInstance()->stopAllEffects();
-    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-    SimpleAudioEngine::end();
-    
     cocos2d::Director::getInstance()->end();
     
+    SimpleAudioEngine::getInstance()->stopAllEffects();
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    
     s_application = nullptr;
+    s_gameEngineProtocol = nil;
 }
 
 //设置GameEngineRuntimeProxy对象
 - (void)game_engine_set_runtime_proxy:(id<MttGameEngineDelegate>)proxy
 {
+    s_gameEngineProtocol = nil;
+    s_gameEngineProtocol = self;
     self.delegate = proxy;
     
     if (self.delegate == nil) {

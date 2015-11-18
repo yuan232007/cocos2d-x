@@ -627,6 +627,10 @@ void Sprite::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
     if(_insideBounds)
 #endif
     {
+        if (_texture == nullptr) {
+            return;
+        }
+        
         _trianglesCommand.init(_globalZOrder, _texture->getName(), getGLProgramState(), _blendFunc, _polyInfo.triangles, transform, flags);
         renderer->addCommand(&_trianglesCommand);
         

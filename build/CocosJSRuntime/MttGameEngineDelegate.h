@@ -86,7 +86,7 @@
 
 /**
  * 续期token
- * JSONObject 包含如下数据{"appid": "", "appsig" : "", "refreshToken", ""}，调用结束后
+ * JSONObject 包含如下数据{"appid": "", "qbopenid" : "", "refreshToken", ""}，调用结束后
  * 通过callback通知runtime，callback中的JSONObject包含如下数据：
  * {
  * "result":, //result为0说明函数执行成功，否则失败

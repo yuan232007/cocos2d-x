@@ -33,6 +33,7 @@
 
 using namespace std;
 
+extern cocos2d::DisplayLinkDirector *s_sharedCocosDirector;
 
 //#pragma mark - MinXmlHttpRequest
 
@@ -40,7 +41,7 @@ using namespace std;
  *  @brief Implementation for header retrieving.
  *  @param header 
  */
-void MinXmlHttpRequest::_gotHeader(string header)
+void MinXmlHttpRequest::_gotHeader(string& header)
 {
     // Get Header and Set StatusText
     // Split String into Tokens
@@ -191,7 +192,7 @@ void MinXmlHttpRequest::_setHttpRequestData(const char *data, size_t len)
 void MinXmlHttpRequest::handle_requestResponse(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
 {
     _elapsedTime = 0;
-    _scheduler->unscheduleAllForTarget(this);
+    s_sharedCocosDirector->getScheduler()->unscheduleAllForTarget(this);
     
     if(_isAborted || _readyState == UNSENT)
     {
@@ -254,7 +255,7 @@ void MinXmlHttpRequest::handle_requestResponse(cocos2d::network::HttpClient *sen
  */
 void MinXmlHttpRequest::_sendRequest(JSContext *cx)
 {
-    _httpRequest->setResponseCallback(CC_CALLBACK_2(MinXmlHttpRequest::handle_requestResponse,this));
+    _httpRequest->setResponseCallback(this, CC_CALLBACK_2(MinXmlHttpRequest::handle_requestResponse,this));
     cocos2d::network::HttpClient::getInstance()->sendImmediate(_httpRequest);
     _httpRequest->release();
 }
@@ -292,8 +293,7 @@ MinXmlHttpRequest::MinXmlHttpRequest()
 , _requestHeader()
 , _isAborted(false)
 {
-    _scheduler = cocos2d::Director::getInstance()->getScheduler();
-    _scheduler->retain();
+    s_sharedCocosDirector->getScheduler()->retain();
 }
 
 /**
@@ -323,7 +323,10 @@ MinXmlHttpRequest::~MinXmlHttpRequest()
     }
 
     CC_SAFE_FREE(_data);
-    CC_SAFE_RELEASE_NULL(_scheduler);
+    
+    if (s_sharedCocosDirector) {
+        s_sharedCocosDirector->getScheduler()->release();
+    }
 }
 
 /**
@@ -764,7 +767,7 @@ JS_BINDED_FUNC_IMPL(MinXmlHttpRequest, send)
     //begin schedule for timeout
     if(_timeout > 0)
     {
-        _scheduler->scheduleUpdate(this, 0, false);
+        s_sharedCocosDirector->getScheduler()->scheduleUpdate(this, 0, false);
     }
 
     return true;
@@ -778,7 +781,7 @@ void MinXmlHttpRequest::update(float dt)
         _notify(_ontimeoutCallback);
         _elapsedTime = 0;
         _readyState = UNSENT;
-        _scheduler->unscheduleAllForTarget(this);
+        s_sharedCocosDirector->getScheduler()->unscheduleAllForTarget(this);
     }
 }
 
