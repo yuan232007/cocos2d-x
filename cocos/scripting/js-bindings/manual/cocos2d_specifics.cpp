@@ -1396,16 +1396,18 @@ bool js_CCNode_unschedule(JSContext *cx, uint32_t argc, jsval *vp)
         Scheduler *sched = node->getScheduler();
         
         auto targetArray = JSScheduleWrapper::getTargetForSchedule(args.get(0));
-        CCLOGINFO("unschedule target number: %d", targetArray->count());
-        
-        for (const auto& tmp : *targetArray)
-        {
-            JSScheduleWrapper* target = static_cast<JSScheduleWrapper*>(tmp);
-            if (node == target->getTarget())
+        if (targetArray) {
+            CCLOGINFO("unschedule target number: %d", targetArray->count());
+            
+            for (const auto& tmp : *targetArray)
             {
-                sched->unschedule(schedule_selector(JSScheduleWrapper::scheduleFunc), target);
-                JSScheduleWrapper::removeTargetForJSObject(obj, target);
-                break;
+                JSScheduleWrapper* target = static_cast<JSScheduleWrapper*>(tmp);
+                if (node == target->getTarget())
+                {
+                    sched->unschedule(schedule_selector(JSScheduleWrapper::scheduleFunc), target);
+                    JSScheduleWrapper::removeTargetForJSObject(obj, target);
+                    break;
+                }
             }
         }
         

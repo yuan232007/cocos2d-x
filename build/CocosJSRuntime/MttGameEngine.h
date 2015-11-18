@@ -10,5 +10,6 @@
 
 @interface MttGameEngine : NSObject<MttGameEngineProtocol, LoadingDelegate>
 
++ (id<MttGameEngineDelegate>)getEngineDelegate;
 
 @end

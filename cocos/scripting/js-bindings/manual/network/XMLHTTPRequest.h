@@ -89,7 +89,7 @@ public:
 
     void update(float dt);
 private:
-    void _gotHeader(std::string header);
+    void _gotHeader(std::string& header);
     void _setRequestHeader(const char* field, const char* value);
     void _setHttpRequestHeader();
     void _setHttpRequestData(const char *data, size_t len);
@@ -123,7 +123,6 @@ private:
     std::unordered_map<std::string, std::string>          _httpHeader;
     std::unordered_map<std::string, std::string>          _requestHeader;
     bool                              _isAborted;
-    cocos2d::Scheduler*               _scheduler;
 };
 
 #endif
