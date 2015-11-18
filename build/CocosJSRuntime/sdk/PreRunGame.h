@@ -10,13 +10,21 @@
 #import "GameInfo.h"
 #import "GameConfig.h"
 #import "GameManifest.h"
-#import "FileDownload.h"
+#import "FileDownloader.h"
 #import "MttGameEngine.h"
 #import "FileDownloadAdapter.h"
+#import "LoadingDelegate.h"
+#import "OnGroupUpdateDelegate.h"
 
 @interface PreRunGame : NSObject
-+ (void) start: (GameInfo*) info proxy: (MttGameEngine*) proxy;
+
++ (void) start: (NSString*) gameKey delegate: (id<LoadingDelegate>) delegate;
 + (void) reset;
+
+/**
+ * 在下载游戏前先验证游戏，根据 GameKey 去服务端获取游戏信息
+ */
++ (void) checkStatusBeforeRunGame: (NSString*)gameKey;
 
 /**
  * 下载 config.json
@@ -72,8 +80,16 @@
  * 检查首场景资源
  */
 + (void) checkBootGroup;
-+ (void) notifyProgress: (NSInteger) progress isFailed: (BOOL) isFailed;
-+ (void) notifyGameInitEnd;
+
+/**
+ * 通知进度
+ */
++ (void) notifyProgress: (float)progress max:(float)max;
+
+/**
+ * 通知 PreRunGame 出错
+ */
++ (void) notifyPreRunGameError;
 
 /**
  * 开始游戏
@@ -84,7 +100,6 @@
  * 检查本地 config.json 的 md5 值是否正确
  */
 + (BOOL) isLocalConfigMD5Correct;
-+ (BOOL) isLocalBootGroupMD5Correct;
 
 /**
  * 检查本地 manifest.json 的 md5 值是否正确
@@ -100,15 +115,12 @@
  * 检查本地 main.jsc 的 md5 值是否正确
  */
 + (BOOL) isLocalEntryMD5Correct;
-
-+ (void) preloadBootGroup;
 @end
 
 /*
  * 下载 config.json
  */
 @interface ConfigDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -117,7 +129,6 @@
  * 下载 mainifest.json
  */
 @interface ManifestDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -126,7 +137,6 @@
  * 下载 main.jsc
  */
 @interface EntryDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end
@@ -135,9 +145,24 @@
  * 下载 project-runtime.json
  */
 @interface ProjectDownloadDelegateImpl : FileDownloadAdapter
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
+@end
+
+/**
+ * Boot 分组更新监听
+ */
+@interface OnBootGroupUpdateDelegateImpl : NSObject <OnGroupUpdateDelegate>
+{
+    ResGroup* resGroup;
+}
+- (OnBootGroupUpdateDelegateImpl*) initWith: (ResGroup*) group;
+- (void) onProgressOfDownload: (long) written total:(long) total;
+- (void) onSuccessOfDownload: (long) total;
+- (void) onFailureOfDownload: (NSString*) errorMsg;
+- (void) onSuccessOfUnzip: (long)total;
+- (void) onFailureOfUnzip: (NSString*) errorMsg;
+- (void) onProgressOfUnzip: (float) percent;
 @end
 
 /**
@@ -149,7 +174,6 @@
 }
 - (BootGroupDownloadImpl*) initWith: (ResGroup*) resGroup;
 - (void) onDownloadProgress:(double)progress;
-- (NSString*) onTempDownloaded:(NSString *)locationPath;
 - (void) onDownloadSuccess:(NSString *)path;
 - (void) onDownloadFailed;
 @end

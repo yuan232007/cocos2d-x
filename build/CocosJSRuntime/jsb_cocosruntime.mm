@@ -7,7 +7,8 @@
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
 #include "network/RTNetworkHelper.h"
-#import "sdk/CocosRuntimeGroup.h"
+#import "sdk/CocosRuntime.h"
+#import "sdk/LoadingAdapter4Tencent.h"
 
 static std::function<void (int percent, bool isFailed)> s_downloadCallback;
 
@@ -118,11 +119,12 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
     
     if (s_downloadCallback) {
         NSString* groups = [NSString stringWithUTF8String:resGroups.c_str()];
-        [CocosRuntimeGroup preloadResGroups:groups delegate:^(int progress, bool isFailed){
-            if (s_downloadCallback) {
-                s_downloadCallback(progress, isFailed);
-            }
+        LoadingAdapter4Tencent *delegate = [[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed){
+                if (s_downloadCallback) {
+                    s_downloadCallback(progress, isFailed);
+                }
         }];
+        [CocosRuntime preloadResGroups: groups delegate:delegate];
     }
     
     args.rval().setUndefined();

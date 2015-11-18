@@ -10,6 +10,8 @@
 
 @implementation GameInfo
 
+@synthesize gameKey, gameName, downloadUrl;
+
 - (GameInfo*) initWithKey:(NSString *)key withUrl:(NSString *)url withName:(NSString *)name
 {
     if (self = [super init]) {
@@ -21,6 +23,14 @@
     return self;
 }
 
-@synthesize gameKey, gameName, downloadUrl;
+- (GameInfo*) initWithDictionary: (NSDictionary*)dictonary
+{
+    if (self = [super init]) {
+        gameKey = [dictonary objectForKey:@"game_key"];
+        downloadUrl = [dictonary objectForKey:@"download_url"];
+        gameName = [dictonary objectForKey:@"game_name"];
+    }
+    return self;
+}
 
 @end

@@ -34,8 +34,31 @@
         [resGroup setGroupPriority:[[resGroupDict objectForKey:@"priority"] integerValue]];
         [resGroup setGroupSize:[[resGroupDict objectForKey:@"size"] integerValue]];
         [resGroup setGroupURL:[resGroupDict objectForKey:@"url"]];
+        
+        NSMutableArray *fileJsonList = [NSMutableArray arrayWithCapacity:20];
+        for (NSDictionary* fileDict in [resGroupDict objectForKey:@"files"]) {
+            File *file = [[File alloc] initWith:[fileDict objectForKey:@"name"] md5:[fileDict objectForKey:@"md5"]];
+            [fileJsonList addObject:file];
+        }
+        [resGroup setFileList:fileJsonList];
         [groups addObject:resGroup];
     }
     return groups;
 }
+@end
+
+@implementation File
+
+@synthesize fileMD5, fileName;
+
+- (File*) initWith:(NSString *)name md5:(NSString *)md5
+{
+    self = [super init];
+    if (self != nil) {
+        fileName = name;
+        fileMD5 = md5;
+    }
+    return self;
+}
+
 @end

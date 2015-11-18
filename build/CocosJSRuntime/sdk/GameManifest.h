@@ -18,3 +18,14 @@
 
 +(GameManifest*) readFromFile: (NSString*) path;
 @end
+
+@interface File : NSObject
+{
+    NSString *fileMD5;
+    NSString *fileName;
+}
+
+- (File*) initWith:(NSString*)name md5:(NSString*)md5;
+
+@property NSString *fileMD5, *fileName;
+@end

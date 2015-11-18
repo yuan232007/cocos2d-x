@@ -40,10 +40,23 @@ static NSString* configFileName = @"config.json";
 + (NSString*) getGameRootPath: (GameInfo*) info;
 
 /**
+ * 获取游戏根目录
+ * $CacheRootPath/CocosRuntime/Games/$GameKey
+ */
++ (NSString*) getGameRootPathByGameKey:(NSString*)gameKey;
+
+/**
+ *
+ */
++ (NSString*) getGroupJsonFilePath: (GameInfo*) info groupName:(NSString*)name;
+
+/**
  * 获得游戏的 config.json 文件
  * $CacheRootPath/CocosRuntime/Games/$GameKey/config.json
  */
 + (NSString*) getLocalConfigPath: (GameInfo*) info;
+
++ (NSString*) getManifestCpkPath: (GameInfo*)info :(GameConfig*)config;
 
 /**
  * 获得游戏的 manifest.json 文件
@@ -64,9 +77,30 @@ static NSString* configFileName = @"config.json";
 + (NSString*) getLocalEntryPath: (GameInfo*) info :(GameConfig*) config;
 
 /**
- * 获取游戏组存储根路径
+ * 获取游戏资源分组存储根路径
+ * $CacheRootPath/CocosRuntime/Games/$GameKey/group
  */
 + (NSString*) getLocalGameGroupRootPath: (GameInfo*) info;
+
+/**
+ * 获取游戏资源分组补丁存储根路径
+ * $CacheRootPath/CocosRuntime/Games/$GameKey/patch
+ */
++ (NSString*) getLocalGroupPatchRootPath: (GameInfo*) info;
+
+/**
+ * 获取游戏资源分组补丁存储根路径
+ * $CacheRootPath/CocosRuntime/Games/$GameKey/patch/$groupName
+ */
+//+ (NSString*) getLocalGroupPatchRootPath: (GameInfo*) info groupName:(NSString*)name;
+
+/**
+ * 获取游戏资源分组补丁存储根路径
+ * $CacheRootPath/CocosRuntime/Games/$GameKey/patch/$groupName/patch_$(version).cpk
+ */
++ (NSString*) getGroupPatchPackagePath: (GameInfo*) info groupName:(NSString*)groupName version:(NSString*)version;
+
++ (NSString*) getGroupDeletedFilePath: (GameInfo*) info groupName:(NSString*)groupName;
 
 /**
  * 根据 ResGroup 和 GameInfo 获取本地 Group 的存放路径
@@ -82,7 +116,7 @@ static NSString* configFileName = @"config.json";
 /**
  * 确保目录存在, 会补全中间缺少的目录，如果创建出错则抛出异常
  */
-+ (void) ensureDirectory: (NSString*) path;
++ (BOOL) ensureDirectory: (NSString*) path;
 
 /**
  * 获取父目录
@@ -97,7 +131,7 @@ static NSString* configFileName = @"config.json";
 /**
  * 移动文件
  */
-+ (void) moveFileFrom: (NSString*) fromPath to: (NSString*) toPath overwrite: (BOOL) overwrite;
++ (BOOL) moveFileFrom: (NSString*) fromPath to: (NSString*) toPath overwrite: (BOOL) overwrite;
 
 /*
  * 判断文件是否存在
@@ -112,7 +146,7 @@ static NSString* configFileName = @"config.json";
 /**
  * 将 JSON 数据写入到文件中
  */
-+ (void) writeJsonToFile: (NSJSONSerialization*) json;
++ (BOOL) writeJsonToFile:(NSString*)path json:(id<NSObject>)json;
 
 /**
  * 获得文件的 md5 值
@@ -123,4 +157,14 @@ static NSString* configFileName = @"config.json";
  * 获取配置文件名
  */
 + (NSString*) getConfigFileName;
+
+/**
+ * 删除文件
+ */
++ (BOOL) removeFile: (NSString*)path;
+
+/**
+ * 获取文件大小
+ */
++ (long long) getFileSize: (NSString*)path;
 @end
