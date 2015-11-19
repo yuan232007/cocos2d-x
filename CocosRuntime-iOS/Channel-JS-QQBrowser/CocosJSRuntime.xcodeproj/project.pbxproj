@@ -42,8 +42,6 @@
 		ED2667A11BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679B1BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp */; };
 		ED2667A21BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679D1BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp */; };
 		ED2667A31BFDA65800E9BF62 /* manualanysdkbindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679F1BFDA65800E9BF62 /* manualanysdkbindings.cpp */; };
-		ED2667AC1BFDA72700E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667A91BFDA70C00E9BF62 /* libPluginProtocol.a */; };
-		ED2667AF1BFDA74E00E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667A91BFDA70C00E9BF62 /* libPluginProtocol.a */; };
 		ED2667B01BFDA75700E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679B1BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp */; };
 		ED2667B11BFDA75A00E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679D1BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp */; };
 		ED2667B21BFDA76F00E9BF62 /* manualanysdkbindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679F1BFDA65800E9BF62 /* manualanysdkbindings.cpp */; };
@@ -76,6 +74,8 @@
 		ED2667CD1BFDA7B300E9BF62 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667871BFDA5CE00E9BF62 /* ResGroup.m */; };
 		ED2667CE1BFDA7B300E9BF62 /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED26675D1BFDA5C200E9BF62 /* jsb_cocosruntime.mm */; };
 		ED2667D01BFDA82A00E9BF62 /* script in Resources */ = {isa = PBXBuildFile; fileRef = ED2667CF1BFDA82A00E9BF62 /* script */; };
+		ED2667D71BFDAAE100E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */; };
+		ED2667D81BFDAAE900E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */; };
 		ED464A721BE8B2EB005D120E /* MttGameEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */; };
 		ED464A791BE8B2EB005D120E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
 		ED464A7A1BE8B2EB005D120E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
@@ -186,27 +186,6 @@
 			remoteGlobalIDString = A07A4FB5178387750073F6A7;
 			remoteInfo = "libjscocos2d iOS";
 		};
-		ED2667A81BFDA70C00E9BF62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED2667A41BFDA70C00E9BF62 /* PluginProtocol.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FA09A321168ADBC2008C1C7B;
-			remoteInfo = PluginProtocol;
-		};
-		ED2667AA1BFDA72000E9BF62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED2667A41BFDA70C00E9BF62 /* PluginProtocol.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FA09A320168ADBC2008C1C7B;
-			remoteInfo = PluginProtocol;
-		};
-		ED2667AD1BFDA74900E9BF62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED2667A41BFDA70C00E9BF62 /* PluginProtocol.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FA09A320168ADBC2008C1C7B;
-			remoteInfo = PluginProtocol;
-		};
 		EDBD73571BF488CB0005FED4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 802BF51C1B945662008C45C2 /* Project object */;
@@ -312,8 +291,8 @@
 		ED26679E1BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jsb_anysdk_protocols_auto.hpp; path = "../../AnySDK-JSBindings/jsb_anysdk_protocols_auto.hpp"; sourceTree = "<group>"; };
 		ED26679F1BFDA65800E9BF62 /* manualanysdkbindings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = manualanysdkbindings.cpp; path = "../../AnySDK-JSBindings/manualanysdkbindings.cpp"; sourceTree = "<group>"; };
 		ED2667A01BFDA65800E9BF62 /* manualanysdkbindings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = manualanysdkbindings.hpp; path = "../../AnySDK-JSBindings/manualanysdkbindings.hpp"; sourceTree = "<group>"; };
-		ED2667A41BFDA70C00E9BF62 /* PluginProtocol.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PluginProtocol.xcodeproj; path = ../../../AnySDKFramework/protocols/proj.ios/PluginProtocol.xcodeproj; sourceTree = "<group>"; };
 		ED2667CF1BFDA82A00E9BF62 /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = script; path = "../../runtime-Script-JSC/script"; sourceTree = "<group>"; };
+		ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPluginProtocol.a; path = "../AnySDK-JSBindings/libPluginProtocol.a"; sourceTree = "<group>"; };
 		ED464A5B1BE8B24D005D120E /* Cocosv3GameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocosv3GameEngineFactory.h; sourceTree = "<group>"; };
 		ED464A5C1BE8B24D005D120E /* Cocosv3GameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cocosv3GameEngineFactory.mm; sourceTree = "<group>"; };
 		ED464A8B1BE8B2EB005D120E /* libCocosJSRuntime.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCocosJSRuntime.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,7 +332,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED2667AC1BFDA72700E9BF62 /* libPluginProtocol.a in Frameworks */,
 				ED26672B1BFDA1F900E9BF62 /* libjscocos2d iOS.a in Frameworks */,
 				ED26672A1BFDA1F300E9BF62 /* libcocos2d iOS.a in Frameworks */,
 				EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */,
@@ -364,6 +342,7 @@
 				EDAF7CD61BCCB53E0032B305 /* MediaPlayer.framework in Frameworks */,
 				EDAF7CD41BCCB5140032B305 /* AudioToolbox.framework in Frameworks */,
 				EDAF7CD21BCCB5000032B305 /* OpenGLES.framework in Frameworks */,
+				ED2667D81BFDAAE900E9BF62 /* libPluginProtocol.a in Frameworks */,
 				EDAF7CD01BCCB4EE0032B305 /* OpenAL.framework in Frameworks */,
 				EDAF7CCE1BCCB4D90032B305 /* libsqlite3.tbd in Frameworks */,
 				EDAF7CCC1BCCB4CB0032B305 /* libz.tbd in Frameworks */,
@@ -376,7 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED2667AF1BFDA74E00E9BF62 /* libPluginProtocol.a in Frameworks */,
+				ED2667D71BFDAAE100E9BF62 /* libPluginProtocol.a in Frameworks */,
 				ED2667291BFDA1EA00E9BF62 /* libjscocos2d iOS.a in Frameworks */,
 				ED2667281BFDA1E400E9BF62 /* libcocos2d iOS.a in Frameworks */,
 				ED464A791BE8B2EB005D120E /* QuartzCore.framework in Frameworks */,
@@ -421,7 +400,6 @@
 		802BF51B1B945662008C45C2 = {
 			isa = PBXGroup;
 			children = (
-				ED2667A41BFDA70C00E9BF62 /* PluginProtocol.xcodeproj */,
 				ED2666C51BFDA0F100E9BF62 /* cocos2d_js_bindings.xcodeproj */,
 				ED2666BC1BFDA0E000E9BF62 /* cocos2d_libs.xcodeproj */,
 				EDCA007E1BCF87F8006842D7 /* DependentLibs */,
@@ -565,14 +543,6 @@
 			name = AnySDKJSBinding;
 			sourceTree = "<group>";
 		};
-		ED2667A51BFDA70C00E9BF62 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ED2667A91BFDA70C00E9BF62 /* libPluginProtocol.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		ED464A3D1BE8B0BC005D120E /* libCocosJSRuntime */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +555,7 @@
 		EDCA007D1BCF87C0006842D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */,
 				EDBD735C1BF48B930005FED4 /* SystemConfiguration.framework */,
 				EDBD72F91BF0709D0005FED4 /* MobileCoreServices.framework */,
 				EDC9C4DD1BE0683E000C45FE /* libsystem_configuration.tbd */,
@@ -668,7 +639,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				ED2667AB1BFDA72000E9BF62 /* PBXTargetDependency */,
 				ED2667231BFDA1D000E9BF62 /* PBXTargetDependency */,
 				ED2667211BFDA1CC00E9BF62 /* PBXTargetDependency */,
 			);
@@ -688,7 +658,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				ED2667AE1BFDA74900E9BF62 /* PBXTargetDependency */,
 				ED2667271BFDA1DA00E9BF62 /* PBXTargetDependency */,
 				ED2667251BFDA1D700E9BF62 /* PBXTargetDependency */,
 			);
@@ -754,10 +723,6 @@
 					ProductGroup = ED2666BD1BFDA0E000E9BF62 /* Products */;
 					ProjectRef = ED2666BC1BFDA0E000E9BF62 /* cocos2d_libs.xcodeproj */;
 				},
-				{
-					ProductGroup = ED2667A51BFDA70C00E9BF62 /* Products */;
-					ProjectRef = ED2667A41BFDA70C00E9BF62 /* PluginProtocol.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -795,13 +760,6 @@
 			fileType = archive.ar;
 			path = "libjscocos2d iOS.a";
 			remoteRef = ED2666CC1BFDA0F100E9BF62 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		ED2667A91BFDA70C00E9BF62 /* libPluginProtocol.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPluginProtocol.a;
-			remoteRef = ED2667A81BFDA70C00E9BF62 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -935,16 +893,6 @@
 			isa = PBXTargetDependency;
 			name = "libjscocos2d iOS";
 			targetProxy = ED2667261BFDA1DA00E9BF62 /* PBXContainerItemProxy */;
-		};
-		ED2667AB1BFDA72000E9BF62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PluginProtocol;
-			targetProxy = ED2667AA1BFDA72000E9BF62 /* PBXContainerItemProxy */;
-		};
-		ED2667AE1BFDA74900E9BF62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PluginProtocol;
-			targetProxy = ED2667AD1BFDA74900E9BF62 /* PBXContainerItemProxy */;
 		};
 		EDBD73581BF488CB0005FED4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
