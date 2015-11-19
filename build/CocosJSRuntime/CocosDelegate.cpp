@@ -58,6 +58,7 @@ CocosAppDelegate::CocosAppDelegate()
 
 CocosAppDelegate::~CocosAppDelegate()
 {
+    pure_all_anysdk_Listener();
     ScriptEngineManager::destroyInstance();
     SimpleAudioEngine::end();
 }

@@ -10,11 +10,8 @@
 #import "ResGroup.h"
 
 @interface GameManifest : NSObject
-{
-    NSMutableArray* allResGroups;
-}
 
-@property NSMutableArray* allResGroups;
+@property (nonatomic,strong) NSMutableArray* allResGroups;
 
 +(GameManifest*) readFromFile: (NSString*) path;
 @end

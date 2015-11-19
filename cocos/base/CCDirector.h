@@ -91,6 +91,8 @@ enum class MATRIX_STACK_TYPE
 class CC_DLL Director : public Ref
 {
 public:
+    static Director* DirectorInstance;
+    
     /** Director will trigger an event when projection type is changed. */
     static const char *EVENT_PROJECTION_CHANGED;
     /** Director will trigger an event before Schedule::update() is invoked. */

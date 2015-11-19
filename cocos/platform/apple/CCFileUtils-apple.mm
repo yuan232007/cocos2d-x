@@ -302,10 +302,18 @@ static void addObjectToNSDict(const std::string& key, const Value& value, NSMuta
     }
 }
 
+static NSFileManager* s_fileManager = nil;
+
 FileUtilsApple::FileUtilsApple() {
     _bundle = [NSBundle mainBundle];
+    s_fileManager = [NSFileManager defaultManager];
 }
 
+FileUtilsApple::~FileUtilsApple()
+{
+    _bundle = nil;
+    s_fileManager = nil;
+}
 
 void FileUtilsApple::setBundle(NSBundle* bundle) {
     _bundle = bundle;
@@ -317,8 +325,6 @@ NSBundle* FileUtilsApple::getBundle() const {
 
 
 #pragma mark - FileUtils
-
-static NSFileManager* s_fileManager = [NSFileManager defaultManager];
 
 FileUtils* FileUtils::getInstance()
 {

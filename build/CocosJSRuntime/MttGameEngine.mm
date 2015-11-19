@@ -222,6 +222,10 @@ extern GameConfig* s_cocosRTGameConfig;
     
     s_application = nullptr;
     s_gameEngineProtocol = nil;
+    
+    [CocosRuntime reset];
+    [Wrapper setCocosRuntimeSDKProxy:nil];
+    
 }
 
 //设置GameEngineRuntimeProxy对象
