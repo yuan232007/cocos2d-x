@@ -75,14 +75,13 @@ THE SOFTWARE.
 
 using namespace std;
 
-// singleton stuff
-cocos2d::DisplayLinkDirector *s_sharedCocosDirector = nullptr;
-
 NS_CC_BEGIN
 // FIXME: it should be a Director ivar. Move it there once support for multiple directors is added
 
 #define kDefaultFPS        60  // 60 frames per second
 extern const char* cocos2dVersion(void);
+
+Director* Director::DirectorInstance = nullptr;
 
 const char *Director::EVENT_PROJECTION_CHANGED = "director_projection_changed";
 const char *Director::EVENT_AFTER_DRAW = "director_after_draw";
@@ -92,14 +91,14 @@ const char *Director::EVENT_AFTER_UPDATE = "director_after_update";
 
 Director* Director::getInstance()
 {
-    if (!s_sharedCocosDirector)
+    if (!DirectorInstance)
     {
-        s_sharedCocosDirector = new (std::nothrow) DisplayLinkDirector();
-        CCASSERT(s_sharedCocosDirector, "FATAL: Not enough memory");
-        s_sharedCocosDirector->init();
+        DirectorInstance = new (std::nothrow) DisplayLinkDirector();
+        CCASSERT(DirectorInstance, "FATAL: Not enough memory");
+        DirectorInstance->init();
     }
 
-    return s_sharedCocosDirector;
+    return DirectorInstance;
 }
 
 Director::Director()
@@ -202,7 +201,7 @@ Director::~Director(void)
 
     Configuration::destroyInstance();
 
-    s_sharedCocosDirector = nullptr;
+    DirectorInstance = nullptr;
 }
 
 void Director::setDefaultValues(void)
@@ -642,7 +641,7 @@ void Director::purgeCachedData(void)
     FontFNT::purgeCachedData();
     FontAtlasCache::purgeCachedData();
 
-    if (s_sharedCocosDirector->getOpenGLView())
+    if (DirectorInstance->getOpenGLView())
     {
         SpriteFrameCache::getInstance()->removeUnusedSpriteFrames();
         _textureCache->removeUnusedTextures();

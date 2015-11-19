@@ -1683,7 +1683,7 @@ static bool jsb_anysdk_framework_ProtocolUser_setActionListener(JSContext *cx, u
 		JS_ReportError(cx, "jsb_anysdk_framework_ProtocolUser_setActionListener : wrong number of arguments: %d, was expecting %d", argc, 0);
     	return false;
     }
-    if (ProtocolUserActionListener::_instance != NULL)
+    if (ProtocolUserActionListener::_instance != nullptr)
     	return true;
     ProtocolUserActionListener* listener = ProtocolUserActionListener::getInstance();
     listener->setJSCallbackFunc( cx, args.get(0) );
@@ -1908,4 +1908,12 @@ void register_all_anysdk_manual(JSContext* cx, JS::HandleObject obj) {
     proto.set(jsb_anysdk_framework_ProtocolUser_prototype);
 	JS_DefineFunction(cx, proto, "setActionListener", jsb_anysdk_framework_ProtocolUser_setActionListener, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
 	JS_DefineFunction(cx, proto, "removeListener", jsb_anysdk_framework_ProtocolUser_removeListener, 1, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+}
+
+void pure_all_anysdk_Listener()
+{
+    ProtocolUserActionListener::purge();
+    ProtocolPushActionListener::purge();
+    ProtocolSocialListener::purge();
+    ProtocolAdsResultListener::purge();
 }

@@ -32,8 +32,7 @@
 #include "cocos2d_specifics.hpp"
 
 using namespace std;
-
-extern cocos2d::DisplayLinkDirector *s_sharedCocosDirector;
+using namespace cocos2d;
 
 //#pragma mark - MinXmlHttpRequest
 
@@ -192,7 +191,7 @@ void MinXmlHttpRequest::_setHttpRequestData(const char *data, size_t len)
 void MinXmlHttpRequest::handle_requestResponse(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
 {
     _elapsedTime = 0;
-    s_sharedCocosDirector->getScheduler()->unscheduleAllForTarget(this);
+    Director::DirectorInstance->getScheduler()->unscheduleAllForTarget(this);
     
     if(_isAborted || _readyState == UNSENT)
     {
@@ -293,7 +292,7 @@ MinXmlHttpRequest::MinXmlHttpRequest()
 , _requestHeader()
 , _isAborted(false)
 {
-    s_sharedCocosDirector->getScheduler()->retain();
+    Director::DirectorInstance->getScheduler()->retain();
 }
 
 /**
@@ -324,8 +323,8 @@ MinXmlHttpRequest::~MinXmlHttpRequest()
 
     CC_SAFE_FREE(_data);
     
-    if (s_sharedCocosDirector) {
-        s_sharedCocosDirector->getScheduler()->release();
+    if (Director::DirectorInstance) {
+        Director::DirectorInstance->getScheduler()->release();
     }
 }
 
@@ -767,7 +766,7 @@ JS_BINDED_FUNC_IMPL(MinXmlHttpRequest, send)
     //begin schedule for timeout
     if(_timeout > 0)
     {
-        s_sharedCocosDirector->getScheduler()->scheduleUpdate(this, 0, false);
+        Director::DirectorInstance->getScheduler()->scheduleUpdate(this, 0, false);
     }
 
     return true;
@@ -781,7 +780,7 @@ void MinXmlHttpRequest::update(float dt)
         _notify(_ontimeoutCallback);
         _elapsedTime = 0;
         _readyState = UNSENT;
-        s_sharedCocosDirector->getScheduler()->unscheduleAllForTarget(this);
+        Director::DirectorInstance->getScheduler()->unscheduleAllForTarget(this);
     }
 }
 

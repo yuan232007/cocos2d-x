@@ -79,9 +79,9 @@ void HttpClient::networkThread()
         _responseQueueMutex.unlock();
         
         _schedulerMutex.lock();
-        if (nullptr != _scheduler)
+        if (Director::DirectorInstance)
         {
-            _scheduler->performFunctionInCocosThread(CC_CALLBACK_0(HttpClient::dispatchResponseCallbacks, this));
+            Director::DirectorInstance->getScheduler()->performFunctionInCocosThread(CC_CALLBACK_0(HttpClient::dispatchResponseCallbacks, this));
         }
         _schedulerMutex.unlock();
     }
@@ -107,9 +107,9 @@ void HttpClient::networkThreadAlone(HttpRequest* request, HttpResponse* response
     processResponse(response, responseMessage);
     
     _schedulerMutex.lock();
-    if (nullptr != _scheduler)
+    if (Director::DirectorInstance)
     {
-        _scheduler->performFunctionInCocosThread([this, response, request]{
+        Director::DirectorInstance->getScheduler()->performFunctionInCocosThread([this, response, request]{
             const ccHttpRequestCallback& callback = request->getCallback();
             Ref* pTarget = request->getTarget();
             SEL_HttpResponse pSelector = request->getSelector();
@@ -325,10 +325,7 @@ void HttpClient::destroyInstance()
     auto thiz = _httpClient;
     _httpClient = nullptr;
     
-    thiz->_scheduler->unscheduleAllForTarget(thiz);
-    thiz->_schedulerMutex.lock();
-    thiz->_scheduler = nullptr;
-    thiz->_schedulerMutex.unlock();
+    Director::DirectorInstance->getScheduler()->unscheduleAllForTarget(thiz);
     
     thiz->_requestQueueMutex.lock();
     thiz->_requestQueue.pushBack(thiz->_requestSentinel);
@@ -379,7 +376,6 @@ HttpClient::HttpClient()
 
     CCLOG("In the constructor of HttpClient!");
     memset(_responseMessage, 0, sizeof(char) * RESPONSE_BUFFER_SIZE);
-    _scheduler = Director::getInstance()->getScheduler();
     increaseThreadCount();
 }
     

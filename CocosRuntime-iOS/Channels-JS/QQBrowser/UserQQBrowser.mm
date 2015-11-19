@@ -94,8 +94,8 @@ typedef enum
 #if COCOS2D_DEBUG
     _isLogined = true;
      _qbOpenID = @"taBoVS558UXGPc5PE1nqgzbrjx4-EP37o6aFrKjUnU9OAEd_-FnEzA";
-     _qbOpenKey = @"mNN7ZNZ_FbSTgpCswG0K414vIQOd1x9DAGvJNnTpHLyytVPmK2FXuCC21bYJfVns1OwxLKiFggwsUnCQC7J-JS0R-odpP8_-_b2sHcNltXw4yDDjPqQ7fYYJP918p2bCL5bl58vAFLg";
-     _refreshToken = @"nGlvFFt2YEUX-s-TSegkHm3zJ0RsypCoysqHkzqT-a0uKZZNpStw6qftboKY4pHx_YsE1QV8EBHHnCAedrH7vzeOndN7y6pzNA_AJILnDkkKL6R-8bBiVw";
+     _qbOpenKey = @"MvL0kGspU0c-63UfA6sUG1wD40uD8j0zTz9-RfZrLRIvoP6_Ws0Wgpv534zrwejuiBm1b5fzF95bNh1mi0pg05UCbaTkZLtndYc5S45z92OGp2yGnkvqO2Iefbd4rsf5bDE1lB5VGvg";
+     _refreshToken = @"eJzBzLYCmaS9ec-I92NDmCSHseU5xQpAsj3KiavWBk5L9cLLdzjC9IINLBR2wo4E0j2rqwaifEF164l13nv4mqE1cjqxJ00LuKH-hgsslRNSBICAJtD9GA";
      _avatarUrl = @"http://q4.qlogo.cn/g?b=qq&k=h2rrhrEUdr4qQ0cL2qSQgQ&s=100&t=528";
      
      [self performSelector:@selector(delayLoginCall) withObject:nil afterDelay:1.f];
@@ -120,11 +120,6 @@ typedef enum
                     
                     NSMutableDictionary* loginInfo = [result mutableCopy];
                     [loginInfo setObject:_qbOpenID forKey:@"accountID"];
-                    
-                    /*struct timeval currTime;
-                    gettimeofday(&currTime, NULL);
-                    long millisTime = currTime.tv_sec * 1000 + currTime.tv_usec / 1000 + 7000000;
-                    [loginInfo setObject:[[NSNumber alloc] initWithLong:millisTime] forKey:@"expireIn"];*/
                     
                     [self onActionResult:ACTION_RET_LOGIN_SUCCESS msg:[UserQQBrowser dictToJSONString:loginInfo]];
                     return;

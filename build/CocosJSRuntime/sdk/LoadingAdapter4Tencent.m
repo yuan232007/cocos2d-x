@@ -34,8 +34,6 @@
 
 - (void) onLoadingProgress:(float)progress max:(float)max
 {
-    NSLog(@"===> LoadingAdapter4Tencent onLoadingProgress progress: %f max: %f", progress, max);
-    // 
     if (progress == max) {
         return;
     }
