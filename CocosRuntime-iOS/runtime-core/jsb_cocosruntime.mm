@@ -6,7 +6,7 @@
 //
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
-#include "network/RTNetworkHelper.h"
+#include "RTNetworkHelper.h"
 #import "sdk/CocosRuntime.h"
 #import "sdk/LoadingAdapter4Tencent.h"
 
