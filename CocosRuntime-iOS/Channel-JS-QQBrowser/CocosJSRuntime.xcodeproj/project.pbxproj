@@ -1011,10 +1011,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/CocosJSRuntime/anysdk",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CC_TARGET_OS_IPHONE,
 					COCOS2D_JAVASCRIPT,
@@ -1052,10 +1049,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/CocosJSRuntime/anysdk",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CC_TARGET_OS_IPHONE,
 					COCOS2D_JAVASCRIPT,
@@ -1094,10 +1088,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/CocosJSRuntime/anysdk",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CC_TARGET_OS_IPHONE,
 					COCOS2D_JAVASCRIPT,
@@ -1109,7 +1100,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
-					"$(PROJECT_DIR)/../CocosRuntime-iOS/AnySDK-JSBindings",
+					"$(PROJECT_DIR)/../AnySDK-JSBindings",
 				);
 				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1138,10 +1129,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/CocosJSRuntime/anysdk",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CC_TARGET_OS_IPHONE,
 					COCOS2D_JAVASCRIPT,
@@ -1153,7 +1141,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
-					"$(PROJECT_DIR)/../CocosRuntime-iOS/AnySDK-JSBindings",
+					"$(PROJECT_DIR)/../AnySDK-JSBindings",
 				);
 				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
