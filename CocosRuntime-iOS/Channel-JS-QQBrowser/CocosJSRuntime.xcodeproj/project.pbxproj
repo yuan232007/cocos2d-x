@@ -7,6 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB881DBA1BFF0AD1002914AB /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D841BFF0AD1002914AB /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DBB1BFF0AD1002914AB /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D841BFF0AD1002914AB /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DBC1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DBD1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DBE1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DBF1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC01BFF0AD1002914AB /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC11BFF0AD1002914AB /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC21BFF0AD1002914AB /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8E1BFF0AD1002914AB /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC31BFF0AD1002914AB /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8E1BFF0AD1002914AB /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC41BFF0AD1002914AB /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D901BFF0AD1002914AB /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC51BFF0AD1002914AB /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D901BFF0AD1002914AB /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC61BFF0AD1002914AB /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D941BFF0AD1002914AB /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC71BFF0AD1002914AB /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D941BFF0AD1002914AB /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DC81BFF0AD1002914AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB881DC91BFF0AD1002914AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB881DCA1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */; settings = {ASSET_TAGS = (); }; };
+		BB881DCB1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */; settings = {ASSET_TAGS = (); }; };
+		BB881DCC1BFF0AD1002914AB /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DCD1BFF0AD1002914AB /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DCE1BFF0AD1002914AB /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9E1BFF0AD1002914AB /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DCF1BFF0AD1002914AB /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9E1BFF0AD1002914AB /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD01BFF0AD1002914AB /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA01BFF0AD1002914AB /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD11BFF0AD1002914AB /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA01BFF0AD1002914AB /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD21BFF0AD1002914AB /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA21BFF0AD1002914AB /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD31BFF0AD1002914AB /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA21BFF0AD1002914AB /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD41BFF0AD1002914AB /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA41BFF0AD1002914AB /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD51BFF0AD1002914AB /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA41BFF0AD1002914AB /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD61BFF0AD1002914AB /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA61BFF0AD1002914AB /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD71BFF0AD1002914AB /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA61BFF0AD1002914AB /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD81BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DD91BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DDA1BFF0AD1002914AB /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAC1BFF0AD1002914AB /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DDB1BFF0AD1002914AB /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAC1BFF0AD1002914AB /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DDC1BFF0AD1002914AB /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAE1BFF0AD1002914AB /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DDD1BFF0AD1002914AB /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAE1BFF0AD1002914AB /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DDE1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */; settings = {ASSET_TAGS = (); }; };
+		BB881DDF1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */; settings = {ASSET_TAGS = (); }; };
+		BB881DE01BFF0AD1002914AB /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB21BFF0AD1002914AB /* RTReachability.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DE11BFF0AD1002914AB /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB21BFF0AD1002914AB /* RTReachability.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DE21BFF0AD1002914AB /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB51BFF0AD1002914AB /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DE31BFF0AD1002914AB /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB51BFF0AD1002914AB /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
+		BB881DE41BFF0AD1002914AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB61BFF0AD1002914AB /* zip.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB881DE51BFF0AD1002914AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB61BFF0AD1002914AB /* zip.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB881DE61BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; settings = {ASSET_TAGS = (); }; };
+		BB881DE71BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; settings = {ASSET_TAGS = (); }; };
+		BBBFEFF51BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
+		BBBFEFF61BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
 		ED2667281BFDA1E400E9BF62 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666C41BFDA0E000E9BF62 /* libcocos2d iOS.a */; };
 		ED2667291BFDA1EA00E9BF62 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666CD1BFDA0F100E9BF62 /* libjscocos2d iOS.a */; };
 		ED26672A1BFDA1F300E9BF62 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666C41BFDA0E000E9BF62 /* libcocos2d iOS.a */; };
@@ -15,64 +63,16 @@
 		ED2667481BFDA56000E9BF62 /* ShareQQBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667421BFDA56000E9BF62 /* ShareQQBrowser.m */; };
 		ED2667491BFDA56000E9BF62 /* SocialQQBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667441BFDA56000E9BF62 /* SocialQQBrowser.m */; };
 		ED26674A1BFDA56000E9BF62 /* UserQQBrowser.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED2667461BFDA56000E9BF62 /* UserQQBrowser.mm */; };
-		ED2667501BFDA58700E9BF62 /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED26674D1BFDA58700E9BF62 /* RTNetworkHelper.mm */; };
-		ED2667511BFDA58700E9BF62 /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26674F1BFDA58700E9BF62 /* RTReachability.m */; };
-		ED2667571BFDA59D00E9BF62 /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2667531BFDA59D00E9BF62 /* zip.cpp */; };
-		ED2667581BFDA59D00E9BF62 /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED2667561BFDA59D00E9BF62 /* ZipHelper.mm */; };
-		ED26675E1BFDA5C200E9BF62 /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26675A1BFDA5C200E9BF62 /* CocosDelegate.cpp */; };
-		ED26675F1BFDA5C200E9BF62 /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED26675D1BFDA5C200E9BF62 /* jsb_cocosruntime.mm */; };
-		ED2667881BFDA5CE00E9BF62 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667611BFDA5CE00E9BF62 /* ChannelConfig.m */; };
-		ED2667891BFDA5CE00E9BF62 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667631BFDA5CE00E9BF62 /* CocosRuntime.m */; };
-		ED26678A1BFDA5CE00E9BF62 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667651BFDA5CE00E9BF62 /* CocosRuntimeGroup.m */; };
-		ED26678B1BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667671BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.m */; };
-		ED26678C1BFDA5CE00E9BF62 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667691BFDA5CE00E9BF62 /* FileDownloadAdapter.m */; };
-		ED26678D1BFDA5CE00E9BF62 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26676C1BFDA5CE00E9BF62 /* FileDownloader.m */; };
-		ED26678E1BFDA5CE00E9BF62 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26676E1BFDA5CE00E9BF62 /* FileUtil.m */; };
-		ED26678F1BFDA5CE00E9BF62 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667701BFDA5CE00E9BF62 /* GameConfig.m */; };
-		ED2667901BFDA5CE00E9BF62 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667721BFDA5CE00E9BF62 /* GameInfo.m */; };
-		ED2667911BFDA5CE00E9BF62 /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667741BFDA5CE00E9BF62 /* GameManifest.m */; };
-		ED2667921BFDA5CE00E9BF62 /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667761BFDA5CE00E9BF62 /* GroupPatch.m */; };
-		ED2667931BFDA5CE00E9BF62 /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667781BFDA5CE00E9BF62 /* GroupVersionManager.m */; };
-		ED2667941BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26677A1BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.m */; };
-		ED2667951BFDA5CE00E9BF62 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26677D1BFDA5CE00E9BF62 /* LoadingInfo.m */; };
-		ED2667961BFDA5CE00E9BF62 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26677F1BFDA5CE00E9BF62 /* LoadingProgressController.m */; };
-		ED2667971BFDA5CE00E9BF62 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667811BFDA5CE00E9BF62 /* NetworkController.m */; };
-		ED2667981BFDA5CE00E9BF62 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667851BFDA5CE00E9BF62 /* PreRunGame.m */; };
-		ED2667991BFDA5CE00E9BF62 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667871BFDA5CE00E9BF62 /* ResGroup.m */; };
 		ED2667A11BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679B1BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp */; };
 		ED2667A21BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679D1BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp */; };
 		ED2667A31BFDA65800E9BF62 /* manualanysdkbindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679F1BFDA65800E9BF62 /* manualanysdkbindings.cpp */; };
 		ED2667B01BFDA75700E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679B1BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp */; };
 		ED2667B11BFDA75A00E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679D1BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp */; };
 		ED2667B21BFDA76F00E9BF62 /* manualanysdkbindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26679F1BFDA65800E9BF62 /* manualanysdkbindings.cpp */; };
-		ED2667B31BFDA77600E9BF62 /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2667531BFDA59D00E9BF62 /* zip.cpp */; };
-		ED2667B41BFDA77A00E9BF62 /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED2667561BFDA59D00E9BF62 /* ZipHelper.mm */; };
-		ED2667B51BFDA78200E9BF62 /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED26674D1BFDA58700E9BF62 /* RTNetworkHelper.mm */; };
-		ED2667B61BFDA78500E9BF62 /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26674F1BFDA58700E9BF62 /* RTReachability.m */; };
 		ED2667B71BFDA79100E9BF62 /* IAPQQBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667401BFDA56000E9BF62 /* IAPQQBrowser.m */; };
 		ED2667B81BFDA79500E9BF62 /* ShareQQBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667421BFDA56000E9BF62 /* ShareQQBrowser.m */; };
 		ED2667B91BFDA79800E9BF62 /* SocialQQBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667441BFDA56000E9BF62 /* SocialQQBrowser.m */; };
 		ED2667BA1BFDA79B00E9BF62 /* UserQQBrowser.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED2667461BFDA56000E9BF62 /* UserQQBrowser.mm */; };
-		ED2667BB1BFDA7A700E9BF62 /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED26675A1BFDA5C200E9BF62 /* CocosDelegate.cpp */; };
-		ED2667BC1BFDA7B300E9BF62 /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667611BFDA5CE00E9BF62 /* ChannelConfig.m */; };
-		ED2667BD1BFDA7B300E9BF62 /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667631BFDA5CE00E9BF62 /* CocosRuntime.m */; };
-		ED2667BE1BFDA7B300E9BF62 /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667651BFDA5CE00E9BF62 /* CocosRuntimeGroup.m */; };
-		ED2667BF1BFDA7B300E9BF62 /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667671BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.m */; };
-		ED2667C01BFDA7B300E9BF62 /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667691BFDA5CE00E9BF62 /* FileDownloadAdapter.m */; };
-		ED2667C11BFDA7B300E9BF62 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26676C1BFDA5CE00E9BF62 /* FileDownloader.m */; };
-		ED2667C21BFDA7B300E9BF62 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26676E1BFDA5CE00E9BF62 /* FileUtil.m */; };
-		ED2667C31BFDA7B300E9BF62 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667701BFDA5CE00E9BF62 /* GameConfig.m */; };
-		ED2667C41BFDA7B300E9BF62 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667721BFDA5CE00E9BF62 /* GameInfo.m */; };
-		ED2667C51BFDA7B300E9BF62 /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667741BFDA5CE00E9BF62 /* GameManifest.m */; };
-		ED2667C61BFDA7B300E9BF62 /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667761BFDA5CE00E9BF62 /* GroupPatch.m */; };
-		ED2667C71BFDA7B300E9BF62 /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667781BFDA5CE00E9BF62 /* GroupVersionManager.m */; };
-		ED2667C81BFDA7B300E9BF62 /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26677A1BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.m */; };
-		ED2667C91BFDA7B300E9BF62 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26677D1BFDA5CE00E9BF62 /* LoadingInfo.m */; };
-		ED2667CA1BFDA7B300E9BF62 /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED26677F1BFDA5CE00E9BF62 /* LoadingProgressController.m */; };
-		ED2667CB1BFDA7B300E9BF62 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667811BFDA5CE00E9BF62 /* NetworkController.m */; };
-		ED2667CC1BFDA7B300E9BF62 /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667851BFDA5CE00E9BF62 /* PreRunGame.m */; };
-		ED2667CD1BFDA7B300E9BF62 /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667871BFDA5CE00E9BF62 /* ResGroup.m */; };
-		ED2667CE1BFDA7B300E9BF62 /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED26675D1BFDA5C200E9BF62 /* jsb_cocosruntime.mm */; };
 		ED2667D01BFDA82A00E9BF62 /* script in Resources */ = {isa = PBXBuildFile; fileRef = ED2667CF1BFDA82A00E9BF62 /* script */; };
 		ED2667D71BFDAAE100E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */; };
 		ED2667D81BFDAAE900E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */; };
@@ -219,6 +219,58 @@
 /* Begin PBXFileReference section */
 		802BF5241B945662008C45C2 /* CocosJSRuntime.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = CocosJSRuntime.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8059FC971BB0F5BB009354CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BB881D831BFF0AD1002914AB /* CocosRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosRuntime.h; sourceTree = "<group>"; };
+		BB881D841BFF0AD1002914AB /* CocosRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntime.m; sourceTree = "<group>"; };
+		BB881D861BFF0AD1002914AB /* CocosRuntimeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosRuntimeGroup.h; sourceTree = "<group>"; };
+		BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntimeGroup.m; sourceTree = "<group>"; };
+		BB881D881BFF0AD1002914AB /* CocosRuntimeGroupPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosRuntimeGroupPatch.h; sourceTree = "<group>"; };
+		BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosRuntimeGroupPatch.m; sourceTree = "<group>"; };
+		BB881D8A1BFF0AD1002914AB /* GroupVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupVersionManager.h; sourceTree = "<group>"; };
+		BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupVersionManager.m; sourceTree = "<group>"; };
+		BB881D8C1BFF0AD1002914AB /* LoadingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingDelegate.h; sourceTree = "<group>"; };
+		BB881D8D1BFF0AD1002914AB /* LoadingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingInfo.h; sourceTree = "<group>"; };
+		BB881D8E1BFF0AD1002914AB /* LoadingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingInfo.m; sourceTree = "<group>"; };
+		BB881D8F1BFF0AD1002914AB /* LoadingProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingProgressController.h; sourceTree = "<group>"; };
+		BB881D901BFF0AD1002914AB /* LoadingProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingProgressController.m; sourceTree = "<group>"; };
+		BB881D911BFF0AD1002914AB /* OnGroupUpdateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnGroupUpdateDelegate.h; sourceTree = "<group>"; };
+		BB881D921BFF0AD1002914AB /* OnLoadingProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnLoadingProgressDelegate.h; sourceTree = "<group>"; };
+		BB881D931BFF0AD1002914AB /* PreRunGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreRunGame.h; sourceTree = "<group>"; };
+		BB881D941BFF0AD1002914AB /* PreRunGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreRunGame.m; sourceTree = "<group>"; };
+		BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CocosDelegate.cpp; sourceTree = "<group>"; };
+		BB881D971BFF0AD1002914AB /* CocosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosDelegate.h; sourceTree = "<group>"; };
+		BB881D981BFF0AD1002914AB /* jsb_cocosruntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocosruntime.h; sourceTree = "<group>"; };
+		BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jsb_cocosruntime.mm; sourceTree = "<group>"; };
+		BB881D9B1BFF0AD1002914AB /* ChannelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelConfig.h; sourceTree = "<group>"; };
+		BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelConfig.m; sourceTree = "<group>"; };
+		BB881D9D1BFF0AD1002914AB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		BB881D9E1BFF0AD1002914AB /* GameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConfig.m; sourceTree = "<group>"; };
+		BB881D9F1BFF0AD1002914AB /* GameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameInfo.h; sourceTree = "<group>"; };
+		BB881DA01BFF0AD1002914AB /* GameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameInfo.m; sourceTree = "<group>"; };
+		BB881DA11BFF0AD1002914AB /* GameManifest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManifest.h; sourceTree = "<group>"; };
+		BB881DA21BFF0AD1002914AB /* GameManifest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManifest.m; sourceTree = "<group>"; };
+		BB881DA31BFF0AD1002914AB /* GroupPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPatch.h; sourceTree = "<group>"; };
+		BB881DA41BFF0AD1002914AB /* GroupPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPatch.m; sourceTree = "<group>"; };
+		BB881DA51BFF0AD1002914AB /* ResGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResGroup.h; sourceTree = "<group>"; };
+		BB881DA61BFF0AD1002914AB /* ResGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResGroup.m; sourceTree = "<group>"; };
+		BB881DA81BFF0AD1002914AB /* FileDownloadAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadAdapter.h; sourceTree = "<group>"; };
+		BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadAdapter.m; sourceTree = "<group>"; };
+		BB881DAA1BFF0AD1002914AB /* FileDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadDelegate.h; sourceTree = "<group>"; };
+		BB881DAB1BFF0AD1002914AB /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloader.h; sourceTree = "<group>"; };
+		BB881DAC1BFF0AD1002914AB /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
+		BB881DAD1BFF0AD1002914AB /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		BB881DAE1BFF0AD1002914AB /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
+		BB881DAF1BFF0AD1002914AB /* RTNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTNetworkHelper.h; sourceTree = "<group>"; };
+		BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTNetworkHelper.mm; sourceTree = "<group>"; };
+		BB881DB11BFF0AD1002914AB /* RTReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTReachability.h; sourceTree = "<group>"; };
+		BB881DB21BFF0AD1002914AB /* RTReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTReachability.m; sourceTree = "<group>"; };
+		BB881DB41BFF0AD1002914AB /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
+		BB881DB51BFF0AD1002914AB /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
+		BB881DB61BFF0AD1002914AB /* zip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zip.cpp; sourceTree = "<group>"; };
+		BB881DB71BFF0AD1002914AB /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		BB881DB81BFF0AD1002914AB /* ZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipHelper.h; sourceTree = "<group>"; };
+		BB881DB91BFF0AD1002914AB /* ZipHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipHelper.mm; sourceTree = "<group>"; };
+		BBBFEFF31BFDBDE300766FDA /* LoadingAdapter4Tencent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAdapter4Tencent.h; sourceTree = "<group>"; };
+		BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAdapter4Tencent.m; sourceTree = "<group>"; };
 		D50C68411BC64F9F00655E6E /* MttGameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngine.h; sourceTree = "<group>"; };
 		D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineDelegate.h; sourceTree = "<group>"; };
 		D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFactory.h; sourceTree = "<group>"; };
@@ -233,58 +285,6 @@
 		ED2667441BFDA56000E9BF62 /* SocialQQBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialQQBrowser.m; sourceTree = "<group>"; };
 		ED2667451BFDA56000E9BF62 /* UserQQBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQQBrowser.h; sourceTree = "<group>"; };
 		ED2667461BFDA56000E9BF62 /* UserQQBrowser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UserQQBrowser.mm; sourceTree = "<group>"; };
-		ED26674C1BFDA58700E9BF62 /* RTNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTNetworkHelper.h; path = "../../runtime-core/RTNetworkHelper.h"; sourceTree = "<group>"; };
-		ED26674D1BFDA58700E9BF62 /* RTNetworkHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RTNetworkHelper.mm; path = "../../runtime-core/RTNetworkHelper.mm"; sourceTree = "<group>"; };
-		ED26674E1BFDA58700E9BF62 /* RTReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTReachability.h; path = "../../runtime-core/RTReachability.h"; sourceTree = "<group>"; };
-		ED26674F1BFDA58700E9BF62 /* RTReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTReachability.m; path = "../../runtime-core/RTReachability.m"; sourceTree = "<group>"; };
-		ED2667531BFDA59D00E9BF62 /* zip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = zip.cpp; path = "../../runtime-core/zip.cpp"; sourceTree = "<group>"; };
-		ED2667541BFDA59D00E9BF62 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = "../../runtime-core/zip.h"; sourceTree = "<group>"; };
-		ED2667551BFDA59D00E9BF62 /* ZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipHelper.h; path = "../../runtime-core/ZipHelper.h"; sourceTree = "<group>"; };
-		ED2667561BFDA59D00E9BF62 /* ZipHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZipHelper.mm; path = "../../runtime-core/ZipHelper.mm"; sourceTree = "<group>"; };
-		ED26675A1BFDA5C200E9BF62 /* CocosDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CocosDelegate.cpp; path = "../../runtime-core/CocosDelegate.cpp"; sourceTree = "<group>"; };
-		ED26675B1BFDA5C200E9BF62 /* CocosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosDelegate.h; path = "../../runtime-core/CocosDelegate.h"; sourceTree = "<group>"; };
-		ED26675C1BFDA5C200E9BF62 /* jsb_cocosruntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jsb_cocosruntime.h; path = "../../runtime-core/jsb_cocosruntime.h"; sourceTree = "<group>"; };
-		ED26675D1BFDA5C200E9BF62 /* jsb_cocosruntime.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = jsb_cocosruntime.mm; path = "../../runtime-core/jsb_cocosruntime.mm"; sourceTree = "<group>"; };
-		ED2667601BFDA5CE00E9BF62 /* ChannelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelConfig.h; path = "../../runtime-core/sdk/ChannelConfig.h"; sourceTree = "<group>"; };
-		ED2667611BFDA5CE00E9BF62 /* ChannelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelConfig.m; path = "../../runtime-core/sdk/ChannelConfig.m"; sourceTree = "<group>"; };
-		ED2667621BFDA5CE00E9BF62 /* CocosRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosRuntime.h; path = "../../runtime-core/sdk/CocosRuntime.h"; sourceTree = "<group>"; };
-		ED2667631BFDA5CE00E9BF62 /* CocosRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosRuntime.m; path = "../../runtime-core/sdk/CocosRuntime.m"; sourceTree = "<group>"; };
-		ED2667641BFDA5CE00E9BF62 /* CocosRuntimeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosRuntimeGroup.h; path = "../../runtime-core/sdk/CocosRuntimeGroup.h"; sourceTree = "<group>"; };
-		ED2667651BFDA5CE00E9BF62 /* CocosRuntimeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosRuntimeGroup.m; path = "../../runtime-core/sdk/CocosRuntimeGroup.m"; sourceTree = "<group>"; };
-		ED2667661BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosRuntimeGroupPatch.h; path = "../../runtime-core/sdk/CocosRuntimeGroupPatch.h"; sourceTree = "<group>"; };
-		ED2667671BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosRuntimeGroupPatch.m; path = "../../runtime-core/sdk/CocosRuntimeGroupPatch.m"; sourceTree = "<group>"; };
-		ED2667681BFDA5CE00E9BF62 /* FileDownloadAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownloadAdapter.h; path = "../../runtime-core/sdk/FileDownloadAdapter.h"; sourceTree = "<group>"; };
-		ED2667691BFDA5CE00E9BF62 /* FileDownloadAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDownloadAdapter.m; path = "../../runtime-core/sdk/FileDownloadAdapter.m"; sourceTree = "<group>"; };
-		ED26676A1BFDA5CE00E9BF62 /* FileDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownloadDelegate.h; path = "../../runtime-core/sdk/FileDownloadDelegate.h"; sourceTree = "<group>"; };
-		ED26676B1BFDA5CE00E9BF62 /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownloader.h; path = "../../runtime-core/sdk/FileDownloader.h"; sourceTree = "<group>"; };
-		ED26676C1BFDA5CE00E9BF62 /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDownloader.m; path = "../../runtime-core/sdk/FileDownloader.m"; sourceTree = "<group>"; };
-		ED26676D1BFDA5CE00E9BF62 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtil.h; path = "../../runtime-core/sdk/FileUtil.h"; sourceTree = "<group>"; };
-		ED26676E1BFDA5CE00E9BF62 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUtil.m; path = "../../runtime-core/sdk/FileUtil.m"; sourceTree = "<group>"; };
-		ED26676F1BFDA5CE00E9BF62 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameConfig.h; path = "../../runtime-core/sdk/GameConfig.h"; sourceTree = "<group>"; };
-		ED2667701BFDA5CE00E9BF62 /* GameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameConfig.m; path = "../../runtime-core/sdk/GameConfig.m"; sourceTree = "<group>"; };
-		ED2667711BFDA5CE00E9BF62 /* GameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameInfo.h; path = "../../runtime-core/sdk/GameInfo.h"; sourceTree = "<group>"; };
-		ED2667721BFDA5CE00E9BF62 /* GameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameInfo.m; path = "../../runtime-core/sdk/GameInfo.m"; sourceTree = "<group>"; };
-		ED2667731BFDA5CE00E9BF62 /* GameManifest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManifest.h; path = "../../runtime-core/sdk/GameManifest.h"; sourceTree = "<group>"; };
-		ED2667741BFDA5CE00E9BF62 /* GameManifest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManifest.m; path = "../../runtime-core/sdk/GameManifest.m"; sourceTree = "<group>"; };
-		ED2667751BFDA5CE00E9BF62 /* GroupPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupPatch.h; path = "../../runtime-core/sdk/GroupPatch.h"; sourceTree = "<group>"; };
-		ED2667761BFDA5CE00E9BF62 /* GroupPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GroupPatch.m; path = "../../runtime-core/sdk/GroupPatch.m"; sourceTree = "<group>"; };
-		ED2667771BFDA5CE00E9BF62 /* GroupVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupVersionManager.h; path = "../../runtime-core/sdk/GroupVersionManager.h"; sourceTree = "<group>"; };
-		ED2667781BFDA5CE00E9BF62 /* GroupVersionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GroupVersionManager.m; path = "../../runtime-core/sdk/GroupVersionManager.m"; sourceTree = "<group>"; };
-		ED2667791BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingAdapter4Tencent.h; path = "../../runtime-core/sdk/LoadingAdapter4Tencent.h"; sourceTree = "<group>"; };
-		ED26677A1BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingAdapter4Tencent.m; path = "../../runtime-core/sdk/LoadingAdapter4Tencent.m"; sourceTree = "<group>"; };
-		ED26677B1BFDA5CE00E9BF62 /* LoadingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingDelegate.h; path = "../../runtime-core/sdk/LoadingDelegate.h"; sourceTree = "<group>"; };
-		ED26677C1BFDA5CE00E9BF62 /* LoadingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingInfo.h; path = "../../runtime-core/sdk/LoadingInfo.h"; sourceTree = "<group>"; };
-		ED26677D1BFDA5CE00E9BF62 /* LoadingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingInfo.m; path = "../../runtime-core/sdk/LoadingInfo.m"; sourceTree = "<group>"; };
-		ED26677E1BFDA5CE00E9BF62 /* LoadingProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingProgressController.h; path = "../../runtime-core/sdk/LoadingProgressController.h"; sourceTree = "<group>"; };
-		ED26677F1BFDA5CE00E9BF62 /* LoadingProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingProgressController.m; path = "../../runtime-core/sdk/LoadingProgressController.m"; sourceTree = "<group>"; };
-		ED2667801BFDA5CE00E9BF62 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkController.h; path = "../../runtime-core/sdk/NetworkController.h"; sourceTree = "<group>"; };
-		ED2667811BFDA5CE00E9BF62 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkController.m; path = "../../runtime-core/sdk/NetworkController.m"; sourceTree = "<group>"; };
-		ED2667821BFDA5CE00E9BF62 /* OnGroupUpdateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnGroupUpdateDelegate.h; path = "../../runtime-core/sdk/OnGroupUpdateDelegate.h"; sourceTree = "<group>"; };
-		ED2667831BFDA5CE00E9BF62 /* OnLoadingProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnLoadingProgressDelegate.h; path = "../../runtime-core/sdk/OnLoadingProgressDelegate.h"; sourceTree = "<group>"; };
-		ED2667841BFDA5CE00E9BF62 /* PreRunGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreRunGame.h; path = "../../runtime-core/sdk/PreRunGame.h"; sourceTree = "<group>"; };
-		ED2667851BFDA5CE00E9BF62 /* PreRunGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreRunGame.m; path = "../../runtime-core/sdk/PreRunGame.m"; sourceTree = "<group>"; };
-		ED2667861BFDA5CE00E9BF62 /* ResGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResGroup.h; path = "../../runtime-core/sdk/ResGroup.h"; sourceTree = "<group>"; };
-		ED2667871BFDA5CE00E9BF62 /* ResGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResGroup.m; path = "../../runtime-core/sdk/ResGroup.m"; sourceTree = "<group>"; };
 		ED26679B1BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsb_anysdk_basic_conversions.cpp; path = "../../AnySDK-JSBindings/jsb_anysdk_basic_conversions.cpp"; sourceTree = "<group>"; };
 		ED26679C1BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jsb_anysdk_basic_conversions.h; path = "../../AnySDK-JSBindings/jsb_anysdk_basic_conversions.h"; sourceTree = "<group>"; };
 		ED26679D1BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsb_anysdk_protocols_auto.cpp; path = "../../AnySDK-JSBindings/jsb_anysdk_protocols_auto.cpp"; sourceTree = "<group>"; };
@@ -424,19 +424,117 @@
 		802BF5261B945662008C45C2 /* CocosJSRuntime */ = {
 			isa = PBXGroup;
 			children = (
+				BB881D821BFF0AD1002914AB /* runtime-core */,
+				EDEFE6561BF86E810047A4EF /* QQBrowserPlugin */,
 				ED26679A1BFDA63800E9BF62 /* AnySDKJSBinding */,
-				ED2667591BFDA5AA00E9BF62 /* core */,
-				ED2667521BFDA58C00E9BF62 /* zip */,
-				ED26674B1BFDA57000E9BF62 /* network */,
 				D50C68411BC64F9F00655E6E /* MttGameEngine.h */,
 				EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */,
 				D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */,
 				D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */,
 				EDBD733D1BF486EB0005FED4 /* MttGameEngineFactory.mm */,
 				D50C68461BC64F9F00655E6E /* MttGameEngineProtocol.h */,
-				EDEFE6561BF86E810047A4EF /* QQBrowserPlugin */,
+				BBBFEFF31BFDBDE300766FDA /* LoadingAdapter4Tencent.h */,
+				BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */,
 			);
 			path = CocosJSRuntime;
+			sourceTree = "<group>";
+		};
+		BB881D821BFF0AD1002914AB /* runtime-core */ = {
+			isa = PBXGroup;
+			children = (
+				BB881D831BFF0AD1002914AB /* CocosRuntime.h */,
+				BB881D841BFF0AD1002914AB /* CocosRuntime.m */,
+				BB881D851BFF0AD1002914AB /* controller */,
+				BB881D951BFF0AD1002914AB /* engine */,
+				BB881D9A1BFF0AD1002914AB /* model */,
+				BB881DA71BFF0AD1002914AB /* network */,
+				BB881DB31BFF0AD1002914AB /* utils */,
+			);
+			name = "runtime-core";
+			path = "../../runtime-core";
+			sourceTree = "<group>";
+		};
+		BB881D851BFF0AD1002914AB /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB881D861BFF0AD1002914AB /* CocosRuntimeGroup.h */,
+				BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */,
+				BB881D881BFF0AD1002914AB /* CocosRuntimeGroupPatch.h */,
+				BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */,
+				BB881D8A1BFF0AD1002914AB /* GroupVersionManager.h */,
+				BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */,
+				BB881D8C1BFF0AD1002914AB /* LoadingDelegate.h */,
+				BB881D8D1BFF0AD1002914AB /* LoadingInfo.h */,
+				BB881D8E1BFF0AD1002914AB /* LoadingInfo.m */,
+				BB881D8F1BFF0AD1002914AB /* LoadingProgressController.h */,
+				BB881D901BFF0AD1002914AB /* LoadingProgressController.m */,
+				BB881D911BFF0AD1002914AB /* OnGroupUpdateDelegate.h */,
+				BB881D921BFF0AD1002914AB /* OnLoadingProgressDelegate.h */,
+				BB881D931BFF0AD1002914AB /* PreRunGame.h */,
+				BB881D941BFF0AD1002914AB /* PreRunGame.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BB881D951BFF0AD1002914AB /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */,
+				BB881D971BFF0AD1002914AB /* CocosDelegate.h */,
+				BB881D981BFF0AD1002914AB /* jsb_cocosruntime.h */,
+				BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */,
+			);
+			path = engine;
+			sourceTree = "<group>";
+		};
+		BB881D9A1BFF0AD1002914AB /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BB881D9B1BFF0AD1002914AB /* ChannelConfig.h */,
+				BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */,
+				BB881D9D1BFF0AD1002914AB /* GameConfig.h */,
+				BB881D9E1BFF0AD1002914AB /* GameConfig.m */,
+				BB881D9F1BFF0AD1002914AB /* GameInfo.h */,
+				BB881DA01BFF0AD1002914AB /* GameInfo.m */,
+				BB881DA11BFF0AD1002914AB /* GameManifest.h */,
+				BB881DA21BFF0AD1002914AB /* GameManifest.m */,
+				BB881DA31BFF0AD1002914AB /* GroupPatch.h */,
+				BB881DA41BFF0AD1002914AB /* GroupPatch.m */,
+				BB881DA51BFF0AD1002914AB /* ResGroup.h */,
+				BB881DA61BFF0AD1002914AB /* ResGroup.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BB881DA71BFF0AD1002914AB /* network */ = {
+			isa = PBXGroup;
+			children = (
+				BB881DA81BFF0AD1002914AB /* FileDownloadAdapter.h */,
+				BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */,
+				BB881DAA1BFF0AD1002914AB /* FileDownloadDelegate.h */,
+				BB881DAB1BFF0AD1002914AB /* FileDownloader.h */,
+				BB881DAC1BFF0AD1002914AB /* FileDownloader.m */,
+				BB881DAD1BFF0AD1002914AB /* NetworkController.h */,
+				BB881DAE1BFF0AD1002914AB /* NetworkController.m */,
+				BB881DAF1BFF0AD1002914AB /* RTNetworkHelper.h */,
+				BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */,
+				BB881DB11BFF0AD1002914AB /* RTReachability.h */,
+				BB881DB21BFF0AD1002914AB /* RTReachability.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		BB881DB31BFF0AD1002914AB /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				BB881DB41BFF0AD1002914AB /* FileUtil.h */,
+				BB881DB51BFF0AD1002914AB /* FileUtil.m */,
+				BB881DB61BFF0AD1002914AB /* zip.cpp */,
+				BB881DB71BFF0AD1002914AB /* zip.h */,
+				BB881DB81BFF0AD1002914AB /* ZipHelper.h */,
+				BB881DB91BFF0AD1002914AB /* ZipHelper.mm */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		ED2666BD1BFDA0E000E9BF62 /* Products */ = {
@@ -455,79 +553,6 @@
 				ED2666CD1BFDA0F100E9BF62 /* libjscocos2d iOS.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		ED26674B1BFDA57000E9BF62 /* network */ = {
-			isa = PBXGroup;
-			children = (
-				ED26674C1BFDA58700E9BF62 /* RTNetworkHelper.h */,
-				ED26674D1BFDA58700E9BF62 /* RTNetworkHelper.mm */,
-				ED26674E1BFDA58700E9BF62 /* RTReachability.h */,
-				ED26674F1BFDA58700E9BF62 /* RTReachability.m */,
-			);
-			name = network;
-			sourceTree = "<group>";
-		};
-		ED2667521BFDA58C00E9BF62 /* zip */ = {
-			isa = PBXGroup;
-			children = (
-				ED2667531BFDA59D00E9BF62 /* zip.cpp */,
-				ED2667541BFDA59D00E9BF62 /* zip.h */,
-				ED2667551BFDA59D00E9BF62 /* ZipHelper.h */,
-				ED2667561BFDA59D00E9BF62 /* ZipHelper.mm */,
-			);
-			name = zip;
-			sourceTree = "<group>";
-		};
-		ED2667591BFDA5AA00E9BF62 /* core */ = {
-			isa = PBXGroup;
-			children = (
-				ED2667601BFDA5CE00E9BF62 /* ChannelConfig.h */,
-				ED2667611BFDA5CE00E9BF62 /* ChannelConfig.m */,
-				ED26675A1BFDA5C200E9BF62 /* CocosDelegate.cpp */,
-				ED26675B1BFDA5C200E9BF62 /* CocosDelegate.h */,
-				ED2667621BFDA5CE00E9BF62 /* CocosRuntime.h */,
-				ED2667631BFDA5CE00E9BF62 /* CocosRuntime.m */,
-				ED2667641BFDA5CE00E9BF62 /* CocosRuntimeGroup.h */,
-				ED2667651BFDA5CE00E9BF62 /* CocosRuntimeGroup.m */,
-				ED2667661BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.h */,
-				ED2667671BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.m */,
-				ED2667681BFDA5CE00E9BF62 /* FileDownloadAdapter.h */,
-				ED2667691BFDA5CE00E9BF62 /* FileDownloadAdapter.m */,
-				ED26676A1BFDA5CE00E9BF62 /* FileDownloadDelegate.h */,
-				ED26676B1BFDA5CE00E9BF62 /* FileDownloader.h */,
-				ED26676C1BFDA5CE00E9BF62 /* FileDownloader.m */,
-				ED26676D1BFDA5CE00E9BF62 /* FileUtil.h */,
-				ED26676E1BFDA5CE00E9BF62 /* FileUtil.m */,
-				ED26676F1BFDA5CE00E9BF62 /* GameConfig.h */,
-				ED2667701BFDA5CE00E9BF62 /* GameConfig.m */,
-				ED2667711BFDA5CE00E9BF62 /* GameInfo.h */,
-				ED2667721BFDA5CE00E9BF62 /* GameInfo.m */,
-				ED2667731BFDA5CE00E9BF62 /* GameManifest.h */,
-				ED2667741BFDA5CE00E9BF62 /* GameManifest.m */,
-				ED2667751BFDA5CE00E9BF62 /* GroupPatch.h */,
-				ED2667761BFDA5CE00E9BF62 /* GroupPatch.m */,
-				ED2667771BFDA5CE00E9BF62 /* GroupVersionManager.h */,
-				ED2667781BFDA5CE00E9BF62 /* GroupVersionManager.m */,
-				ED26675C1BFDA5C200E9BF62 /* jsb_cocosruntime.h */,
-				ED26675D1BFDA5C200E9BF62 /* jsb_cocosruntime.mm */,
-				ED2667791BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.h */,
-				ED26677A1BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.m */,
-				ED26677B1BFDA5CE00E9BF62 /* LoadingDelegate.h */,
-				ED26677C1BFDA5CE00E9BF62 /* LoadingInfo.h */,
-				ED26677D1BFDA5CE00E9BF62 /* LoadingInfo.m */,
-				ED26677E1BFDA5CE00E9BF62 /* LoadingProgressController.h */,
-				ED26677F1BFDA5CE00E9BF62 /* LoadingProgressController.m */,
-				ED2667801BFDA5CE00E9BF62 /* NetworkController.h */,
-				ED2667811BFDA5CE00E9BF62 /* NetworkController.m */,
-				ED2667821BFDA5CE00E9BF62 /* OnGroupUpdateDelegate.h */,
-				ED2667831BFDA5CE00E9BF62 /* OnLoadingProgressDelegate.h */,
-				ED2667841BFDA5CE00E9BF62 /* PreRunGame.h */,
-				ED2667851BFDA5CE00E9BF62 /* PreRunGame.m */,
-				ED2667861BFDA5CE00E9BF62 /* ResGroup.h */,
-				ED2667871BFDA5CE00E9BF62 /* ResGroup.m */,
-			);
-			name = core;
 			sourceTree = "<group>";
 		};
 		ED26679A1BFDA63800E9BF62 /* AnySDKJSBinding */ = {
@@ -783,39 +808,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED26678D1BFDA5CE00E9BF62 /* FileDownloader.m in Sources */,
-				ED26675F1BFDA5C200E9BF62 /* jsb_cocosruntime.mm in Sources */,
-				ED2667991BFDA5CE00E9BF62 /* ResGroup.m in Sources */,
-				ED26678C1BFDA5CE00E9BF62 /* FileDownloadAdapter.m in Sources */,
+				BB881DBE1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */,
+				BB881DDE1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */,
 				ED2667491BFDA56000E9BF62 /* SocialQQBrowser.m in Sources */,
+				BB881DE61BFF0AD1002914AB /* ZipHelper.mm in Sources */,
 				ED2667A31BFDA65800E9BF62 /* manualanysdkbindings.cpp in Sources */,
-				ED2667971BFDA5CE00E9BF62 /* NetworkController.m in Sources */,
-				ED26678A1BFDA5CE00E9BF62 /* CocosRuntimeGroup.m in Sources */,
-				ED2667881BFDA5CE00E9BF62 /* ChannelConfig.m in Sources */,
-				ED2667911BFDA5CE00E9BF62 /* GameManifest.m in Sources */,
-				ED26678E1BFDA5CE00E9BF62 /* FileUtil.m in Sources */,
+				BB881DE01BFF0AD1002914AB /* RTReachability.m in Sources */,
+				BB881DBC1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */,
+				BB881DDC1BFF0AD1002914AB /* NetworkController.m in Sources */,
+				BB881DC21BFF0AD1002914AB /* LoadingInfo.m in Sources */,
+				BBBFEFF51BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */,
+				BB881DBA1BFF0AD1002914AB /* CocosRuntime.m in Sources */,
+				BB881DD61BFF0AD1002914AB /* ResGroup.m in Sources */,
+				BB881DE41BFF0AD1002914AB /* zip.cpp in Sources */,
+				BB881DC01BFF0AD1002914AB /* GroupVersionManager.m in Sources */,
+				BB881DDA1BFF0AD1002914AB /* FileDownloader.m in Sources */,
+				BB881DD21BFF0AD1002914AB /* GameManifest.m in Sources */,
 				ED2667A11BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */,
+				BB881DD81BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */,
 				ED2667481BFDA56000E9BF62 /* ShareQQBrowser.m in Sources */,
-				ED2667511BFDA58700E9BF62 /* RTReachability.m in Sources */,
-				ED2667981BFDA5CE00E9BF62 /* PreRunGame.m in Sources */,
-				ED2667901BFDA5CE00E9BF62 /* GameInfo.m in Sources */,
-				ED2667501BFDA58700E9BF62 /* RTNetworkHelper.mm in Sources */,
-				ED2667891BFDA5CE00E9BF62 /* CocosRuntime.m in Sources */,
-				ED2667921BFDA5CE00E9BF62 /* GroupPatch.m in Sources */,
 				ED2667A21BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */,
+				BB881DD41BFF0AD1002914AB /* GroupPatch.m in Sources */,
 				ED2667471BFDA56000E9BF62 /* IAPQQBrowser.m in Sources */,
-				ED2667581BFDA59D00E9BF62 /* ZipHelper.mm in Sources */,
+				BB881DCA1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */,
+				BB881DCC1BFF0AD1002914AB /* ChannelConfig.m in Sources */,
+				BB881DE21BFF0AD1002914AB /* FileUtil.m in Sources */,
+				BB881DC81BFF0AD1002914AB /* CocosDelegate.cpp in Sources */,
+				BB881DD01BFF0AD1002914AB /* GameInfo.m in Sources */,
 				EDBD733E1BF486EB0005FED4 /* MttGameEngineFactory.mm in Sources */,
-				ED26678B1BFDA5CE00E9BF62 /* CocosRuntimeGroupPatch.m in Sources */,
-				ED2667951BFDA5CE00E9BF62 /* LoadingInfo.m in Sources */,
-				ED2667961BFDA5CE00E9BF62 /* LoadingProgressController.m in Sources */,
-				ED26678F1BFDA5CE00E9BF62 /* GameConfig.m in Sources */,
-				ED2667571BFDA59D00E9BF62 /* zip.cpp in Sources */,
+				BB881DC41BFF0AD1002914AB /* LoadingProgressController.m in Sources */,
 				EDAF7CDD1BCCB6B90032B305 /* MttGameEngine.mm in Sources */,
-				ED2667941BFDA5CE00E9BF62 /* LoadingAdapter4Tencent.m in Sources */,
+				BB881DC61BFF0AD1002914AB /* PreRunGame.m in Sources */,
 				ED26674A1BFDA56000E9BF62 /* UserQQBrowser.mm in Sources */,
-				ED2667931BFDA5CE00E9BF62 /* GroupVersionManager.m in Sources */,
-				ED26675E1BFDA5C200E9BF62 /* CocosDelegate.cpp in Sources */,
+				BB881DCE1BFF0AD1002914AB /* GameConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,39 +848,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED2667C71BFDA7B300E9BF62 /* GroupVersionManager.m in Sources */,
-				ED2667BB1BFDA7A700E9BF62 /* CocosDelegate.cpp in Sources */,
-				ED2667C81BFDA7B300E9BF62 /* LoadingAdapter4Tencent.m in Sources */,
-				ED2667B41BFDA77A00E9BF62 /* ZipHelper.mm in Sources */,
-				ED2667CB1BFDA7B300E9BF62 /* NetworkController.m in Sources */,
+				BB881DBF1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */,
+				BB881DDF1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */,
 				ED2667B91BFDA79800E9BF62 /* SocialQQBrowser.m in Sources */,
-				ED2667C21BFDA7B300E9BF62 /* FileUtil.m in Sources */,
-				ED2667BF1BFDA7B300E9BF62 /* CocosRuntimeGroupPatch.m in Sources */,
-				ED2667BE1BFDA7B300E9BF62 /* CocosRuntimeGroup.m in Sources */,
+				BB881DE71BFF0AD1002914AB /* ZipHelper.mm in Sources */,
 				ED2667B81BFDA79500E9BF62 /* ShareQQBrowser.m in Sources */,
-				ED2667BD1BFDA7B300E9BF62 /* CocosRuntime.m in Sources */,
-				ED2667C41BFDA7B300E9BF62 /* GameInfo.m in Sources */,
-				ED2667CE1BFDA7B300E9BF62 /* jsb_cocosruntime.mm in Sources */,
+				BB881DE11BFF0AD1002914AB /* RTReachability.m in Sources */,
+				BB881DBD1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */,
+				BB881DDD1BFF0AD1002914AB /* NetworkController.m in Sources */,
+				BB881DC31BFF0AD1002914AB /* LoadingInfo.m in Sources */,
+				BBBFEFF61BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */,
+				BB881DBB1BFF0AD1002914AB /* CocosRuntime.m in Sources */,
+				BB881DD71BFF0AD1002914AB /* ResGroup.m in Sources */,
+				BB881DE51BFF0AD1002914AB /* zip.cpp in Sources */,
+				BB881DC11BFF0AD1002914AB /* GroupVersionManager.m in Sources */,
+				BB881DDB1BFF0AD1002914AB /* FileDownloader.m in Sources */,
+				BB881DD31BFF0AD1002914AB /* GameManifest.m in Sources */,
 				EDBD73381BF484FB0005FED4 /* Cocosv3GameEngineFactory.mm in Sources */,
-				ED2667CC1BFDA7B300E9BF62 /* PreRunGame.m in Sources */,
-				ED2667B51BFDA78200E9BF62 /* RTNetworkHelper.mm in Sources */,
+				BB881DD91BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */,
 				ED2667B21BFDA76F00E9BF62 /* manualanysdkbindings.cpp in Sources */,
-				ED2667B61BFDA78500E9BF62 /* RTReachability.m in Sources */,
-				ED2667BC1BFDA7B300E9BF62 /* ChannelConfig.m in Sources */,
 				ED464A721BE8B2EB005D120E /* MttGameEngine.mm in Sources */,
-				ED2667B31BFDA77600E9BF62 /* zip.cpp in Sources */,
+				BB881DD51BFF0AD1002914AB /* GroupPatch.m in Sources */,
 				ED2667B71BFDA79100E9BF62 /* IAPQQBrowser.m in Sources */,
-				ED2667C61BFDA7B300E9BF62 /* GroupPatch.m in Sources */,
-				ED2667CA1BFDA7B300E9BF62 /* LoadingProgressController.m in Sources */,
+				BB881DCB1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */,
+				BB881DCD1BFF0AD1002914AB /* ChannelConfig.m in Sources */,
+				BB881DE31BFF0AD1002914AB /* FileUtil.m in Sources */,
+				BB881DC91BFF0AD1002914AB /* CocosDelegate.cpp in Sources */,
+				BB881DD11BFF0AD1002914AB /* GameInfo.m in Sources */,
 				ED2667B11BFDA75A00E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */,
-				ED2667C51BFDA7B300E9BF62 /* GameManifest.m in Sources */,
-				ED2667C91BFDA7B300E9BF62 /* LoadingInfo.m in Sources */,
+				BB881DC51BFF0AD1002914AB /* LoadingProgressController.m in Sources */,
 				ED2667BA1BFDA79B00E9BF62 /* UserQQBrowser.mm in Sources */,
+				BB881DC71BFF0AD1002914AB /* PreRunGame.m in Sources */,
 				ED2667B01BFDA75700E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */,
-				ED2667CD1BFDA7B300E9BF62 /* ResGroup.m in Sources */,
-				ED2667C31BFDA7B300E9BF62 /* GameConfig.m in Sources */,
-				ED2667C11BFDA7B300E9BF62 /* FileDownloader.m in Sources */,
-				ED2667C01BFDA7B300E9BF62 /* FileDownloadAdapter.m in Sources */,
+				BB881DCF1BFF0AD1002914AB /* GameConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
