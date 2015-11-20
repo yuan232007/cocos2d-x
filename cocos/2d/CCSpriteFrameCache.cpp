@@ -232,7 +232,7 @@ void SpriteFrameCache::addSpriteFramesWithFileContent(const std::string& plist_c
 
 void SpriteFrameCache::addSpriteFramesWithFile(const std::string& plist, const std::string& textureFileName)
 {
-    CCASSERT(textureFileName.size()>0, "texture name should not be null");
+    CCASSERT(!textureFileName.empty(), "texture name should not be null");
     Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(textureFileName);
 
     if (texture)

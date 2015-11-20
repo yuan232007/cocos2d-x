@@ -79,6 +79,7 @@
 - (void)x5GamePlayer_stop_game_engine
 {
     NSLog(@"x5GamePlayer_stop_game_engine");
+    [self testQuitEngine];
 }
 
 - (id)x5GamePlayer_invoke_Method:(NSString*)method bundle:(NSDictionary*)bundle
