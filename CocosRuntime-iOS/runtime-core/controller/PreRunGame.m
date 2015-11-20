@@ -334,6 +334,7 @@ static GameConfig* s_rtGameConfig = nil;
 
 - (void) onSuccessOfDownload: (long) total
 {
+    NSLog(@"===> Boot Download SUCCESS");
     return;
 }
 
@@ -354,9 +355,10 @@ static GameConfig* s_rtGameConfig = nil;
     NSLog(@"===> BootGroupDownloadDelegateImpl onDownloadFailed");
 }
 
-- (void) onProgressOfUnzip: (float) percent
+- (void) onProgressOfUnzip: (long) written total:(long) total
 {
-    return;
+    float progressOffset = 80.0f + ((float) (written) / total) * 20;
+    [PreRunGame notifyProgress:progressOffset max:100.0l];
 }
 
 @end

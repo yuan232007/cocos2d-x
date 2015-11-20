@@ -224,16 +224,25 @@ static RTNetworkHelper *networkHelper = nil;
 {
     NSString *groupPath = [FileUtil getLocalGroupPath:gameInfo group: group];
     
-    if (![ZipHelper unzipFileAtPath:groupPath toDestination:[FileUtil getGameRootPath:gameInfo]]) {
-        // fixme: 不要写死
-        [delegate onFailureOfUnzip:@"解压错误"];
-        NSLog(@"===> unzip error");
-    } else {
-        NSLog(@"===> unzip (%@) success", [group groupURL]);
-        [groupVersionManager setGroupVersionCode:group.groupName versionCode:[gameConfig versionCode]];
-        [FileUtil removeFile:groupPath];
-        [delegate onSuccessOfUnzip:group.groupSize];
-    }
+    [ZipHelper unzipFileAtPath:groupPath
+            toDestination:[FileUtil getGameRootPath:gameInfo]
+            progressHandler:^(NSString *entry, long entryNumber, long total) {
+                NSLog(@"!!!! Unzip onProgress: %ld/%ld", entryNumber, total);
+                [delegate onProgressOfUnzip:entryNumber total:total];
+            }
+            completionHandler:^(NSString *zipFilePath, BOOL succeeded, NSError *error) {
+                if (error == nil) {
+                    NSLog(@"===> unzip (%@) success", [group groupURL]);
+                    [groupVersionManager setGroupVersionCode:group.groupName versionCode:[gameConfig versionCode]];
+                    [FileUtil removeFile:groupPath];
+                    [delegate onSuccessOfUnzip:group.groupSize];
+                } else {
+                    // fixme: 不要写死
+                    [delegate onFailureOfUnzip:@"解压错误"];
+                    NSLog(@"===> unzip error");
+                }
+            }
+     ];
 }
 
 + (void) prepareWaitingDownloadGroups: (NSString*) groupsString
@@ -667,12 +676,12 @@ static RTNetworkHelper *networkHelper = nil;
     }
 }
 
-- (void) onProgressOfUnzip: (float) percent
+- (void) onProgressOfUnzip: (long) written total:(long) total
 {
     // 如果是不是静默下载，则发送更新界面的通知
     if (![CocosRuntimeGroup isInSilentDownloadState]) {
-        NSLog(@"===> onProgressOfUnzip: %f", percent);
-        NSInteger globalPercent = [loadingController percentFromSingleToGlobal:percent];
+        NSLog(@"===> onProgressOfUnzip: %f", ((float) (written) / total) * 100);
+        NSInteger globalPercent = [loadingController percentFromSingleToGlobal:((float) (written) / total) * 100];
         [loadingDelegate onLoadingProgress:globalPercent max:100.0f];
     }
 }

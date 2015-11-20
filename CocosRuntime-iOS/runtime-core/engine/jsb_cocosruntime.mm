@@ -7,7 +7,7 @@
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
 #include "RTNetworkHelper.h"
-#import "sdk/CocosRuntime.h"
+#import "CocosRuntime.h"
 #import "LoadingAdapter4Tencent.h"
 
 static std::function<void (int percent, bool isFailed)> s_downloadCallback;

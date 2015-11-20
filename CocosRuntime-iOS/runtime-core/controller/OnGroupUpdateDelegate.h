@@ -14,5 +14,5 @@
 - (void) onFailureOfDownload: (NSString*) errorMsg;
 - (void) onSuccessOfUnzip: (long)total;
 - (void) onFailureOfUnzip: (NSString*) errorMsg;
-- (void) onProgressOfUnzip: (float) percent;
+- (void) onProgressOfUnzip: (long) written total:(long) total;
 @end

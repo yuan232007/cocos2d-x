@@ -19,7 +19,12 @@
 
 + (void) requestGameInfoByGameKey: (NSString*)gameKey callback:(void (^)(GameInfo *, BOOL))callback
 {
-    NSString *urlString = [[[[[[COCOS_STAGING_ADDRESS stringByAppendingString:@"/capi/apiv5/gamepackage?"] stringByAppendingString:@"gamekey="] stringByAppendingString:gameKey] stringByAppendingString:@"&arch=armeabi"] stringByAppendingString:@"&chn="] stringByAppendingString:[ChannelConfig getChannelID]];
+    NSString *urlString = [[[[[[COCOS_STAGING_ADDRESS stringByAppendingString:@"/capi/apiv5/gamepackage?"]
+                               stringByAppendingString:@"gamekey="]
+                              stringByAppendingString:gameKey]
+                             stringByAppendingString:@"&arch=armeabi"]
+                            stringByAppendingString:@"&chn="]
+                           stringByAppendingString:[ChannelConfig getChannelID]];
     
     NSLog(@"===> NetworkController requestGameInfoByGameKey requestURL: %@", urlString);
     

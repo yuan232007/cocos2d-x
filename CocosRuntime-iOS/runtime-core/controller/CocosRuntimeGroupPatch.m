@@ -33,18 +33,26 @@
 //    NSString *currentPatch = [FileUtil getLocalGroupPatchPathByName:gameInfo name:groupName];
     NSString* patchPath = [FileUtil getGroupPatchPackagePath: gameInfo groupName:groupName version:version];
     
-    if ([ZipHelper unzipFileAtPath:patchPath toDestination:[FileUtil getGameRootPath:gameInfo]]) {
-        NSLog(@"===> CocosRuntimeGroupPatch unzip SUCCESS patch: %@", patchPath);
-        [FileUtil removeFile:patchPath];
-        [self deleteFileFromDeleteList:groupName];
-        NSInteger latestVersionCode = [[CocosRuntimeGroup getGameConfig] versionCode];
-        [groupVersionManager setGroupVersionCode:groupName versionCode:latestVersionCode];
-        [delegate onSuccessOfUnzip: totalSize];
-    } else {
-        NSLog(@"===> CocosRuntimeGroupPatch unzip FAILED patch: %@", patchPath);
-        // fixme: 错误信息不要写死
-        [delegate onFailureOfUnzip:@"解压补丁包失败"];
-    }
+    [ZipHelper unzipFileAtPath:patchPath
+            toDestination:[FileUtil getGameRootPath:gameInfo]
+            progressHandler:^(NSString *entry, long entryNumber, long total) {
+                [delegate onProgressOfUnzip:entryNumber total:total];
+            }
+            completionHandler:^(NSString *zipFilePath, BOOL succeeded, NSError *error) {
+                if (error == nil) {
+                    NSLog(@"===> CocosRuntimeGroupPatch unzip SUCCESS patch: %@", patchPath);
+                    [FileUtil removeFile:patchPath];
+                    [self deleteFileFromDeleteList:groupName];
+                    NSInteger latestVersionCode = [[CocosRuntimeGroup getGameConfig] versionCode];
+                    [groupVersionManager setGroupVersionCode:groupName versionCode:latestVersionCode];
+                    [delegate onSuccessOfUnzip: totalSize];
+                } else {
+                    NSLog(@"===> CocosRuntimeGroupPatch unzip FAILED patch: %@", patchPath);
+                    // fixme: 错误信息不要写死
+                    [delegate onFailureOfUnzip:@"解压补丁包失败"];
+                }
+            }
+    ];
 }
 
 - (void) downloadPatch:(GroupPatch*)patch groupName:(NSString *)name version:(NSString *)version delegate:(id<OnGroupUpdateDelegate>)delegate
