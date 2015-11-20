@@ -308,17 +308,18 @@ void TextureCache::addImageAsyncCallBack(float dt)
 
 Texture2D * TextureCache::addImage(const std::string &path)
 {
-    Texture2D * texture = nullptr;
-    Image* image = nullptr;
     // Split up directory and filename
     // MUTEX:
     // Needed since addImageAsync calls this method from a different thread
 
     std::string fullpath = FileUtils::getInstance()->fullPathForFilename(path);
-    if (fullpath.size() == 0)
+    if (fullpath.empty())
     {
         return nullptr;
     }
+    
+    Texture2D * texture = nullptr;
+    Image* image = nullptr;
     auto it = _textures.find(fullpath);
     if( it != _textures.end() )
         texture = it->second;

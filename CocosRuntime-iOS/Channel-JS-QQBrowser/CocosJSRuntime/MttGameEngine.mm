@@ -26,8 +26,6 @@ using namespace CocosDenshion;
 static CocosAppDelegate* s_application = nullptr;
 static id s_gameEngineProtocol;
 
-extern GameConfig* s_cocosRTGameConfig;
-
 @interface CocosRuntimeBridge : NSObject<CocosRuntimeSDKDelegate>
 
 @end
