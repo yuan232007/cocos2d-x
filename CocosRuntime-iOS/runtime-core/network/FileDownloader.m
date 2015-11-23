@@ -102,7 +102,6 @@
     receivedSize += data.length;
     
     // 更新进度
-    NSLog(@"===> FileDownloader receive data: %lld/%lld", receivedSize, totalSize);
     [fileDownloadDelegate onDownloadProgress:receivedSize max:totalSize];
 }
 

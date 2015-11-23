@@ -23,4 +23,5 @@ typedef void(^RTPreloadCallback)(int progress, bool isFailed);
 }
 
 - (LoadingAdapter4Tencent*) initWith: (RTPreloadCallback) callback;
+
 @end

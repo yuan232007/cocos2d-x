@@ -54,7 +54,7 @@ static id s_gameEngineProtocol;
 
 @interface MttGameEngine()
 
-@property (nonatomic, weak) id<MttGameEngineDelegate> delegate;
+@property (nonatomic, weak) id<MttGameEngineDelegate> x5Delegate;
 
 @end
 
@@ -63,7 +63,7 @@ static id s_gameEngineProtocol;
 //初始化游戏引擎
 - (void)game_engine_init:(NSString*)gameInfoJson
 {
-    if (self.delegate == nil) {
+    if (self.x5Delegate == nil) {
         return;
     }
     
@@ -74,15 +74,15 @@ static id s_gameEngineProtocol;
     [ChannelConfig setChannelID:@"100115"];
     
     // 从浏览器配置的CacheDir、LibDir，获取失败直接返回
-    NSString* cacheDir = [self.delegate x5GamePlayer_get_value:@"CacheDir"];
-    NSString* libDir = [self.delegate x5GamePlayer_get_value:@"LibDir"];
+    NSString* cacheDir = [self.x5Delegate x5GamePlayer_get_value:@"CacheDir"];
+    NSString* libDir = [self.x5Delegate x5GamePlayer_get_value:@"LibDir"];
     if (cacheDir != nil && libDir != nil) {
         [ChannelConfig setCocosRuntimeRootPath:cacheDir];
         s_application->setEngineResDir([libDir cStringUsingEncoding:NSUTF8StringEncoding]);
     }
     else {
         NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get value failed! CacheDir:%@, LibDir:%@", cacheDir, libDir];
-        [self.delegate x5GamePlayer_send_msg:
+        [self.x5Delegate x5GamePlayer_send_msg:
          [NSDictionary dictionaryWithObjectsAndKeys:errorMsg, @"error", nil]];
         return;
     }
@@ -114,13 +114,17 @@ static id s_gameEngineProtocol;
         if (gameInfoInitFlag == false) {
             NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get game info fail! gameName:%@,gameKey:%@,gameDownloadUrl:%@",gameName, gameKey, gameDownloadUrl];
             
-            [self.delegate x5GamePlayer_send_msg:
+            [self.x5Delegate x5GamePlayer_send_msg:
              [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_RUNTIME_CHECK_FAIL,@"type",errorMsg,@"error", nil]];
             return;
         }
     }
     else {
+        //天天挂传奇
         gameKey = @"442290958";
+        
+        //带头大哥
+        gameKey = @"442290542";
     }
     
     [Wrapper setCocosRuntimeSDKVersionCode:1];
@@ -129,25 +133,25 @@ static id s_gameEngineProtocol;
     //从服务器获取游戏配置并下载第一个boot分组
     [CocosRuntime startPreRuntime:gameKey delegate:[[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed) {
         if (isFailed) {
-            [self.delegate x5GamePlayer_send_msg:
+            [self.x5Delegate x5GamePlayer_send_msg:
              [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_NETWORK_ERR,@"type", nil]];
         } else {
             long fixProgress = (long)progress;
             fixProgress = fixProgress > 100 ? 100 : fixProgress;
             NSString* progressText = [NSString stringWithFormat:@"%ld",fixProgress];
-            [self.delegate x5GamePlayer_send_msg:
+            [self.x5Delegate x5GamePlayer_send_msg:
              [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_GAME_LOADING_PROGRESS,@"type",
               progressText, @"progress", @"102400", @"size", nil]];
             
             if (fixProgress >= 100) {
-                [self.delegate x5GamePlayer_send_msg:
+                [self.x5Delegate x5GamePlayer_send_msg:
                  [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_END,@"type", nil]];
             }
         }
     }]];
     
     //通知浏览器已经开始下载
-    [self.delegate x5GamePlayer_send_msg:
+    [self.x5Delegate x5GamePlayer_send_msg:
     [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_LOAD_GAME_START,@"type", nil]];
     
     auto gameResRoot = [[FileUtil getGameRootPathByGameKey:gameKey] cStringUsingEncoding:NSUTF8StringEncoding];
@@ -175,13 +179,13 @@ static id s_gameEngineProtocol;
         CCLOG("Interface orientation is portrait");
     }
     
-    CCEAGLView *eaglView = [CCEAGLView viewWithFrame: CGRectMake(0, 0, screenSize.width, screenSize.height)//[window bounds]
+    CCEAGLView *eaglView = [CCEAGLView viewWithFrame: CGRectMake(0, 0, screenSize.width, screenSize.height)
                                          pixelFormat: kEAGLColorFormatRGBA8
                                          depthFormat: GL_DEPTH24_STENCIL8_OES
                                   preserveBackbuffer: NO
                                           sharegroup: nil
                                        multiSampling: NO
-                                     numberOfSamples: 0 ];
+                                     numberOfSamples: 0];
     [eaglView setMultipleTouchEnabled:YES];
     
     auto glview = cocos2d::GLViewImpl::createWithEAGLView((__bridge void*)eaglView);
@@ -223,7 +227,6 @@ static id s_gameEngineProtocol;
     
     [CocosRuntime reset];
     [Wrapper setCocosRuntimeSDKProxy:nil];
-    
 }
 
 //设置GameEngineRuntimeProxy对象
@@ -231,10 +234,10 @@ static id s_gameEngineProtocol;
 {
     s_gameEngineProtocol = nil;
     s_gameEngineProtocol = self;
-    self.delegate = proxy;
+    self.x5Delegate = proxy;
     
-    if (self.delegate == nil) {
-        CCLOG("game_engine_set_runtime_proxy error, nil");
+    if (proxy == nil) {
+        CCLOG("%s error, proxy is nil", __FUNCTION__);
     }
 }
 
@@ -245,7 +248,7 @@ static id s_gameEngineProtocol;
 
 - (id<MttGameEngineDelegate>)getX5Delegate
 {
-    return self.delegate;
+    return self.x5Delegate;
 }
 
 + (id<MttGameEngineDelegate>)getEngineDelegate
@@ -263,4 +266,5 @@ static id s_gameEngineProtocol;
 - (void)game_engine_send_msg:(NSDictionary*)jsonObj
 {
 }
+
 @end
