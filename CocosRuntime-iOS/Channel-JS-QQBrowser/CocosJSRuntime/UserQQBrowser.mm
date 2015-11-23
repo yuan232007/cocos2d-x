@@ -44,6 +44,7 @@ typedef enum
     if ([super init]) {
         s_userQQBrowserInstance = self;
         _isLogined = false;
+        _isDebug = false;
         _x5Delegate = [MttGameEngine getEngineDelegate];
         [self configDeveloperInfo:[PluginHelper getParamsInfo]];
         [self onActionResult:ACTION_RET_INIT_SUCCESS msg:@"UserQQBrowser init success!"];
@@ -53,6 +54,11 @@ typedef enum
 
 - (void)configDeveloperInfo:(NSMutableDictionary *)devInfo {
     OUTPUT_LOG(@"UserQQBrowser in configDeveloperInfo:%@", devInfo);
+}
+
+- (void)setDebugMode:(BOOL)debug
+{
+    _isDebug = debug;
 }
 
 - (void)debugLog:(NSString *)msg
@@ -91,53 +97,53 @@ typedef enum
     _appSig = [info objectForKey:@"appsig"];
     _loginType = [info objectForKey:@"loginType"];
     
-#if COCOS2D_DEBUG
-    _isLogined = true;
-     _qbOpenID = @"taBoVS558UXGPc5PE1nqgzbrjx4-EP37o6aFrKjUnU9OAEd_-FnEzA";
-     _qbOpenKey = @"MvL0kGspU0c-63UfA6sUG1wD40uD8j0zTz9-RfZrLRIvoP6_Ws0Wgpv534zrwejuiBm1b5fzF95bNh1mi0pg05UCbaTkZLtndYc5S45z92OGp2yGnkvqO2Iefbd4rsf5bDE1lB5VGvg";
-     _refreshToken = @"eJzBzLYCmaS9ec-I92NDmCSHseU5xQpAsj3KiavWBk5L9cLLdzjC9IINLBR2wo4E0j2rqwaifEF164l13nv4mqE1cjqxJ00LuKH-hgsslRNSBICAJtD9GA";
-     _avatarUrl = @"http://q4.qlogo.cn/g?b=qq&k=h2rrhrEUdr4qQ0cL2qSQgQ&s=100&t=528";
-     
-     [self performSelector:@selector(delayLoginCall) withObject:nil afterDelay:1.f];
-#else
-    
-    [_x5Delegate x5GamePlayer_login:info callback:^(NSDictionary *result) {
-        [_x5Delegate x5GamePlayer_send_msg:result];
-        auto fu = cocos2d::FileUtils::getInstance();
-        fu->writeStringToFile( [[UserQQBrowser dictToJSONString:result] cStringUsingEncoding:NSUTF8StringEncoding], fu->getWritablePath() + "/loginResult.txt");
+    if(_isDebug) {
+        _isLogined = true;
+        _qbOpenID = @"taBoVS558UXGPc5PE1nqgzbrjx4-EP37o6aFrKjUnU9OAEd_-FnEzA";
+        _qbOpenKey = @"MvL0kGspU0c-63UfA6sUG1wD40uD8j0zTz9-RfZrLRIvoP6_Ws0Wgpv534zrwejuiBm1b5fzF95bNh1mi0pg05UCbaTkZLtndYc5S45z92OGp2yGnkvqO2Iefbd4rsf5bDE1lB5VGvg";
+        _refreshToken = @"eJzBzLYCmaS9ec-I92NDmCSHseU5xQpAsj3KiavWBk5L9cLLdzjC9IINLBR2wo4E0j2rqwaifEF164l13nv4mqE1cjqxJ00LuKH-hgsslRNSBICAJtD9GA";
+        _avatarUrl = @"http://q4.qlogo.cn/g?b=qq&k=h2rrhrEUdr4qQ0cL2qSQgQ&s=100&t=528";
         
-        NSNumber *loginRet = [result objectForKey:@"result"];
-        if (loginRet) {
-            int retCode = [loginRet intValue];
-            switch (retCode) {
-                case 0:
-                {
-                    _isLogined = true;
-                    _qbOpenID = [NSString stringWithString:[result objectForKey:@"qbopenid"]];
-                    _qbOpenKey = [NSString stringWithString:[result objectForKey:@"qbopenkey"]];
-                    _refreshToken = [NSString stringWithString:[result objectForKey:@"refreshToken"]];
-                    _avatarUrl = [NSString stringWithString:[result objectForKey:@"avatarUrl"]];
-                    
-                    NSMutableDictionary* loginInfo = [result mutableCopy];
-                    [loginInfo setObject:_qbOpenID forKey:@"accountID"];
-                    
-                    [self onActionResult:ACTION_RET_LOGIN_SUCCESS msg:[UserQQBrowser dictToJSONString:loginInfo]];
-                    return;
-                }
-                case -1:
-                {
-                    [self onActionResult:ACTION_RET_LOGIN_CANCEL msg:[UserQQBrowser dictToJSONString:result]];
-                    return;
-                }
-                default:
-                {
-                    [self onActionResult:ACTION_RET_LOGIN_FAIL msg:[UserQQBrowser dictToJSONString:result]];
-                    return;
+        [self performSelector:@selector(delayLoginCall) withObject:nil afterDelay:1.f];
+    }
+    else {
+        [_x5Delegate x5GamePlayer_login:info callback:^(NSDictionary *result) {
+            [_x5Delegate x5GamePlayer_send_msg:result];
+            auto fu = cocos2d::FileUtils::getInstance();
+            fu->writeStringToFile( [[UserQQBrowser dictToJSONString:result] cStringUsingEncoding:NSUTF8StringEncoding], fu->getWritablePath() + "/loginResult.txt");
+            
+            NSNumber *loginRet = [result objectForKey:@"result"];
+            if (loginRet) {
+                int retCode = [loginRet intValue];
+                switch (retCode) {
+                    case 0:
+                    {
+                        _isLogined = true;
+                        _qbOpenID = [NSString stringWithString:[result objectForKey:@"qbopenid"]];
+                        _qbOpenKey = [NSString stringWithString:[result objectForKey:@"qbopenkey"]];
+                        _refreshToken = [NSString stringWithString:[result objectForKey:@"refreshToken"]];
+                        _avatarUrl = [NSString stringWithString:[result objectForKey:@"avatarUrl"]];
+                        
+                        NSMutableDictionary* loginInfo = [result mutableCopy];
+                        [loginInfo setObject:_qbOpenID forKey:@"accountID"];
+                        
+                        [self onActionResult:ACTION_RET_LOGIN_SUCCESS msg:[UserQQBrowser dictToJSONString:loginInfo]];
+                        return;
+                    }
+                    case -1:
+                    {
+                        [self onActionResult:ACTION_RET_LOGIN_CANCEL msg:[UserQQBrowser dictToJSONString:result]];
+                        return;
+                    }
+                    default:
+                    {
+                        [self onActionResult:ACTION_RET_LOGIN_FAIL msg:[UserQQBrowser dictToJSONString:result]];
+                        return;
+                    }
                 }
             }
-        }
-    }];
-#endif
+        }];
+    }
 }
 
 - (void)x5_login:(NSMutableDictionary*)info

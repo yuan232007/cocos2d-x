@@ -2029,8 +2029,13 @@ cc.LabelTTF = cc.Label.extend({
     }
 });
 
-cc.LabelTTF.create = function () {
-    return new cc.LabelTTF();
+cc.LabelTTF.create = function (text, fontName, fontSize, dimensions, hAlignment, vAlignment) {
+    if(arguments.length == 0) {
+        return new cc.LabelTTF();
+    }
+    else {
+        return cc.LabelTTF.createWithFontDefinition(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
+    }
 };
 
 cc.LabelTTF.createWithFontDefinition = function (text, fontName, fontSize, dimensions, hAlignment, vAlignment) {

@@ -10,4 +10,6 @@
 
 - (void)testEngineFunction:(UIView*)rootView;
 
+- (void)setTestGameKey:(NSString*)gameKey;
+
 @end

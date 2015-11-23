@@ -24,9 +24,16 @@
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setFrame:CGRectMake(10, 50, 300, 50)];
     [btn setBackgroundColor:[UIColor darkGrayColor]];
-    [btn setTitle:@"Unzip game resources and test" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(unzipResourcesAndTest) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"测试 带头大哥" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(test_dtdg) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    UIButton * btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn2 setFrame:CGRectMake(10, 110, 300, 50)];
+    [btn2 setBackgroundColor:[UIColor darkGrayColor]];
+    [btn2 setTitle:@"测试 天天挂传奇" forState:UIControlStateNormal];
+    [btn2 addTarget:self action:@selector(test_ttgcq) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +47,16 @@
     return documentsDirectory;
 }
 
-- (void)unzipResourcesAndTest {
+- (void)test_dtdg {
+    [self unzipResourcesAndTest:@"442290542"];
+}
+
+- (void)test_ttgcq {
+    [self unzipResourcesAndTest:@"442290958"];
+}
+
+- (void)unzipResourcesAndTest:(NSString*)gameKey
+{
     NSString * docPath = [self docPath];
     NSString * destPath = [docPath stringByAppendingPathComponent:@"DylibDemo"];
     
@@ -52,6 +68,7 @@
     self.engineGame = [MttGameEngineFactory CreateGameRuntimeEngine];
     
     UIView* rootView = [self view];
+    [[MttGameEngineFramework sharedInstance] setTestGameKey:gameKey];
     [[MttGameEngineFramework sharedInstance] updateRuntimeEngine:self.engineGame];
     [[MttGameEngineFramework sharedInstance] testEngineFunction:rootView];
 }

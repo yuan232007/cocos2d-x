@@ -13,6 +13,7 @@
 @interface UserQQBrowser : NSObject <InterfaceUser>
 
 @property(nonatomic,assign) BOOL isLogined;
+@property(nonatomic,assign) BOOL isDebug;
 
 + (UserQQBrowser *)getInstance;
 
@@ -23,6 +24,7 @@
 - (NSString*)getAppOpenID;
 - (NSString*)getAppOpenKey;
 
+- (void) setDebugMode: (BOOL) debug;
 - (void)debugLog:(NSString*)msg;
 
 /**

@@ -11,9 +11,9 @@
 #import "ChannelConfig.h"
 
 #define COCOS_ONLINE_ADDRESS @"http://playerapi.coco.cn"
+#define COCOS_STAGING_ADDRESS @"http://staging.cocosplay.coco.cn"
 #define COCOS_SANDBOX_ADDRESS @"http://cocosplay.ucenter.appget.cn"
 #define COCOS_OFFLINE_ADDRESS @"http://192.168.52.80"
-#define COCOS_STAGING_ADDRESS @"http://staging.cocosplay.coco.cn"
 
 @implementation NetworkController
 

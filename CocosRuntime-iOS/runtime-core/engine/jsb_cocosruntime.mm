@@ -22,8 +22,6 @@ public:
     void eventCallbackFunc(int percent, bool isFailed)
     {
         cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]{
-            CCLOG("preload percent:%d,isFailed:%d", percent, isFailed);
-            
             if (s_downloadCallback == nullptr) {
                 return;
             }
