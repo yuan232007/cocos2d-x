@@ -48,9 +48,6 @@
     
     float startPercent = [[_loadingInfoList objectAtIndex:currentLoadingIndex] startPercent];
     float globalPercent = [[_loadingInfoList objectAtIndex:currentLoadingIndex] percentOfTotal] / 100.0f * singlePercent + startPercent;
-    if (globalPercent < 0) {
-        ;
-    }
     return globalPercent;
 }
 

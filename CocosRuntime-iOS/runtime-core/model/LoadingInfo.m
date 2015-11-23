@@ -18,9 +18,6 @@
     if (self != nil) {
         self.loadingName = name;
         self.loadingTip = tip;
-        if (percent < 0) {
-            ;
-        }
         self.percentOfTotal = percent;
         self.loadingType = type;
     }
