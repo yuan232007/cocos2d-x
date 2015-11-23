@@ -11,12 +11,12 @@
 
 @interface LoadingProgressController : NSObject
 {
-    NSMutableArray *loadingInfoList;
     NSMutableDictionary *loadingInfoDict;
     NSInteger currentLoadingIndex;
     id<OnLoadingProgressDelegate> onLoadingProgressDelegate;
 }
 
+@property (nonatomic,strong) NSMutableArray *loadingInfoList;
 @property NSMutableDictionary *loadingInfoDict;
 @property id<OnLoadingProgressDelegate> onLoadingProgressDelegate;
 

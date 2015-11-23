@@ -13,13 +13,10 @@
 
 /**/
 static GameInfo *gameInfo = nil;
-static LoadingProgressController *loadingProgressController;
 
 @implementation CocosRuntime
 + (void) initialize
 {
-    loadingProgressController = [[LoadingProgressController alloc] init];
-    [loadingProgressController setOnLoadingProgressDelegate: [[OnLoadingProgressDelegateImpl alloc] init]];
 }
 
 + (void) startPreRuntime: (NSString*) gameKey delegate: (id<LoadingDelegate>) delegate
@@ -37,11 +34,6 @@ static LoadingProgressController *loadingProgressController;
     [CocosRuntimeGroup preloadResGroups:groupsString delegate:delegate];
 }
 
-+ (LoadingProgressController*) getLoadingProgressController
-{
-    return loadingProgressController;
-}
-
 + (void) reset
 {
     [PreRunGame reset];
@@ -49,7 +41,3 @@ static LoadingProgressController *loadingProgressController;
 }
 
 @end
-
-
-
-
