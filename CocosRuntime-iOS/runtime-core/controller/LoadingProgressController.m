@@ -48,6 +48,9 @@
     
     float startPercent = [[_loadingInfoList objectAtIndex:currentLoadingIndex] startPercent];
     float globalPercent = [[_loadingInfoList objectAtIndex:currentLoadingIndex] percentOfTotal] / 100.0f * singlePercent + startPercent;
+    if (globalPercent < 0) {
+        ;
+    }
     return globalPercent;
 }
 
@@ -65,7 +68,6 @@
     
     for (NSInteger i = 0; i < _loadingInfoList.count; i++) {
         LoadingInfo *info = [_loadingInfoList objectAtIndex:i];
-        NSLog(@"===> loading info: %@", info);
         [info setIndex:i];
         [info setStartPercent:percent];
         percent += [info percentOfTotal];
