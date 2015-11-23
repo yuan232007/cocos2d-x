@@ -1,5 +1,6 @@
 #import "MttGameEngineFramework.h"
 #import <objc/NSObject.h>
+#import "UserQQBrowser.h"
 
 @interface MttGameEngineFramework()
 @property (nonatomic, strong) id<MttGameEngineProtocol>   engineGame;
@@ -7,6 +8,9 @@
 @property (strong, nonatomic) UIView *navigationView;
 @property (strong, nonatomic) UIView *gameView;
 @property (strong, nonatomic) UIView *gameRootView;
+@property (nonatomic, strong) UIProgressView* progressView;
+@property (nonatomic, strong) NSString* gameKey;
+@property (nonatomic,assign) int loadProgress;
 @end
 
 @implementation MttGameEngineFramework
@@ -17,6 +21,11 @@
     static MttGameEngineFramework * __singleton__;
     dispatch_once( &once, ^{ __singleton__ = [[MttGameEngineFramework alloc] init]; } );
     return __singleton__;
+}
+
+- (void)setTestGameKey:(NSString *)gameKey
+{
+    _gameKey = gameKey;
 }
 
 - (void)updateRuntimeEngine:(id<MttGameEngineProtocol>)engine
@@ -36,6 +45,15 @@
     }
     
     self.rootView = rootView;
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    _progressView = [[UIProgressView alloc] init];
+    _progressView.frame = CGRectMake(30, screenSize.height * 0.8f, screenSize.width - 60, 200);
+    
+    [_progressView setProgressViewStyle:UIProgressViewStyleDefault];
+    _progressView.progress = 0.0;
+    _progressView.trackTintColor = [UIColor grayColor];
+    _progressView.progressTintColor = [UIColor greenColor];
+    [rootView addSubview:_progressView];
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
         [self.engineGame game_engine_init:nil];
@@ -45,6 +63,10 @@
 - (id)x5GamePlayer_get_value:(NSString*)key
 {
     NSLog(@"x5GamePlayer_get_value");
+    
+    if ([key isEqualToString:@"gameKey"]) {
+        return _gameKey;
+    }
     
     if ([key isEqualToString:@"CacheDir"]) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -140,6 +162,8 @@
             [self.rootView addSubview:self.gameRootView];
             [self.gameRootView addSubview:self.gameView];
             [self.gameRootView addSubview:[self getNavigationView]];
+            
+            [[UserQQBrowser getInstance] setDebugMode:YES];
         }
     }
     
@@ -164,20 +188,29 @@
     }
 }
 
+- (void)updateProgress
+{
+    [_progressView setProgress:(_loadProgress / 100.0f)];
+}
+
 - (void)x5GamePlayer_send_msg:(NSDictionary*)jsonObj
 {
-    //NSLog(@"x5GamePlayer_send_msg");
     NSString* msg = [jsonObj objectForKey:@"type"];
-    if (msg != nil && [msg isEqualToString:MSG_ON_LOAD_GAME_END]) {
-        [self performSelectorOnMainThread:@selector(engine_init_end) withObject:self waitUntilDone:false];
+    if (msg != nil) {
+        if ([msg isEqualToString:MSG_ON_LOAD_GAME_END]) {
+            [self performSelectorOnMainThread:@selector(engine_init_end) withObject:self waitUntilDone:false];
+        }
+        else if ([msg isEqualToString:MSG_ON_GAME_LOADING_PROGRESS]) {
+            NSString* progress = [jsonObj objectForKey:@"progress"];
+            _loadProgress = [progress intValue];
+            [self performSelectorOnMainThread:@selector(updateProgress) withObject:self waitUntilDone:NO];
+        }
     }
 }
 
 - (UIView*)getNavigationView
 {
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    
-    UIView* navigationView = [[UIView alloc] initWithFrame:CGRectMake(screenSize.width - 110, 100, 100, 200)];
+    UIView* navigationView = [[UIView alloc] initWithFrame:CGRectMake(20, 200, 100, 200)];
     
     UIButton * quitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [quitButton setFrame:CGRectMake(0, 0, 100, 30)];
@@ -211,7 +244,10 @@
         [self.engineGame game_engine_onStop];
         
         [self.gameRootView removeFromSuperview];
+        [_progressView removeFromSuperview];
+        
         self.gameRootView = nil;
+        _progressView = nil;
         self.navigationView = nil;
         self.gameView = nil;
     }

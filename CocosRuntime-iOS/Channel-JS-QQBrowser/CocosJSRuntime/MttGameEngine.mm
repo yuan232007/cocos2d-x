@@ -87,15 +87,13 @@ static id s_gameEngineProtocol;
         return;
     }
     
-    //解析game info取得game name、game key、game download url
-    NSString* gameKey,*gameDownloadUrl,*gameName;
+    //解析game info取得game key
+    NSString* gameKey;
     if (gameInfoJson != nil) {
         bool gameInfoInitFlag = false;
         do {
             NSDictionary * gameInfo = [NSJSONSerialization JSONObjectWithData:[gameInfoJson dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-            
             if (gameInfo == nil) { break;}
-            gameName = [gameInfo objectForKey:@"gameName"];
             
             NSString* gameExt = [gameInfo objectForKey:@"ext"];
             if (gameExt == nil) { break;}
@@ -104,15 +102,14 @@ static id s_gameEngineProtocol;
             if (gameExtInfo == nil) { break;}
             
             gameKey = [gameExtInfo objectForKey:@"gameKey"];
-            gameDownloadUrl = [gameExtInfo objectForKey:@"resUrl"];
             gameInfoInitFlag = true;
             
-            NSString *channel = [gameExtInfo objectForKey:@"channel"];
-            if (channel == nil) { break;}
+            //NSString *channel = [gameExtInfo objectForKey:@"channel"];
+            //if (channel == nil) { break;}
         } while (false);
         
         if (gameInfoInitFlag == false) {
-            NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get game info fail! gameName:%@,gameKey:%@,gameDownloadUrl:%@",gameName, gameKey, gameDownloadUrl];
+            NSString* errorMsg = [NSString stringWithFormat:@"game_engine_init:get game info fail!gameKey:%@", gameKey];
             
             [self.x5Delegate x5GamePlayer_send_msg:
              [NSDictionary dictionaryWithObjectsAndKeys:MSG_ON_RUNTIME_CHECK_FAIL,@"type",errorMsg,@"error", nil]];
@@ -120,11 +117,7 @@ static id s_gameEngineProtocol;
         }
     }
     else {
-        //天天挂传奇
-        gameKey = @"442290958";
-        
-        //带头大哥
-        gameKey = @"442290542";
+        gameKey = [self.x5Delegate x5GamePlayer_get_value:@"gameKey"];
     }
     
     [Wrapper setCocosRuntimeSDKVersionCode:1];
