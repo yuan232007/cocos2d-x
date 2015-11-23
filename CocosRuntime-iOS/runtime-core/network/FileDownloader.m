@@ -27,7 +27,7 @@
 
 - (void) start
 {
-    NSLog(@"===> FileDownload startDownload");
+    NSLog(@"===> FileDownload startDownload url:%@", requestURL);
     [fileDownloadDelegate onDownloadStart];
     
     [FileUtil ensureDirectory:[FileUtil getParentDirectory:tempPath]];

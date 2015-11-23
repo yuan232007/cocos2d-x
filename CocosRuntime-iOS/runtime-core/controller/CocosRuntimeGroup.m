@@ -113,7 +113,7 @@ static RTNetworkHelper *networkHelper = nil;
 
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate
 {
-    NSLog(@"CocosRuntimeGroup initialize: %@", groupsString);
+    NSLog(@"===> CocosRuntimeGroup initialize: %@", groupsString);
 
     loadingDelegate = delegate;
 
@@ -134,10 +134,9 @@ static RTNetworkHelper *networkHelper = nil;
         [CocosRuntimeGroup decreaseIndexOfSilentDownload];
         isInCancelDownloadState = FALSE;
         [CocosRuntimeGroup startDownloadGroups];
+    } else {
+        NSLog(@"The group (%@) is downloading!", currentDownloadGroup.groupName);
     }
-    
-    NSLog(@"===> preload resource groups: %@", groupsString);
-    [CocosRuntimeGroup startDownloadGroups];
 }
 
 + (void) reset
@@ -246,51 +245,52 @@ static RTNetworkHelper *networkHelper = nil;
 
 + (void) prepareWaitingDownloadGroups: (NSString*) groupsString
 {
-    NSArray *groupsNameArray = [groupsString componentsSeparatedByString:@":"];
+    @synchronized(self) {
+        [waitingDownloadGroups removeAllObjects];
+        NSArray *groupsNameArray = [groupsString componentsSeparatedByString:@":"];
     
-    currentDownloadName = [groupsNameArray objectAtIndex:0];
-    long totalSize = -1;
-    for (NSString *groupName in groupsNameArray) {
-        if ([self isGroupUpdated:groupName]) {
-            continue;
-        }
+        currentDownloadName = [groupsNameArray objectAtIndex:0];
+        long totalSize = 0;
+        for (NSString *groupName in groupsNameArray) {
+            if ([self isGroupUpdated:groupName]) {
+                continue;
+            }
         
-        if ([waitingDownloadGroups containsObject:groupName]) {
-            continue;
-        }
+            if ([waitingDownloadGroups containsObject:groupName]) {
+                continue;
+            }
         
-        [waitingDownloadGroups addObject:groupName];
+            [waitingDownloadGroups addObject:groupName];
         
-        ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:groupName];
-        if (resGroup != nil) {
-            totalSize += resGroup.groupSize;
-        }
-    }
-    
-    // if downloading group is in the waiting download list, complete the download process first
-    if (currentDownloadGroup != nil && [waitingDownloadGroups containsObject:currentDownloadGroup.groupName]) {
-        [CocosRuntimeGroup removeGroupFromWaitingDownload: currentDownloadGroup.groupName];
-        [waitingDownloadGroups insertObject:currentDownloadGroup.groupName atIndex:0];
-    }
-    
-    // 将此次等待下载的进度进行保存
-    if (waitingDownloadGroups.count != 0) {
-        NSMutableArray *loadingInfos = [NSMutableArray arrayWithCapacity:10];
-        for (NSString *groupName in waitingDownloadGroups) {
             ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:groupName];
             if (resGroup != nil) {
-                // 先计算每一个分组占所有待下载分组的百分比，而每一个分组中，下载占80%，解压占20%
-                float percent = (float)(resGroup.groupSize) / totalSize * 100;
-                
-                LoadingInfo* downloadInfo = [[LoadingInfo alloc] initWith:[GROUP_DOWNLOAD stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.8) type:PROGRESS tip:resGroup.groupName];
-                LoadingInfo* unzipInfo = [[LoadingInfo alloc] initWith:[GROUP_UNZIP stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.2) type:PROGRESS tip:resGroup.groupName];
-                [loadingInfos addObject: downloadInfo];
-                [loadingInfos addObject: unzipInfo];
+                totalSize += resGroup.groupSize;
             }
         }
-        [loadingController setLoadingInfoList:loadingInfos];
-    }
     
+        // if downloading group is in the waiting download list, complete the download process first
+        if (currentDownloadGroup != nil && [waitingDownloadGroups containsObject:currentDownloadGroup.groupName]) {
+            [CocosRuntimeGroup removeGroupFromWaitingDownload: currentDownloadGroup.groupName];
+            [waitingDownloadGroups insertObject:currentDownloadGroup.groupName atIndex:0];
+        }
+    
+        // 将此次等待下载的进度进行保存
+        if (waitingDownloadGroups.count != 0) {
+            NSMutableArray *loadingInfos = [NSMutableArray arrayWithCapacity:10];
+            for (NSString *groupName in waitingDownloadGroups) {
+                ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:groupName];
+                if (resGroup != nil) {
+                    // 先计算每一个分组占所有待下载分组的百分比，而每一个分组中，下载占80%，解压占20%
+                    float percent = (float)(resGroup.groupSize) / totalSize * 100;
+                    LoadingInfo* downloadInfo = [[LoadingInfo alloc] initWith:[GROUP_DOWNLOAD stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.8) type:PROGRESS tip:resGroup.groupName];
+                    LoadingInfo* unzipInfo = [[LoadingInfo alloc] initWith:[GROUP_UNZIP stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.2) type:PROGRESS tip:resGroup.groupName];
+                    [loadingInfos addObject: downloadInfo];
+                    [loadingInfos addObject: unzipInfo];
+                }
+            }
+            [loadingController setLoadingInfoList:loadingInfos];
+        }
+    }
 }
 
 + (id<LoadingDelegate>) getLoadingDelegate
@@ -690,7 +690,6 @@ static RTNetworkHelper *networkHelper = nil;
 {
     // 不是静默下载就回调通知给宿主
     if (![CocosRuntimeGroup isInSilentDownloadState] && loadingDelegate != nil) {
-        NSLog(@"onUpdateOfLoadingInfo: %@", currentLoadingInfo);
         [loadingDelegate onLoadingProgress:[currentLoadingInfo startPercent] max:PROGRESS_MAX];
     }
 }

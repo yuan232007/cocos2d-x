@@ -65,7 +65,6 @@
     
     for (NSInteger i = 0; i < _loadingInfoList.count; i++) {
         LoadingInfo *info = [_loadingInfoList objectAtIndex:i];
-        NSLog(@"===> loading info: %@", info);
         [info setIndex:i];
         [info setStartPercent:percent];
         percent += [info percentOfTotal];
