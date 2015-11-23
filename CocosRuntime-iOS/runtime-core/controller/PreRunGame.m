@@ -41,19 +41,12 @@ static GameConfig* s_rtGameConfig = nil;
 {
     NSLog(@"===> PreRunGame checkStatusBeforeRunGame: %@", gameKey);
     [NetworkController requestGameInfoByGameKey:gameKey callback:^(GameInfo *info, BOOL isFailed) {
-        NSLog(@"===> PreRunGame checkStatusBeforeRunGame: GameInfo: %@", s_rtGameInfo);
+        NSLog(@"===> PreRunGame checkStatusBeforeRunGame: GameInfo: %@", info);
         if (isFailed) {
             [s_rtLoadingDelegate onLoadingError];
         } else {
             s_rtGameInfo = info;
             
-#if COCOS2D_DEBUG
-            NSString *gameDownloadUrl = @"http://testxsg.sy599.com/ttgcqh5/iosruntime/";
-            NSString *gameKey = @"442290958";
-            NSString *gameName = @"天天挂传奇";
-            
-            s_rtGameInfo = [[GameInfo alloc] initWithKey:gameKey withUrl:gameDownloadUrl withName:gameName];
-#endif
             [PreRunGame downloadRemoteConfigFile];
         }
     }];
@@ -105,6 +98,11 @@ static GameConfig* s_rtGameConfig = nil;
 + (GameConfig*) parseGameConfigFile: (NSString*) path
 {
     return [GameConfig parseFromFile:path];
+}
+
++ (GameConfig*)getGameConfig
+{
+    return s_rtGameConfig;
 }
 
 + (void) checkEntryFile

@@ -51,6 +51,8 @@
  */
 + (GameConfig*) parseGameConfigFile: (NSString*) path;
 
++ (GameConfig*)getGameConfig;
+
 /**
  * 检查 main.jsc
  */

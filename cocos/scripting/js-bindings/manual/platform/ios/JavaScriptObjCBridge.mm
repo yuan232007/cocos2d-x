@@ -98,17 +98,20 @@ bool JavaScriptObjCBridge::CallInfo::execute(JSContext *cx,jsval *argv,unsigned 
     Class targetClass = NSClassFromString(className);
     if(!targetClass){
         m_error = JSO_ERR_CLASS_NOT_FOUND;
+        printf("%s,call %s with:%s error:JSO_ERR_CLASS_NOT_FOUND\n",__FUNCTION__, [className cStringUsingEncoding:NSUTF8StringEncoding], [methodName cStringUsingEncoding:NSUTF8StringEncoding]);
         return false;
     }
     SEL methodSel;
     methodSel = NSSelectorFromString(methodName);
     if(!methodSel){
         m_error = JSO_ERR_METHOD_NOT_FOUND;
+        printf("%s,call %s with:%s error:JSO_ERR_METHOD_NOT_FOUND\n",__FUNCTION__, [className cStringUsingEncoding:NSUTF8StringEncoding], [methodName cStringUsingEncoding:NSUTF8StringEncoding]);
         return false;
     }
     methodSel = NSSelectorFromString(methodName);
     NSMethodSignature *methodSig = [targetClass methodSignatureForSelector:(SEL)methodSel];
     if(methodSig == nil){
+        printf("%s,call %s with:%s error:methodSig is nil\n",__FUNCTION__, [className cStringUsingEncoding:NSUTF8StringEncoding], [methodName cStringUsingEncoding:NSUTF8StringEncoding]);
         m_error =  JSO_ERR_METHOD_NOT_FOUND;
         return false;
     }
@@ -166,7 +169,7 @@ bool JavaScriptObjCBridge::CallInfo::execute(JSContext *cx,jsval *argv,unsigned 
             }
             else
             {
-                 m_error = JSO_ERR_TYPE_NOT_SUPPORT;
+                m_error = JSO_ERR_TYPE_NOT_SUPPORT;
                 NSLog(@"not support return type = %s", returnType);
                 return false;
             }

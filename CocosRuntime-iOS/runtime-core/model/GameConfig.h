@@ -63,12 +63,18 @@
     NSInteger versionCode;
     /* 游戏版本名 */
     NSString *versionName;
+    
+    NSMutableDictionary* allConfig;
 }
 
 @property NSString *descript, *designResolutionPolicy, *entryMD5, *entryName, *gameName, *gameType, *manifestMD5, *manifestName, *orientation, *packageName, *projectMD5, *projectName, *security, *versionName, *engine, *engineVersion;
 
 @property NSInteger designResolutionHeight, designResolutionWidth, entrySize, manifestSize, projectSize, versionCode, toolVersion;
 
+@property NSMutableDictionary* allConfig;
+
 + (GameConfig*) parseFromFile: (NSString*) path;
+
+- (NSMutableDictionary*)getGameConfig;
 
 @end

@@ -13,18 +13,24 @@
 @synthesize descript, designResolutionPolicy, entryMD5, entryName, gameName, gameType, manifestMD5, manifestName, orientation, packageName, projectMD5, projectName, security, versionName, engine, engineVersion;
 
 @synthesize designResolutionHeight, designResolutionWidth, entrySize, manifestSize, projectSize,
-versionCode, toolVersion;
+versionCode, toolVersion,allConfig;
+
+- (NSMutableDictionary*)getGameConfig
+{
+    return allConfig;
+}
 
 + (GameConfig*) parseFromFile:(NSString *)path
 {
     GameConfig* gameConfig = [[GameConfig alloc] init];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSData *data = [fileManager contentsAtPath: path];
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     if (jsonDict == nil) {
         return nil;
     }
     
+    gameConfig.allConfig = jsonDict;
     gameConfig.descript = [jsonDict objectForKey:@"description"];
     
     NSDictionary *resolution = [jsonDict objectForKey:@"design_resolution"];

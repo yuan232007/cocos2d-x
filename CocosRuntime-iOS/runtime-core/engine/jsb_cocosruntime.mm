@@ -6,9 +6,14 @@
 //
 #include "jsb_cocosruntime.h"
 #include "cocos2d_specifics.hpp"
-#include "RTNetworkHelper.h"
+
 #import "CocosRuntime.h"
-#import "LoadingAdapter4Tencent.h"
+#import "RTNetworkHelper.h"
+
+#import "MttGameEngine.h"
+#import "../controller/PreRunGame.h"
+#import "../controller/LoadingDelegate.h"
+#import "../model/ChannelConfig.h"
 
 static std::function<void (int percent, bool isFailed)> s_downloadCallback;
 
@@ -58,6 +63,52 @@ public:
 };
 
 const std::string RTCallbacksComponent::NAME = "JSB_RTCallback";
+
+//资源分组下载进度的Adapter
+typedef void(^RTPreloadCallback)(int progress, bool isFailed);
+
+@interface LoadingAdapter4ResGroups : NSObject <LoadingDelegate>
+{
+    RTPreloadCallback reloadCallback;
+}
+
+- (LoadingAdapter4ResGroups*) initWith: (RTPreloadCallback) callback;
+
+@end
+
+@implementation LoadingAdapter4ResGroups
+
+- (LoadingAdapter4ResGroups*) initWith:(RTPreloadCallback)callback
+{
+    self = [super init];
+    if (self != nil) {
+        reloadCallback = callback;
+    }
+    
+    return self;
+}
+
+- (void) onLoadingError
+{
+    NSLog(@"%s", __FUNCTION__);
+    reloadCallback(-1, TRUE);
+}
+
+- (void) onLoadingCompleted
+{
+    NSLog(@"%s", __FUNCTION__);
+    reloadCallback(100, FALSE);
+}
+
+- (void) onLoadingProgress:(float)progress max:(float)max
+{
+    if (progress == max) {
+        return;
+    }
+    reloadCallback(((progress / max) * PROGRESS_MAX), FALSE);
+}
+
+@end
 
 USING_NS_CC;
 
@@ -119,7 +170,7 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
     
     if (s_downloadCallback) {
         NSString* groups = [NSString stringWithUTF8String:resGroups.c_str()];
-        LoadingAdapter4Tencent *delegate = [[LoadingAdapter4Tencent alloc] initWith:^(int progress, bool isFailed){
+        LoadingAdapter4ResGroups *delegate = [[LoadingAdapter4ResGroups alloc] initWith:^(int progress, bool isFailed){
                 if (s_downloadCallback) {
                     s_downloadCallback(progress, isFailed);
                 }
@@ -142,12 +193,55 @@ static bool JSB_runtime_getNetworkType(JSContext *cx, uint32_t argc, jsval *vp) 
     return true;
 }
 
+extern JSObject *jsb_cocos2d_Director_prototype;
+
+static bool JSB_runtime_director_end(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    auto args = JS::CallArgsFromVp(argc, vp);
+    
+    [[MttGameEngine getEngineDelegate] x5GamePlayer_stop_game_engine];
+    
+    args.rval().setUndefined();
+    
+    return true;
+}
+
 void jsb_register_cocosruntime(JSContext* cx, JS::HandleObject global)
 {
     JS::RootedObject runtimeObj(cx);
     get_or_create_js_obj(cx, global, "runtime", &runtimeObj);
 
     JS_DefineFunction(cx, runtimeObj, "preload", JSB_runtime_preload, 3, JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
-    
     JS_DefineFunction(cx, runtimeObj, "getNetworkType", JSB_runtime_getNetworkType, 0, JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
+    
+    //把游戏相关配置及渠道ID、设备ID传到js层
+    NSMutableDictionary* gameConfig = [[PreRunGame getGameConfig] getGameConfig];
+    [gameConfig setObject:[ChannelConfig getChannelID] forKey:@"channel_id"];
+    [gameConfig setObject:[[[UIDevice currentDevice] identifierForVendor] UUIDString] forKey:@"device_id"];
+    //boot_args = game_engine_init参数game info
+    //[gameConfig setObject:@"" forKey:@"boot_args"];
+    NSString* gameConfigJson = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:gameConfig options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding];
+    
+    JS::RootedValue outVal(cx);
+    jsval strVal = c_string_to_jsval(cx, [gameConfigJson cStringUsingEncoding:NSUTF8StringEncoding]);
+    bool ok = JS_ParseJSON(cx, JS::RootedString(cx, strVal.toString()), &outVal);
+    if (ok)
+    {
+        JS_DefineProperty(cx, runtimeObj, "config", outVal, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+    }
+    else
+    {
+        printf("%s:parse game config to json fail\n", __FUNCTION__);
+    }
+    
+    //拦截Director::end,走QQ浏览器runtime游戏退出流程
+    JS::RootedObject ccObj(cx);
+    JS::RootedValue tmpVal(cx);
+    JS::RootedObject tmpObj(cx);
+    get_or_create_js_obj(cx, global, "cc", &ccObj);
+    JS_GetProperty(cx, ccObj, "Director", &tmpVal);
+    tmpObj = tmpVal.toObjectOrNull();
+    tmpObj.set(jsb_cocos2d_Director_prototype);
+    JS_DefineFunction(cx, tmpObj, "end", JSB_runtime_director_end, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+    
 }

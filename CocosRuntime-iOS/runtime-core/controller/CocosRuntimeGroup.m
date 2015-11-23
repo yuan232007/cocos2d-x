@@ -227,7 +227,6 @@ static RTNetworkHelper *networkHelper = nil;
     [ZipHelper unzipFileAtPath:groupPath
             toDestination:[FileUtil getGameRootPath:gameInfo]
             progressHandler:^(NSString *entry, long entryNumber, long total) {
-                NSLog(@"!!!! Unzip onProgress: %ld/%ld", entryNumber, total);
                 [delegate onProgressOfUnzip:entryNumber total:total];
             }
             completionHandler:^(NSString *zipFilePath, BOOL succeeded, NSError *error) {
@@ -248,7 +247,6 @@ static RTNetworkHelper *networkHelper = nil;
 + (void) prepareWaitingDownloadGroups: (NSString*) groupsString
 {
     NSArray *groupsNameArray = [groupsString componentsSeparatedByString:@":"];
-    NSLog(@"===> prepareWaitingDownloadGroups:%@", groupsNameArray);
     
     currentDownloadName = [groupsNameArray objectAtIndex:0];
     long totalSize = -1;
@@ -496,7 +494,6 @@ static RTNetworkHelper *networkHelper = nil;
 + (int) increaseIndexOfSilentDownload
 {
     ++currentDownloadIndex;
-    NSLog(@"increase current download index: %d", currentDownloadIndex);
     return currentDownloadIndex;
 }
 

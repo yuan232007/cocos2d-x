@@ -51,16 +51,19 @@ static bool sendComponentEventToJS(Component* node, int action)
 {
     auto scriptEngine = ScriptEngineManager::getInstance()->getScriptEngine();
     
-    if (scriptEngine->isCalledFromScript())
+    if (scriptEngine)
     {
-        scriptEngine->setCalledFromScript(false);
-    }
-    else
-    {
-        BasicScriptData data(node,(void*)&action);
-        ScriptEvent scriptEvent(kComponentEvent,(void*)&data);
-        if (scriptEngine->sendEvent(&scriptEvent))
-            return true;
+        if (scriptEngine->isCalledFromScript())
+        {
+            scriptEngine->setCalledFromScript(false);
+        }
+        else
+        {
+            BasicScriptData data(node,(void*)&action);
+            ScriptEvent scriptEvent(kComponentEvent,(void*)&data);
+            if (scriptEngine->sendEvent(&scriptEvent))
+                return true;
+        }
     }
     
     return false;
