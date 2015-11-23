@@ -280,7 +280,7 @@ static RTNetworkHelper *networkHelper = nil;
             ResGroup *resGroup = [CocosRuntimeGroup findGroupByName:groupName];
             if (resGroup != nil) {
                 // 先计算每一个分组占所有待下载分组的百分比，而每一个分组中，下载占80%，解压占20%
-                float percent = (float)(resGroup.groupSize / totalSize) * 100;
+                float percent = (float)(resGroup.groupSize) / totalSize * 100;
                 
                 LoadingInfo* downloadInfo = [[LoadingInfo alloc] initWith:[GROUP_DOWNLOAD stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.8) type:PROGRESS tip:resGroup.groupName];
                 LoadingInfo* unzipInfo = [[LoadingInfo alloc] initWith:[GROUP_UNZIP stringByAppendingString: groupName] percent:(NSInteger)(percent * 0.2) type:PROGRESS tip:resGroup.groupName];
@@ -288,7 +288,7 @@ static RTNetworkHelper *networkHelper = nil;
                 [loadingInfos addObject: unzipInfo];
             }
         }
-        [[CocosRuntime getLoadingProgressController] setLoadingInfoList:loadingInfos];
+        [loadingController setLoadingInfoList:loadingInfos];
     }
     
 }
@@ -612,7 +612,8 @@ static RTNetworkHelper *networkHelper = nil;
 
 - (void) onProgressOfDownload: (long) written total:(long) total
 {
-    float percent = [loadingController percentFromSingleToGlobal:(100.0f * written / resGroup.groupSize)];
+    float downloadOfPercent = 100.0f * written / resGroup.groupSize;
+    float percent = [loadingController percentFromSingleToGlobal: downloadOfPercent];
     if (!isInSilentDownloadState) {
         [loadingDelegate onLoadingProgress:percent max:PROGRESS_MAX];
     }
@@ -677,8 +678,8 @@ static RTNetworkHelper *networkHelper = nil;
 {
     // 如果是不是静默下载，则发送更新界面的通知
     if (![CocosRuntimeGroup isInSilentDownloadState]) {
-        NSLog(@"===> onProgressOfUnzip: %f", ((float) (written) / total) * 100);
-        NSInteger globalPercent = [loadingController percentFromSingleToGlobal:((float) (written) / total) * 100];
+        NSLog(@"===> onProgressOfUnzip: %f", ((float) written / total) * 100);
+        NSInteger globalPercent = [loadingController percentFromSingleToGlobal:((float)written / total) * 100];
         [loadingDelegate onLoadingProgress:globalPercent max:100.0f];
     }
 }

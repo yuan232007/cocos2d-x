@@ -42,18 +42,19 @@
 
 - (float) percentFromSingleToGlobal: (float)singlePercent
 {
-    if (loadingInfoList == nil || currentLoadingIndex < 0 || currentLoadingIndex >= loadingInfoList.count) {
+    if (_loadingInfoList == nil || currentLoadingIndex < 0 || currentLoadingIndex >= _loadingInfoList.count) {
         return singlePercent;
     }
     
-    float startPercent = [[loadingInfoList objectAtIndex:currentLoadingIndex] startPercent];
-    float globalPercent = [[loadingInfoList objectAtIndex:currentLoadingIndex] percentOfTotal] / 100.0f * singlePercent + startPercent;
+    float startPercent = [[_loadingInfoList objectAtIndex:currentLoadingIndex] startPercent];
+    float globalPercent = [[_loadingInfoList objectAtIndex:currentLoadingIndex] percentOfTotal] / 100.0f * singlePercent + startPercent;
     return globalPercent;
 }
 
 - (void) setLoadingInfoList: (NSMutableArray*) list
 {
-    loadingInfoList = list;
+    _loadingInfoList = list;
+
     NSInteger percent = 0;
     if (loadingInfoDict == nil) {
         loadingInfoDict = [NSMutableDictionary dictionaryWithCapacity:20];
@@ -62,8 +63,8 @@
     [loadingInfoDict removeAllObjects];
     currentLoadingIndex = 0;
     
-    for (NSInteger i = 0; i < loadingInfoList.count; i++) {
-        LoadingInfo *info = [loadingInfoList objectAtIndex:i];
+    for (NSInteger i = 0; i < _loadingInfoList.count; i++) {
+        LoadingInfo *info = [_loadingInfoList objectAtIndex:i];
         NSLog(@"===> loading info: %@", info);
         [info setIndex:i];
         [info setStartPercent:percent];
@@ -76,18 +77,18 @@
 
 - (void) setCurrentLoadingIndex: (NSInteger) index
 {
-    if (loadingInfoList == nil || index < 0 || index >= loadingInfoList.count) {
+    if (_loadingInfoList == nil || index < 0 || index >= _loadingInfoList.count) {
         NSLog(@"===> Invalid index:%ld", (long)index);
     } else {
         currentLoadingIndex = index;
-        LoadingInfo *info = [loadingInfoList objectAtIndex:currentLoadingIndex];
+        LoadingInfo *info = [_loadingInfoList objectAtIndex:currentLoadingIndex];
         [onLoadingProgressDelegate onUpdateOfLoadingInfo:info];
     }
 }
 
 - (void) setCurrentLoadingIndexByName: (NSString*) name
 {
-    if (loadingInfoList != nil && loadingInfoDict != nil) {
+    if (_loadingInfoList != nil && loadingInfoDict != nil) {
         LoadingInfo *info = [loadingInfoDict objectForKey:name];
         if (info != nil) {
             [self setCurrentLoadingIndex:[info index]];
