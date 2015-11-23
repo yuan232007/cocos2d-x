@@ -678,7 +678,6 @@ static RTNetworkHelper *networkHelper = nil;
 {
     // 如果是不是静默下载，则发送更新界面的通知
     if (![CocosRuntimeGroup isInSilentDownloadState]) {
-        NSLog(@"===> onProgressOfUnzip: %f", ((float) written / total) * 100);
         NSInteger globalPercent = [loadingController percentFromSingleToGlobal:((float)written / total) * 100];
         [loadingDelegate onLoadingProgress:globalPercent max:100.0f];
     }

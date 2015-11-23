@@ -7,56 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB1036A91C02E92B008344E3 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1036A81C02E92B008344E3 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB1036AA1C02E92B008344E3 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1036A81C02E92B008344E3 /* LoadingInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DBA1BFF0AD1002914AB /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D841BFF0AD1002914AB /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DBB1BFF0AD1002914AB /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D841BFF0AD1002914AB /* CocosRuntime.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DBC1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DBD1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DBE1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DBF1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC01BFF0AD1002914AB /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC11BFF0AD1002914AB /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC41BFF0AD1002914AB /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D901BFF0AD1002914AB /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC51BFF0AD1002914AB /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D901BFF0AD1002914AB /* LoadingProgressController.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC61BFF0AD1002914AB /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D941BFF0AD1002914AB /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC71BFF0AD1002914AB /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D941BFF0AD1002914AB /* PreRunGame.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DC81BFF0AD1002914AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
-		BB881DC91BFF0AD1002914AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
-		BB881DCA1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */; settings = {ASSET_TAGS = (); }; };
-		BB881DCB1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */; settings = {ASSET_TAGS = (); }; };
-		BB881DCC1BFF0AD1002914AB /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DCD1BFF0AD1002914AB /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DCE1BFF0AD1002914AB /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9E1BFF0AD1002914AB /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DCF1BFF0AD1002914AB /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9E1BFF0AD1002914AB /* GameConfig.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD01BFF0AD1002914AB /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA01BFF0AD1002914AB /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD11BFF0AD1002914AB /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA01BFF0AD1002914AB /* GameInfo.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD21BFF0AD1002914AB /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA21BFF0AD1002914AB /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD31BFF0AD1002914AB /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA21BFF0AD1002914AB /* GameManifest.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD41BFF0AD1002914AB /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA41BFF0AD1002914AB /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD51BFF0AD1002914AB /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA41BFF0AD1002914AB /* GroupPatch.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD61BFF0AD1002914AB /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA61BFF0AD1002914AB /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD71BFF0AD1002914AB /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA61BFF0AD1002914AB /* ResGroup.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD81BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DD91BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DDA1BFF0AD1002914AB /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAC1BFF0AD1002914AB /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DDB1BFF0AD1002914AB /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAC1BFF0AD1002914AB /* FileDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DDC1BFF0AD1002914AB /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAE1BFF0AD1002914AB /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DDD1BFF0AD1002914AB /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAE1BFF0AD1002914AB /* NetworkController.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DDE1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */; settings = {ASSET_TAGS = (); }; };
-		BB881DDF1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */; settings = {ASSET_TAGS = (); }; };
-		BB881DE01BFF0AD1002914AB /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB21BFF0AD1002914AB /* RTReachability.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DE11BFF0AD1002914AB /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB21BFF0AD1002914AB /* RTReachability.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DE21BFF0AD1002914AB /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB51BFF0AD1002914AB /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DE31BFF0AD1002914AB /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB51BFF0AD1002914AB /* FileUtil.m */; settings = {ASSET_TAGS = (); }; };
-		BB881DE41BFF0AD1002914AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB61BFF0AD1002914AB /* zip.cpp */; settings = {ASSET_TAGS = (); }; };
-		BB881DE51BFF0AD1002914AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB61BFF0AD1002914AB /* zip.cpp */; settings = {ASSET_TAGS = (); }; };
-		BB881DE61BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; settings = {ASSET_TAGS = (); }; };
-		BB881DE71BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; settings = {ASSET_TAGS = (); }; };
-		BBBFEFF51BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
-		BBBFEFF61BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; settings = {ASSET_TAGS = (); }; };
-		BBEFD00E1C02AFE500B5FEF1 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEFD00D1C02AFE500B5FEF1 /* ImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		BBEFD00F1C02AFE500B5FEF1 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEFD00D1C02AFE500B5FEF1 /* ImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BB1036A91C02E92B008344E3 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1036A81C02E92B008344E3 /* LoadingInfo.m */; };
+		BB1036AA1C02E92B008344E3 /* LoadingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1036A81C02E92B008344E3 /* LoadingInfo.m */; };
+		BB881DBA1BFF0AD1002914AB /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D841BFF0AD1002914AB /* CocosRuntime.m */; };
+		BB881DBB1BFF0AD1002914AB /* CocosRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D841BFF0AD1002914AB /* CocosRuntime.m */; };
+		BB881DBC1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */; };
+		BB881DBD1BFF0AD1002914AB /* CocosRuntimeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */; };
+		BB881DBE1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */; };
+		BB881DBF1BFF0AD1002914AB /* CocosRuntimeGroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D891BFF0AD1002914AB /* CocosRuntimeGroupPatch.m */; };
+		BB881DC01BFF0AD1002914AB /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */; };
+		BB881DC11BFF0AD1002914AB /* GroupVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D8B1BFF0AD1002914AB /* GroupVersionManager.m */; };
+		BB881DC41BFF0AD1002914AB /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D901BFF0AD1002914AB /* LoadingProgressController.m */; };
+		BB881DC51BFF0AD1002914AB /* LoadingProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D901BFF0AD1002914AB /* LoadingProgressController.m */; };
+		BB881DC61BFF0AD1002914AB /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D941BFF0AD1002914AB /* PreRunGame.m */; };
+		BB881DC71BFF0AD1002914AB /* PreRunGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D941BFF0AD1002914AB /* PreRunGame.m */; };
+		BB881DC81BFF0AD1002914AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */; };
+		BB881DC91BFF0AD1002914AB /* CocosDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881D961BFF0AD1002914AB /* CocosDelegate.cpp */; };
+		BB881DCA1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */; };
+		BB881DCB1BFF0AD1002914AB /* jsb_cocosruntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881D991BFF0AD1002914AB /* jsb_cocosruntime.mm */; };
+		BB881DCC1BFF0AD1002914AB /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */; };
+		BB881DCD1BFF0AD1002914AB /* ChannelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9C1BFF0AD1002914AB /* ChannelConfig.m */; };
+		BB881DCE1BFF0AD1002914AB /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9E1BFF0AD1002914AB /* GameConfig.m */; };
+		BB881DCF1BFF0AD1002914AB /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881D9E1BFF0AD1002914AB /* GameConfig.m */; };
+		BB881DD01BFF0AD1002914AB /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA01BFF0AD1002914AB /* GameInfo.m */; };
+		BB881DD11BFF0AD1002914AB /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA01BFF0AD1002914AB /* GameInfo.m */; };
+		BB881DD21BFF0AD1002914AB /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA21BFF0AD1002914AB /* GameManifest.m */; };
+		BB881DD31BFF0AD1002914AB /* GameManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA21BFF0AD1002914AB /* GameManifest.m */; };
+		BB881DD41BFF0AD1002914AB /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA41BFF0AD1002914AB /* GroupPatch.m */; };
+		BB881DD51BFF0AD1002914AB /* GroupPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA41BFF0AD1002914AB /* GroupPatch.m */; };
+		BB881DD61BFF0AD1002914AB /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA61BFF0AD1002914AB /* ResGroup.m */; };
+		BB881DD71BFF0AD1002914AB /* ResGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA61BFF0AD1002914AB /* ResGroup.m */; };
+		BB881DD81BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */; };
+		BB881DD91BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DA91BFF0AD1002914AB /* FileDownloadAdapter.m */; };
+		BB881DDA1BFF0AD1002914AB /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAC1BFF0AD1002914AB /* FileDownloader.m */; };
+		BB881DDB1BFF0AD1002914AB /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAC1BFF0AD1002914AB /* FileDownloader.m */; };
+		BB881DDC1BFF0AD1002914AB /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAE1BFF0AD1002914AB /* NetworkController.m */; };
+		BB881DDD1BFF0AD1002914AB /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DAE1BFF0AD1002914AB /* NetworkController.m */; };
+		BB881DDE1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */; };
+		BB881DDF1BFF0AD1002914AB /* RTNetworkHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB01BFF0AD1002914AB /* RTNetworkHelper.mm */; };
+		BB881DE01BFF0AD1002914AB /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB21BFF0AD1002914AB /* RTReachability.m */; };
+		BB881DE11BFF0AD1002914AB /* RTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB21BFF0AD1002914AB /* RTReachability.m */; };
+		BB881DE21BFF0AD1002914AB /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB51BFF0AD1002914AB /* FileUtil.m */; };
+		BB881DE31BFF0AD1002914AB /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB51BFF0AD1002914AB /* FileUtil.m */; };
+		BB881DE41BFF0AD1002914AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB61BFF0AD1002914AB /* zip.cpp */; };
+		BB881DE51BFF0AD1002914AB /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB61BFF0AD1002914AB /* zip.cpp */; };
+		BB881DE61BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; };
+		BB881DE71BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; };
+		BBBFEFF51BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; };
+		BBBFEFF61BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; };
 		ED2667281BFDA1E400E9BF62 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666C41BFDA0E000E9BF62 /* libcocos2d iOS.a */; };
 		ED2667291BFDA1EA00E9BF62 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666CD1BFDA0F100E9BF62 /* libjscocos2d iOS.a */; };
 		ED26672A1BFDA1F300E9BF62 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666C41BFDA0E000E9BF62 /* libcocos2d iOS.a */; };
@@ -76,8 +74,6 @@
 		ED2667B91BFDA79800E9BF62 /* SocialQQBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2667441BFDA56000E9BF62 /* SocialQQBrowser.m */; };
 		ED2667BA1BFDA79B00E9BF62 /* UserQQBrowser.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED2667461BFDA56000E9BF62 /* UserQQBrowser.mm */; };
 		ED2667D01BFDA82A00E9BF62 /* script in Resources */ = {isa = PBXBuildFile; fileRef = ED2667CF1BFDA82A00E9BF62 /* script */; };
-		ED2667D71BFDAAE100E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */; };
-		ED2667D81BFDAAE900E9BF62 /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */; };
 		ED464A721BE8B2EB005D120E /* MttGameEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDAF7CDB1BCCB6B90032B305 /* MttGameEngine.mm */; };
 		ED464A791BE8B2EB005D120E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
 		ED464A7A1BE8B2EB005D120E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
@@ -101,6 +97,8 @@
 		EDAF7CE51BCCD1450032B305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */; };
 		EDAF7CE71BCCD1E50032B305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE61BCCD1E50032B305 /* UIKit.framework */; };
 		EDAF7CE91BCCD25D0032B305 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */; };
+		EDBD40351C031612000E301F /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBD40341C031612000E301F /* libPluginProtocol.a */; };
+		EDBD40361C031619000E301F /* libPluginProtocol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBD40341C031612000E301F /* libPluginProtocol.a */; };
 		EDBD73381BF484FB0005FED4 /* Cocosv3GameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED464A5C1BE8B24D005D120E /* Cocosv3GameEngineFactory.mm */; };
 		EDBD733E1BF486EB0005FED4 /* MttGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDBD733D1BF486EB0005FED4 /* MttGameEngineFactory.mm */; };
 		EDBD73591BF4894F0005FED4 /* libCocosJSRuntime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED464A8B1BE8B2EB005D120E /* libCocosJSRuntime.a */; };
@@ -273,8 +271,6 @@
 		BB881DB91BFF0AD1002914AB /* ZipHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipHelper.mm; sourceTree = "<group>"; };
 		BBBFEFF31BFDBDE300766FDA /* LoadingAdapter4Tencent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAdapter4Tencent.h; sourceTree = "<group>"; };
 		BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAdapter4Tencent.m; sourceTree = "<group>"; };
-		BBEFD00C1C02AFE500B5FEF1 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
-		BBEFD00D1C02AFE500B5FEF1 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		D50C68411BC64F9F00655E6E /* MttGameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngine.h; sourceTree = "<group>"; };
 		D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineDelegate.h; sourceTree = "<group>"; };
 		D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFactory.h; sourceTree = "<group>"; };
@@ -296,7 +292,6 @@
 		ED26679F1BFDA65800E9BF62 /* manualanysdkbindings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = manualanysdkbindings.cpp; path = "../../AnySDK-JSBindings/manualanysdkbindings.cpp"; sourceTree = "<group>"; };
 		ED2667A01BFDA65800E9BF62 /* manualanysdkbindings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = manualanysdkbindings.hpp; path = "../../AnySDK-JSBindings/manualanysdkbindings.hpp"; sourceTree = "<group>"; };
 		ED2667CF1BFDA82A00E9BF62 /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = script; path = "../../runtime-Script-JSC/script"; sourceTree = "<group>"; };
-		ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPluginProtocol.a; path = "../AnySDK-JSBindings/libPluginProtocol.a"; sourceTree = "<group>"; };
 		ED464A5B1BE8B24D005D120E /* Cocosv3GameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocosv3GameEngineFactory.h; sourceTree = "<group>"; };
 		ED464A5C1BE8B24D005D120E /* Cocosv3GameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cocosv3GameEngineFactory.mm; sourceTree = "<group>"; };
 		ED464A8B1BE8B2EB005D120E /* libCocosJSRuntime.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCocosJSRuntime.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +308,7 @@
 		EDAF7CE41BCCD1450032B305 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EDAF7CE61BCCD1E50032B305 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDAF7CE81BCCD25D0032B305 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EDBD40341C031612000E301F /* libPluginProtocol.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPluginProtocol.a; path = "../AnySDK-JSBindings/libPluginProtocol.a"; sourceTree = "<group>"; };
 		EDBD72F91BF0709D0005FED4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EDBD733D1BF486EB0005FED4 /* MttGameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MttGameEngineFactory.mm; sourceTree = "<group>"; };
 		EDBD735C1BF48B930005FED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -346,7 +342,7 @@
 				EDAF7CD61BCCB53E0032B305 /* MediaPlayer.framework in Frameworks */,
 				EDAF7CD41BCCB5140032B305 /* AudioToolbox.framework in Frameworks */,
 				EDAF7CD21BCCB5000032B305 /* OpenGLES.framework in Frameworks */,
-				ED2667D81BFDAAE900E9BF62 /* libPluginProtocol.a in Frameworks */,
+				EDBD40361C031619000E301F /* libPluginProtocol.a in Frameworks */,
 				EDAF7CD01BCCB4EE0032B305 /* OpenAL.framework in Frameworks */,
 				EDAF7CCE1BCCB4D90032B305 /* libsqlite3.tbd in Frameworks */,
 				EDAF7CCC1BCCB4CB0032B305 /* libz.tbd in Frameworks */,
@@ -359,7 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED2667D71BFDAAE100E9BF62 /* libPluginProtocol.a in Frameworks */,
+				EDBD40351C031612000E301F /* libPluginProtocol.a in Frameworks */,
 				ED2667291BFDA1EA00E9BF62 /* libjscocos2d iOS.a in Frameworks */,
 				ED2667281BFDA1E400E9BF62 /* libcocos2d iOS.a in Frameworks */,
 				ED464A791BE8B2EB005D120E /* QuartzCore.framework in Frameworks */,
@@ -461,8 +457,6 @@
 		BB881D851BFF0AD1002914AB /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				BBEFD00C1C02AFE500B5FEF1 /* ImageDownloader.h */,
-				BBEFD00D1C02AFE500B5FEF1 /* ImageDownloader.m */,
 				BB881D861BFF0AD1002914AB /* CocosRuntimeGroup.h */,
 				BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */,
 				BB881D881BFF0AD1002914AB /* CocosRuntimeGroupPatch.h */,
@@ -586,7 +580,7 @@
 		EDCA007D1BCF87C0006842D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ED2667D61BFDAAE100E9BF62 /* libPluginProtocol.a */,
+				EDBD40341C031612000E301F /* libPluginProtocol.a */,
 				EDBD735C1BF48B930005FED4 /* SystemConfiguration.framework */,
 				EDBD72F91BF0709D0005FED4 /* MobileCoreServices.framework */,
 				EDC9C4DD1BE0683E000C45FE /* libsystem_configuration.tbd */,
@@ -828,7 +822,6 @@
 				BB881DE41BFF0AD1002914AB /* zip.cpp in Sources */,
 				BB1036A91C02E92B008344E3 /* LoadingInfo.m in Sources */,
 				BB881DC01BFF0AD1002914AB /* GroupVersionManager.m in Sources */,
-				BBEFD00E1C02AFE500B5FEF1 /* ImageDownloader.m in Sources */,
 				BB881DDA1BFF0AD1002914AB /* FileDownloader.m in Sources */,
 				BB881DD21BFF0AD1002914AB /* GameManifest.m in Sources */,
 				ED2667A11BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */,
@@ -869,7 +862,6 @@
 				BB881DE51BFF0AD1002914AB /* zip.cpp in Sources */,
 				BB1036AA1C02E92B008344E3 /* LoadingInfo.m in Sources */,
 				BB881DC11BFF0AD1002914AB /* GroupVersionManager.m in Sources */,
-				BBEFD00F1C02AFE500B5FEF1 /* ImageDownloader.m in Sources */,
 				BB881DDB1BFF0AD1002914AB /* FileDownloader.m in Sources */,
 				BB881DD31BFF0AD1002914AB /* GameManifest.m in Sources */,
 				EDBD73381BF484FB0005FED4 /* Cocosv3GameEngineFactory.mm in Sources */,
@@ -1116,8 +1108,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
@@ -1140,7 +1132,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.JSRuntime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../.. $(SRCROOT)/../../cocos $(SRCROOT)/../../cocos/platform $(SRCROOT)/../../cocos/editor-support $(SRCROOT)/../../external/sources $(SRCROOT)/../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../external/ios/include $(SRCROOT)/../../external/ios/include/spidermonkey $(SRCROOT)/../../CocosRuntime-iOS/Channels-JS/QQBrowser $(SRCROOT)/../../CocosRuntime-iOS/AnySDK-JSBindings/include $(SRCROOT)/../../CocosRuntime-iOS/AnySDK-JSBindings";
@@ -1157,8 +1149,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
@@ -1181,7 +1173,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocosplay.JSRuntime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91ac5931-6515-4b25-8999-f194e355d96d";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../.. $(SRCROOT)/../../cocos $(SRCROOT)/../../cocos/platform $(SRCROOT)/../../cocos/editor-support $(SRCROOT)/../../external/sources $(SRCROOT)/../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../external/ios/include $(SRCROOT)/../../external/ios/include/spidermonkey $(SRCROOT)/../../CocosRuntime-iOS/Channels-JS/QQBrowser $(SRCROOT)/../../CocosRuntime-iOS/AnySDK-JSBindings/include $(SRCROOT)/../../CocosRuntime-iOS/AnySDK-JSBindings";
 				VALID_ARCHS = "arm64 armv7 i386 x86_64";
@@ -1220,7 +1212,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocos.JSRuntimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../.. $(SRCROOT)/../../cocos $(SRCROOT)/../../cocos/editor-support $(SRCROOT)/../../extensions $(SRCROOT)/../../external/sources $(SRCROOT)/../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../external/ios/include $(SRCROOT)/../../external/ios/include/spidermonkey $(SRCROOT)/../../cocos/platform $(SRCROOT)/CocosJSRuntime/anysdk";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../.. $(SRCROOT)/../../cocos $(SRCROOT)/../../cocos/editor-support $(SRCROOT)/../../extensions $(SRCROOT)/../../external/sources $(SRCROOT)/../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../external/ios/include $(SRCROOT)/../../external/ios/include/spidermonkey $(SRCROOT)/../../cocos/platform $(SRCROOT)/../../CocosRuntime-iOS/AnySDK-JSBindings/include";
 			};
 			name = Debug;
 		};
@@ -1255,7 +1247,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocos.JSRuntimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../.. $(SRCROOT)/../../cocos $(SRCROOT)/../../cocos/editor-support $(SRCROOT)/../../extensions $(SRCROOT)/../../external/sources $(SRCROOT)/../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../external/ios/include $(SRCROOT)/../../external/ios/include/spidermonkey $(SRCROOT)/../../cocos/platform $(SRCROOT)/CocosJSRuntime/anysdk";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../.. $(SRCROOT)/../../cocos $(SRCROOT)/../../cocos/editor-support $(SRCROOT)/../../extensions $(SRCROOT)/../../external/sources $(SRCROOT)/../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../external/ios/include $(SRCROOT)/../../external/ios/include/spidermonkey $(SRCROOT)/../../cocos/platform $(SRCROOT)/../../CocosRuntime-iOS/AnySDK-JSBindings/include";
 			};
 			name = Release;
 		};
