@@ -656,8 +656,6 @@ static RTNetworkHelper *networkHelper = nil;
     
     if (waitingDownloadGroups.count == 0 && [CocosRuntimeGroup isSilentDownloadEnabled] && ![CocosRuntimeGroup isInCancelDownloadState]) {
         [CocosRuntimeGroup silentDownloadNextGroup];
-    } else {
-        NSLog(@"===> Don't silent download ..., isInCancelDownload: %d", [CocosRuntimeGroup isInCancelDownloadState]);
     }
 }
 

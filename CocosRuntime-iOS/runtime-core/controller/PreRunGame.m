@@ -155,7 +155,6 @@ static GameConfig* s_rtGameConfig = nil;
 
 + (void) notifyProgress: (float) progress max:(float)max
 {
-    NSLog(@"PreRunGame notifyProgress progress:%f max: %f", progress, max);
     if (s_rtLoadingDelegate != nil) {
         [s_rtLoadingDelegate onLoadingProgress:progress max:max];
     }

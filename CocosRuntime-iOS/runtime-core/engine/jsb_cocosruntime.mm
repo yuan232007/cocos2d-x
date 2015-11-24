@@ -21,7 +21,7 @@ class JSPreloadCallbackWrapper: public JSCallbackWrapper {
 public:
     void eventCallbackFunc(int percent, bool isFailed)
     {
-        cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]{
+        cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([this, percent, isFailed]{
             if (s_downloadCallback == nullptr) {
                 return;
             }
@@ -32,15 +32,19 @@ public:
             
             if (!callback.isNullOrUndefined())
             {
-                char statusText[60];
-                sprintf(statusText, "{percent:%d, isCompleted:%s, isFailed:%s}", percent,
+                char statusText[80];
+                sprintf(statusText, "{\"percent\":%d, \"isCompleted\":%s, \"isFailed\":%s, \"errorCode\":\"%s\"}", percent,
                         (percent >= 100 && !isFailed) ? "true" : "false",
-                        isFailed ? "true" : "false");
-                jsval status = c_string_to_jsval(cx, statusText);
+                        isFailed ? "true" : "false", isFailed ? "err_network" : "");
                 
                 JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-                
-                JS_CallFunctionValue(cx, thisObj, callback, JS::HandleValueArray::fromMarkedLocation(1, &status), &retval);
+
+                JS::RootedValue outVal(cx);
+                jsval strVal = c_string_to_jsval(cx, statusText);
+                bool ok = JS_ParseJSON(cx, JS::RootedString(cx, strVal.toString()), &outVal);
+                if (ok) {
+                    JS_CallFunctionValue(cx, thisObj, callback, JS::HandleValueArray::fromMarkedLocation(1, &outVal.get()), &retval);
+                }
             }
         });
     }
