@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "GameInfo.h"
 
+typedef enum : NSInteger {
+    RTServerAddress_ONLINE,//线上游戏用
+    RTServerAddress_STAGING,//准线上游戏
+    RTServerAddress_SANDBOX//沙盒
+} RTServerAddress;
+
 @interface NetworkController : NSObject
 
 /**
@@ -16,5 +22,7 @@
  */
 + (void) requestGameInfoByGameKey: (NSString*)gameKey callback:(void (^)(GameInfo *gameInfo, BOOL isFailed))callback;
 + (NSURLSession*) getCurrentSession: (id<NSURLSessionDelegate>)delegate;
+
++ (void)setRTServerAddress:(RTServerAddress)address;
 
 @end

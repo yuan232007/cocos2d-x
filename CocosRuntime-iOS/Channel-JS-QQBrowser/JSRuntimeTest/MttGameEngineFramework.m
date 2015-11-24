@@ -47,12 +47,13 @@
     self.rootView = rootView;
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     _progressView = [[UIProgressView alloc] init];
-    _progressView.frame = CGRectMake(30, screenSize.height * 0.8f, screenSize.width - 60, 200);
+    _progressView.frame = CGRectMake(30, screenSize.height * 0.8f, screenSize.width - 60, 50);
     
     [_progressView setProgressViewStyle:UIProgressViewStyleDefault];
     _progressView.progress = 0.0;
     _progressView.trackTintColor = [UIColor grayColor];
     _progressView.progressTintColor = [UIColor greenColor];
+    _progressView.transform = CGAffineTransformMakeScale(1.0f, 5.0f);
     [rootView addSubview:_progressView];
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
@@ -62,7 +63,7 @@
 
 - (id)x5GamePlayer_get_value:(NSString*)key
 {
-    NSLog(@"x5GamePlayer_get_value");
+    NSLog(@"x5GamePlayer_get_value:%@", key);
     
     if ([key isEqualToString:@"gameKey"]) {
         return _gameKey;

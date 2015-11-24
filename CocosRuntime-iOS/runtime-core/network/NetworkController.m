@@ -15,11 +15,30 @@
 #define COCOS_SANDBOX_ADDRESS @"http://cocosplay.ucenter.appget.cn"
 #define COCOS_OFFLINE_ADDRESS @"http://192.168.52.80"
 
+static NSString* s_rtServerAddress = COCOS_ONLINE_ADDRESS;
+
 @implementation NetworkController
+
++ (void)setRTServerAddress:(RTServerAddress)address
+{
+    switch (address) {
+        case RTServerAddress_ONLINE:
+            s_rtServerAddress = COCOS_ONLINE_ADDRESS;
+            break;
+        case RTServerAddress_STAGING:
+            s_rtServerAddress = COCOS_STAGING_ADDRESS;
+            break;
+        case RTServerAddress_SANDBOX:
+            s_rtServerAddress = COCOS_SANDBOX_ADDRESS;
+            break;
+        default:
+            break;
+    }
+}
 
 + (void) requestGameInfoByGameKey: (NSString*)gameKey callback:(void (^)(GameInfo *, BOOL))callback
 {
-    NSString *urlString = [[[[[[COCOS_STAGING_ADDRESS stringByAppendingString:@"/capi/apiv5/gamepackage?"]
+    NSString *urlString = [[[[[[s_rtServerAddress stringByAppendingString:@"/capi/apiv5/gamepackage?"]
                                stringByAppendingString:@"gamekey="]
                               stringByAppendingString:gameKey]
                              stringByAppendingString:@"&arch=armeabi"]

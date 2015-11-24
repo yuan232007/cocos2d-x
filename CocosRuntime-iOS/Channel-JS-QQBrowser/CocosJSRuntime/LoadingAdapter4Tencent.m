@@ -38,7 +38,6 @@
         return;
     }
     reloadCallback(((progress / max) * PROGRESS_MAX), FALSE);
-    NSLog(@"########## %f", ((progress / max) * PROGRESS_MAX));
 }
 
 @end
