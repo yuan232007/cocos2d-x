@@ -40,7 +40,6 @@
             }
             completionHandler:^(NSString *zipFilePath, BOOL succeeded, NSError *error) {
                 if (error == nil) {
-                    NSLog(@"===> CocosRuntimeGroupPatch unzip SUCCESS patch: %@", patchPath);
                     [FileUtil removeFile:patchPath];
                     [self deleteFileFromDeleteList:groupName];
                     NSInteger latestVersionCode = [[CocosRuntimeGroup getGameConfig] versionCode];

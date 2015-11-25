@@ -230,7 +230,6 @@ static RTNetworkHelper *networkHelper = nil;
             }
             completionHandler:^(NSString *zipFilePath, BOOL succeeded, NSError *error) {
                 if (error == nil) {
-                    NSLog(@"===> unzip (%@) success", [group groupURL]);
                     [groupVersionManager setGroupVersionCode:group.groupName versionCode:[gameConfig versionCode]];
                     [FileUtil removeFile:groupPath];
                     [delegate onSuccessOfUnzip:group.groupSize];
@@ -577,8 +576,6 @@ static RTNetworkHelper *networkHelper = nil;
 
 - (void) onDownloadSuccess:(NSString *)path
 {
-    NSLog(@"===> GroupDownloadDelegateImpl Success");
-    
     if (![resGroup.groupMD5 isEqualToString:[FileUtil getFileMD5:path]]) {
         // fixme: 不要写死
         [onGroupUpdateDelegate onFailureOfDownload:@"下载错误"];
@@ -586,8 +583,6 @@ static RTNetworkHelper *networkHelper = nil;
     }
 
     [onGroupUpdateDelegate onSuccessOfDownload:resGroup.groupSize];
-        
-    NSLog(@"===> download %@", resGroup.groupURL);
     [CocosRuntimeGroup unzipGroup:resGroup delegate:onGroupUpdateDelegate];
 }
 
