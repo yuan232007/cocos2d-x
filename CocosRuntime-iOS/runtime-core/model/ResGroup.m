@@ -23,7 +23,7 @@
         self.groupPriority = priority;
         self.groupSize = size;
         self.fileList = files;
-        self->isUpdated = FALSE;
+        self.isUpdated = FALSE;
     }
     return self;
 }
@@ -33,7 +33,8 @@
     if (isUpdated) {
         return TRUE;
     } else {
-        return [self isAllFilesMD5Correct: info];
+        isUpdated = [self isAllFilesMD5Correct: info];
+        return isUpdated;
     }
 }
 
