@@ -20,6 +20,7 @@
 #import "LoadingAdapter4Tencent.h"
 
 #import "Wrapper.h"
+#import "NetworkController.h"
 
 using namespace CocosDenshion;
 
@@ -94,6 +95,10 @@ static id s_gameEngineProtocol;
         do {
             NSDictionary * gameInfo = [NSJSONSerialization JSONObjectWithData:[gameInfoJson dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
             if (gameInfo == nil) { break;}
+            NSNumber* isDebugMode = [gameInfo objectForKey:@"localDebug"];
+            if (isDebugMode && [isDebugMode intValue] == 1) {
+                [NetworkController setRTServerAddress:RTServerAddress_STAGING];
+            }
             
             NSString* gameExt = [gameInfo objectForKey:@"ext"];
             if (gameExt == nil) { break;}
@@ -118,6 +123,7 @@ static id s_gameEngineProtocol;
     }
     else {
         gameKey = [self.x5Delegate x5GamePlayer_get_value:@"gameKey"];
+        [NetworkController setRTServerAddress:RTServerAddress_STAGING];
     }
     
     [Wrapper setCocosRuntimeSDKVersionCode:1];

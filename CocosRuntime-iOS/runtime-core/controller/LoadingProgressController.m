@@ -70,8 +70,6 @@
         percent += [info percentOfTotal];
         [loadingInfoDict setValue:info forKey:[info loadingName]];
     }
-    
-    NSLog(@"Total percent is %ld , it should be 100", (long)percent);
 }
 
 - (void) setCurrentLoadingIndex: (NSInteger) index

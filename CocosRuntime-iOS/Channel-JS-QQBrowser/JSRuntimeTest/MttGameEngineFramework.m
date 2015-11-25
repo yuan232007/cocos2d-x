@@ -47,12 +47,13 @@
     self.rootView = rootView;
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     _progressView = [[UIProgressView alloc] init];
-    _progressView.frame = CGRectMake(30, screenSize.height * 0.8f, screenSize.width - 60, 200);
+    _progressView.frame = CGRectMake(30, screenSize.height * 0.8f, screenSize.width - 60, 50);
     
     [_progressView setProgressViewStyle:UIProgressViewStyleDefault];
     _progressView.progress = 0.0;
     _progressView.trackTintColor = [UIColor grayColor];
     _progressView.progressTintColor = [UIColor greenColor];
+    _progressView.transform = CGAffineTransformMakeScale(1.0f, 5.0f);
     [rootView addSubview:_progressView];
     
     if (self.engineGame && [self.engineGame respondsToSelector:@selector(game_engine_init:)]) {
@@ -62,7 +63,7 @@
 
 - (id)x5GamePlayer_get_value:(NSString*)key
 {
-    NSLog(@"x5GamePlayer_get_value");
+    NSLog(@"%s:%@", __FUNCTION__, key);
     
     if ([key isEqualToString:@"gameKey"]) {
         return _gameKey;
@@ -94,60 +95,60 @@
 
 - (BOOL)x5GamePlayer_set_value:(NSString*)key value:(id)value
 {
-    NSLog(@"x5GamePlayer_set_value");
+    NSLog(@"%s\n", __FUNCTION__);
     return NO;
 }
 
 - (void)x5GamePlayer_stop_game_engine
 {
-    NSLog(@"x5GamePlayer_stop_game_engine");
+    NSLog(@"%s\n", __FUNCTION__);
     [self testQuitEngine];
 }
 
 - (id)x5GamePlayer_invoke_Method:(NSString*)method bundle:(NSDictionary*)bundle
 {
-    NSLog(@"x5GamePlayer_invoke_Method");
+    NSLog(@"%s\n", __FUNCTION__);
     return nil;
 }
 
 - (void)x5GamePlayer_refresh_token:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_refresh_token");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_login:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_login");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_logout:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_logout");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_get_game_friends:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_get_game_friends");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_pay:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_pay");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_share:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_share");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_getUserInfo:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_getUserInfo");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_getAvailableLoginType:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_getAvailableLoginType");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)engine_init_end
@@ -210,28 +211,17 @@
 
 - (UIView*)getNavigationView
 {
-    UIView* navigationView = [[UIView alloc] initWithFrame:CGRectMake(20, 200, 100, 200)];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    
+    UIView* navigationView = [[UIView alloc] initWithFrame:CGRectMake(20, screenSize.height * 0.3f,
+                                                                      screenSize.width * 0.18f, screenSize.height * 0.05f)];
     
     UIButton * quitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [quitButton setFrame:CGRectMake(0, 0, 100, 30)];
+    [quitButton setFrame:CGRectMake(0, 0, screenSize.width * 0.18f, screenSize.height * 0.05f)];
     [quitButton setBackgroundColor:[UIColor darkGrayColor]];
     [quitButton setTitle:@"quit" forState:UIControlStateNormal];
     [quitButton addTarget:self action:@selector(testQuitEngine) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:quitButton];
-    
-    UIButton * pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [pauseButton setFrame:CGRectMake(0, 40, 100, 30)];
-    [pauseButton setBackgroundColor:[UIColor darkGrayColor]];
-    [pauseButton setTitle:@"pause" forState:UIControlStateNormal];
-    [pauseButton addTarget:self action:@selector(testPauseEngine) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:pauseButton];
-    
-    UIButton * resumeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [resumeButton setFrame:CGRectMake(0, 80, 100, 30)];
-    [resumeButton setBackgroundColor:[UIColor darkGrayColor]];
-    [resumeButton setTitle:@"resume" forState:UIControlStateNormal];
-    [resumeButton addTarget:self action:@selector(testResumeEngine) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:resumeButton];
     
     self.navigationView = navigationView;
     
@@ -269,12 +259,12 @@
 
 - (void)x5GamePlayer_send_to_desktop:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_send_to_desktop");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 - (void)x5GamePlayer_open_topicCircle:(NSDictionary*)jsonObj callback:(void (^)(NSDictionary* dict))callback
 {
-    NSLog(@"x5GamePlayer_open_topicCircle");
+    NSLog(@"%s\n", __FUNCTION__);
 }
 
 @end

@@ -318,7 +318,7 @@ cc.LoaderLayer = cc.Layer.extend({
         });
     },
     _preload_native: function (statusJsonText) {
-        var status = eval("(" + statusJsonText + ")");
+        var status = statusJsonText;
         var config = this._finalConfig;
         if (status.percent) {
             this._setProgress(status.percent / 100);
