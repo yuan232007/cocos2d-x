@@ -13,6 +13,7 @@
 #import "OnLoadingProgressDelegate.h"
 #import "LoadingProgressController.h"
 #import "LoadingAdapter4Tencent.h"
+#import "ImageDownloader.h"
 
 
 @interface CocosRuntime : NSObject
@@ -27,6 +28,14 @@
  * 预加载分组资源, 各个分组之间用分组名称拼接并以逗号分隔
  */
 + (void) preloadResGroups: (NSString*) groupsString delegate: (id<LoadingDelegate>) delegate;
+
+/**
+ *  下载头像文件
+ *
+ *  @param config 配置参数，JSON 格式
+ *  @param ext
+ */
++ (void) downloadAvatarImageFile: (NSString*)config extension:(long)ext callback:(RTImageCallback)callback;
 + (void) reset;
 @end
 

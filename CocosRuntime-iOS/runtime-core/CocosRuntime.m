@@ -34,6 +34,11 @@ static GameInfo *gameInfo = nil;
     [CocosRuntimeGroup preloadResGroups:groupsString delegate:delegate];
 }
 
++ (void) downloadAvatarImageFile: (NSString*)config extension:(long)ext callback:(RTImageCallback)callback;
+{
+    [ImageDownloader downloadImageFile:config extesion:ext callback:callback];
+}
+
 + (void) reset
 {
     [PreRunGame reset];
