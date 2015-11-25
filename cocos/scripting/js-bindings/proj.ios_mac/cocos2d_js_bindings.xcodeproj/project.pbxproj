@@ -183,7 +183,6 @@
 		1A119E6C18BDF19200352BAA /* jsb_opengl_manual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_opengl_manual.h; sourceTree = "<group>"; };
 		1A119E6D18BDF19200352BAA /* jsb_opengl_registration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_opengl_registration.cpp; sourceTree = "<group>"; };
 		1A119E6E18BDF19200352BAA /* jsb_opengl_registration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_opengl_registration.h; sourceTree = "<group>"; };
-		1A119E7018BDF19200352BAA /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
 		1A119E7118BDF19200352BAA /* js_bindings_system_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_system_functions.cpp; sourceTree = "<group>"; };
 		1A119E7218BDF19200352BAA /* js_bindings_system_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = js_bindings_system_functions.h; sourceTree = "<group>"; };
 		1A119E7318BDF19200352BAA /* js_bindings_system_functions_registration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = js_bindings_system_functions_registration.h; sourceTree = "<group>"; };
@@ -372,7 +371,6 @@
 		1A119E6F18BDF19200352BAA /* localstorage */ = {
 			isa = PBXGroup;
 			children = (
-				1A119E7018BDF19200352BAA /* Android.mk */,
 				1A119E7118BDF19200352BAA /* js_bindings_system_functions.cpp */,
 				1A119E7218BDF19200352BAA /* js_bindings_system_functions.h */,
 				1A119E7318BDF19200352BAA /* js_bindings_system_functions_registration.h */,

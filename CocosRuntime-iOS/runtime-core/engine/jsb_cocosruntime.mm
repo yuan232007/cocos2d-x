@@ -92,22 +92,22 @@ typedef void(^RTPreloadCallback)(int progress, bool isFailed);
 
 - (void) onLoadingError
 {
-    NSLog(@"%s", __FUNCTION__);
+    printf("%s\n", __FUNCTION__);
     reloadCallback(-1, TRUE);
 }
 
 - (void) onLoadingCompleted
 {
-    NSLog(@"%s", __FUNCTION__);
+    printf("%s\n", __FUNCTION__);
     reloadCallback(100, FALSE);
 }
 
 - (void) onLoadingProgress:(float)progress max:(float)max
 {
-    if (progress == max) {
-        return;
+    if (progress >= 100.0f) {
+        progress = 99.0f;
     }
-    reloadCallback(((progress / max) * PROGRESS_MAX), FALSE);
+    reloadCallback(progress, FALSE);
 }
 
 @end
