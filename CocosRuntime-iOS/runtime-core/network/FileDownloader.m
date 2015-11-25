@@ -111,7 +111,9 @@
 - (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
     if (error != nil) {
-        [fileDownloadDelegate onDownloadFailed];
+        if (error.code != NSURLErrorCancelled) {
+            [self onDownloadFailed];
+        }
     } else {
         [self onTempFileDownloaded];
     }
