@@ -55,6 +55,10 @@
 		BB881DE71BFF0AD1002914AB /* ZipHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB881DB91BFF0AD1002914AB /* ZipHelper.mm */; };
 		BBBFEFF51BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; };
 		BBBFEFF61BFDBDE300766FDA /* LoadingAdapter4Tencent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */; };
+		BBD529A41C03FABA0068252E /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD529A31C03FABA0068252E /* ImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BBD529A51C03FABA0068252E /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD529A31C03FABA0068252E /* ImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		BBD529AA1C03FEE40068252E /* DownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD529A91C03FEE40068252E /* DownloadInfo.m */; settings = {ASSET_TAGS = (); }; };
+		BBD529AB1C03FEE40068252E /* DownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD529A91C03FEE40068252E /* DownloadInfo.m */; settings = {ASSET_TAGS = (); }; };
 		ED2667281BFDA1E400E9BF62 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666C41BFDA0E000E9BF62 /* libcocos2d iOS.a */; };
 		ED2667291BFDA1EA00E9BF62 /* libjscocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666CD1BFDA0F100E9BF62 /* libjscocos2d iOS.a */; };
 		ED26672A1BFDA1F300E9BF62 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2666C41BFDA0E000E9BF62 /* libcocos2d iOS.a */; };
@@ -271,6 +275,10 @@
 		BB881DB91BFF0AD1002914AB /* ZipHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipHelper.mm; sourceTree = "<group>"; };
 		BBBFEFF31BFDBDE300766FDA /* LoadingAdapter4Tencent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAdapter4Tencent.h; sourceTree = "<group>"; };
 		BBBFEFF41BFDBDE300766FDA /* LoadingAdapter4Tencent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAdapter4Tencent.m; sourceTree = "<group>"; };
+		BBD529A21C03FABA0068252E /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		BBD529A31C03FABA0068252E /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
+		BBD529A81C03FEE40068252E /* DownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadInfo.h; sourceTree = "<group>"; };
+		BBD529A91C03FEE40068252E /* DownloadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadInfo.m; sourceTree = "<group>"; };
 		D50C68411BC64F9F00655E6E /* MttGameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngine.h; sourceTree = "<group>"; };
 		D50C68431BC64F9F00655E6E /* MttGameEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineDelegate.h; sourceTree = "<group>"; };
 		D50C68441BC64F9F00655E6E /* MttGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttGameEngineFactory.h; sourceTree = "<group>"; };
@@ -457,6 +465,8 @@
 		BB881D851BFF0AD1002914AB /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BBD529A21C03FABA0068252E /* ImageDownloader.h */,
+				BBD529A31C03FABA0068252E /* ImageDownloader.m */,
 				BB881D861BFF0AD1002914AB /* CocosRuntimeGroup.h */,
 				BB881D871BFF0AD1002914AB /* CocosRuntimeGroup.m */,
 				BB881D881BFF0AD1002914AB /* CocosRuntimeGroupPatch.h */,
@@ -502,6 +512,8 @@
 				BB881DA41BFF0AD1002914AB /* GroupPatch.m */,
 				BB881DA51BFF0AD1002914AB /* ResGroup.h */,
 				BB881DA61BFF0AD1002914AB /* ResGroup.m */,
+				BBD529A81C03FEE40068252E /* DownloadInfo.h */,
+				BBD529A91C03FEE40068252E /* DownloadInfo.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -822,10 +834,12 @@
 				BB881DE41BFF0AD1002914AB /* zip.cpp in Sources */,
 				BB1036A91C02E92B008344E3 /* LoadingInfo.m in Sources */,
 				BB881DC01BFF0AD1002914AB /* GroupVersionManager.m in Sources */,
+				BBD529A41C03FABA0068252E /* ImageDownloader.m in Sources */,
 				BB881DDA1BFF0AD1002914AB /* FileDownloader.m in Sources */,
 				BB881DD21BFF0AD1002914AB /* GameManifest.m in Sources */,
 				ED2667A11BFDA65800E9BF62 /* jsb_anysdk_basic_conversions.cpp in Sources */,
 				BB881DD81BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */,
+				BBD529AA1C03FEE40068252E /* DownloadInfo.m in Sources */,
 				ED2667481BFDA56000E9BF62 /* ShareQQBrowser.m in Sources */,
 				ED2667A21BFDA65800E9BF62 /* jsb_anysdk_protocols_auto.cpp in Sources */,
 				BB881DD41BFF0AD1002914AB /* GroupPatch.m in Sources */,
@@ -862,10 +876,12 @@
 				BB881DE51BFF0AD1002914AB /* zip.cpp in Sources */,
 				BB1036AA1C02E92B008344E3 /* LoadingInfo.m in Sources */,
 				BB881DC11BFF0AD1002914AB /* GroupVersionManager.m in Sources */,
+				BBD529A51C03FABA0068252E /* ImageDownloader.m in Sources */,
 				BB881DDB1BFF0AD1002914AB /* FileDownloader.m in Sources */,
 				BB881DD31BFF0AD1002914AB /* GameManifest.m in Sources */,
 				EDBD73381BF484FB0005FED4 /* Cocosv3GameEngineFactory.mm in Sources */,
 				BB881DD91BFF0AD1002914AB /* FileDownloadAdapter.m in Sources */,
+				BBD529AB1C03FEE40068252E /* DownloadInfo.m in Sources */,
 				ED2667B21BFDA76F00E9BF62 /* manualanysdkbindings.cpp in Sources */,
 				ED464A721BE8B2EB005D120E /* MttGameEngine.mm in Sources */,
 				BB881DD51BFF0AD1002914AB /* GroupPatch.m in Sources */,
