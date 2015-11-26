@@ -232,6 +232,13 @@ void SendLogToWindow(const char *log)
 // Free functions to log
 //
 
+static COCOS_LOG_FUNCPTR s_customLogFunc = nullptr;
+
+void setCocosLogFuction(COCOS_LOG_FUNCPTR func)
+{
+    s_customLogFunc = func;
+}
+
 static void _log(const char *format, va_list args)
 {
     int bufferSize = MAX_LOG_LENGTH;
@@ -256,6 +263,12 @@ static void _log(const char *format, va_list args)
     } while (true);
 
     strcat(buf, "\n");
+    
+    if (s_customLogFunc) {
+        s_customLogFunc(buf);
+        delete [] buf;
+        return;
+    }
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     __android_log_print(ANDROID_LOG_DEBUG, "cocos2d-x debug info", "%s", buf);

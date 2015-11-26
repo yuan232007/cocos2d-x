@@ -27,6 +27,13 @@ using namespace CocosDenshion;
 static CocosAppDelegate* s_application = nullptr;
 static id s_gameEngineProtocol;
 
+static void log2QQBrowser(const char* message)
+{
+    [[MttGameEngine getEngineDelegate] x5GamePlayer_send_msg:
+     [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithUTF8String:message], @"message",
+      @"CocosLog", @"type", nil]];
+}
+
 @interface CocosRuntimeBridge : NSObject<CocosRuntimeSDKDelegate>
 
 @end
@@ -71,6 +78,10 @@ static id s_gameEngineProtocol;
     if (s_application == nullptr) {
         s_application = new (std::nothrow) CocosAppDelegate;
     }
+    
+#if DEBUG
+    cocos2d::setCocosLogFuction(log2QQBrowser);
+#endif
     
     [ChannelConfig setChannelID:@"100115"];
     
@@ -173,9 +184,9 @@ static id s_gameEngineProtocol;
     auto screenSize = [UIScreen mainScreen].bounds.size;
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        CCLOG("Interface orientation is landscape");
+        cocos2d::log("Interface orientation is landscape");
     } else {
-        CCLOG("Interface orientation is portrait");
+        cocos2d::log("Interface orientation is portrait");
     }
     
     CCEAGLView *eaglView = [CCEAGLView viewWithFrame: CGRectMake(0, 0, screenSize.width, screenSize.height)
@@ -200,21 +211,21 @@ static id s_gameEngineProtocol;
 //暂停游戏
 - (void)game_engine_onPause
 {
-    CCLOG("game_engine_onPause");
+    cocos2d::log("game_engine_onPause");
     cocos2d::Application::getInstance()->applicationDidEnterBackground();
 }
 
 //恢复游戏
 - (void)game_engine_onResume
 {
-    CCLOG("game_engine_onResume");
+    cocos2d::log("game_engine_onResume");
     cocos2d::Application::getInstance()->applicationWillEnterForeground();
 }
 
 //退出游戏
 - (void)game_engine_onStop
 {
-    CCLOG("game_engine_onStop");
+    cocos2d::log("game_engine_onStop");
     
     [CocosRuntimeGroup setSilentDownloadEnabled:false];
     
@@ -223,6 +234,7 @@ static id s_gameEngineProtocol;
     SimpleAudioEngine::getInstance()->stopAllEffects();
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
+    cocos2d::setCocosLogFuction(nullptr);
     s_application = nullptr;
     s_gameEngineProtocol = nil;
     
@@ -238,7 +250,7 @@ static id s_gameEngineProtocol;
     self.x5Delegate = proxy;
     
     if (proxy == nil) {
-        CCLOG("%s error, proxy is nil", __FUNCTION__);
+        cocos2d::log("%s error, proxy is nil", __FUNCTION__);
     }
 }
 

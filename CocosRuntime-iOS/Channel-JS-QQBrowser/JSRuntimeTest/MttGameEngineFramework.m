@@ -206,6 +206,9 @@
             _loadProgress = [progress intValue];
             [self performSelectorOnMainThread:@selector(updateProgress) withObject:self waitUntilDone:NO];
         }
+        else if ([msg isEqualToString:@"CocosLog"]) {
+            NSLog(@"  CocosLog msg:%@", [jsonObj objectForKey:@"message"]);
+        }
     }
 }
 
