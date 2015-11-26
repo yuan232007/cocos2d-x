@@ -314,10 +314,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     
 #endif // __IPHONE_4_0
     
-     if(![context_ presentRenderbuffer:GL_RENDERBUFFER])
-        {
-//         CCLOG(@"cocos2d: Failed to swap renderbuffer in %s\n", __FUNCTION__);
-        }
+    [context_ presentRenderbuffer:GL_RENDERBUFFER];
 
 #if COCOS2D_DEBUG
     CHECK_GL_ERROR();

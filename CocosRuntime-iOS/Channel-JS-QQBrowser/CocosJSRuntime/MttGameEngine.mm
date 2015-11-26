@@ -216,6 +216,8 @@ static id s_gameEngineProtocol;
 {
     CCLOG("game_engine_onStop");
     
+    [CocosRuntimeGroup setSilentDownloadEnabled:false];
+    
     cocos2d::Director::getInstance()->end();
     
     SimpleAudioEngine::getInstance()->stopAllEffects();

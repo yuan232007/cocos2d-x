@@ -185,12 +185,49 @@ static bool JSB_runtime_preload(JSContext *cx, uint32_t argc, jsval *vp)
     return true;
 }
 
-static bool JSB_runtime_getNetworkType(JSContext *cx, uint32_t argc, jsval *vp) {
-    JSB_PRECONDITION2( argc == 0, cx, false, "JSB_runtime_getNetworkType Invalid number of arguments" );
-    
+static bool JSB_runtime_getNetworkType(JSContext *cx, uint32_t argc, jsval *vp)
+{
     auto args = JS::CallArgsFromVp(argc, vp);
     int status = [RTNetworkHelper getNetworkType];
     args.rval().set(INT_TO_JSVAL(status));
+    
+    return true;
+}
+
+static bool JSB_runtime_loadRomoteImage(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    auto args = JS::CallArgsFromVp(argc, vp);
+    if (argc >= 2) {
+        std::string imageConfig;
+        bool ok = true;
+        ok &= jsval_to_std_string(cx, args.get(0), &imageConfig);
+        JSB_PRECONDITION2(ok, cx, false, "JSB_runtime_loadRomoteImage:Error processing arguments");
+        
+        if (JS_TypeOfValue(cx, args[1]) == JSTYPE_FUNCTION) {
+            JSObject *obj = JS_THIS_OBJECT(cx, vp);
+            
+            std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(1)));
+            
+            [CocosRuntime downloadAvatarImageFile:[NSString stringWithUTF8String:imageConfig.c_str()] extension:0 callback:^(NSString *resultJson, long extension) {
+                
+                JS::RootedValue outVal(cx);
+                jsval resultVal = c_string_to_jsval(cx, [resultJson cStringUsingEncoding:NSUTF8StringEncoding]);
+                bool ok = JS_ParseJSON(cx, JS::RootedString(cx, resultVal.toString()), &outVal);
+                if (ok) {
+                    JS::RootedValue rval(cx);
+                    ok = func->invoke(1, outVal.address(), &rval);
+                    if (!ok && JS_IsExceptionPending(cx)) {
+                        JS_ReportPendingException(cx);
+                    }
+                }
+            }];
+        }
+        else {
+            printf("%s:Error processing arguments\n", __FUNCTION__);
+            
+        }
+    }
+    args.rval().setUndefined();
     
     return true;
 }
@@ -213,8 +250,15 @@ void jsb_register_cocosruntime(JSContext* cx, JS::HandleObject global)
     JS::RootedObject runtimeObj(cx);
     get_or_create_js_obj(cx, global, "runtime", &runtimeObj);
 
-    JS_DefineFunction(cx, runtimeObj, "preload", JSB_runtime_preload, 3, JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
-    JS_DefineFunction(cx, runtimeObj, "getNetworkType", JSB_runtime_getNetworkType, 0, JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
+    JS_DefineFunction(cx, runtimeObj, "preload", JSB_runtime_preload, 3,
+                      JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
+    JS_DefineFunction(cx, runtimeObj, "getNetworkType", JSB_runtime_getNetworkType, 0,
+                      JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
+    
+    JS::RootedObject jsbObj(cx);
+    get_or_create_js_obj(cx, global, "jsb", &jsbObj);
+    JS_DefineFunction(cx, jsbObj, "loadRemoteImg", JSB_runtime_loadRomoteImage, 2,
+                      JSPROP_READONLY | JSPROP_PERMANENT | JSPROP_ENUMERATE );
     
     //把游戏相关配置及渠道ID、设备ID传到js层
     NSMutableDictionary* gameConfig = [[PreRunGame getGameConfig] getGameConfig];

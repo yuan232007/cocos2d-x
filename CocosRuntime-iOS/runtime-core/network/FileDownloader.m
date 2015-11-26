@@ -112,7 +112,7 @@
 {
     if (error != nil) {
         if (error.code != NSURLErrorCancelled) {
-            [self onDownloadFailed];
+            [fileDownloadDelegate onDownloadFailed];
         }
     } else {
         [self onTempFileDownloaded];
